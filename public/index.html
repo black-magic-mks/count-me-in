@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+  <meta charset="utf-8" />
+
+  <title>CountMeIn</title>
+  <script src="/bower_components/angular/angular.min.js"></script> 
+  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+  <script src="/scripts.js"></script>
+</head>
+<body ng-controller="MainController">
+  <h1>CountMeIn</h1>
+  <nav>
+    <a href="#/login">Login</a>
+    <a href="#/signup">Sign Up</a>
+    <a href="#/feed">Feed</a>
+    <a href="#/user/supernlink">My profile</a>
+  </nav>
+  <div ui-view></div>
+</body>
+</html>
