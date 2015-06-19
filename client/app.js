@@ -7,40 +7,40 @@ angular.module('app', [
   $stateProvider
     .state('feed', {
       url: '/feed',
-      templateUrl: '/feed/feed.html',
+      templateUrl: '/views/feed.html',
       controller: 'FeedController'
     })
     .state('pledge', {
       url: '/pledge/:pledgename',
-      templateUrl: '/pledge/pledge.html',
+      templateUrl: '/views/pledge.html',
       controller: 'PledgeController'
     })
     .state('user', {
       url: '/user/:username',
-      templateUrl: '/user/user.html',
+      templateUrl: '/views/user.html',
       controller: 'UserController'
     })
     .state('user.pledge-list', {
-      templateUrl: '/user/user-pledge-list/user-pledge-list.html',
+      templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
     })
     .state('user.pledge', {
-      templateUrl: '/user/user-pledge/user-pledge.html',
+      templateUrl: '/views/user-pledge.html',
       controller: 'UserPledgeController'
     })
     .state('user.post', {
       url: '/user/:username/post/new',
-      templateUrl: '/user/user-post/user-post.html',
+      templateUrl: '/views/user-post.html',
       controller: 'UserPostController'
     })
     .state('login', {
       url: '/login',
-      templateUrl: '/auth/login.html',
+      templateUrl: '/views/login.html',
       controller: 'LoginController'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl: '/auth/signup.html',
+      templateUrl: '/views/signup.html',
       controller: 'SignupController'
     })
 })
