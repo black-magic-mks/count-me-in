@@ -3,7 +3,7 @@ module.exports = function(grunt) {
   grunt.initConfig({
     concat: {
       options: {
-        separator: ' '
+        separator: ';'
       },
       dist: {
         src: ['client/**/*.js'],
