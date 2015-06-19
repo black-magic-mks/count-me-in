@@ -4,9 +4,10 @@ angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  // $urlRouterProvider.otherwise('/tab/feed');
+  $urlRouterProvider.otherwise('/tab/feed');
   
   $stateProvider
+
     .state('tab', {
       url: '/tab',
       abstract: true,
