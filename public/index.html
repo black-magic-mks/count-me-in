@@ -3,20 +3,19 @@
 <head>
   <meta charset="utf-8" />
 
-  <title>CountMeIn</title>
-  <script src="/bower_components/angular/angular.min.js"></script> 
-  <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
+  <title>Count Me In</title>
+<link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
+  <script src="/bower_components/ionic/release/js/ionic.bundle.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
   <script src="/scripts.js"></script>
 </head>
-<body ng-controller="MainController">
-  <h1>CountMeIn</h1>
-  <nav>
-    <a href="#/login">Login</a>
-    <a href="#/signup">Sign Up</a>
-    <a href="#/feed">Feed</a>
-    <a href="#/user/supernlink">My profile</a>
-  </nav>
-  <div ui-view></div>
-</body>
+  <body ng-controller="MainController">
+
+    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
+      <ion-nav-back-button class="button-icon icon ion-chevron-left">
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+  </body>
 </html>
