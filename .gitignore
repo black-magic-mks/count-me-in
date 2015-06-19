@@ -1,4 +1,6 @@
 node_modules
-public
+public/bower_components
+public/*.js
+public/*.css
 
 .DS_store
