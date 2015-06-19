@@ -5,3 +5,7 @@ Pledge to learn a hobby by tracking your progress through a community-based supp
 ### Initial global setup
  > `npm install -g karma-cli`
  > `npm install -g grunt-cli`
+
+### In development
+ > `grunt dev`
+ < `grunt serve` 
