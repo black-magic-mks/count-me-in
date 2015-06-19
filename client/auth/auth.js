@@ -1,4 +1,4 @@
-angular.module('app.auth')
+angular.module('app')
 
 .controller('AuthController', function($scope) {
 

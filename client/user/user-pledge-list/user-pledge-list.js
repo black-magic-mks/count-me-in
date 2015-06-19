@@ -1,4 +1,4 @@
-angular.module('app.user')
+angular.module('app')
 
 .controller('UserPledgeListController', function($scope) {
 

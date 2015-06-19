@@ -1,6 +1,4 @@
-angular.module('app.user', [
-
-])
+angular.module('app')
 
 .controller('UserPostController', function($scope) {
 

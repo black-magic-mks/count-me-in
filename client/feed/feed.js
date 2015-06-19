@@ -1,4 +1,4 @@
-angular.module('app.feed')
+angular.module('app')
 
 .controller('FeedController', function($scope) {
 
