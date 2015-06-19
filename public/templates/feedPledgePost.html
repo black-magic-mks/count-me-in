@@ -1,5 +1,11 @@
-<h2 class="username">{{pledge.user.username}}}</h2>
-<p class="date">{{pledge.user.date}}</p>
-<p class="mission">{{pledge.user.mission}}</p>
-<img class="post" src="post" ng-repeat="post in pledgePosts" />
-<input type="button" value="View Posts" />
+<ion-header-bar class="bar bar-header bar-dark">
+  <h2 class="title">{{username}}</h2>
+</ion-header-bar>
+<ion-content class="has-header">
+  <p class="date">{{date}}</p>
+  <p class="mission">{{mission}}</p>
+  <img class="posts" src="post" ng-repeat="post in pledgePosts" />
+  <button class="button button-small button-positive">
+    View Posts
+  </button>
+</ion-content>'
