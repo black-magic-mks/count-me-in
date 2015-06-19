@@ -13,12 +13,20 @@ module.exports = function(grunt) {
     watch: {
       files: ['client/**/*.js'],
       tasks: ['concat']
+    },
+    nodemon: {
+      dev: {
+        script: 'server/server.js'
+      }
     }
+
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
+  grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', ['concat', 'watch']);
+  grunt.registerTask('dev', ['concat', 'watch']);
+  grunt.registerTask('serve', ['nodemon']);
 
 };
