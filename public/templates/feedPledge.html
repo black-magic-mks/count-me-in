@@ -1,3 +1,5 @@
-<h1 class="title">{{pledgeName}}</h1>
+<h1 class="title">
+  <a ui-sref="pledge">{{pledgeName}}</a>
+</h1>
 <hr />
 <feed-pledge-post ng-repeat="pledgePost in pledgeList" username="pledgePost.user" mission="pledgePost.mission" pledge-post="pledgePost.posts" date="pledgePost.date" />
