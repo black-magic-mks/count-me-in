@@ -1,9 +1,11 @@
 var express = require('express');
+var router = require('./router');
 
+var port = 8080;
 var app = express();
 
 app.use(express.static(__dirname + '/../public'));
 
-var port = 8080;
+router.addRoutes(app);
 
 app.listen(port);
