@@ -1,19 +1,19 @@
   <ion-tabs class="tabs-icon-top tabs-positive">
 
-    <ion-tab title="News Feed" icon="icon ion-social-rss" href="#/tab/feed">
+    <ion-tab title="News Feed" icon="icon ion-social-rss" ui-sref="tab.feed">
       <ion-nav-view name="tab-feed"></ion-nav-view>
     </ion-tab>
-  
-    <ion-tab title="Login" icon="icon ion-home" href="#/tab/login">
-      <ion-nav-view name="tab-login"></ion-nav-view>
-    </ion-tab>
 
-    <ion-tab title="My Profile" icon="icon ion-ios-person" href="#/tab/user">
+    <ion-tab title="My Profile" icon="icon ion-ios-person" ui-sref="tab.user">
       <ion-nav-view name="tab-user"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="New Post" icon="icon ion-ios-plus" href="#/tab/user.post">
+    <ion-tab title="New Post" icon="icon ion-ios-plus" ui-sref="tab-user.post">
       <ion-nav-view name="tab-user.post"></ion-nav-view>
+    </ion-tab>
+
+     <ion-tab title="Sign Out" icon="ion-log-out" ui-sref="tab.login">
+      <ion-nav-view name="tab-login"></ion-nav-view>
     </ion-tab>
 
   </ion-tabs>

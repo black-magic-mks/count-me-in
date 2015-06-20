@@ -1,6 +1,28 @@
-<ion-view title="login">
-  <ion-content class="padding">
-    <h1> This is the login page</h1>
-    <a ui-sref="signup"></a>
-  <ion-content>
 <ion-view>
+  <ion-content class="login">
+
+  <div>
+    <h1 class="login-title">Login</h1>
+    <form name="loginForm">
+        <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="6" required>
+        <input name="password" type="text" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-patter="passwordValidation" required>
+    </form>
+
+      <div ng-show='loginForm.username.$error.required || loginForm.password.$error.required'>
+        <h3 class="login-text">Username and Password Required</h3>
+      </div>
+      <div ng-show='loginForm.username.$error.minlength || loginForm.password.$error.minlength'>
+        <h3 class="login-text">Username and Password Must Be At Least 6 Characters</h3>
+      </div>
+      <div ng-show='loginForm.password.$error.pattern'>
+        <h3 class="login-text">Password Must Contain Both A Number and A Capital Letter</h3>
+      </div>
+        
+      <a ui-sref='signup'>Need to signup for an account? <strong class="strong-text">Signup</strong> ...</a>
+    </div>
+  </div>
+
+
+  </ion-content>
+</ion-view>
+
