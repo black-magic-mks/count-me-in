@@ -19,9 +19,8 @@
       <div ng-show='signupForm.password.$error.pattern'>
         <h3 class="signup-text">Password Must Contain Both A Number and A Capital Letter</h3>
       </div>
-  
-      <!-- TODO: figure out why this link is not working -->
-      <a ui-sref='#/tab/login'>Already signed up? <strong class="strong-text">Login</strong> ...</a>
+      <!-- TODO: figure out why the a tag is not a link -->
+      <a ui-sref='tab.login'>Already signed up? <strong class="strong-text">Login</strong> ...</a>
 
     </div>
   <ion-content>
