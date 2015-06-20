@@ -36,6 +36,10 @@ angular.module('app', [
         } 
       }
     })
+    .state('user.home', {
+      templateUrl: '/views/user-home.html',
+      controller: 'UserHomeController'
+    })
     .state('user.pledge-list', {
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
