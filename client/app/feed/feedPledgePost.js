@@ -9,7 +9,7 @@ angular.module('app')
       pledgePost: '=',
       date: '='
     },
-    templateUrl: 'feedPledgePost.html',
+    templateUrl: './templates/feedPledgePost.html',
     link: function(scope, element, attr) {
     }
   }

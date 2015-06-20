@@ -7,7 +7,7 @@ angular.module('app')
       pledgeName: '=',
       pledges: '='
     },
-    templateUrl: 'feedPledge.html',
+    templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {
     }
   }
