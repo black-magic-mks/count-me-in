@@ -21,7 +21,7 @@ module.exports = function(grunt) {
     },
     karma: {
       unit: {
-        configFile: 'client/karma.conf.js'
+        configFile: 'karma.conf.js'
       }
     }
 
@@ -32,8 +32,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-karma');
 
-
-  grunt.registerTask('dev', ['concat', 'karma', 'watch']);
+  grunt.registerTask('dev', ['concat', 'watch']);
   grunt.registerTask('serve', ['nodemon']);
 
 };

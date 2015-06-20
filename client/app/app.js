@@ -4,12 +4,11 @@ angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/tab/feed');
+  $urlRouterProvider.otherwise('/i/feed');
   
   $stateProvider
-
     .state('tab', {
-      url: '/tab',
+      url: '/i',
       abstract: true,
       templateUrl: 'views/tabs.html'
     })
@@ -36,6 +35,18 @@ angular.module('app', [
         } 
       }
     })
+    .state('tab.user.dashboard', {
+      url: '/dashboard',
+      templateUrl: '/views/user.dashboard.html'
+    })
+    .state('tab.user.addPost', {
+      url: '/post/new',
+      templateUrl: '/views/user.post.add.html'
+    })
+    .state('tab.user.pledge', {
+      url: '/pledge/:pledgename',
+      templateUrl: '/views/user.pledge.html'
+    })
     .state('user.pledge-list', {
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
@@ -43,15 +54,6 @@ angular.module('app', [
     .state('user.pledge', {
       templateUrl: '/views/user-pledge.html',
       controller: 'UserPledgeController'
-    })
-    .state('user.post', {
-      url: '/user/:username/post/new',
-      views: {
-        'tab-user.post': {
-          templateUrl: '/views/user-post.html',
-          controller: 'UserPostController'        
-        }
-      }
     })
     .state('tab.login', {
       url: '/login',
@@ -65,7 +67,7 @@ angular.module('app', [
     .state('signup', {
       url: '/signup',
       templateUrl: '/views/signup.html',
-      // controller: 'SignupController'
+      controller: 'SignupController'
     })
 })
 
