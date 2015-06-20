@@ -7,7 +7,6 @@ angular.module('app', [
   $urlRouterProvider.otherwise('/i/feed');
   
   $stateProvider
-
     .state('tab', {
       url: '/i',
       abstract: true,
@@ -36,7 +35,6 @@ angular.module('app', [
         } 
       }
     })
-
     .state('tab.user.dashboard', {
       url: '/dashboard',
       templateUrl: '/views/user.dashboard.html'
@@ -45,12 +43,10 @@ angular.module('app', [
       url: '/post/new',
       templateUrl: '/views/user.post.add.html'
     })
-
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/user.pledge.html'
     })
-
     .state('user.pledge-list', {
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
@@ -58,15 +54,6 @@ angular.module('app', [
     .state('user.pledge', {
       templateUrl: '/views/user-pledge.html',
       controller: 'UserPledgeController'
-    })
-    .state('user.post', {
-      url: '/user/:username/post/new',
-      views: {
-        'tab-user.post': {
-          templateUrl: '/views/user-post.html',
-          controller: 'UserPostController'        
-        }
-      }
     })
     .state('tab.login', {
       url: '/login',
