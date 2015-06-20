@@ -31,9 +31,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-karma');
-  
-  grunt.registerTask('dev', ['concat', 'watch']);
 
+  grunt.registerTask('dev', ['concat', 'watch']);
   grunt.registerTask('serve', ['nodemon']);
 
 };

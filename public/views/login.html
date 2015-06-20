@@ -5,7 +5,7 @@
     <h1 class="login-title">Login</h1>
     <form name="loginForm">
         <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="6" required>
-        <input name="password" type="text" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-patter="passwordValidation" required>
+        <input name="password" type="text" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
     </form>
 
       <div ng-show='loginForm.username.$error.required || loginForm.password.$error.required'>

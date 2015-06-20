@@ -1,5 +1,5 @@
 <ion-view title="Feed">
-  <ion-content class="padding">
-    <h1>we are in feed</h1>
+  <ion-content class="has-header padding card">
+    <feed-pledge class="item item-text-wrap" ng-repeat="pledgeType in pledgeCategories" pledge-name="pledgeType.name" pledge-list="pledgeType.postList"></feed-pledge>
   </ion-content>
 </ion-view>
