@@ -1,7 +1,6 @@
 angular.module('app')
 .directive('feedPledgePost', function() {
   return {
-    require: '^FeedController',
     restrict: 'E',
     scope: {
       username: '=',

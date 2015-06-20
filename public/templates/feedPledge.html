@@ -1,7 +1,3 @@
-<ion-header-bar class="bar bar-header bar-dark">
-  <h1 class="title">{{pledgeName}}</h1>
-</ion-header-bar>
-<ion-content class="has-header">
-  <feed-pledge-post ng-repeat="pledgePost in pledgePosts" username="pledgePost.user" mission="pledgePost.user.mission" pledgePost="pledgePost.user.posts" date="pledgePost.user.date">
-</feed-pledge-post>
-</ion-content>
+<h1 class="title">{{pledgeName}}</h1>
+<hr />
+<feed-pledge-post ng-repeat="pledgePost in pledgeList" username="pledgePost.user" mission="pledgePost.mission" pledge-post="pledgePost.posts" date="pledgePost.date" />

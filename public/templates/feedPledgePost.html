@@ -1,11 +1,7 @@
-<ion-header-bar class="bar bar-header bar-dark">
-  <h2 class="title">{{username}}</h2>
-</ion-header-bar>
-<ion-content class="has-header">
-  <p class="date">{{date}}</p>
-  <p class="mission">{{mission}}</p>
-  <img class="posts" src="post" ng-repeat="post in pledgePosts" />
-  <button class="button button-small button-positive">
-    View Posts
-  </button>
-</ion-content>
+<h3 class="title">{{username}}</h3>
+<p class="date">Last Posted: {{date}}</p>
+<p class="mission">Mission Statement: {{mission}}</p>
+<img height="200px" width="200px" class="posts" src="{{post}}" ng-repeat="post in pledgePost" />
+<button class="button button-small button-positive">
+  View Posts
+</button>
