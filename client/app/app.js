@@ -36,7 +36,6 @@ angular.module('app', [
         }
       }
     })
-
     .state('tab.user.dashboard', {
       url: '/dashboard',
       templateUrl: '/views/user.dashboard.html'
@@ -48,16 +47,13 @@ angular.module('app', [
 
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
-      templateUrl: '/views/user.pledge.html'
+      templateUrl: '/views/user.pledge.html',
+      controller: 'UserPledgeController'
     })
 
     .state('user.pledge-list', {
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
-    })
-    .state('user.pledge', {
-      templateUrl: '/views/user-pledge.html',
-      controller: 'UserPledgeController'
     })
     .state('user.post', {
       url: '/user/:username/post/new',
