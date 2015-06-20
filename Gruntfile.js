@@ -6,13 +6,13 @@ module.exports = function(grunt) {
         separator: ';'
       },
       dist: {
-        src: ['client/**/*.js'],
+        src: ['client/app/**/*.js'],
         dest: 'public/scripts.js'
       },
     },
     watch: {
-      files: ['client/**/*.js'],
-      tasks: ['concat', 'karma']
+      files: ['client/app/**/*.js'],
+      tasks: ['concat']
     },
     nodemon: {
       dev: {
@@ -31,7 +31,8 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-karma');
-  
+
+
   grunt.registerTask('dev', ['concat', 'karma', 'watch']);
   grunt.registerTask('serve', ['nodemon']);
 
