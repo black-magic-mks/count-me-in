@@ -33,7 +33,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-karma');
 
 
-  grunt.registerTask('dev', ['concat', 'watch']);
+  grunt.registerTask('dev', ['concat', 'karma', 'watch']);
   grunt.registerTask('serve', ['nodemon']);
 
 };
