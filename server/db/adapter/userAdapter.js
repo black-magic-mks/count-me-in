@@ -1,5 +1,11 @@
+var User = require('../model/User');
+
 var getUser = function(req, res) {
-  res.send('userAdapter.getUser');
+  var username = req.body.username;
+  User.read({username: username}, function(err, user) {
+    console.log(user);
+    res.send(user);
+  });
 };
 
 var getMe = function(req, res) {

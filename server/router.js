@@ -1,7 +1,7 @@
-var authAdapter = require('./db/authAdapter');
-var userAdapter = require('./db/userAdapter');
-var pledgeAdapter = require('./db/pledgeAdapter');
-var postAdapter = require('./db/postAdapter');
+var authAdapter = require('./db/adapter/authAdapter');
+var userAdapter = require('./db/adapter/userAdapter');
+var pledgeAdapter = require('./db/adapter/pledgeAdapter');
+var postAdapter = require('./db/adapter/postAdapter');
 
 var routes = {
   'get': {
