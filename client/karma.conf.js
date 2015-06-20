@@ -14,7 +14,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      '../public/bower_components/angular/angular.min.js',
+      '../public/bower_components/ionic/release/js/ionic.bundle.min.js',
       '../public/bower_components/angular-mocks/angular-mocks.js',
       '../public/bower_components/angular-ui-router/release/angular-ui-router.min.js',
       '../node_modules/expect.js/index.js',

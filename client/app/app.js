@@ -69,7 +69,7 @@ angular.module('app', [
     .state('signup', {
       url: '/signup',
       templateUrl: '/views/signup.html',
-      controller: 'SignupController'
+      // controller: 'SignupController'
     })
 })
 
