@@ -4,11 +4,14 @@
     
     <div class="" ng-controller="UserController">
       <h1>{{username}}</h1>
-      <button>New Post</button>
     </div>
-    
-    <pledge-preview />
 
+    <a ui-sref="tab.user.dashboard">dashboard</a>
+    <a ui-sref="tab.user.pledge({pledgename: 'playpiano'})">pledge</a>
+    <a ui-sref="tab.user.addPost">add post</a>
+    
+    <div ui-view></div>
+    
   </ion-content>
 
 </ion-view>
