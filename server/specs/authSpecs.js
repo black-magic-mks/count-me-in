@@ -44,7 +44,7 @@ describe('', function() {
     });
 
     it('Only creates a valid username if such username does not already exist', function(done) {
-      var callbackUser = function(user, cb) {
+      var checkUserExists = function(user, cb) {
         User.where({username: user}, function(err, docs) {
           if (err) {
             console.error(err);
