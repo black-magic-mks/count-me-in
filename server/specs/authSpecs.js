@@ -44,7 +44,7 @@ describe('', function() {
     });
 
     it('Only creates a valid username if such username does not already exist', function(done) {
-      var checkUserExists = function(user, cb) {
+      var checkUserExists = function(user) {
         User.where({username: user}, function(err, docs) {
           if (err) {
             console.error(err);
@@ -64,6 +64,8 @@ describe('', function() {
           }
         });
       }
+      checkUserExists('therealest');
+      expect.username.to.be('therealest');
     });
   });
 });
