@@ -42,3 +42,4 @@ var addRoutes = function(server) {
 module.exports = {
   addRoutes: addRoutes
 };
+

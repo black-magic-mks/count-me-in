@@ -19,3 +19,4 @@ app.get('/favicon.ico', function(_, res) { res.type('image/x-icon').end(); });
 router.addRoutes(app);
 
 app.listen(port);
+
