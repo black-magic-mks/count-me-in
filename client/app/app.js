@@ -1,6 +1,7 @@
 angular.module('app', [
   'ui.router',
-  'ionic'
+  'ionic',
+  'ngFileUpload'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
@@ -41,7 +42,8 @@ angular.module('app', [
     })
     .state('tab.user.addPost', {
       url: '/post/new',
-      templateUrl: '/views/user.post.add.html'
+      templateUrl: '/views/user.post.add.html',
+      controller: 'UserPostController'
     })
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',

@@ -1,1 +1,20 @@
-<h3>Add a post</h3>
+<div>
+  <h3>Add a post</h3>
+  <div>
+      Description: 
+      <input type="text" ng-model="post.description" /><br />
+      <!-- TODO: refactor for user's pledges -->
+      Pledge: 
+      <input type="radio" ng-model="post.pledge" value="codejs" />#codejs
+      <input type="radio" ng-model="post.pledge" value="learnpiano" />#learnpiano<br />
+      <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+      <div class="up-buttons">
+        <div ngf-select="" ngf-drop="" ng-model="post.files" ng-model-rejected="rejFiles" ngf-multiple="multiple" ngf-accept="accept" accept="{{acceptSelect}}" ng-disabled="disabled" ngf-capture="capture" ngf-drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" ngf-min-size="minSize" ngf-max-size="maxSize" ngf-keep="keep" ngf-keep-distinct="keepDistinct" ngf-reset-on-click="resetOnClick" ngf-reset-model-on-click="resetModelOnClick" ngf-allow-dir="allowDir" class="drop-box" ngf-drop-available="dropAvailable">Select File
+          <span ng-show="dropAvailable">or Drop</span></div>
+        <br>
+      </div>
+      <input type="submit" ng-click="upload()" value="Save" />
+      <pre>form = {{post | json}}</pre>
+      Image thumbnail: <img ngf-src="post.files[0]" ngf-default-src="'/thumb.jpg'" ngf-accept="'image/*'">
+  </div>
+</div>
