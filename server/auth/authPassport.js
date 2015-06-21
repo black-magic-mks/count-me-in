@@ -1,6 +1,6 @@
 var passport = require('passport');
 var bycrpt = require('bycrpt-nodejs');
-var User = require('./model/User');
+var User = require('../db/model/User');
 var routes = require('../router');
 
 // TODO: confirm correct seraph method calls on User
