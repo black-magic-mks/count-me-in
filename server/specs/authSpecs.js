@@ -10,8 +10,7 @@ describe('', function() {
     request('http://127.0.0.1:8080/logout', function(err, res, body) {});
   
     // Delete user therealest from db which will later be re-created later for test
-    User.find('User')
-      .where('username', '=', 'therealest')
+    User.where('username', '=', 'therealest')
       .del()
       .catch(function(err) {
         throw {
@@ -19,18 +18,6 @@ describe('', function() {
           message: 'Failed to create test username data'
         };
       });
-
-    // Delete user david from db which will later be re-created later for test 
-    User.find('User')
-      .where('username', '=', 'thefakest')
-      .del()
-      .catch(function(err) {
-        throw {
-          type: 'Database Error',
-          message: 'Failed to create test username data'
-        };
-      });
-  });
 
   describe('User creation:', function() {
 
@@ -58,7 +45,7 @@ describe('', function() {
 
     it('Only creates a valid username if such username does not already exist', function(done) {
       var callbackUser = function(user, cb) {
-        User.find({username: user}, function(err, docs) {
+        User.where({username: user}, function(err, docs) {
           if (err) {
             console.error(err);
           }
