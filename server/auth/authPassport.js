@@ -151,4 +151,3 @@ module.exports = function(passport) {
 
   return routes;
 }
-
