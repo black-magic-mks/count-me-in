@@ -8,6 +8,7 @@ passport.serializeUser(function(user, done) {
   done(null, user_id);
 });
 
+// TODO: determine how to find by id in seraph
 passport.deserializeUser(function(user, done) {
   User.findById(id, function(err, user) {
     done(err, user);
@@ -23,7 +24,7 @@ passport.use('login', new LocalStrategy({
   },
   function(req, username, password, done) {
     // Check in db if a user with username exists or not
-    User.find({'username': username},
+    User.where({'username': username},
       function(err, user) {
         // In case of any error, return the done method
         if (err)
@@ -62,7 +63,7 @@ passport.use('signup', new LocalStrategy({
 function(req, username, password, done) {
   findOrCreateUser = function() {
     // Find a user in db with provided username
-    User.find({'username': username}, function(err, user) {
+    User.where({'username': username}, function(err, user) {
       // In case of any error return
       if (err) {
         console.log('Error in Signup:'+err);
