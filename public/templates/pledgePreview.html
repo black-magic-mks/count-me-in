@@ -1,17 +1,17 @@
 <div>
-  <h4>Pledge Name: {{pledge}}</h4>
+  <h4 ui-sref="tab.user.pledge({pledgename:'playpiano'})">{{pledge.pledgeName}}</h4>
   <div class="pledgePreview">
-    <h3 class="missionStatement">{{missionStatement}}</h3>
-    <img class="coverImg" src="" />
+    <h3 class="missionStatement">{{pledge.missionStatement}}</h3>
+    <img class="coverImg" width="400px" height='200px' src="{{pledge.coverImage}}" />
     <div>
       <div class="imgThumbs">
-        <img src=""/>
-        <img src=""/>
+        <img width="100" height="100" src="{{thumbnail}}" ng-repeat="thumbnail in pledge.images"/>
+        <img height="200px" width="200px" class="posts" src="{{post}}" ng-repeat="post in pledgePost" />
       </div>
-      <div class="textDesc">
+      <div class="textDesc"> {{pledge.lastDesc}}
       </div>
     </div>
-    <button>View All</button>
+    <button ui-sref="tab.user.pledge({pledgename: 'playpiano'})" class="button button-small button-positive">View All</button>
   </div>
   
 </div>
