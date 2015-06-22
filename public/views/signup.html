@@ -1,8 +1,7 @@
 <ion-view>
   <ion-content class="signup">
     <div>
-      <h1 class="signup-title">Signup</h1>
-      <a href="#">test link</a>
+      <h1 class="signup-title">Create an Account</h1>
       <form name='signupForm'>
         <input name='username' type='text' ng-model='user.username' placeholder='Username' ng-minlength='6' required>
         <input name='password' type='text' ng-model='user.password' placeholder='Password' ng-minlength='6' ng-pattern='passwordValidation' required>
@@ -20,7 +19,7 @@
         <h3 class="signup-text">Password Must Contain Both A Number and A Capital Letter</h3>
       </div>
       <!-- TODO: figure out why the a tag is not a link -->
-      <a ui-sref='tab.signup'>Already signed up? Login</a>
+      <a ui-sref='tab.login'>Already have an account? Login</a>
     </div>
   </ion-content>
 </ion-view>
