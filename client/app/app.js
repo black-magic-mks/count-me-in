@@ -4,7 +4,7 @@ angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/i/feed');
+  $urlRouterProvider.otherwise('/i/feed/all');
 
   $stateProvider
     .state('tab', {
@@ -70,10 +70,14 @@ angular.module('app', [
         }
       }
     })
-    .state('signup', {
+    .state('tab.signup', {
       url: '/signup',
-      templateUrl: '/views/signup.html',
-      controller: 'SignupController'
+      views: {
+        'tab-signup': {
+          templateUrl: '/views/signup.html',
+          controller: 'SignupController'
+        }
+      }
     })
 })
 
