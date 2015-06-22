@@ -2,6 +2,8 @@ var authAdapter = require('./db/adapter/authAdapter');
 var userAdapter = require('./db/adapter/userAdapter');
 var pledgeAdapter = require('./db/adapter/pledgeAdapter');
 var postAdapter = require('./db/adapter/postAdapter');
+var multiparty = require('connect-multiparty');
+var multipartyMiddleware = multiparty();
 
 var routes = {
   'get': {
@@ -34,7 +36,7 @@ var addRoutes = function(server) {
     console.log('method',method);
     for (var route in routes[method]) {
       console.log('route',route);
-      server[method](route, routes[method][route]);
+      server[method](route, multipartyMiddleware, routes[method][route]);
     }
   }
 };
