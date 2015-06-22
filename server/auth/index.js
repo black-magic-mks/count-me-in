@@ -1,4 +1,4 @@
-module.expors = function(req, res, next) {
-  req.username = 'user';
+module.exports = function(req, res, next) {
+  req.username = 'therealest';
   next();
 };
