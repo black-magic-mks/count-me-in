@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('PledgeController', function($scope) {
+.controller('PledgeController', function($scope, $ionicModal) {
   $scope.graphData = {
     name: '#Coding',
     posts: [{
@@ -17,4 +17,16 @@ angular.module('app')
     }
     ]
   }
+
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) { $scope.modal = modal; });
+
+  $scope.saveMission = function() {
+    console.log('saved');
+    $scope.modal.hide();
+  }
+
+
 });
