@@ -1,37 +1,29 @@
 var models = require('../models');
 var User = models.User;
-var db = require('seraph')();
 
-var getUser = function(req, res) {
+var getUser = function(req, res, next) {
   var username = req.body.username;
-  console.log(username);
+
   User.where({username: username})
   .then(function(user) {
-    console.log(user);
-    res.send(user);
-  });
+    if (user.length === 0) {
+      throw new Error('Username not found');
+    } else {
+      res.send(user[0]);
+    }
+  })
+  .catch(next);
 };
 
-var getMe = function(req, res) {
-  console.log(db.relate);
+var getMe = function(req, res, next) {
   User.where({username: req.username})
   .then(function(user) {
-    console.log(user);
-    res.send(user);
+    res.send(user[0]);
   })
-  .catch(function(err) {
-    console.error(err);
-    res.status(500).send("Error getting current user");
-  });
-
-  db.find({username: req.username}, function(err, user) {
-    db.readLabels(user, function(err, rel) {
-      console.log(rel);
-    });
-  });
+  .catch(next);
 };
 
-var getUserPosts = function(req, res) {
+var getUserPosts = function(req, res, next) {
   res.send('userAdapter.getUserPosts');
 };
 
