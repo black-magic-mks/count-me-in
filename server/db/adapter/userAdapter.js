@@ -1,30 +1,33 @@
 var models = require('../models');
 var User = models.User;
+var Post = models.Post;
+var db = require('seraph')();
+var Q = require('q');
+var query = Q.nbind(db.query,db);
 
 var getUser = function(req, res, next) {
-  var username = req.body.username;
+  var username = req.body.username || req.username;
 
   User.where({username: username})
   .then(function(user) {
-    if (user.length === 0) {
-      throw new Error('Username not found');
-    } else {
-      res.send(user[0]);
-    }
-  })
-  .catch(next);
-};
-
-var getMe = function(req, res, next) {
-  User.where({username: req.username})
-  .then(function(user) {
+    if (user.length === 0) throw new Error('Username not found');
     res.send(user[0]);
   })
   .catch(next);
 };
 
 var getUserPosts = function(req, res, next) {
-  res.send('userAdapter.getUserPosts');
+  var username = req.body.username || req.username;
+
+  User.where({username: username})
+  .then(function(user) {
+    if (user.length === 0) throw new Error('Username not found');
+    return User.getRelated(user[0],'POSTED');
+  })
+  .then(function(posts) {
+    res.send(posts);
+  })
+  .catch(next);
 };
 
 var getUserLikes = function(req, res) {
@@ -49,7 +52,6 @@ var followUser = function(req, res) {
 
 module.exports = {
   getUser: getUser,
-  getMe: getMe,
   getUserPosts: getUserPosts,
   getUserLikes: getUserLikes,
   getUserPledges: getUserPledges,
