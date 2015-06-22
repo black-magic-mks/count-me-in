@@ -1,5 +1,5 @@
 var passport = require('passport');
-var bycrpt = require('bycrpt-nodejs');
+var bcyrpt = require('bcrypt-nodejs');
 var User = require('../db/model/User');
 var routes = require('../router');
 
@@ -109,24 +109,24 @@ module.exports = function(passport) {
   // GET login page
   routes.get('/', function(req, res) {
     // Display the login page with any flash message, if any
-    res.render('index', { message: req.flash('message')});
+    res.render('feed', { message: req.flash('message')});
   });
 
   // Handle login POST
   routes.post('/login', passport.authenticate('login', {
-    successRedirect: '/home',
+    successRedirect: '/user',
     failureRedirect: '/',
     failureFlash: true
   }));
 
   // GET registration page
   routes.get('/signup', function(req, res) {
-    res.render('register', {message: req.flash('message')});
+    res.render('signup', {message: req.flash('message')});
   });
 
   // Handle registration POST
   routes.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/home',
+    successRedirect: '/user',
     failureRedirect: '/signup',
     failureFlash: true
   }));
@@ -138,9 +138,9 @@ module.exports = function(passport) {
   });
 
   // Prevent unauthorized access to routes
-  // GET home page
-  routes.get('/home', isAuthenticated, function(req, res) {
-    res.render('home', {user: req.user});
+  // GET user page
+  routes.get('/user', isAuthenticated, function(req, res) {
+    res.render('user', {user: req.user});
   });
 
   // If user is authenticated, call next()
@@ -152,3 +152,4 @@ module.exports = function(passport) {
 
   return routes;
 }
+
