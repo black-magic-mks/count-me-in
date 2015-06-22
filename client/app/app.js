@@ -70,14 +70,14 @@ angular.module('app', [
       views: {
         'tab-login': {
           templateUrl: '/views/login.html',
-          controller: 'LoginController'
+          controller: 'AuthController'
         }
       }
     })
     .state('signup', {
       url: '/signup',
       templateUrl: '/views/signup.html',
-      controller: 'SignupController'
+      controller: 'AuthController'
     })
 })
 

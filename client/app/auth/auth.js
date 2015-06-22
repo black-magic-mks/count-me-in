@@ -1,16 +1,17 @@
 angular.module('app')
 
-.controller('authController', function($scope, Auth, $location, $window) {
+.controller('AuthController', function($scope, $window, $location, Auth) {
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
 
   angular.extends($scope, Auth);
-
+  // couldn't I just put the localstorage, $location, and error checking into the factory function?
+  // test that when you can
   $scope.logIn = function() {
-    Auth.logIn($scope.username, $scope.password)
+    Auth.logIn($scope.user)
     .then(function(token) {
       $window.localStorage.setItem('loggedIn', token);
-      $location.path('./i/feed');
+      $location.path('/i/feed');
     })
     .catch(function(err) {
       console.error(err);
@@ -18,10 +19,10 @@ angular.module('app')
   }
 
   $scope.register = function() {
-    Auth.register($scope.username, $scope.password)
+    Auth.register($scope.user)
     .then(function(token) {
       $window.localStorage.setItem('loggedIn', token);
-      $location.path('./i/feed');
+      $location.path('/i/feed');
     })
     .catch(function(err) {
       console.error(err);
@@ -30,22 +31,22 @@ angular.module('app')
 })
 
 .factory('Auth', function($http, $location, $window) {
-  var logIn = function(username, password) {
+  var logIn = function(user) {
     return $http({
       method: 'POST',
       url: '/api/auth/login',
-      data: {username: username, password: password}
+      data: user
     })
     .then(function(res) {
       return res.data.token;
     });
   }
 
-  var register = function(username, password) {
+  var register = function(user) {
     return $http({
       method: 'POST',
       url: '/api/auth/register',
-      data: {username: username, password: password}
+      data: user
     })
     .then(function(res) {
       return res.data.token;
@@ -54,7 +55,7 @@ angular.module('app')
 
   var logOut = function() {
     $window.localStorage.removeItem('loggedIn');
-    $location.path('./i/feed');
+    $location.path('/i/feed');
   }
 
   var isLoggedIn = function() {
