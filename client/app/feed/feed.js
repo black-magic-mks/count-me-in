@@ -1,40 +1,48 @@
 angular.module('app')
 
-.controller('FeedController', function($scope) {
-  $scope.pledgeCategories = [
-  {
-    name: '#Coding',
-    postList: [
-      {
-        user: "@Nathan",
-        mission: "I don't know what I'm doing",
-        date: "06-18-2015",
-        posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
-      },
-      {
-        user: "@Jack",
-        mission: "I'm a bad person",
-        date: "04-12-1792",
-        posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
-      }
-    ]
-  },
-  {
-    name: '#Piano',
-    postList: [
-      {
-        user: "@Monica",
-        mission: "I had a good idea today",
-        date: "03-21-1992",
-        posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
-      },
-      {
-        user: "@Antonio",
-        mission: "Jack is a bad person",
-        date: "09-31-1992",
-        posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
-      }
-    ]
+.controller('FeedController', function($scope, feedFunc) {
+  angular.extend($scope, feedFunc);
+  $scope.username = 'therealest';
+  $scope.pledgename = 'coding';
+  $scope.getFollowedPledges($scope.username);
+  $scope.getPledgePosts($scope.pledgename);
+  
+})
+.factory('feedFunc', function($http) {
+  var pledgeCategories = [];
+  var userPledges = [];
+  var getFollowedPledges = function(username) {
+    console.log('hi');
+    $http.get('/api/user/pledges', {
+    params: {username: username}
+    }).
+    success(function(data, status, headers, config) {
+      // Format data
+      pledgeCategories.push(data);
+      console.log(data);
+    }).
+    error(function(data, status, headers, config) {
+      console.log('error with get request for api/user/pledges');
+    });
   }
-  ]
+
+  var getPledgePosts = function(pledgename) {
+    $http.get('/api/pledge/posts', {
+      params: {pledgename: pledgename}
+    }).
+    success(function(data, status, headers, config) {
+      userPledges.push(data);
+      console.log(data);
+    }).
+    error(function(data, status, headers, config) {
+      console.log('error with get request for api/pledge/posts');
+    });
+  }  
+  
+  return {
+    getFollowedPledges: getFollowedPledges,
+    getPledgePosts: getPledgePosts
+  }
 });
+
+ 
