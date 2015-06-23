@@ -2,7 +2,10 @@ var db = require('seraph')();
 var Post = require('seraph-model')(db, 'Post');
 
 Post.schema = {
-  text: { type: String, required: true, trim: true }
+  user: String,
+  image: String,
+  text: {type: String, trim: true},
+  date: Date
 };
 Post.fields = Object.keys(Post.schema);
 
