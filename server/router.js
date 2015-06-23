@@ -15,7 +15,7 @@ var routes = {
     '/api/pledge': pledgeAdapter.getPledge,
     '/api/pledge/users': pledgeAdapter.getPledgeUsers,
     '/api/pledge/posts': pledgeAdapter.getPledgePosts,
-    '/api/auth/authorized': authAdapter.isAuthorized,
+    '/api/auth/authorized': authAdapter.isAuthorized
   },
   'post': {
     '/api/auth/login': authAdapter.login,

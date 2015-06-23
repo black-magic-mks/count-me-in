@@ -17,5 +17,6 @@ var isAuthorized = function(req, res) {
 module.exports = {
   login: login,
   logout: logout,
-  register: register
+  register: register,
+  isAuthorized: isAuthorized
 };
