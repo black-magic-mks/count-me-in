@@ -15,7 +15,20 @@ var addGetRelated = function(model) {
     return query(cypher,node);
   };
 
+  var getRelatedTo = function(idOrNode,rel) {
+    var cypher = [
+      'MATCH (x)',
+      '-[:' + rel + ']->(n) ',
+      'WHERE id(n)={id} ',
+      'RETURN x'
+    ].join('');
+
+    var node = typeof idOrNode === 'object' ? idOrNode: {id:idOrNode};
+    return query(cypher,node);
+  };
+
   model.getRelated = getRelated;
+  model.getRelatedTo = getRelatedTo;
   return model;
 };
 
