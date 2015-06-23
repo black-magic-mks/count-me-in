@@ -1,11 +1,14 @@
 var passport = require('passport');
-var bycrpt = require('bycrpt-nodejs');
+var bcyrpt = require('bcrypt-nodejs');
 var User = require('../db/model/User');
 var routes = require('../router');
+var flash = require('connect-flash');
+var LocalStrategy = require('passport-local').Strategy; 
 
 // TODO: confirm correct seraph method calls on User
+// TODO: determine whether to user user_id, or user.id
 passport.serializeUser(function(user, done) {
-  done(null, user_id);
+  done(null, user.id);
 });
 
 // TODO: determine how to find by id in seraph
@@ -31,8 +34,8 @@ passport.use('login', new LocalStrategy({
           return done(err);
         // Username does not exist, log error & redirect back
         if (!user) {
-          console.log('User Not Found with username '+username);
           return done(null, false,
+          console.log('User Not Found with username '+username);
             // connect-flash helps with error handling by providing flash messages which can be displayed to user on error 
             req.flash('message', 'User Not Found'));
         }
@@ -104,51 +107,52 @@ var createHash = function(password) {
   return bcrypt.hashSync(password, bcrypt.genSaltSync(10), null);
 };
 
-module.exports = function(passport) {
-  // TODO: confirm correct authentication routes
-  // GET login page
-  routes.get('/', function(req, res) {
-    // Display the login page with any flash message, if any
-    res.render('index', { message: req.flash('message')});
-  });
+// module.exports = function(passport) {
+//   // TODO: confirm correct authentication routes
+//   // GET login page
+//   routes.get('/', function(req, res) {
+//     // Display the login page with any flash message, if any
+//     res.render('feed', { message: req.flash('message')});
+//   });
 
-  // Handle login POST
-  routes.post('/login', passport.authenticate('login', {
-    successRedirect: '/home',
-    failureRedirect: '/',
-    failureFlash: true
-  }));
+//   // Handle login POST
+//   routes.post('/login', passport.authenticate('login', {
+//     successRedirect: '/api/auth/login',
+//     failureRedirect: '/',
+//     failureFlash: true
+//   }));
 
-  // GET registration page
-  routes.get('/signup', function(req, res) {
-    res.render('register', {message: req.flash('message')});
-  });
+//   // GET registration page
+//   routes.get('/signup', function(req, res) {
+//     res.render('signup', {message: req.flash('message')});
+//   });
 
-  // Handle registration POST
-  routes.post('/signup', passport.authenticate('signup', {
-    successRedirect: '/home',
-    failureRedirect: '/signup',
-    failureFlash: true
-  }));
+//   // Handle registration POST
+//   routes.post('/signup', passport.authenticate('signup', {
+//     successRedirect: '/user',
+//     failureRedirect: '/signup',
+//     failureFlash: true
+//   }));
 
-  // Handle logout using passport property request.logout()
-  routes.get('/signout', function(req, res) {
-    req.logout();
-    res.redirect('/');
-  });
+//   // Handle logout using passport property request.logout()
+//   routes.post('/api/auth/logout', function(req, res) {
+//     req.logout();
+//     res.redirect('/');
+//   });
 
-  // Prevent unauthorized access to routes
-  // GET home page
-  routes.get('/home', isAuthenticated, function(req, res) {
-    res.render('home', {user: req.user});
-  });
+//   // Prevent unauthorized access to routes
+//   // GET user page
+//   routes.get('/user', isAuthenticated, function(req, res) {
+//     res.render('user', {user: req.user});
+//   });
 
-  // If user is authenticated, call next()
-  var isAuthenticated = function(req, res, next) {
-    if (req.isAuthenticated())
-      return next();
-    res.redirect('/');
-  }
+//   // If user is authenticated, call next()
+//   var isAuthenticated = function(req, res, next) {
+//     if (req.isAuthenticated())
+//       return next();
+//     res.redirect('/');
+//   }
 
-  return routes;
-}
+//   return routes;
+// }
+
