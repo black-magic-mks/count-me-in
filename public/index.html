@@ -2,12 +2,20 @@
 <html ng-app="app">
 <head>
   <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
 
   <title>Count Me In</title>
-<link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
   <script src="/bower_components/ionic/release/js/ionic.bundle.min.js"></script>
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+  <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
   <script src="/scripts.js"></script>
+
 </head>
   <body ng-controller="MainController">
 
@@ -19,3 +27,5 @@
     <ion-nav-view></ion-nav-view>
   </body>
 </html>
+
+

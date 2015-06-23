@@ -1,14 +1,15 @@
 angular.module('app', [
   'ui.router',
-  'ionic'
+  'ionic',
+  'ngFileUpload'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/i/feed');
+  $urlRouterProvider.otherwise('/feed/all');
 
   $stateProvider
     .state('tab', {
-      url: '/i',
+      url: '',
       abstract: true,
       templateUrl: 'views/tabs.html'
     })
@@ -21,9 +22,14 @@ angular.module('app', [
         }
       }
     })
-    .state('pledge', {
-      url: '/pledge/:pledgename',
-      templateUrl: '/views/pledge.html',
+    .state('tab.feed.all', {
+      url: '/all',
+      templateUrl: '/views/feed.all.html',
+      controller: 'PledgeController'
+    })
+    .state('tab.feed.pledge', {
+      url: '/pledge',
+      templateUrl: '/views/feed.pledge.html',
       controller: 'PledgeController'
     })
     .state('tab.user', {
@@ -41,7 +47,8 @@ angular.module('app', [
     })
     .state('tab.user.addPost', {
       url: '/post/new',
-      templateUrl: '/views/user.post.add.html'
+      templateUrl: '/views/user.post.add.html',
+      controller: 'UserPostController'
     })
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
@@ -51,15 +58,6 @@ angular.module('app', [
     .state('user.pledge-list', {
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
-    })
-    .state('user.post', {
-      url: '/user/:username/post/new',
-      views: {
-        'tab-user.post': {
-          templateUrl: '/views/user-post.html',
-          controller: 'UserPostController'
-        }
-      }
     })
     .state('user.pledge', {
       templateUrl: '/views/user-pledge.html',
@@ -74,10 +72,14 @@ angular.module('app', [
         }
       }
     })
-    .state('signup', {
+    .state('tab.signup', {
       url: '/signup',
-      templateUrl: '/views/signup.html',
-      controller: 'AuthController'
+      views: {
+        'tab-signup': {
+          templateUrl: '/views/signup.html',
+          controller: 'AuthController'
+        }
+      }
     })
 })
 

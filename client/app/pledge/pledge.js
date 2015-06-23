@@ -24,7 +24,6 @@ angular.module('app')
     }).then(function(modal) { $scope.modal = modal; });
 
   $scope.saveMission = function() {
-    console.log('saved');
     $scope.modal.hide();
   }
 
