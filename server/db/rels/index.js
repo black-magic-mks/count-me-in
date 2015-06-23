@@ -3,9 +3,6 @@ var Q = require('q');
 var query = Q.nbind(db.query,db);
 
 var addGetRelated = function(model) {
-  var type = model.type;
-  var key = model.key;
-
   var getRelated = function(idOrNode,rel) {
     var cypher = [
       'MATCH (n)',
