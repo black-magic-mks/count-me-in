@@ -9,6 +9,8 @@ npm install -g grunt-cli
 brew install neo4j
 ```
 
+
+
 ### Neo4j database
 
 Start the database with:
@@ -16,7 +18,7 @@ Start the database with:
 ```
 neo4j start
 ```
-
+You may need to [install Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to run neo4j.
 You can interact with the database through its web interface by navigating to `localhost:7474`. If it asks for a username and password use `neo4j` for both. When you're done, stop the database with:
 
 ```
