@@ -1,29 +1,21 @@
 angular.module('app')
 
 .controller('UserPostController', function($scope, Upload, $http) {
-  $scope.$watch('files', function () {
-      $scope.upload($scope.files);
-  });
 
-  $scope.upload = function () {
-    console.log('in upload');
-    var files = $scope.post.files;
-      if (files && files.length) {
-        for (var i = 0; i < files.length; i++) {
-          var file = files[i];
-          Upload.upload({
-            url: '/api/post/new',
-            method: 'POST',
-            fields: {'username': 'manglethroughfields'},
-            data: {'username': 'manglethroughdata'},
-            file: file, 
-          }).progress(function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.file.name);
-          }).success(function (data, status, headers, config) {
-            console.log('file ' + config.file.name + 'uploaded. Response: ' + data);
-          });
-        }
-      }
-  };
+  $scope.addPost = function() {
+    var fd = new FormData();
+    fd.append('file', $('.post-file')[0].files[0], 'image');
+    fd.append('title', $scope.post.title);
+    fd.append('text', $scope.post.text);
+    fd.append('pledgeName', $scope.post.pledgeName);
+
+    $http({
+      method: 'POST',
+      url: '/api/post/new',
+      processData: false,
+      data: fd,
+      transformRequest:angular.identity,
+      headers:{'Content-Type':undefined}
+    })
+  }
 });

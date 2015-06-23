@@ -53,10 +53,6 @@ angular.module('app', [
       templateUrl: '/views/user-pledge-list.html',
       controller: 'UserPledgeListController'
     })
-    .state('user.pledge', {
-      templateUrl: '/views/user-pledge.html',
-      controller: 'UserPledgeController'
-    })
     .state('tab.login', {
       url: '/login',
       views: {
