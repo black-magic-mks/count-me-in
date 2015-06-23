@@ -4,11 +4,11 @@ angular.module('app', [
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/i/feed/all');
+  $urlRouterProvider.otherwise('/feed/all');
 
   $stateProvider
     .state('tab', {
-      url: '/i',
+      url: '',
       abstract: true,
       templateUrl: 'views/tabs.html'
     })
