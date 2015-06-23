@@ -2,6 +2,7 @@ var User = require('./User');
 var Pledge = require('./Pledge');
 var Post = require('./Post');
 var Comment = require('./Comment');
+var rels = require('../rels');
 
 var db = require('seraph')();
 var Q = require('q');
@@ -29,26 +30,8 @@ var promisifyModel = function(model) {
   return newModel;
 };
 
-var addGetRelated = function(model,seraphModel) {
-  var type = seraphModel.type;
-  var key = seraphModel.uniqueness.key;
-
-  var getRelated = function(node,rel) {
-    var cypher = [
-      'MATCH (:' + type + ' {' + key + ':{node}.' + key + '})',
-      '-[:' + rel + ']->(x) ',
-      'RETURN x'
-    ].join('');
-
-    return query(cypher,{node:node});
-  };
-
-  model.getRelated = getRelated;
-  return model;
-};
-
 var prepareModel = function(seraphModel) {
-  return addGetRelated(promisifyModel(seraphModel),seraphModel);
+  return rels.addRelMethods(promisifyModel(seraphModel),seraphModel);
 };
 
 

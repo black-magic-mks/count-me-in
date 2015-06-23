@@ -16,35 +16,27 @@ var getUser = function(req, res, next) {
   .catch(next);
 };
 
-var getUserPosts = function(req, res, next) {
-  var username = req.body.username || req.username;
+var getUserRelatedMiddleware = function(relationship) {
+  return function(req, res, next) {
+    var username = req.body.username || req.username;
 
-  User.where({username: username})
-  .then(function(user) {
-    if (user.length === 0) throw new Error('Username not found');
-    return User.getRelated(user[0],'POSTED');
-  })
-  .then(function(posts) {
-    res.send(posts);
-  })
-  .catch(next);
+    User.where({username: username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return User.getRelated(user[0],relationship);
+    })
+    .then(function(nodes) {
+      res.send(nodes);
+    })
+    .catch(next);
+  };
 };
 
-var getUserLikes = function(req, res) {
-  res.send('userAdapter.getUserLikes');
-};
-
-var getUserPledges = function(req, res) {
-  res.send('userAdapter.getUserPledges');
-};
-
-var getUserComments = function(req, res) {
-  res.send('userAdapter.getUserComments');
-};
-
-var getFollowingUsers = function(req, res) {
-  res.send('userAdapter.getFollowingUsers');
-};
+var getUserPosts = getUserRelatedMiddleware('POSTED');
+var getUserLikes = getUserRelatedMiddleware('LIKED');
+var getUserPledges = getUserRelatedMiddleware('SUBSCRIBES_TO');
+var getUserComments = getUserRelatedMiddleware('WROTE');
+var getFollowingUsers = getUserRelatedMiddleware('FOLLOWS');
 
 var followUser = function(req, res) {
   res.send('userAdapter.followUser');
