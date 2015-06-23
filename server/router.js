@@ -35,7 +35,14 @@ var addRoutes = function(server) {
     console.log('method',method);
     for (var route in routes[method]) {
       console.log('route',route);
-      server[method](route, routes[method][route]);
+      if (route === '/api/auth/login' || route === 'api/auth/logout' || route === '/api/auth/register') {
+        server[method](route, routes[method][route]);
+      } else {
+        server[method](route,
+          passport.authenticate('local', {failureFlash: 'Invalid username or password'}),
+          routes[method][route]
+        );
+      }
     }
   }
 };

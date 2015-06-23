@@ -3,11 +3,12 @@ var bodyParser = require('body-parser');
 var router = require('./router');
 var passport = require('passport');
 var expressSession = require('express-session');
+var authPassport = require('./auth/authPassport.js');
 
 var port = 8080;
 var app = express();
 
-// Configues passport
+// Configures passport
 app.use(expressSession({
   secret: 'mySecretKey',
   resave: true,
@@ -15,6 +16,7 @@ app.use(expressSession({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+// app.use(passport.authenticate('local', {failureFlash: 'Invalid username or password'}))
 
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/../public'));
