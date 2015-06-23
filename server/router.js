@@ -6,7 +6,6 @@ var postAdapter = require('./db/adapter/postAdapter');
 var routes = {
   'get': {
     '/api/user': userAdapter.getUser,
-    '/api/user/me': userAdapter.getMe,
     '/api/user/posts': userAdapter.getUserPosts,
     '/api/user/likes': userAdapter.getUserLikes,
     '/api/user/pledges': userAdapter.getUserPledges,

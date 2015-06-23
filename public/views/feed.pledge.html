@@ -1,0 +1,6 @@
+<h1>{{graphData.name}}</h1>
+<button ng-click="modal.show()" class="button button-small button-positive">
+  Join
+</button>
+<hr />
+<pledge-post-pledge-page ng-repeat="post in graphData.posts" post="post"></pledge-post-pledge-page>
