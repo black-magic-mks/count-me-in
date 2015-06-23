@@ -26,12 +26,12 @@ var subscribeToPledge = function(req, res, next) {
     User.where({username: req.username})
     .then(function(user) {
       if (user.length === 0) throw new Error('Username not found');
-      return user;
+      return user[0];
     }),
     Pledge.where({pledgename: req.body.pledgename})
     .then(function(pledge) {
       if (pledge.length === 0) throw new Error('Pledge not found');
-      res.send(pledge[0]);
+      return pledge[0];
     })
   ])
   .spread(function(user,pledge) {
