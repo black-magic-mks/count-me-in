@@ -38,8 +38,27 @@ var getUserPledges = getUserRelatedMiddleware('SUBSCRIBES_TO');
 var getUserComments = getUserRelatedMiddleware('WROTE');
 var getFollowingUsers = getUserRelatedMiddleware('FOLLOWS');
 
-var followUser = function(req, res) {
-  res.send('userAdapter.followUser');
+var followUser = function(req, res, next) {
+  Q.all([
+    User.where({username: req.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return user[0];
+    }),
+    User.where({username: req.body.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return user[0];
+    })
+  ])
+  .spread(function(me,other) {
+    return User.relate(me,'FOLLOWS',other);
+  })
+  .then(function(follow) {
+    console.log(follow);
+    res.send(follow);
+  })
+  .catch(next);
 };
 
 module.exports = {
