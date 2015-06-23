@@ -1,8 +1,10 @@
 var db = require('seraph')();
 var Post = require('seraph-model')(db, 'Post');
 
-Post.setUniqueKey('id');
 Post.schema = {
+  text: { type: String, required: true, trim: true }
 };
+
+Post.fields = Object.keys(Post.schema);
 
 module.exports = Post;
