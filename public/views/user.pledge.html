@@ -1,4 +1,11 @@
-<h3>Pledgename</h3>
-
+<div class="item item-text-wrap">
+  <div class="directiveHeader clearfix">  
+    <h1 class="left"> <a ui-sref="tab.user.dashboard({username: 'nathan'})">pledgename {{pledgename}}</a> </h1>
+    <div class="left">
+      <button ng-click="modal.show()" class="button button-small button-positive right">
+        Subscribe
+      </button>
+    </div>
+  </div>
 <pledge-post-user-page ng-repeat="post in userPledgePost" post="post"/>
 

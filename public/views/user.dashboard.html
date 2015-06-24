@@ -1,3 +1,11 @@
-<h2>User Dashboard</h2>
+<div class="item item-text-wrap">
+  <div class="directiveHeader clearfix">  
+    <h1 class="left"> <a ui-sref="tab.user.dashboard({username: 'nathan'})">{{username}}</a> </h1>
+    <div class="left">
+      <button ng-click="modal.show()" class="button button-small button-positive right">
+        Follow
+      </button>
+    </div>
+  </div>
 <pledge-preview ng-repeat="pledge in pledgePreview"/>
-
+</div>

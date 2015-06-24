@@ -1,6 +1,12 @@
-<h1>{{graphData.name}}</h1>
-<button ng-click="modal.show()" class="button button-small button-positive">
-  Join
-</button>
-<hr />
-<pledge-post-pledge-page ng-repeat="post in graphData.posts" post="post"></pledge-post-pledge-page>
+<div class="item item-text-wrap">
+  <div class="directiveHeader clearfix">  
+    <h1 class="left"> <a ui-sref="tab.feed.pledge">{{graphData.name}}</a> </h1>
+    <div class="left">
+      <button ng-click="modal.show()" class="button button-small button-positive right">
+        Join
+      </button>
+    </div>
+  </div>
+  <pledge-post-pledge-page ng-repeat="post in graphData.posts" post="post"></pledge-post-pledge-page>
+</div>
+
