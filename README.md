@@ -38,3 +38,21 @@ To start up the server with `nodemon`, which restarts every time you make a chan
 ```
 grunt serve
 ```
+
+### AmazonS3
+
+To allow post image/video uploads to store on on AmazonS3, add the S3 credentials as a config file to `server/db/adapter/amazonS3Config.js`. The config file should use this structure:
+
+```
+module.exports = {
+  AWS_ACCESS_KEY: '',
+  AWS_SECRET_KEY: '',
+  S3_BUCKET: ''
+};
+```
+
+
+
+
+
+
