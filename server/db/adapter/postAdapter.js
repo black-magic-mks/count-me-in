@@ -13,10 +13,9 @@ var createPost = function(req, res, next) {
   var AWS_SECRET_KEY = awsCredentials.AWS_SECRET_KEY;
   var S3_BUCKET = awsCredentials.S3_BUCKET;
 
-  console.log('request body', req.body);
-
   aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
 
+  // TODO: force uploads to be a certain file type and a certain size
   var s3 = new aws.S3()
   var directoryOnS3 = req.body.username + '/' + (new Date().getTime()).toString() + '/' + req.body.file.name;
   var options = {
@@ -27,6 +26,9 @@ var createPost = function(req, res, next) {
     ACL: 'public-read'
   };
 
+  // gets signed credentials to store data to amazon s3
+    // stores post data to neo4j database
+      // sends amazon s3 temporary credentials to client to store file upload
   s3.getSignedUrl('putObject', options, function(err, signedRequestFromAWS){
     if(err) return res.send('Error with accessing Amazon S3')
 
