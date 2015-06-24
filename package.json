@@ -11,7 +11,7 @@
     "type": "git",
     "url": "https://github.com/black-magic-mks/count-me-in"
   },
-  "author": "",
+  "author": "David Goldberg, Monica Engel, Nathan Lin, Réal Provencher, Shaan Shah",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/black-magic-mks/count-me-in/issues"
@@ -19,14 +19,22 @@
   "homepage": "https://github.com/black-magic-mks/count-me-in",
   "dependencies": {
     "aws-sdk": "^2.1.35",
+    "bcrypt": "^0.8.3",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
+    "chai": "^3.0.0",
+    "connect-flash": "^0.1.1",
     "connect-multiparty": "^1.2.5",
     "expect.js": "^0.3.1",
     "express": "^4.12.4",
+    "express-session": "^1.11.3",
     "karma": "^0.12.36",
     "karma-mocha": "^0.1.10",
     "mocha": "^2.2.5",
     "nodemon": "^1.3.7",
+    "passport": "^0.2.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.58.0",
     "q": "^1.4.1",
     "s3-upload-stream": "^1.0.7",
     "seraph": "^0.11.4",
