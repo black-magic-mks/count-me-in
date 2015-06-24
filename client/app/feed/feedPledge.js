@@ -5,18 +5,13 @@ angular.module('app')
     scope: {
       pledgeName: '=',
       pledgeList: '=',
-      'nextPage': '&viewPledge'
+      'view': '&viewPledge'
     },
     templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {
         // scope.viewPledge = function() {
         //   console.log('hello world');
         // }
-    };
-      // console.log(viewPledge());
-      // scope.viewPledge = function() { 
-      //   console.log('hello world');
-      // }
     }
   }
 })

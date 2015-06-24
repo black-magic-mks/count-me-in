@@ -40,24 +40,19 @@ angular.module('app')
  }
  ];
   $scope.graphData = {
-    name: '#Coding',
+    name: 'coding',
     posts: [{
       username: '@Nathan',
       date: '1-2-11',
       text: 'sup bro. hello. hello. hello. hello. hello. hello. hello. hello. hello',
       image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSfF7olOL9BDXN1uWdT2yd4ldgXJo7rbd0OTO0oGuYFHlw1dXjr-Q'
-    },
-    {
-      username: '@Shaan',
-      date: '1-2-21',
-      text: 'yo man. hello. hello. hello. hello. hello. hello. hello',
-      image: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSfF7olOL9BDXN1uWdT2yd4ldgXJo7rbd0OTO0oGuYFHlw1dXjr-Q'
-    }
-  ]};
+    }]
+  };
 
   $scope.getFollowedPledges('mengel');
   $scope.getPledgePosts('code');
-  $scope.clickedPledge;
+  $scope.getPledgeView('piano');
+  // $scope.clickedPledge;
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
@@ -104,11 +99,12 @@ angular.module('app')
   }; 
 
   var getPledgeView = function(pledgename) {
-    $http.get('', {
+    $http.get('/api/pledge/posts', {
       params: {pledgename: pledgename}
     })
     .success(function(data, status, headers, config) {
-      console.log('success getting pledge posts');
+      console.log('success getting getPledgeView');
+      console.log('getPledgeView pledge/posts!', data);
 
     }).error(function(data, status, headers, config) {
       console.log('effor with request');
