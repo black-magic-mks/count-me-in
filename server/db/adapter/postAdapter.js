@@ -4,32 +4,62 @@ var User = models.User;
 var Pledge = models.Pledge;
 var Comment = models.Comment;
 var Q = require('q');
+var aws = require('aws-sdk');
+var awsCredentials = require('./amazonS3Config.js');
 
 var createPost = function(req, res, next) {
-  Q.all([
-    User.where({username: req.username})
-    .then(function(user) {
-      if (user.length === 0) throw new Error('Username not found');
-      return user[0];
-    }),
-    Post.save(req.body),
-    Pledge.where({pledgename: req.body.pledgename})
-    .then(function(pledge) {
-      if (pledge.length === 0) throw new Error ('Pledge not found');
-      return pledge[0];
-    })
-  ])
-  .spread(function(user,post,pledge) {
-    return Q.all([
-      User.relate(user,'POSTED',post),
-      User.relate(post,'POSTED_IN',pledge)
+  
+  var AWS_ACCESS_KEY = awsCredentials.AWS_ACCESS_KEY;
+  var AWS_SECRET_KEY = awsCredentials.AWS_SECRET_KEY;
+  var S3_BUCKET = awsCredentials.S3_BUCKET;
+
+  console.log('request body', req.body);
+
+  aws.config.update({accessKeyId: AWS_ACCESS_KEY, secretAccessKey: AWS_SECRET_KEY});
+
+  var s3 = new aws.S3()
+  var directoryOnS3 = req.body.username + '/' + (new Date().getTime()).toString() + '/' + req.body.file.name;
+  var options = {
+    Bucket: S3_BUCKET,
+    Key: directoryOnS3,
+    Expires: 60,
+    ContentType: req.body.file.type,
+    ACL: 'public-read'
+  };
+
+  s3.getSignedUrl('putObject', options, function(err, signedRequestFromAWS){
+    if(err) return res.send('Error with accessing Amazon S3')
+
+    Q.all([
+      User.where({username: req.username})
+      .then(function(user) {
+        if (user.length === 0) throw new Error('Username not found');
+        return user[0];
+      }),
+      Post.save(req.body),
+      Pledge.where({pledgename: req.body.pledgename})
+      .then(function(pledge) {
+        if (pledge.length === 0) throw new Error ('Pledge not found');
+        return pledge[0];
+      })
     ])
-    .then(function() { return post; });
-  })
-  .then(function(post) {
-    res.send(post);
-  })
-  .catch(next);
+    .spread(function(user,post,pledge) {
+      return Q.all([
+        User.relate(user,'POSTED',post),
+        User.relate(post,'POSTED_IN',pledge)
+      ])
+      .then(function() { return post; });
+    })
+    .then(function(post) {
+      res.json({
+        signed_request: signedRequestFromAWS,
+        url: 'https://s3.amazonaws.com/' + S3_BUCKET + '/' + directoryOnS3
+      })
+    })
+    .catch(next);
+
+  });
+
 };
 
 var createComment = function(req, res, next) {
