@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <title>Count Me In</title>
   <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.css">
   <script src="/bower_components/angular/angular.min.js"></script>
   
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
@@ -17,10 +18,12 @@
 
 </head>
   <body ng-controller="MainController">
-    <a ui-sref="feed.all">news feed</a> |
-    <a ui-sref="user.dashboard">profile</a> |
-    <a ui-sref="login">login</a> |
-    <a ui-sref="user.addPost">add post</a>
+    <div class="nav">
+      <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
+      <a ui-sref="user.dashboard"><i class="fa fa-camera-retro fa-2x"></i></a>
+      <a ui-sref="login"><i class="fa fa-user fa-2x"></i></a>
+      <a ui-sref="user.addPost"><i class="fa fa-plus fa-2x"></i></a>
+    </div>
 
     <div ui-view></div>
 
