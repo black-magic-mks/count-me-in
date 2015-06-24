@@ -30,7 +30,7 @@ angular.module('app', [
     .state('tab.feed.pledge', {
       url: '/pledge',
       templateUrl: '/views/feed.pledge.html',
-      controller: 'PledgeController'
+      controller: 'FeedController'
     })
     .state('tab.user', {
       url: '/user/:username',
