@@ -11,5 +11,6 @@ Post.schema = {
   // date: Date
 };
 Post.fields = Object.keys(Post.schema);
+Post.useTimestamps();
 
 module.exports = Post;

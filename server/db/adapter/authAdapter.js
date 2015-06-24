@@ -10,8 +10,13 @@ var register = function(req, res) {
   res.send('authAdapter.register');
 };
 
+var isAuthorized = function(req, res) {
+  res.send('authAdapter.isAuthorized');
+}
+
 module.exports = {
   login: login,
   logout: logout,
-  register: register
+  register: register,
+  isAuthorized: isAuthorized
 };

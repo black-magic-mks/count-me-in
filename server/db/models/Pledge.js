@@ -9,5 +9,6 @@ Pledge.schema = {
   date: Date
 };
 Pledge.fields = Object.keys(Pledge.schema);
+Pledge.useTimestamps();
 
 module.exports = Pledge;
