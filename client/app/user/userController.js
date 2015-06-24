@@ -16,24 +16,24 @@ angular.module('app')
 })
 .factory('userFunc', function($http) {
   var username;
-  var getUser = function(username, cb) {
+  var getUser = function(username, callback) {
     $http.get('/api/user', {
       params: {username: username}
     })
     .success(function(data, status, headers, config) {
       username = data.username;
-      cb(data);
+      callback(data);
     })
     .error(function(data, status, headers, config) {
       console.log('error with get request for getUser');
     });
   };
-  var getUserPledges = function(username, cb) {
+  var getUserPledges = function(username, callback) {
     $http.get('/api/user/pledges', {
       params: {username: username}
     })
     .success(function(data, status, headers, config) {
-      cb(data);
+      callback(data);
     })
     .error(function(data, status, headers, config) {
       console.log('error with get request for getUserPledges');
