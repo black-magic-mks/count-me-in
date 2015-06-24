@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/../public'));
 app.get('/favicon.ico', function(_, res) { res.type('image/x-icon').end(); });
 
 app.use(auth);
-router.addRoutes(app);
+app.use('/api',router);
 
 app.use(function(err, req, res, next) {
   console.error(err);
