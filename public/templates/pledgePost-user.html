@@ -1,12 +1,10 @@
-<div>
-  <img ng-src="{{post.postImage}}" height="400px" width="400px" />
-  <h4>
-    <span>
-      Day {{post.number}}
-    </span>
-    <span>
-      {{post.date}}
-    </span>
-  </h4>
-  <p>{{post.text}}</p>
+<div class="feedPledgeDirective clearfix">
+  <img class="pledgePostImg left" ng-src="{{post.postImage}}" height="400px" width="400px" />
+  <div class="pledgePost left">
+    <div class="postDay left">
+      <h4 class="left">Day {{post.number}}</h4>
+      <h4 class="right">{{post.date}}</h4>
+    </div>
+    <p class="pledgePostDesc left">{{post.text}}</p>
+  </div>
 </div>

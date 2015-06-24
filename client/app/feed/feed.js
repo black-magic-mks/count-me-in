@@ -13,7 +13,6 @@ angular.module('app')
       params: {username: username}
     }).
     success(function(data, status, headers, config) {
-    
     }).
     error(function(data, status, headers, config) {
       console.log('error with get request for api/user/pledges');
