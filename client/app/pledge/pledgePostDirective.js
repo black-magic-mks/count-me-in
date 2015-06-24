@@ -1,11 +1,11 @@
 angular.module('app')
-.directive('pledgePostPledgePage', function() {
+.directive('pledgePost', function() {
   return {
     restrict: 'E',
     scope: {
       post: '='
     },
-    templateUrl: './templates/pledgePost-pledge.html',
+    templateUrl: './templates/pledgePost.html',
     link: function(scope, element, attr) {
     }
   }

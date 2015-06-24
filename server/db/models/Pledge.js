@@ -9,5 +9,6 @@ Pledge.schema = {
   lastpost: String
 };
 Pledge.fields = Object.keys(Pledge.schema);
+Pledge.useTimestamps();
 
 module.exports = Pledge;
