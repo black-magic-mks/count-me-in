@@ -1,0 +1,45 @@
+{
+  "name": "count-me-in",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/black-magic-mks/count-me-in"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/black-magic-mks/count-me-in/issues"
+  },
+  "homepage": "https://github.com/black-magic-mks/count-me-in",
+  "dependencies": {
+    "body-parser": "^1.13.1",
+    "connect-multiparty": "^1.2.5",
+    "expect.js": "^0.3.1",
+    "express": "^4.12.4",
+    "karma": "^0.12.36",
+    "karma-mocha": "^0.1.10",
+    "mocha": "^2.2.5",
+    "nodemon": "^1.3.7",
+    "q": "^1.4.1",
+    "seraph": "^0.11.4",
+    "seraph-model": "^0.7.2"
+  },
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-karma": "^0.11.1",
+    "grunt-nodemon": "^0.4.0",
+    "jasmine-core": "^2.3.4",
+    "karma-chai": "^0.1.0",
+    "karma-jasmine": "^0.3.5",
+    "karma-phantomjs-launcher": "^0.2.0",
+    "phantomjs": "^1.9.17"
+  }
+}
