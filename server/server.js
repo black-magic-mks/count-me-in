@@ -3,6 +3,7 @@ var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty')();
 var auth = require('./auth');
 var router = require('./router');
+var aws = require('aws-sdk');
 var passport = require('passport');
 var expressSession = require('express-session');
 var authPassport = require('./auth/authPassport.js');
