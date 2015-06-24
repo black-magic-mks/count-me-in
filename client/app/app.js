@@ -62,7 +62,7 @@ angular.module('app', [
       views: {
         'tab-login': {
           templateUrl: '/views/login.html',
-          controller: 'LoginController'
+          controller: 'AuthController'
         }
       }
     })
@@ -72,7 +72,7 @@ angular.module('app', [
       views: {
         'tab-signup': {
           templateUrl: '/views/signup.html',
-          controller: 'SignupController'
+          controller: 'AuthController'
         }
       }
     })
