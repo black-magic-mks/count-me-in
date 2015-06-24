@@ -5,6 +5,7 @@ Comment.schema = {
   text: { type: String, required: true, trim: true }
 };
 Comment.fields = Object.keys(Comment.schema);
+Comment.useTimestamps();
 
 module.exports = Comment;
 
