@@ -13,8 +13,6 @@ angular.module('app')
       params: {username: username}
     }).
     success(function(data, status, headers, config) {
-      // // Format data
-      // pledgeCategories.push(data);
       console.log('getFollowedPages', data);
     }).
     error(function(data, status, headers, config) {
@@ -23,7 +21,6 @@ angular.module('app')
   }
 
   var getPledgePosts = function(pledgename) {
-    console.log('pledgename',pledgename);
     $http.get('/api/pledge/posts', {
       params: {pledgename: pledgename}
     })
