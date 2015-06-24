@@ -1,7 +1,7 @@
 <ion-view title="UserPledge">
   <ion-content class="has-header padding">
     <h1>{{graphData.username}}</h1>
-    <button class="button button-small button-positive">
+    <button ng-if="$root.loggedIn" class="button button-small button-positive">
       New
     </button>
     <hr />
