@@ -1,23 +1,41 @@
 angular.module('app')
 
-.controller('UserController', function($scope) {
-  $scope.username = 'monica';
+.controller('UserController', function($scope, userFunc) {
+  angular.extend($scope, userFunc);
+  $scope.getUser();
+  $scope.getUserPledges();
+})
+.factory('userFunc', function($http) {
+  var pledgePreview = [];
+  var getUser = function(username) {
+    $http.get('/api/user', {
+      params: {username: username}
+    })
+    .success(function(data, status, headers, config) {
+      console.log('getUser: ', data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error with get request for getUser');
+    });
+  };
 
-  $scope.pledgePreview = [
-    {
-      pledgeName: '#piano',
-      missionStatement: 'I am the next Beethoven',
-      coverImage: 'https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcR-waahz4-t7vaUVwUeRdyjPbeC_vcbqM_Soc00ser2RcgcDVrY',
-      images: ['http://lh4.ggpht.com/_9F9_RUESS2E/SpkreUwhqHI/AAAAAAAAA7A/GomUBZzRjPQ/s800/20-Bizarre-Dog-Haircuts-18.jpg', 'http://thewowstyle.com/wp-content/uploads/2015/04/funny-dog-pics37.jpg'],
-      lastDesc: 'I practiced piano yesterday for so long that my fingers fell off. But really.'
-    },
-    {
-      pledgeName: '#lifting',
-      missionStatement: 'Lifting and Protein',
-      coverImage: 'http://www.lovethispic.com/uploaded_images/37623-Cute-Dog.jpg',
-      images: ['http://lh4.ggpht.com/_9F9_RUESS2E/SpkreUwhqHI/AAAAAAAAA7A/GomUBZzRjPQ/s800/20-Bizarre-Dog-Haircuts-18.jpg', 'http://thewowstyle.com/wp-content/uploads/2015/04/funny-dog-pics37.jpg'],
-      lastDesc: 'I went to the gym for 3 hours yesterday to lift.'
-    },
-  ]
-  
+  var getUserPledges = function(username) {
+    $http.get('/api/user/pledges', {
+      params: {username: username}
+    })
+    .success(function(data, status, headers, config) {
+      console.log('getUserPledges: ', data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error with get request for getUserPledges');
+    });
+  };
+
+  return {
+    getUser: getUser,
+    getUserPledges: getUserPledges,
+    pledgePreview: pledgePreview
+  }
+
 });
+
