@@ -49,12 +49,16 @@ angular.module('app', [
     .state('tab.user.post', {
       url: '/post',
       templateUrl: '/views/post.html',
-      controller: 'UserAddPostController'
     })
     .state('tab.user.post.add', {
       url: '/new',
       templateUrl: '/views/post.add.html',
-      controller: 'UserAddPostController'
+      controller: 'addPostController'
+    })
+    .state('tab.user.post.view', {
+      url: '/:post_id',
+      templateUrl: '/views/post.view.html',
+      controller: 'viewPostController'
     })
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
