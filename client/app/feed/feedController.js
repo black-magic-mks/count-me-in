@@ -3,7 +3,7 @@ angular.module('app')
 .controller('FeedController', function($scope) {
   $scope.pledgeCategories = [
   {
-    name: '#Coding',
+    name: 'Coding',
     postList: [
       {
         user: "@Nathan",

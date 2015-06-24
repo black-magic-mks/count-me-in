@@ -3,14 +3,14 @@ angular.module('app')
 .run(function($state, $rootScope, Auth) {
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    Auth.isLoggedIn()
-    .then(function(authenticated) {
-      if (!authenticated) {
-        $rootScope.loggedIn = false;
-      } else {
-        $rootScope.loggedIn = true;
-      }
-    })
+    // Auth.isLoggedIn()
+    // .then(function(authenticated) {
+    //   if (!authenticated) {
+    //     $rootScope.loggedIn = false;
+    //   } else {
+    //     $rootScope.loggedIn = true;
+    //   }
+    // })
   })
 })
 

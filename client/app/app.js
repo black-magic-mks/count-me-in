@@ -28,7 +28,7 @@ angular.module('app', [
       controller: 'PledgeController'
     })
     .state('tab.feed.pledge', {
-      url: '/pledge',
+      url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
       controller: 'PledgeController'
     })
@@ -52,7 +52,7 @@ angular.module('app', [
       controller: 'UserAddPostController'
     })
     .state('tab.user.pledge', {
-      url: '/pledge/:pledgename',
+      url: '/:pledgename',
       templateUrl: '/views/user.pledge.html',
       controller: 'UserPledgeController'
     })

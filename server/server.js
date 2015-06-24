@@ -5,7 +5,6 @@ var auth = require('./auth');
 var router = require('./router');
 var passport = require('passport');
 var expressSession = require('express-session');
-var authPassport = require('./auth/authPassport.js');
 
 var port = 8080;
 var app = express();
