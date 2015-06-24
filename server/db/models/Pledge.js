@@ -5,5 +5,6 @@ Pledge.setUniqueKey('pledgename');
 Pledge.schema = {
 };
 Pledge.fields = Object.keys(Pledge.schema);
+Pledge.useTimestamps();
 
 module.exports = Pledge;

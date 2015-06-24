@@ -6,5 +6,6 @@ User.schema = {
   username: { type: String, required: true }
 };
 User.fields = Object.keys(User.schema);
+User.useTimestamps();
 
 module.exports = User;
