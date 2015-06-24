@@ -44,7 +44,7 @@ angular.module('app')
   $scope.graphData = {};
   $scope.graphData.posts = [];
 
-  feedFunc.getFollowedPledges(null, function(data) {
+  feedFunc.getFollowedPledges('mengel', function(data) {
     console.log('getFollowedPledges', data);
   });
 
@@ -56,18 +56,13 @@ angular.module('app')
   });
 
   feedFunc.getPledgeView('piano', function(data) {
-    console.log(data.createdAt);
+    console.log('date:', data[0].created);
     data.forEach(function(post) {
       $scope.graphData.name = 'piano';
       $scope.graphData.posts.push(post);
       console.log('$scope.graphData', $scope.graphData);
     })
-    console.log('got back to controller', data);
   });
-  
-  // $scope.getFollowedPledges('mengel');
-  // $scope.getPledgePosts('code');
-  // $scope.getPledgeView('piano');
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
