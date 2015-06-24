@@ -1,7 +1,13 @@
-<h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title">{{username}}</h2>
-<p class="date">Last Posted: {{date}}</p>
-<p class="mission">Mission Statement: {{mission}}</p>
-<img height="200px" width="200px" class="posts" src="{{post}}" ng-repeat="post in pledgePost" />
- <button ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive">
-  View Posts
-</button>
+<div class="feedPledgeDirective clearfix">
+  <div class="postTopBar">
+    <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">{{username}}</h2>
+    <p class="postDate left">{{date}}</p>
+  </div>
+  <p class="pledgeMission left">Mission Statement: {{mission}}</p>
+  <div class="feedImages clearfix">
+    <img class="" height="200px" width="200px" class="posts" src="{{post}}" ng-repeat="post in pledgePost" />
+  </div>
+   <button ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive left">
+    View Posts
+  </button>
+</div>

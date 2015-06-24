@@ -32,6 +32,7 @@ angular.module('app', [
       templateUrl: '/views/feed.pledge.html',
       controller: 'PledgeController'
     })
+
     .state('tab.user', {
       url: '/user/:username',
       views: {
@@ -47,22 +48,15 @@ angular.module('app', [
     })
     .state('tab.user.addPost', {
       url: '/post/new',
-      templateUrl: '/views/user.post.add.html',
-      controller: 'UserPostController'
+      templateUrl: '/views/user.addPost.html',
+      controller: 'UserAddPostController'
     })
     .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/user.pledge.html',
       controller: 'UserPledgeController'
     })
-    .state('user.pledge-list', {
-      templateUrl: '/views/user-pledge-list.html',
-      controller: 'UserPledgeListController'
-    })
-    .state('user.pledge', {
-      templateUrl: '/views/user-pledge.html',
-      controller: 'UserPledgeController'
-    })
+
     .state('tab.login', {
       url: '/login',
       views: {
@@ -72,6 +66,7 @@ angular.module('app', [
         }
       }
     })
+
     .state('tab.signup', {
       url: '/signup',
       views: {

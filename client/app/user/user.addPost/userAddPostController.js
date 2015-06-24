@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('UserPostController', function($scope, $http) {
+.controller('UserAddPostController', function($scope, $http) {
 
   $scope.addPost = function() {
     var fd = new FormData();
