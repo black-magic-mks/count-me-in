@@ -3,5 +3,7 @@ public/bower_components
 public/*.js
 public/*.css
 server/db/adapter/amazonS3Config.js
+server/auth/cljs
+server/auth/auth.js
 
 .DS_store
