@@ -2,12 +2,10 @@
 <html ng-app="app">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-
   <title>Count Me In</title>
-  <link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
   <link rel="stylesheet" type="text/css" href="/main.css">
-  <script src="/bower_components/ionic/release/js/ionic.bundle.min.js"></script>
+  <script src="/bower_components/angular/angular.min.js"></script>
+  
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
   <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
@@ -19,14 +17,12 @@
 
 </head>
   <body ng-controller="MainController">
+    <a ui-sref="feed.all">news feed</a> |
+    <a ui-sref="user.dashboard">profile</a> |
+    <a ui-sref="login">login</a> |
+    <a ui-sref="user.addPost">add post</a>
 
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-icon icon ion-chevron-left">
-      </ion-nav-back-button>
-    </ion-nav-bar>
+    <div ui-view></div>
 
-    <ion-nav-view></ion-nav-view>
   </body>
 </html>
-
-
