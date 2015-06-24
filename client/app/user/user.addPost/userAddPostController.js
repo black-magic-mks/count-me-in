@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('UserAddPostController', function($scope, $http) {
+.controller('UserAddPostController', function($scope, $http, $state) {
 
   $scope.addPost = function() {
     var fd = new FormData();
@@ -43,8 +43,9 @@ angular.module('app')
     .then(function(response) {
       console.log('response is ', response);
       upload(file, response.data.signed_request, response.data.url, function(url) {
-        // document.getElementById("preview").src = response.url
+        // to preview after upload document.getElementById("preview").src = response.data.url
         console.log('image is at: ', response.data.url);
+        $state.go('tab.user.dashboard');
       })
     })
   }

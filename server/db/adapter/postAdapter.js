@@ -18,6 +18,8 @@ var createPost = function(req, res, next) {
   // TODO: force uploads to be a certain file type and a certain size
   var s3 = new aws.S3()
   var directoryOnS3 = req.body.username + '/' + (new Date().getTime()).toString() + '/' + req.body.file.name;
+  var awsUrl = 'https://s3.amazonaws.com/' + S3_BUCKET + '/' + directoryOnS3;
+  
   var options = {
     Bucket: S3_BUCKET,
     Key: directoryOnS3,
@@ -32,13 +34,16 @@ var createPost = function(req, res, next) {
   s3.getSignedUrl('putObject', options, function(err, signedRequestFromAWS){
     if(err) return res.send('Error with accessing Amazon S3')
 
+    var postData = req.body;
+    postData['aws_url'] = awsUrl;
+    
     Q.all([
       User.where({username: req.username})
       .then(function(user) {
         if (user.length === 0) throw new Error('Username not found');
         return user[0];
       }),
-      Post.save(req.body),
+      Post.save(postData),
       Pledge.where({pledgename: req.body.pledgename})
       .then(function(pledge) {
         if (pledge.length === 0) throw new Error ('Pledge not found');
@@ -55,7 +60,7 @@ var createPost = function(req, res, next) {
     .then(function(post) {
       res.json({
         signed_request: signedRequestFromAWS,
-        url: 'https://s3.amazonaws.com/' + S3_BUCKET + '/' + directoryOnS3
+        url: awsUrl
       })
     })
     .catch(next);
