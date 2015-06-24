@@ -2,6 +2,7 @@ var authAdapter = require('./db/adapter/authAdapter');
 var userAdapter = require('./db/adapter/userAdapter');
 var pledgeAdapter = require('./db/adapter/pledgeAdapter');
 var postAdapter = require('./db/adapter/postAdapter');
+var testAdapter = require('./db/adapter/testAdapter');
 
 var routes = {
   'get': {
@@ -14,6 +15,8 @@ var routes = {
     '/api/pledge': pledgeAdapter.getPledge,
     '/api/pledge/users': pledgeAdapter.getPledgeUsers,
     '/api/pledge/posts': pledgeAdapter.getPledgePosts,
+    '/api/test/clear': testAdapter.clearData,
+    '/api/test/fill': testAdapter.fillData
   },
   'post': {
     '/api/auth/login': authAdapter.login,
@@ -30,9 +33,7 @@ var routes = {
 
 var addRoutes = function(server) {
   for (var method in routes) {
-    console.log('method',method);
     for (var route in routes[method]) {
-      console.log('route',route);
       server[method](route, routes[method][route]);
     }
   }
