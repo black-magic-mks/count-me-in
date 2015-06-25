@@ -148,4 +148,9 @@ img.coverImg {
 .nav {
   display: flex;
   justify-content: space-around;
+  background-color: #0A0D0F;
+}
+
+.nav .fa {
+  color: #B2B2B2;
 }

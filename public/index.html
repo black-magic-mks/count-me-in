@@ -20,9 +20,13 @@
   <body ng-controller="MainController">
     <div class="nav">
       <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
-      <a ui-sref="user.dashboard"><i class="fa fa-camera-retro fa-2x"></i></a>
-      <a ui-sref="login"><i class="fa fa-user fa-2x"></i></a>
-      <a ui-sref="user.addPost"><i class="fa fa-plus fa-2x"></i></a>
+      <a ui-sref="user.addPost">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle-o-notch fa-spin fa-stack-2x"></i>
+          <i class="fa fa-plus fa-stack-1x"></i>
+        </span>
+      </a>
+      <a ui-sref="user.dashboard"><i class="fa fa-user fa-2x"></i></a>
     </div>
 
     <div ui-view></div>
