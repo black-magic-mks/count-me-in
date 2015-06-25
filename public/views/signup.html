@@ -1,26 +1,29 @@
-<ion-view>
-  <ion-content class="signup">
-    <div>
-      <h1 class="signup-title">Create an Account</h1>
-      <form name='signupForm'>
-        <input name='username' type='text' ng-model='user.username' placeholder='Username' ng-minlength='6' required>
-        <input name='password' type='text' ng-model='user.password' placeholder='Password' ng-minlength='6' ng-pattern='passwordValidation' required>
-      </form>
+<div>
+  <div class="nav">
+    <a ui-sref="user.dashboard"><i class="fa fa-dashboard fa-2x"></i></a>
+    <a ui-sref="login"><i class="fa fa-toggle-on fa-2x"></i></a>
+    <a ui-sref="signup"><i class="fa fa-user-plus fa-2x"></i></a>
+  </div>
+  <div>
+    <h1 class="signup-title">Create an Account</h1>
+    <form name='signupForm'>
+      <input name='username' type='text' ng-model='user.username' placeholder='Username' ng-minlength='6' required>
+      <input name='password' type='text' ng-model='user.password' placeholder='Password' ng-minlength='6' ng-pattern='passwordValidation' required>
+    </form>
 
-      <div ng-show='signupForm.username.$error.required || signupForm.password.$error.required'>
-        <h3 class="signup-text">Username and Password Required</h3>
-      </div>
-
-      <div ng-show='signupForm.username.$error.minlength || signupForm.password.$error.minlength'>
-        <h3 class="signup-text">Username and Password Must Be At Least 6 Characters</h3>
-      </div>
-
-      <div ng-show='signupForm.password.$error.pattern'>
-        <h3 class="signup-text">Password Must Contain Both A Number and A Capital Letter</h3>
-      </div>
-      <!-- TODO: add an error for when the user already exists in the database -->
-      <!-- TODO: figure out why the a tag is not a link -->
-      <a ui-sref='tab.login'>Already have an account? Login</a>
+    <div ng-show='signupForm.username.$error.required || signupForm.password.$error.required'>
+      <h3 class="signup-text">Username and Password Required</h3>
     </div>
-  </ion-content>
-</ion-view>
+
+    <div ng-show='signupForm.username.$error.minlength || signupForm.password.$error.minlength'>
+      <h3 class="signup-text">Username and Password Must Be At Least 6 Characters</h3>
+    </div>
+
+    <div ng-show='signupForm.password.$error.pattern'>
+      <h3 class="signup-text">Password Must Contain Both A Number and A Capital Letter</h3>
+    </div>
+    <!-- TODO: add an error for when the user already exists in the database -->
+    <!-- TODO: figure out why the a tag is not a link -->
+    <a ui-sref='tab.login'>Already have an account? Login</a>
+  </div>
+</div> 

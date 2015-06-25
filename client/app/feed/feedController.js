@@ -1,11 +1,14 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, $ionicModal, feedFunc) {
+.controller('FeedController', function($scope, feedFunc) {
   // angular.extend($scope, feedFunc);
+  console.log('in FeedController');
   $scope.pledgeCategories = [];
   $scope.pledgeCatObj = {};
   $scope.pledgeCatObj.postList = [];
   $scope.tempObj = {};
+
+  $scope.testName = 'mangles';
 
   $scope.graphData = {};
   $scope.graphData.posts = [];
@@ -38,14 +41,14 @@ angular.module('app')
     })
   });
 
-  $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) { $scope.modal = modal; });
+  // $ionicModal.fromTemplateUrl('templates/modal.html', {
+  //   scope: $scope,
+  //   animation: 'slide-in-up'
+  // }).then(function(modal) { $scope.modal = modal; });
 
-  $scope.saveMission = function() {
-    $scope.modal.hide();
-  };
+  // $scope.saveMission = function() {
+  //   $scope.modal.hide();
+  // };
 
   $scope.viewPledge = function() {
     //pass in clicked element

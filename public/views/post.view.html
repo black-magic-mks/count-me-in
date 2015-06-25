@@ -1,4 +1,11 @@
 <div>
-  <h3>{{ title }}</h3>
-  <img src="{{ awsUrl }}"> 
+  <div ng-show="!loadingPost">
+    <div>
+      <h3>{{ title }}</h3>
+      <img src="{{ awsUrl }}"> 
+    </div>
+  </div>
+  <div ng-show="loadingPost">
+      <div>loading the post</div>
+  </div>
 </div>

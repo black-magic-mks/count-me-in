@@ -17,7 +17,7 @@ angular.module('app')
 .controller('AuthController', function($scope, $rootScope, $state, Auth) {
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
-  angular.extends($scope, Auth);
+  angular.extend($scope, Auth);
 })
 
 .factory('Auth', function($http, $state) {

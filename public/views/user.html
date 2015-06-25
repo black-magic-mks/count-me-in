@@ -1,18 +1,15 @@
-<ion-view title="User">
+<div>
+  
+  <div class="nav">
+    <a ui-sref="user.dashboard"><i class="fa fa-dashboard fa-2x"></i></a>
+    <a ui-sref="login"><i class="fa fa-toggle-on fa-2x"></i></a>
+    <a ui-sref="signup"><i class="fa fa-user-plus fa-2x"></i></a>
+  </div>
 
-  <ion-content class="has-header padding">
-    
-<!--     <div class="" ng-controller="UserController">
-    <div>
-      <h1>{{username}}</h1>
-    </div>
+  <div ui-view></div>
+</div>
 
-    <a ui-sref="tab.user.dashboard">dashboard</a>
-    <a ui-sref="tab.user.pledge({pledgename: 'playpiano'})">pledge</a>
-    <a ui-sref="tab.user.addPost">add post</a> -->
     
-    <div ui-view></div>
     
-  </ion-content>
 
-</ion-view>
+
