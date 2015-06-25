@@ -88,15 +88,15 @@ angular.module('app')
       callback(data);
 
     }).error(function(data, status, headers, config) {
-      console.log('effor with request');
+      console.log('error with request');
     });
-  } 
-  
+  };
+
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
     getPledgeView: getPledgeView
-  }
+  };
 });
 
  

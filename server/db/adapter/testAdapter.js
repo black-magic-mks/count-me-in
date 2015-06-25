@@ -22,7 +22,7 @@ var fillData = function(req, res, next) {
    'CREATE (pl1:Pledge {pledgename: "code", mission: "I want to learn JavaScript by July!", coverimage: "http://groups.engin.umd.umich.edu/CIS/course.des/cis400/javascript/javascript.jpg", lastpost: "I just hacked into the hashing algorithm using a rainbow table!"})',
    'CREATE (pl2:Pledge {pledgename: "piano", mission: "I want to learn Piano by August!", coverimage: "http://cdn.roland.com/assets/images/products/gallery/v_piano_front_stand_gal.jpg", lastpost: "I just played piano!"})',
    'CREATE (po1:Post {username: "mengel", text: "Learn the C Major scale today!", title: "Coding Day 1", aws_url: "http://www.lovethispic.com/uploaded_images/37623-Cute-Dog.jpg"})',
-   'CREATE (po2:Post {username: "therealist", text: "I love JavaScript!", title: "Coding Day 2", aws_url: "http://thewowstyle.com/wp-content/uploads/2015/04/funny-dog-pics37.jpg"})',
+   'CREATE (po2:Post {username: "therealest", text: "I love JavaScript!", title: "Coding Day 2", aws_url: "http://thewowstyle.com/wp-content/uploads/2015/04/funny-dog-pics37.jpg"})',
    'CREATE (co1:Comment {text: "Me too!!"})',
    'CREATE (u1)-[:FOLLOWS]->(u2)',
    'CREATE (u1)-[:SUBSCRIBES_TO]->(pl1)',

@@ -9,7 +9,6 @@ angular.module('app')
     fd.append('text', $scope.post.text);
     fd.append('pledgeName', $scope.post.pledgeName);
 
-    // TODO: refactor the angular way for consistency
     $http({
       method: 'POST',
       url: '/api/post/new',

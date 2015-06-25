@@ -5,8 +5,8 @@ Pledge.setUniqueKey('pledgename');
 Pledge.schema = {
   pledgename: {type: String, required: true},
   mission: {type: String, trim: true},
-  post: String,
-  date: Date
+  coverimage: String,
+  lastpost: String
 };
 Pledge.fields = Object.keys(Pledge.schema);
 Pledge.useTimestamps();
