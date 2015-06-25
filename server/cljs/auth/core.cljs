@@ -65,6 +65,10 @@
                (.send res true)))
       (.catch next))))
 
+(defn logout [req res next]
+  (aset req "session" "token" nil)
+  (.send res true))
+
 
 (defn noop [] nil)
 (set! *main-cli-fn* noop)

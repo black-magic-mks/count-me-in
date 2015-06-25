@@ -22,7 +22,7 @@ var routes = {
   },
   'post': {
     '/auth/login': authAdapter.login,
-    //'/auth/logout': authAdapter.logout,
+    '/auth/logout': authAdapter.logout,
     '/auth/register': authAdapter.register,
     '/user/follow': userAdapter.followUser,
     '/pledge': pledgeAdapter.createPledge,

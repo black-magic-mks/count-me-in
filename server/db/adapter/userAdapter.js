@@ -7,6 +7,7 @@ var query = Q.nbind(db.query,db);
 
 var getUser = function(req, res, next) {
   var username = req.body.username || req.username;
+  if (!username) return next('No username given');
 
   User.where({username: username})
   .then(function(user) {
