@@ -92,6 +92,17 @@ angular.module('app')
     });
   };
 
+  var submitComment = function(comment, callback) {
+    // check inputs
+    $http.post('/api/post/comment', {postId, text, username})
+      .success(function(postedComment) {
+        callback(postedComment);
+      })
+      .error(function(err) {
+        console.log('The comment was not posted: ', err);
+      }) 
+  };
+
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
