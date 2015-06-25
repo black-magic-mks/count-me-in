@@ -12,7 +12,8 @@ var app = express();
 app.use(expressSession({
   secret: 'mySecretKey',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: true,
+  cookie: {maxAge: 24*60*60*1000}
 }));
 
 app.use(bodyParser.json());
@@ -25,6 +26,7 @@ app.use('/api',router);
 
 app.use(function(err, req, res, next) {
   console.error(err);
+  console.error(err.stack);
   res.status(500).send(err.toString());
 });
 

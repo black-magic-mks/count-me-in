@@ -21,7 +21,7 @@ var routes = {
     '/test/fill': testAdapter.fillData
   },
   'post': {
-    //'/auth/login': authAdapter.login,
+    '/auth/login': authAdapter.login,
     //'/auth/logout': authAdapter.logout,
     '/auth/register': authAdapter.register,
     '/user/follow': userAdapter.followUser,
