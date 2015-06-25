@@ -15,7 +15,6 @@ angular.module('app')
 .factory('viewPostFunc', function($http) {
 
   var getPost = function(post_id, callback) {
-    console.log('in viewPostFunc, post_id: ', post_id);
     $http.get('/api/post', {
       params: {post_id: post_id}
     })

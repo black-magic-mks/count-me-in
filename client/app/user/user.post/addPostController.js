@@ -22,7 +22,6 @@ angular.module('app')
 
     var upload = function (file, signed_request, url, done) {
       var xhr = new XMLHttpRequest()
-      console.log('xhr is ', xhr, ' and file and signed request are ', file, signed_request);
       xhr.open("PUT", signed_request)
       xhr.setRequestHeader('x-amz-acl', 'public-read')
       xhr.onload = function() {
@@ -41,7 +40,6 @@ angular.module('app')
       data: postData,
     })
     .then(function(response) {
-      console.log('response is ', response);
       upload(file, response.data.signed_request, response.data.url, function(url) {
         $scope.loadingPost = false;
         $state.go('tab.user.post.view', {post_id: response.data.id});
