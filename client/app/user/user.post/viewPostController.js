@@ -1,11 +1,15 @@
 angular.module('app')
 
 .controller('viewPostController', function($scope, $http, $state, $stateParams, viewPostFunc) {
+  $scope.loadingPost = true;
+
   viewPostFunc.getPost($stateParams.post_id, function(postData) {
     $scope.title = postData.title;
     $scope.awsUrl = postData.aws_url;
     $scope.created = postData.created;
+    $scope.loadingPost = false;
   });
+
 })
 
 .factory('viewPostFunc', function($http) {
