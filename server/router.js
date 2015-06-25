@@ -8,6 +8,7 @@ var testAdapter = require('./db/adapter/testAdapter');
 
 var routes = {
   'get': {
+    '/auth/authorize': authAdapter.authorize,
     '/user': userAdapter.getUser,
     '/user/posts': userAdapter.getUserPosts,
     '/user/likes': userAdapter.getUserLikes,

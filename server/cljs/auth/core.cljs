@@ -17,13 +17,11 @@
 
 (defn decodeToken [req res next]
   (let [token (aget req "session" "token")]
-    (println "token:" token)
     (if (nil? token)
       (next)
       (->
         (.verify jwt token (.-key config) #js {:issuer (.-issuer config)})
         (.then (fn [decoded]
-                 (println "decoded:" decoded)
                  (aset req "username" (.-username decoded))))
         (.then (fn [] (next)))
         (.catch next)))))
@@ -68,6 +66,13 @@
 (defn logout [req res next]
   (aset req "session" "token" nil)
   (.send res true))
+
+(defn authorize [req res next]
+  (if (nil? (.-username req))
+    (->
+      (.status res 401)
+      (.send false))
+    (.send res true)))
 
 
 (defn noop [] nil)
