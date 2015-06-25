@@ -8,7 +8,7 @@ angular.module('app')
     fd.append('title', $scope.post.title);
     fd.append('text', $scope.post.text);
     fd.append('pledgeName', $scope.post.pledgeName);
-    
+
     $http({
       method: 'POST',
       url: '/api/post/new',
