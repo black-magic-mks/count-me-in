@@ -1,8 +1,8 @@
 angular.module('app')
 
-.controller('UserController', function($scope, userFunc) {
-  $scope.user = userFunc;
+.controller('UserController', function($scope, userFunc, follow) {
   $scope.pledgePreview = [];
+  $scope.followerArray = [];
 
   userFunc.getUser(null, function(data) {
     $scope.username = data.username;
@@ -12,7 +12,12 @@ angular.module('app')
     console.log(data,$scope.pledgePreview);
   });
 
-  console.log('pledgePreview in controller: ', $scope.pledgePreview);
+  $scope.addFollower = function() {
+    follow.followUser($scope.username, function(data) {
+      $scope.followerArray = $scope.followerArray.concat (data);
+      console.log('followerArray: ', data, $scope.followerArray);
+    });
+  };
 })
 .factory('userFunc', function($http) {
   var username;
@@ -25,7 +30,7 @@ angular.module('app')
       callback(data);
     })
     .error(function(data, status, headers, config) {
-      console.log('error with get request for getUser');
+      console.log('error status with getUser: ', status, data, headers, config);
     });
   };
   var getUserPledges = function(username, callback) {
@@ -36,7 +41,7 @@ angular.module('app')
       callback(data);
     })
     .error(function(data, status, headers, config) {
-      console.log('error with get request for getUserPledges');
+      console.log('error status with getUserPledges: ', status, data, headers, config);
     });
   };
 
@@ -44,6 +49,24 @@ angular.module('app')
     getUser: getUser,
     getUserPledges: getUserPledges,
     username: username
+  }
+
+})
+.factory('follow', function($http) {
+  var followUser = function(username, callback) {
+    console.log('username: ', username);
+    $http.post('/api/user/follow', {username: username})
+    .success(function(data, status, headers, config) {
+      callback(data);
+      console.log('followUser data: ', data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error status with followUser: ', status, data, headers, config);
+    });
+  };
+
+  return {
+    followUser: followUser
   }
 
 });
