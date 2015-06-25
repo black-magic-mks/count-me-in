@@ -58,10 +58,8 @@ var createPost = function(req, res, next) {
       .then(function() { return post; });
     })
     .then(function(post) {
-      res.json({
-        signed_request: signedRequestFromAWS,
-        url: awsUrl
-      })
+      post.signed_request = signedRequestFromAWS
+      res.json(post)
     })
     .catch(next);
 

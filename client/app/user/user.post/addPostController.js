@@ -9,7 +9,6 @@ angular.module('app')
     fd.append('text', $scope.post.text);
     fd.append('pledgeName', $scope.post.pledgeName);
 
-
     var file = document.getElementById("user-post-add").files[0];
     console.log('file', file);
     var postData = {
@@ -44,9 +43,8 @@ angular.module('app')
     .then(function(response) {
       console.log('response is ', response);
       upload(file, response.data.signed_request, response.data.url, function(url) {
-        // to preview after upload document.getElementById("preview").src = response.data.url
-        console.log('image is at: ', response.data.url);
-        $state.go('tab.user.post.view');
+        console.log('image is at: ', response.data);
+        $state.go('tab.user.post.view', {post_id: response.data.id});
       })
     })
   }
