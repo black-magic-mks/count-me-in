@@ -67,6 +67,7 @@ var getPledgePosts = function(req, res, next) {
   .catch(next);
 };
 
+
 module.exports = {
   getPledge: getPledge,
   createPledge: createPledge,

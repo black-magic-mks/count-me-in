@@ -1,6 +1,7 @@
 node_modules
 public/bower_components
 public/*.js
-
+public/*.css
+server/db/adapter/amazonS3Config.js
 
 .DS_store

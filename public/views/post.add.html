@@ -1,11 +1,12 @@
 <div>
+  
   <h3>Add a post</h3>
 
   <form name="addPostForm" id="addPostForm" novalidate>
 
       <h4>Upload Image:</h4>
       <!-- add the following property value to accept only images to the file input: accept="image/*" -->
-      <input type="file" class="post-file" name="post-file" ng-model="post.file" valid-file required ></input>
+      <input type="file" class="post-file" id="user-post-add" name="post-file" ng-model="post.file" valid-file required ></input>
 
       <h4>Title</h4>
       <input name="post-title" type="text" ng-model="post.title" /><br />
@@ -14,8 +15,8 @@
       <textarea name="post-text" ng-model="post.text" ng-minlength="2" ng-required="true"></textarea>
 
       <h4>Pledge</h4> 
-      <input type="radio" ng-model="post.pledgeName" value="codejs" />#codejs
-      <input type="radio" ng-model="post.pledgeName" value="learnpiano" />#learnpiano<br />
+      <input type="radio" ng-model="post.pledgeName" value="code" />#code
+      <input type="radio" ng-model="post.pledgeName" value="piano" />#piano<br />
       
       <button class="btn" ng-click="addPost()">Submit</button>
 

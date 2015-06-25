@@ -8,10 +8,9 @@ angular.module('app')
     return $http({
       method: 'GET',
       url: '/api/pledge/posts',
-      params: $stateParams
+      params: {pledgename: $stateParams.pledgename}
     })
     .success(function(data) {
-      console.log(data)
       data = data.filter(function(postObj) {
         return postObj.username === $stateParams.username;
       }).sort(function(postObj1, postObj2) {

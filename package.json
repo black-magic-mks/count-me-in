@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/black-magic-mks/count-me-in",
   "dependencies": {
+    "aws-sdk": "^2.1.35",
     "bcrypt": "^0.8.3",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.13.1",
@@ -35,6 +36,7 @@
     "passport-local": "^1.0.0",
     "request": "^2.58.0",
     "q": "^1.4.1",
+    "s3-upload-stream": "^1.0.7",
     "seraph": "^0.11.4",
     "seraph-model": "^0.7.2"
   },

@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('UserAddPostController', function($scope, $http) {
+.controller('UserPostController', function($scope, $http) {
 
   $scope.addPost = function() {
     var fd = new FormData();
@@ -16,6 +16,6 @@ angular.module('app')
       data: fd,
       transformRequest:angular.identity,
       headers:{'Content-Type':undefined}
-    })
+    });
   }
 });

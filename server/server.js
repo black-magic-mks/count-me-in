@@ -3,26 +3,21 @@ var bodyParser = require('body-parser');
 var multiparty = require('connect-multiparty')();
 var auth = require('./auth');
 var router = require('./router');
-var passport = require('passport');
-var expressSession = require('express-session');
+var aws = require('aws-sdk');
 
 var port = 8080;
 var app = express();
 
-// Configures passport
-app.use(expressSession({
-  secret: 'mySecretKey',
-  resave: true,
-  saveUninitialized: true
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-// app.use(passport.authenticate('local', {failureFlash: 'Invalid username or password'}))
-
 app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
 app.use(multiparty);
 app.use(express.static(__dirname + '/../public'));
 app.get('/favicon.ico', function(_, res) { res.type('image/x-icon').end(); });
+
+app.use(function(req,res,next) {
+  if (Object.keys(req.body).length === 0) req.body = req.query;
+  next();
+});
 
 app.use(auth);
 app.use('/api',router);
