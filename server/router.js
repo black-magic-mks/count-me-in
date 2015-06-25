@@ -17,7 +17,6 @@ var routes = {
     '/pledge': pledgeAdapter.getPledge,
     '/pledge/users': pledgeAdapter.getPledgeUsers,
     '/pledge/posts': pledgeAdapter.getPledgePosts,
-    '/pledge/all': pledgeAdapter.getAllPledges,
     '/test/clear': testAdapter.clearData,
     '/test/fill': testAdapter.fillData
   },

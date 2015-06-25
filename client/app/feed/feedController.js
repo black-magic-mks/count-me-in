@@ -2,64 +2,29 @@ angular.module('app')
 
 .controller('FeedController', function($scope, $ionicModal, feedFunc) {
   // angular.extend($scope, feedFunc);
-
-  $scope.pledgeCategories = [
- //  {
- //   name: '#Coding',
- //   postList: [
- //     {
- //       user: "Nathan",
- //       mission: "I don't know what I'm doing",
- //       date: "06-18-2015",
- //       posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
- //     },
- //     {
- //       user: "@Jack",
- //       mission: "I'm a bad person",
- //       date: "04-12-1792",
- //       posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
- //     }
- //   ]
- // },
- // {
- //   name: '#Piano',
- //   postList: [
- //     {
- //       user: "@Monica",
- //       mission: "I had a good idea today",
- //       date: "03-21-1992",
- //       posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
- //     },
- //     {
- //       user: "@Antonio",
- //       mission: "Jack is a bad person",
- //       date: "09-31-1992",
- //       posts: ['https://thenypost.files.wordpress.com/2013/11/corgi.jpg','http://www.petguide.com/wp-content/uploads/2013/02/shiba-inu1.jpg']
- //     }
- //   ]
- // }
- ];
-
   $scope.pledgeCategories = [];
+  $scope.pledgeCatObj = {};
+  $scope.pledgeCatObj.postList = [];
+  $scope.tempObj = {};
 
-  $scope.postListTemp = [];
   $scope.graphData = {};
   $scope.graphData.posts = [];
 
   feedFunc.getFollowedPledges('mengel', function(data) {
     data.forEach(function(pledge) {
 
-      $scope.pledgeCategories.push({name: pledge.pledgename});
-      $scope.postListTemp.mission = pledge.mission;
+      $scope.pledgeCatObj.name = pledge.pledgename;
+      $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){
         
         data.forEach(function(post) {
-          $scope.postListTemp.aws_url = post.aws_url;
-          $scope.postListTemp.username = post.username;
+          $scope.tempObj.aws_url = post.aws_url;
+          $scope.tempObj.username = post.username;
         })
 
-        $scope.pledgeCategories.postList = $scope.postListTemp;
+        $scope.pledgeCatObj.postList.push($scope.tempObj);
+        $scope.pledgeCategories.push($scope.pledgeCatObj);
         console.log('pledgecat', $scope.pledgeCategories);
       
       })
@@ -111,7 +76,7 @@ angular.module('app')
       callback(data);
     })
     .error(function(data, status, headers, config) {
-      console.log('error with get request for api/pledge/posts',data,status,headers,config);
+      console.log('error with get request for api/pledge/posts', data, status, headers, config);
     });
   }; 
 

@@ -67,19 +67,11 @@ var getPledgePosts = function(req, res, next) {
   .catch(next);
 };
 
-var getAllPledges = function(req, res, next) {
-  // Pledge.findAll(function(err, allPledges) {
-  //   return allPledges;
-  // }).then(function(allPledges) {
-  //   res.send(allPledges);
-  // })
-};
 
 module.exports = {
   getPledge: getPledge,
   createPledge: createPledge,
   subscribeToPledge: subscribeToPledge,
   getPledgeUsers: getPledgeUsers,
-  getPledgePosts: getPledgePosts,
-  getAllPledges: getAllPledges
+  getPledgePosts: getPledgePosts
 };

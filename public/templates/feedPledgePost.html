@@ -1,12 +1,12 @@
 <div class="feedPledgeDirective clearfix">
   <div class="postTopBar">
-    <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">{{username}}</h2>
+    <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">@{{username}}</h2>
     <p class="postDate left">{{date}}</p>
     <button href="#" class=".test" ng-click="view()">test</button>
   </div>
   <p class="pledgeMission left">Mission Statement: {{mission}}</p>
   <div class="feedImages clearfix">
-    <img class="" height="200px" width="200px" class="posts" src="{{post}}" ng-repeat="post in pledgePost" />
+    <img height="200px" width="200px" class="posts" src="{{aws_url}}" />
   </div>
    <button ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive left">
     View Posts
