@@ -21,7 +21,7 @@ app.use(multiparty);
 app.use(express.static(__dirname + '/../public'));
 app.get('/favicon.ico', function(_, res) { res.type('image/x-icon').end(); });
 
-app.use(auth.dummy);
+app.use(auth.decodeToken);
 app.use('/api',router);
 
 app.use(function(err, req, res, next) {

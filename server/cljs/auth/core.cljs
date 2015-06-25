@@ -15,9 +15,18 @@
 (def jwt #js {:sign (.-sign jsonwebtoken)
               :verify (.nbind Q (.-verify jsonwebtoken) jsonwebtoken)})
 
-(defn dummy [req res next]
-  (set! (.-username req) "therealest")
-  (next))
+(defn decodeToken [req res next]
+  (let [token (aget req "session" "token")]
+    (println "token:" token)
+    (if (nil? token)
+      (next)
+      (->
+        (.verify jwt token (.-key config) #js {:issuer (.-issuer config)})
+        (.then (fn [decoded]
+                 (println "decoded:" decoded)
+                 (aset req "username" (.-username decoded))))
+        (.then (fn [] (next)))
+        (.catch next)))))
 
 (defn register [req res next]
   (let [username (.. req -body -username)
@@ -49,8 +58,8 @@
                  (throw (js/Error. "Invalid password")))
                (.sign jwt #js {:username username}
                       (.-key config)
-                      #js {:expiresInMinutes (:expiresInMinutes config)
-                           :issuer (:issuer config)})))
+                      #js {:expiresInMinutes (.-expiresInMinutes config)
+                           :issuer (.-issuer config)})))
       (.then (fn [token]
                (aset req "session" "token" token)
                (.send res true)))
