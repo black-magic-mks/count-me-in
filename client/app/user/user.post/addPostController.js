@@ -3,6 +3,17 @@ angular.module('app')
 .controller('addPostController', function($scope, $http, $state) {
   $scope.loadingPost = false;
 
+  $scope.cancelPost = function() {
+    $state.go('user.dashboard');
+  };
+
+  $scope.fileChanged = function(event) {
+    var files = event.target.files;
+    console.log(files[0]);
+    var fileName = files[0].name;
+    $scope.fileName = fileName;
+  };
+  
   $scope.addPost = function() {
     var fd = new FormData();
     fd.append('title', $scope.post.title);
@@ -42,7 +53,7 @@ angular.module('app')
     .then(function(response) {
       upload(file, response.data.signed_request, response.data.url, function(url) {
         $scope.loadingPost = false;
-        $state.go('tab.user.post.view', {post_id: response.data.id});
+        $state.go('user.post.view', {post_id: response.data.id});
       })
     })
   }
