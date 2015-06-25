@@ -9,7 +9,11 @@ npm install -g grunt-cli
 brew install neo4j
 ```
 
-
+### After pulling run:
+npm install
+bower install
+grunt dev
+grunt serve
 
 ### Neo4j database
 
