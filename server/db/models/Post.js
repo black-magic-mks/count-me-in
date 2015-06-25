@@ -2,7 +2,7 @@ var db = require('seraph')();
 var Post = require('seraph-model')(db, 'Post');
 
 Post.schema = {
-  title: {type: String, max: 30, min: 1, required: true},
+  title: {type: String, required: true},
   aws_url: String,
   text: {type: String, trim: true}
 };
