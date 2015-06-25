@@ -1,18 +1,16 @@
 angular.module('app')
 
 .controller('addPostController', function($scope, $http, $state) {
+  $scope.loadingPost = false;
 
   $scope.addPost = function() {
     var fd = new FormData();
-    fd.append('file', $('.post-file')[0].files[0], 'image');
     fd.append('title', $scope.post.title);
     fd.append('text', $scope.post.text);
     fd.append('pledgeName', $scope.post.pledgeName);
 
     var file = document.getElementById("user-post-add").files[0];
-    console.log('file', file);
     var postData = {
-      username: 'mengel',
       title: $scope.post.title,
       text: $scope.post.text,
       pledgename: $scope.post.pledgeName,
@@ -35,6 +33,8 @@ angular.module('app')
       xhr.send(file)
     }
 
+    $scope.loadingPost = true;
+
     $http({
       method: 'POST',
       url: '/api/post/new',
@@ -43,7 +43,7 @@ angular.module('app')
     .then(function(response) {
       console.log('response is ', response);
       upload(file, response.data.signed_request, response.data.url, function(url) {
-        console.log('image is at: ', response.data);
+        $scope.loadingPost = false;
         $state.go('tab.user.post.view', {post_id: response.data.id});
       })
     })

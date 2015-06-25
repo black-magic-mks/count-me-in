@@ -8,8 +8,16 @@ var aws = require('aws-sdk');
 var awsCredentials = require('./amazonS3Config.js');
 
 var getPost = function(req, res, next) {
-  var postId = req.body.postId;
+  var postId;
+  
+  if (req.body.post_id) {
+    postId = req.body.post_id;
+  } else {
+    postId = req.query.post_id;
+  }
 
+  console.log('in getPost, postId: ', postId);
+  
   Post.read(postId)
   .then(function(post) {
     res.send(post);

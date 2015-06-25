@@ -1,31 +1,29 @@
 angular.module('app')
 
-.controller('viewPostController', function($scope, $http, $state, $stateParams) {
-  $scope.title = 'Dummy Title of Post';
-  $scope.awsUrl = 'https://s3.amazonaws.com/count-me-in-black-magic/mengel/1435174189372/Screenshot+2015-06-14+19.28.44.png';
+.controller('viewPostController', function($scope, $http, $state, $stateParams, viewPostFunc) {
+  viewPostFunc.getPost($stateParams.post_id, function(postData) {
+    $scope.title = postData.title;
+    $scope.awsUrl = postData.aws_url;
+    $scope.created = postData.created;
+  });
+})
 
-  console.log('state params: ', $stateParams);
-  // feedFunc.getPost($stateParams.post_id, function(data) {
-  //   console.log('post data: ', data);
-  // });
+.factory('viewPostFunc', function($http) {
 
-});
-
-// .factory('viewPostFunc', function($http) {
-
-//   var getPost = function(post_id) {
-//     $http.get('/api/user/pledges', {
-//       params: {post_id: post_id}
-//     })
-//     .success(function(data, status, headers, config) {
-//       callback(data);
-//     })
-//     .error(function(data, status, headers, config) {
-//       console.log('error with get request for api/user/pledges');
-//     });
-//   };
+  var getPost = function(post_id, callback) {
+    console.log('in viewPostFunc, post_id: ', post_id);
+    $http.get('/api/post', {
+      params: {post_id: post_id}
+    })
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error with get request for api/post');
+    });
+  };
   
-//   return {
-//     getPost: getPost
-//   }
-// })
+  return {
+    getPost: getPost
+  }
+})
