@@ -1,25 +1,26 @@
-<ion-view>
-  <ion-content class="login">
-    <div>
-      <h1 class="login-title">Login</h1>
-      <form name="loginForm">
-          <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="6" required>
-          <input name="password" type="text" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
-      </form>
+<div class="nav">
+  <a ui-sref="user.dashboard"><i class="fa fa-dashboard fa-2x"></i></a>
+  <a ui-sref="login"><i class="fa fa-toggle-on fa-2x"></i></a>
+  <a ui-sref="signup"><i class="fa fa-user-plus fa-2x"></i></a>
+</div>
+<div>
+  <h1 class="login-title">Login</h1>
+  <form name="loginForm">
+      <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="6" required>
+      <input name="password" type="text" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
+  </form>
 
-        <div ng-show='loginForm.username.$error.required || loginForm.password.$error.required'>
-          <h3 class="login-text">Username and Password Required</h3>
-        </div>
-        <div ng-show='loginForm.username.$error.minlength || loginForm.password.$error.minlength'>
-          <h3 class="login-text">Username and Password Must Be At Least 6 Characters</h3>
-        </div>
-        <div ng-show='loginForm.password.$error.pattern'>
-          <h3 class="login-text">Password Must Contain Both A Number and A Capital Letter</h3>
-        </div>
-          
-        <a ui-sref='tab.signup'>Create an account</a>
-      </div>
+    <div ng-show='loginForm.username.$error.required || loginForm.password.$error.required'>
+      <h3 class="login-text">Username and Password Required</h3>
     </div>
-  </ion-content>
-</ion-view>
+    <div ng-show='loginForm.username.$error.minlength || loginForm.password.$error.minlength'>
+      <h3 class="login-text">Username and Password Must Be At Least 6 Characters</h3>
+    </div>
+    <div ng-show='loginForm.password.$error.pattern'>
+      <h3 class="login-text">Password Must Contain Both A Number and A Capital Letter</h3>
+    </div>
+      
+    <a ui-sref='tab.signup'>Create an account</a>
+  </div>
+</div>
 

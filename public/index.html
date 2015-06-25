@@ -2,12 +2,11 @@
 <html ng-app="app">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-
   <title>Count Me In</title>
-  <link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
   <link rel="stylesheet" type="text/css" href="/main.css">
-  <script src="/bower_components/ionic/release/js/ionic.bundle.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/bower_components/components-font-awesome/css/font-awesome.css">
+  <script src="/bower_components/angular/angular.min.js"></script>
+  
   <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
   <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
@@ -19,14 +18,18 @@
 
 </head>
   <body ng-controller="MainController">
+    <div class="nav">
+      <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
+      <a ui-sref="user.post.add">
+        <span class="fa-stack fa-lg">
+          <i class="fa fa-circle-o-notch fa-spin fa-stack-2x"></i>
+          <i class="fa fa-plus fa-stack-1x"></i>
+        </span>
+      </a>
+      <a ui-sref="user.dashboard"><i class="fa fa-user fa-2x"></i></a>
+    </div>
 
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-icon icon ion-chevron-left">
-      </ion-nav-back-button>
-    </ion-nav-bar>
+    <div ui-view></div>
 
-    <ion-nav-view></ion-nav-view>
   </body>
 </html>
-
-
