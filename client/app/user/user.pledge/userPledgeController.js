@@ -1,7 +1,11 @@
 angular.module('app')
 
-.controller('UserPledgeController', function($scope, UserPledgeFactory) {
-  $scope.userPledgePosts = UserPledgeFactory.getUserPledgeData();
+.controller('UserPledgeController', function($scope, $stateParams, UserPledgeFactory) {
+  UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
+    $scope.userPledgePosts = pledgeData.data;
+
+  });
+  $scope.pledgename = $stateParams.pledgename;
 })
 .factory('UserPledgeFactory', function($http, $stateParams) {
   var getUserPledgeData = function() {
