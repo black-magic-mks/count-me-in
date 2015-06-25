@@ -7,8 +7,17 @@ var Q = require('q');
 var aws = require('aws-sdk');
 var awsCredentials = require('./amazonS3Config.js');
 
+var getPost = function(req, res, next) {
+  var postId = req.body.postId;
+
+  Post.read(postId)
+  .then(function(post) {
+    res.send(post);
+  })
+  .catch(next);
+};
+
 var createPost = function(req, res, next) {
-  
   var AWS_ACCESS_KEY = awsCredentials.AWS_ACCESS_KEY;
   var AWS_SECRET_KEY = awsCredentials.AWS_SECRET_KEY;
   var S3_BUCKET = awsCredentials.S3_BUCKET;
@@ -121,6 +130,7 @@ var likePost = function(req, res, next) {
 };
 
 module.exports = {
+  getPost: getPost,
   createPost: createPost,
   createComment: createComment,
   likePost: likePost
