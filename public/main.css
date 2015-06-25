@@ -154,3 +154,17 @@ img.coverImg {
 .nav .fa {
   color: #B2B2B2;
 }
+
+/* Add post */
+
+.addPostForm input[type="file"] {
+    display: none;
+}
+
+.post-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}
