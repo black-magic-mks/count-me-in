@@ -1,10 +1,10 @@
 <div class="feedPledgeDirective clearfix">
   <div class="postTopBar">
-    <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">{{post.username}}</h2>
+    <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">@{{post.username}}</h2>
     <p class="postDate left">{{post.date}}</p>
   </div>
 
-  <img src="{{post.image}}" height="400px" width="400px" />
+  <img src="{{post.aws_url}}" height="400px" width="400px" />
   <p>{{post.text}}</p>
   <button <a ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive">
   View Pledges

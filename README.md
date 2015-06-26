@@ -51,6 +51,7 @@ module.exports = {
 };
 ```
 
+The AWS credentials are available on this [Google Doc](https://docs.google.com/document/d/1TzxPP-hfm_p5H_gI3S8qP4N8m2JUzrTRPdNRZmJhWXQ/edit).
 
 
 
