@@ -1,0 +1,23 @@
+  <ion-tabs class="tabs-icon-top tabs-positive">
+    <ion-tab title="News Feed" icon="icon ion-social-rss" ui-sref="tab.feed.all">
+      <ion-nav-view name="tab-feed"></ion-nav-view>
+    </ion-tab>
+
+    <!-- TODO: add username based on auth -->
+    <ion-tab title="My Profile" icon="icon ion-ios-person" ui-sref="tab.user.dashboard">
+      <ion-nav-view name="tab-user"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="Sign Out" icon="ion-log-out" ui-sref="tab.login">
+      <ion-nav-view name="tab-login"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab hidden="true" title="Sign Up" icon="ion-log-out" ui-sref="tab.signup">
+      <ion-nav-view name="tab-signup"></ion-nav-view>
+    </ion-tab>
+    
+    <ion-tab title="New Post" icon="icon ion-ios-plus" ui-sref="tab.user.post.add">
+      <ion-nav-view name="tab-user"></ion-nav-view>
+    </ion-tab>
+
+  </ion-tabs>

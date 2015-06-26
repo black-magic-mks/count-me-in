@@ -1,0 +1,24 @@
+<div class="nav">
+  <a ui-sref="user.dashboard"><i class="fa fa-dashboard fa-2x"></i></a>
+  <a ui-sref="login"><i class="fa fa-toggle-on fa-2x"></i></a>
+  <a ui-sref="signup"><i class="fa fa-user-plus fa-2x"></i></a>
+</div>
+<div>
+  <h1 class="login-title">Login</h1>
+  <form name="loginForm" ng-submit="logIn(user)">
+      <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="4" required>
+      <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
+      <input type="submit" value="Submit">
+  </form>
+  <button ng-click="logOut()">Log Out</button>
+    <div ng-show='(loginForm.username.$dirty && submitted) && loginForm.username.$error.minlength'>
+      <h3 class="signup-text">Username Is At Least 4 Characters</h3>
+    </div>
+    <div ng-show='(loginForm.password.$dirty && submitted) && loginForm.password.$error.minlength'>
+      <h3 class="signup-text">Password Is At Least 6 Characters And Contains Both A Number and A Capital Letter</h3>
+    </div>
+
+    <a ui-sref='tab.signup'>Create an account</a>
+  </div>
+</div>
+

@@ -1,0 +1,19 @@
+<div class="feedPledgeDirective clearfix">
+  <div class="postTopBar">
+    <!-- TODO: replace dummy data 'playpiano' with actual db data -->
+    <h2 ui-sref="tab.user.pledge({pledgename:'playpiano'})" class="title username left">{{pledge.pledgename}}</h2>
+    <p class="pledgeMission left">{{pledge.mission}}</p>
+  </div>
+  <div class="pledgePreview">
+    <img class="coverImg" ng-src="{{pledge.coverimage}}" />
+    <div class="pledgePreviewDescBar clearfix">
+      <div class="imgThumbs left">
+        <img src="{{thumbnail}}" ng-repeat="thumbnail in pledge.images"/>
+      </div>
+      <div class="textDesc left"> {{pledge.lastpost}}
+      </div>
+    </div>
+    <button ui-sref="tab.user.pledge({pledgename: 'playpiano'})" class="left button button-small button-positive">View All</button>
+  </div>  
+</div>
+  

@@ -1,0 +1,10 @@
+<ion-view title="Pledge">
+  <ion-content class="has-header padding">
+    <h1>{{graphData.name}}</h1>
+    <button ng-if="$root.loggedIn" ng-click="modal.show()" class="button button-small button-positive">
+      Join
+    </button>
+    <hr />
+    <pledge-post ng-repeat="post in graphData.posts" post="post"></pledge-post>
+  </ion-content>
+</ion-view>

@@ -1,0 +1,156 @@
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+  }
+* html .clearfix             { zoom: 1; } /* IE6 */
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+a, h1, h2 {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.left {
+  float:left;
+}
+
+.right {
+  float:right;
+}
+
+button {
+  margin: 5px 0 !important;
+}
+
+ion-content {
+  max-width:800px;
+  margin: 0 auto;
+}
+
+.feedPledgeDirective {
+  margin: 25px 0;
+}
+
+.feedPledge.item:last-child {
+  border-bottom:none;
+} 
+
+.directiveHeader {
+  border-bottom: 1px solid #888;
+  padding: 0 0 0px 0;
+}
+
+.directiveHeader > h1{
+  font-size: 1.5em;
+}
+
+h2.username {
+  font-size: 1.2em;
+  font-weight:bold;
+}
+
+.postTopBar {
+  width:100%;
+}
+
+.postTopBar > .username {
+  width:60%;
+}
+
+.postTopBar > .postDate {
+  width:40%;
+  text-align: right;
+}
+
+.directiveHeader h1 {
+  width:70%;
+}
+
+.directiveHeader > div.left {
+  width:30%;
+}
+
+.postTopBar button {
+  position:relative;
+  bottom:10px;
+}
+
+.pledgeMission {
+  width: 100%;
+}
+
+p.pledgeMission {
+  font-size: 1.2em;
+  padding: 0px 0 7px 0;
+}
+
+.feedImages {
+  width:100%;
+}
+
+.feedImages img {
+  margin-right:10px;
+  border: 1px solid #ccc;
+}
+
+img.coverImg {
+  width: 100%;
+}
+
+.pledgePreviewDescBar {
+  width:100%;
+}
+
+.pledgePreviewDescBar .imgThumbs {
+  max-width:50%;
+}
+
+.pledgePreviewDescBar > .imgThumbs > img {
+  margin: 5px 10px 5px 0;
+  max-width:100px;
+  max-height:100px;
+}
+
+.pledgePreviewDescBar .textDesc {
+  max-width: 50%;
+}
+
+.feedPledgeDirective .postDay{
+  width:100%;
+}
+
+.feedPledgeDirective h4 {
+  font-size: 1.5em;
+}
+
+.feedPledgeDirective .pledgePostDesc{
+  width:100%;
+}
+
+.feedPledgeDirective > .pledgePostImg {
+  max-width: 60%;
+}
+
+.feedPledgeDirective > .pledgePost {
+  max-width:40%;
+}
+
+.feedPledgeDirective > img {
+  margin: 0 10px 0 0;
+}
+
+/* Navigation bar*/
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #0A0D0F;
+}
+
+.nav .fa {
+  color: #B2B2B2;
+}
