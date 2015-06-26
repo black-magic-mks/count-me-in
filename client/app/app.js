@@ -1,64 +1,88 @@
 angular.module('app', [
   'ui.router',
+  'ionic',
   'ngFileUpload'
 ])
 
 .config(function($stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/all');
+  $urlRouterProvider.otherwise('/feed/all');
 
   $stateProvider
-    .state('feed', {
+    .state('tab', {
       url: '',
-      templateUrl: '/views/feed.html',
+      abstract: true,
+      templateUrl: 'views/tabs.html'
     })
-    .state('feed.all', {
+    .state('tab.feed', {
+      url: '/feed',
+      views: {
+        'tab-feed': {
+          templateUrl: '/views/feed.html',
+          controller: 'FeedController'
+        }
+      }
+    })
+    .state('tab.feed.all', {
       url: '/all',
       templateUrl: '/views/feed.all.html',
       controller: 'FeedController'
     })
-    .state('feed.pledge', {
+    .state('tab.feed.pledge', {
       url: '/pledge',
       templateUrl: '/views/feed.pledge.html',
       controller: 'FeedController'
     })
-    .state('user', {
+
+    .state('tab.user', {
       url: '/user/:username',
-      templateUrl: '/views/user.html',
-      controller: 'UserController'
+      views: {
+        'tab-user': {
+          templateUrl: '/views/user.html',
+          controller: 'UserController'
+        }
+      }
     })
-    .state('user.dashboard', {
+    .state('tab.user.dashboard', {
       url: '/dashboard',
       templateUrl: '/views/user.dashboard.html'
     })
-    .state('user.post', {
+    .state('tab.user.post', {
       url: '/post',
       templateUrl: '/views/post.html',
     })
-    .state('user.post.add', {
+    .state('tab.user.post.add', {
       url: '/new',
       templateUrl: '/views/post.add.html',
       controller: 'addPostController'
     })
-    .state('user.post.view', {
+    .state('tab.user.post.view', {
       url: '/:post_id',
       templateUrl: '/views/post.view.html',
       controller: 'viewPostController'
     })
-    .state('user.pledge', {
+    .state('tab.user.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/user.pledge.html',
       controller: 'UserPledgeController'
     })
-    .state('login', {
+    .state('tab.login', {
       url: '/login',
-      templateUrl: '/views/login.html',
-      controller: 'AuthController'
+      views: {
+        'tab-login': {
+          templateUrl: '/views/login.html',
+          controller: 'AuthController'
+        }
+      }
     })
 
-    .state('signup', {
+    .state('tab.signup', {
       url: '/signup',
-      templateUrl: '/views/signup.html',
-      controller: 'AuthController'
+      views: {
+        'tab-signup': {
+          templateUrl: '/views/signup.html',
+          controller: 'AuthController'
+        }
+      }
     })
 })
 
