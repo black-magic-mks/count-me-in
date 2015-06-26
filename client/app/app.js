@@ -7,7 +7,7 @@ angular.module('app', [
   $urlRouterProvider.otherwise('/all');
 
   $stateProvider
-    .state('feed', {
+    .state('tab.feed', {
       url: '',
       templateUrl: '/views/feed.html',
     })
