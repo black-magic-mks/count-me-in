@@ -7,16 +7,16 @@
   <div>
     <h1 class="signup-title">Create an Account</h1>
     <form ng-submit="register(user)" name="signupForm">
-      <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="1" required>
-      <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="1" ng-pattern="passwordValidation" required>
+      <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="4" required>
+      <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
       <input type="submit" value="Submit">
     </form>
 
-    <div ng-show='(signupForm.username.$dirty && submitted) && (signupForm.username.$error.minlength || signupForm.password.$error.minlength)'>
-      <h3 class="login-text">Username and Password Must Be At Least 6 Characters</h3>
+    <div ng-show='(signupForm.username.$dirty && submitted) && signupForm.username.$error.minlength'>
+      <h3 class="signup-text">Username Must Be At Least 4 Characters</h3>
     </div>
-    <div ng-show='(signupForm.password.$dirty && submitted)'>
-      <h3 class="login-text">Password Must Contain Both A Number and A Capital Letter</h3>
+    <div ng-show='(signupForm.password.$dirty && submitted) && signupForm.password.$error.minlength'>
+      <h3 class="signup-text">Password Must Be At Least 6 Characters And Contains Both A Number and A Capital Letter</h3>
     </div>
     <a ui-sref="tab.login">Already have an account? Login</a>
   </div>
