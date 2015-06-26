@@ -24,6 +24,10 @@ angular.module('app')
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
   angular.extend($scope, Auth);
+  $scope.register = function(user) {
+    Auth.register(user);
+    $scope.submitted = true;
+  }
 })
 
 .factory('Auth', function($http, $state) {
@@ -35,7 +39,8 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      $state.go('tab.feed');
+      console.log(res)
+      // $state.go('tab.feed');
     })
     .catch(function(err) {
       console.error(err);
@@ -67,7 +72,8 @@ angular.module('app')
       url: '/api/auth/logout'
     })
     .then(function(res) {
-      $state.go('tab.feed');
+      console.log(res);
+      // $state.go('tab.feed');
     })
     .catch(function(err) {
       console.error(err);
