@@ -8,7 +8,7 @@
   <button <a ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive">
   View all @{{post.username}}'s posts
   </button>
-  <form ng-submit="usercomment()">
+  <form ng-submit="usercomment(post.id, commentText)">
     <input form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="4" cols="50">Comments...</input>
     <button class="button" type="submit">Post Comment</button>
   </form>

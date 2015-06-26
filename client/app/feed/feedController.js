@@ -1,34 +1,30 @@
 angular.module('app')
 
 .controller('FeedController', function($scope, $ionicModal, feedFunc) {
-  // angular.extend($scope, feedFunc);
+  $scope.currentUser;
   $scope.pledgeCategories = [];
   $scope.pledgeCatObj = {};
   $scope.pledgeCatObj.postList = [];
   $scope.tempObj = {};
-
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  $scope.tests = 'moni';
-  $scope.postComment = feedFunc.postComment;
+  $scope.comments = [{username: 'mengel', text: 'keep up the great work!'}];
+  $scope.commentsObj = {};
 
-  $scope.usercomment = function() {
-    console.log('feedFunc.postComment', feedFunc.postComment);
-    console.log('sfeedFunc.getFollowedPledges', feedFunc.getFollowedPledges);
-    // $scope.postComment();
+  //need to get all comments associated with postId
+
+  $scope.usercomment = function(postId, text) {      
+    feedFunc.postComment(postId, text, function(data) {
+      $scope.commentsObj.text = text;
+      $scope.commentsObj.username = $scope.currentUser;
+      $scope.comments.push($scope.commentsObj);
+      console.log('comments array: ', $scope.comments);
+    });
   };
 
-  $scope.comments = [{
-      username: 'david',
-      date: '5/8',
-      text: 'Keep up the great work!'
-    },
-    {
-      username: 'david',
-      date: '5/8',
-      text: 'Keep up the great work!'
-  }
-  ];
+  feedFunc.getCurrentUser(function(data){
+    $scope.currentUser = data.username;
+  });
 
   feedFunc.getFollowedPledges('mengel', function(data) {
     data.forEach(function(pledge) {
@@ -44,9 +40,7 @@ angular.module('app')
         })
 
         $scope.pledgeCatObj.postList.push($scope.tempObj);
-        $scope.pledgeCategories.push($scope.pledgeCatObj);
-        console.log('pledgecat', $scope.pledgeCategories);
-      
+        $scope.pledgeCategories.push($scope.pledgeCatObj);      
       })
     })
   });
@@ -66,11 +60,16 @@ angular.module('app')
   $scope.saveMission = function() {
     $scope.modal.hide();
   };
-
-
 })
 
 .factory('feedFunc', function($http) {
+
+  var getCurrentUser = function(callback) {
+    $http.get('/api/user')
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+  };
 
   var getFollowedPledges = function(username, callback) {
     $http.get('/api/user/pledges', {
@@ -104,26 +103,25 @@ angular.module('app')
       callback(data);
 
     }).error(function(data, status, headers, config) {
-      console.log('error with request');
+      console.log('error getting pledge: ', data, status, headers, config);
     });
   };
 
-  var postComment = function(pledgename, callback) {
-    $http.get('/api/pledge/posts', {
-      params: {pledgename: pledgename}
-    })
+  var postComment = function(postId, text, callback) {
+    $http.post('/api/post/comment', { post_id: postId, text: text} )
     .success(function(data, status, headers, config) {
       callback(data);
-
     }).error(function(data, status, headers, config) {
-      console.log('error with request');
+      console.log('error posting comment: ', data, status, headers, config);
     });
   };
 
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
-    getPledgeView: getPledgeView
+    getPledgeView: getPledgeView,
+    postComment: postComment,
+    getCurrentUser: getCurrentUser
   };
 });
 
