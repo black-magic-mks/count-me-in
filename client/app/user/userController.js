@@ -2,7 +2,7 @@ angular.module('app')
 
 .controller('UserController', function($scope, userFunc, follow) {
   $scope.pledgePreview = [];
-  $scope.followerArray = [];
+  $scope.followingList = [];
 
   userFunc.getUser(null, function(data) {
     $scope.username = data.username;
@@ -14,8 +14,8 @@ angular.module('app')
 
   $scope.addFollower = function() {
     follow.followUser($scope.username, function(data) {
-      $scope.followerArray = $scope.followerArray.concat (data);
-      console.log('followerArray: ', data, $scope.followerArray);
+      $scope.followingList = $scope.followingList.push (data);
+      console.log('followingList: ', data, $scope.followingList);
     });
   };
 })
