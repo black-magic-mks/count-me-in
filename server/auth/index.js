@@ -1,4 +1,3 @@
-module.exports = function(req, res, next) {
-  req.username = 'therealest';
-  next();
-};
+require('./auth.js');
+
+module.exports = auth.core;

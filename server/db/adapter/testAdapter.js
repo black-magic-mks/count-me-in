@@ -3,13 +3,14 @@ var Q = require('q');
 var query = Q.nbind(db.query,db);
 
 var clearData = function(req, res, next) {
-  var cypher = [
-    'MATCH (n), ()-[r]->()',
-    'DELETE r, n'
-  ].join(' ');
+  var cypherRels = 'MATCH ()-[r]->() DELETE r';
+  var cypherNodes = 'MATCH (n) DELETE n';
 
-  query(cypher)
-  .then(function(result) {
+  query(cypherRels)
+  .then(function(){
+    return query(cypherNodes);
+  })
+  .then(function() {
     res.send('Removed all data from database');
   })
   .catch(next);

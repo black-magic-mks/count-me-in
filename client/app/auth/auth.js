@@ -60,8 +60,7 @@ angular.module('app')
   var logOut = function() {
     return $http({
       method: 'POST',
-      url: '/api/auth/logout',
-      data: user
+      url: '/api/auth/logout'
     })
     .then(function(res) {
       // $rootScope.loggedIn = false;
@@ -77,8 +76,7 @@ angular.module('app')
   var isLoggedIn = function() {
     return $http({
       method: 'GET',
-      url: '/api/auth/authorized',
-      data: user
+      url: '/api/auth/authorized'
     })
     .then(function(res) {
       // $rootScope.loggedIn = true;
