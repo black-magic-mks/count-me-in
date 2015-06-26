@@ -8,10 +8,9 @@ angular.module('app')
   $scope.tempObj = {};
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  $scope.comments = [{username: 'mengel', text: 'keep up the great work!'}];
+  $scope.comments = [];
   $scope.commentsObj = {};
 
-  //need to get all comments associated with postId
 
   $scope.usercomment = function(postId, text) {      
     feedFunc.postComment(postId, text, function(data) {
@@ -23,6 +22,7 @@ angular.module('app')
   };
 
   feedFunc.getCurrentUser(function(data){
+    console.log('data from getCurrentUser', data);
     $scope.currentUser = data.username;
   });
 
@@ -67,7 +67,11 @@ angular.module('app')
   var getCurrentUser = function(callback) {
     $http.get('/api/user')
     .success(function(data, status, headers, config) {
+      console.log('got user');
       callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error getting current user: ', data, status, headers, config);
     })
   };
 
@@ -114,6 +118,15 @@ angular.module('app')
     }).error(function(data, status, headers, config) {
       console.log('error posting comment: ', data, status, headers, config);
     });
+  };
+
+  var getPostComments = function(postId, callback) {
+    $http.get('', {post_id: postId} )
+    .success(function(data, status, headers, config) {
+      callback(data);
+    }).error(function(data, status, headers, config) {
+      console.log('error getting post comments', data, status, headers, config);
+    })
   };
 
   return {
