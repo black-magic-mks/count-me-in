@@ -4,14 +4,10 @@ angular.module('app')
     restrict: 'E',
     scope: {
       pledgeName: '=',
-      pledgeList: '=',
-      'view': '&viewPledge'
+      pledgeList: '='
     },
     templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {
-        // scope.viewPledge = function() {
-        //   console.log('hello world');
-        // }
     }
   }
 })

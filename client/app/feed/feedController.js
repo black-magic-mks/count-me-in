@@ -9,6 +9,26 @@ angular.module('app')
 
   $scope.graphData = {};
   $scope.graphData.posts = [];
+  $scope.tests = 'moni';
+  $scope.postComment = feedFunc.postComment;
+
+  $scope.usercomment = function() {
+    console.log('feedFunc.postComment', feedFunc.postComment);
+    console.log('sfeedFunc.getFollowedPledges', feedFunc.getFollowedPledges);
+    // $scope.postComment();
+  };
+
+  $scope.comments = [{
+      username: 'david',
+      date: '5/8',
+      text: 'Keep up the great work!'
+    },
+    {
+      username: 'david',
+      date: '5/8',
+      text: 'Keep up the great work!'
+  }
+  ];
 
   feedFunc.getFollowedPledges('mengel', function(data) {
     data.forEach(function(pledge) {
@@ -47,11 +67,7 @@ angular.module('app')
     $scope.modal.hide();
   };
 
-  $scope.viewPledge = function() {
-    //pass in clicked element
-    // feedFunc.getPledgeView();
-    // console.log('viewPledge running');
-  };
+
 })
 
 .factory('feedFunc', function($http) {
@@ -92,15 +108,16 @@ angular.module('app')
     });
   };
 
-  var submitComment = function(comment, callback) {
-    // check inputs
-    $http.post('/api/post/comment', {postId, text, username})
-      .success(function(postedComment) {
-        callback(postedComment);
-      })
-      .error(function(err) {
-        console.log('The comment was not posted: ', err);
-      }) 
+  var postComment = function(pledgename, callback) {
+    $http.get('/api/pledge/posts', {
+      params: {pledgename: pledgename}
+    })
+    .success(function(data, status, headers, config) {
+      callback(data);
+
+    }).error(function(data, status, headers, config) {
+      console.log('error with request');
+    });
   };
 
   return {

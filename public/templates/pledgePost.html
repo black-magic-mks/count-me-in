@@ -3,15 +3,15 @@
     <h2 ui-sref="tab.user.dashboard({username: 'nathan'})" class="title username left">@{{post.username}}</h2>
     <p class="postDate left">{{post.date}}</p>
   </div>
-
   <img src="{{post.aws_url}}" height="400px" width="400px" />
   <p>{{post.text}}</p>
   <button <a ui-sref="tab.user.pledge({username: 'mangle', pledgename: 'playpiano'})" class="button button-small button-positive">
   View all @{{post.username}}'s posts
   </button>
-
-  <form id="commentForm">
-    <textarea form="commentForm" style="border:1px solid #ccc" rows="4" cols="50">Comments...</textarea>
-    <input type="submit"/>
+  <form ng-submit="usercomment()">
+    <input form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="4" cols="50">Comments...</input>
+    <button class="button" type="submit">Post Comment</button>
   </form>
+
+  <post-comment ng-repeat="comment in comments" username="comment.username" date="comment.date" text="comment.text"></post-comment>
 </div>

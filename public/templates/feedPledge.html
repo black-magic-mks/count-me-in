@@ -1,6 +1,7 @@
 <div class="item item-text-wrap">
   <div class="directiveHeader">
-    <h1> <a ui-sref="tab.feed.pledge" ng-click="view()">#{{pledgeName}}</a> </h1>
+    <h1> <a ui-sref="tab.feed.pledge" ng-click="view()">#a{{pledgeName}}</a> </h1>
   </div>
+  {{test}}
   <feed-pledge-post ng-repeat="pledgePost in pledgeList" username="pledgePost.username" mission="pledgePost.mission" pledge-post="pledgePost.aws_url" date="pledgePost.date" view-pledge="viewPledge()"/>
 </div>
