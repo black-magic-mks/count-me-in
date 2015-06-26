@@ -7,6 +7,7 @@ Pledge to learn a hobby by tracking your progress through a community-based supp
 npm install -g karma-cli
 npm install -g grunt-cli
 brew install neo4j
+brew install leiningen
 ```
 
 
