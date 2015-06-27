@@ -12,53 +12,6 @@ angular.module('app')
   $scope.commentsObj = {};
   $scope.postId;
 
-  $scope.timeSince = function(date) {
-    var seconds = Math.floor((new Date() - date) / 1000);
-    var interval = Math.floor(seconds / 31536000);
-    if (interval > 1) {
-        return interval + " years";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
-  };
-
-  $scope.usercomment = function(postId, text) {      
-    feedFunc.postComment(postId, text, function(data) {
-      $scope.created = $scope.timeSince(data.created);
-      $scope.comments.push({text: text, username: $scope.currentUser, created: $scope.created});
-    });
-  };
-
-  $scope.getComments = function(pledgeName) {
-    feedFunc.getPledgePosts(pledgeName, function(data) {
-      data.forEach(function(post) {
-        feedFunc.getPostComments(post.id, function(data) {
-          data.forEach(function(comment) {
-            console.log('comment', comment);
-            comment.created = $scope.timeSince(comment.created);
-           $scope.comments.push(comment); 
-          });
-        });
-        console.log('$scope.comments :', $scope.comments); 
-      })
-    });
-  };
-
   feedFunc.getCurrentUser(function(data){
     $scope.currentUser = data.username;
   });
@@ -148,33 +101,10 @@ angular.module('app')
     });
   };
 
-  var postComment = function(postId, text, callback) {
-    $http.post('/api/post/comment', { post_id: postId, text: text} )
-    .success(function(data, status, headers, config) {
-      callback(data);
-    }).error(function(data, status, headers, config) {
-      console.log('error posting comment: ', data, status, headers, config);
-    });
-  };
-
-  var getPostComments = function(postId, callback) {
-    console.log('getting postComments, id: ', postId);
-    $http.get('/api/post/comments', {
-      params: {postId: postId} 
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-    }).error(function(data, status, headers, config) {
-      console.log('error getting post comments', data, status, headers, config);
-    })
-  };
-
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
     getPledgeView: getPledgeView,
-    postComment: postComment,
-    getCurrentUser: getCurrentUser,
-    getPostComments: getPostComments
+    getCurrentUser: getCurrentUser
   };
 });
