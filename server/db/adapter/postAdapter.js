@@ -3,22 +3,16 @@ var Post = models.Post;
 var User = models.User;
 var Pledge = models.Pledge;
 var Comment = models.Comment;
+
 var Q = require('q');
+var db = require('seraph')();
+var query = Q.nbind(db.query,db)
+
 var aws = require('aws-sdk');
 var awsCredentials = require('./amazonS3Config.js');
 
 var getPost = function(req, res, next) {
-  var postId;
-  
-  if (req.body.post_id) {
-    postId = req.body.post_id;
-  } else {
-    postId = req.query.post_id;
-  }
-
-  console.log('in getPost, postId: ', postId);
-  
-  Post.read(postId)
+  Post.read(req.body.postId)
   .then(function(post) {
     res.send(post);
   })
@@ -109,6 +103,17 @@ var createComment = function(req, res, next) {
   })
   .then(function(comment) {
     res.send(comment);
+  })
+  .catch(next);
+};
+
+var getPostComments = function(req, res, next) {
+  Post.read(req.body.postId)
+  .then(function(post) {
+    return Post.getRelatedTo(post,'WRITTEN_IN');
+  })
+  .then(function(comments) {
+    res.send(comments);
   })
   .catch(next);
 };
