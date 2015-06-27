@@ -49,18 +49,23 @@ angular.module('app')
   });
 
   feedFunc.getFollowedPledges('mengel', function(data) {
+    console.log('data1', data);
     data.forEach(function(pledge) {
+      console.log('pledge: ', pledge);
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){        
+        console.log('data: ', data);
         data.forEach(function(post) {
+          console.log('post: ', post);
           $scope.tempObj.date = data.created;
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
         })
         $scope.pledgeCatObj.postList.push($scope.tempObj);
-        $scope.pledgeCategories.push($scope.pledgeCatObj); 
+        $scope.pledgeCategories.push($scope.pledgeCatObj);
+        console.log('scope.pledgeCategories', $scope.pledgeCategories); 
       })
     })
   });
@@ -95,7 +100,6 @@ angular.module('app')
   var getCurrentUser = function(callback) {
     $http.get('/api/user')
     .success(function(data, status, headers, config) {
-      console.log('got user');
       callback(data);
     })
     .error(function(data, status, headers, config) {
