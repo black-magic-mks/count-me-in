@@ -38,12 +38,10 @@ angular.module('app')
       data.forEach(function(post) {
         commentRequests.getPostComments(post.id, function(data) {
           data.forEach(function(comment) {
-            console.log('comment', comment);
             comment.created = $scope.timeSince(comment.created);
            $scope.comments.push(comment); 
           });
         });
-        console.log('$scope.comments :', $scope.comments); 
       })
     });
   };
@@ -60,7 +58,6 @@ angular.module('app')
   };
 
   var getPostComments = function(postId, callback) {
-    console.log('getting postComments, id: ', postId);
     $http.get('/api/post/comments', {
       params: {postId: postId} 
     })
@@ -76,7 +73,6 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .success(function(data, status, headers, config) {
-      console.log('getPledgePosts', data);
       callback(data);
     })
     .error(function(data, status, headers, config) {

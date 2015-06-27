@@ -81,7 +81,6 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .success(function(data, status, headers, config) {
-      console.log('getPledgePosts', data);
       callback(data);
     })
     .error(function(data, status, headers, config) {
