@@ -25,12 +25,10 @@ angular.module('app', [
     .state('tab.feed.all', {
       url: '/all',
       templateUrl: '/views/feed.all.html',
-      controller: 'FeedController'
     })
     .state('tab.feed.pledge', {
       url: '/pledge',
       templateUrl: '/views/feed.pledge.html',
-      controller: 'FeedController'
     })
 
     .state('tab.user', {
