@@ -3,7 +3,8 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      post: '='
+      post: '=',
+      numPosts: '='
     },
     templateUrl: './templates/userPost.html',
     link: function(scope, element, attr) {

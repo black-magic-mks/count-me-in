@@ -1,7 +1,7 @@
 <div class="feedPledgeDirective clearfix">
   <div class="postTopBar">
     <!-- TODO: replace dummy data 'playpiano' with actual db data -->
-    <h2 ui-sref="tab.user.pledge({pledgename:'playpiano'})" class="title username left">{{pledge.pledgename}}</h2>
+    <h2 ui-sref="tab.user.pledge({pledgename:pledge.pledgename})" class="title username left">{{pledge.pledgename}}</h2>
     <p class="pledgeMission left">{{pledge.mission}}</p>
   </div>
   <div class="pledgePreview">
@@ -14,6 +14,6 @@
       </div>
     </div>
     <button ui-sref="tab.user.pledge({pledgename: 'playpiano'})" class="left button button-small button-positive">View All</button>
-  </div>  
+  </div>
 </div>
-  
+
