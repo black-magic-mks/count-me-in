@@ -1,20 +1,20 @@
 angular.module('app')
 
-.controller('UserController', function($scope, userFunc, follow) {
+.controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow) {
   $scope.pledgePreview = [];
   $scope.followingList = [];
 
-  userFunc.getUser(null, function(data) {
+  userFunc.getUser($stateParams.username, function(data) {
     $scope.username = data.username;
   });
-  userFunc.getUserPledges(null, function(data) {
-    $scope.pledgePreview = $scope.pledgePreview.concat (data);
+  userFunc.getUserPledges($stateParams.username, function(data) {
+    $scope.pledgePreview = $scope.pledgePreview.concat(data);
     console.log(data,$scope.pledgePreview);
   });
 
   $scope.addFollower = function() {
     follow.followUser($scope.username, function(data) {
-      $scope.followingList = $scope.followingList.push (data);
+      $scope.followingList = $scope.followingList.push(data);
       console.log('followingList: ', data, $scope.followingList);
     });
   };
