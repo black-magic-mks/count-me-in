@@ -14,6 +14,9 @@ var awsCredentials = require('./amazonS3Config.js');
 var getPost = function(req, res, next) {
   Post.read(req.body.postId)
   .then(function(post) {
+    return Post.addHasLiked(req.username, post);
+  })
+  .then(function(post) {
     res.send(post);
   })
   .catch(next);
@@ -136,8 +139,14 @@ var likePost = function(req, res, next) {
   .spread(function(user,post) {
     return User.relate(user,'LIKED',post);
   })
-  .then(function(like) {
-    res.send(like);
+  .then(function() {
+    return Post.read(postId);
+  })
+  .then(function(post) {
+    return Post.addHasLiked(req.username, post);
+  })
+  .then(function(post) {
+    res.send(post);
   })
   .catch(next);
 };
@@ -165,6 +174,9 @@ var unlikePost = function(req, res, next) {
   })
   .then(function() {
     return Post.read(req.body.postId);
+  })
+  .then(function(post) {
+    return Post.addHasLiked(req.username, post);
   })
   .then(function(post) {
     res.send(post);
