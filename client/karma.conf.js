@@ -17,6 +17,8 @@ module.exports = function(config) {
       '../public/bower_components/ionic/release/js/ionic.bundle.min.js',
       '../public/bower_components/angular-mocks/angular-mocks.js',
       '../public/bower_components/angular-ui-router/release/angular-ui-router.min.js',
+      '../public/bower_components/ng-file-upload/ng-file-upload-shim.js',
+      '../public/bower_components/ng-file-upload/ng-file-upload.js',
       '../node_modules/expect.js/index.js',
       'app/**/*.js',
       'specs/**/*.js'
