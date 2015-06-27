@@ -17,6 +17,28 @@ var getUser = function(req, res, next) {
   .catch(next);
 };
 
+var getUserPostRelatedMiddleware = function(relationship) {
+  return function(req, res, next) {
+    var username = req.body.username || req.username;
+
+    User.where({username: username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return User.getRelated(user[0], relationship);
+    })
+    .then(function(posts) {
+      return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
+    })
+    .then(function(posts) {
+      res.send(posts);
+    })
+    .catch(next);
+  };
+};
+
+var getUserPosts = getUserPostRelatedMiddleware('POSTED');
+var getUserLikes = getUserPostRelatedMiddleware('LIKED');
+
 var getUserRelatedMiddleware = function(relationship) {
   return function(req, res, next) {
     var username = req.body.username || req.username;
@@ -33,8 +55,6 @@ var getUserRelatedMiddleware = function(relationship) {
   };
 };
 
-var getUserPosts = getUserRelatedMiddleware('POSTED');
-var getUserLikes = getUserRelatedMiddleware('LIKED');
 var getUserPledges = getUserRelatedMiddleware('SUBSCRIBES_TO');
 var getUserComments = getUserRelatedMiddleware('WROTE');
 var getFollowingUsers = getUserRelatedMiddleware('FOLLOWS');

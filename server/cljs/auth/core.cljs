@@ -26,22 +26,6 @@
         (.then (fn [] (next)))
         (.catch next)))))
 
-(defn register [req res next]
-  (let [username (.. req -body -username)
-        password (.. req -body -password)]
-    (->
-      (.where User #js {:username username})
-      (.then (fn [user]
-               (when (> (count user) 0)
-                 (throw (js/Error. "User already exists")))
-               (.hash cred password)))
-      (.then (fn [hashed-pw]
-               (.save User #js {:username username
-                                :hashed_pw hashed-pw})))
-      (.then (fn [user]
-               (.send res (.-username user))))
-      (.catch next))))
-
 (defn login [req res next]
   (let [username (.. req -body -username)
         password (.. req -body -password)]
@@ -61,6 +45,22 @@
       (.then (fn [token]
                (aset req "session" "token" token)
                (.send res true)))
+      (.catch next))))
+
+(defn register [req res next]
+  (let [username (.. req -body -username)
+        password (.. req -body -password)]
+    (->
+      (.where User #js {:username username})
+      (.then (fn [user]
+               (when (> (count user) 0)
+                 (throw (js/Error. "User already exists")))
+               (.hash cred password)))
+      (.then (fn [hashed-pw]
+               (.save User #js {:username username
+                                :hashed_pw hashed-pw})))
+      (.then (fn [user]
+               (login req res next)))
       (.catch next))))
 
 (defn logout [req res next]
