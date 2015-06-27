@@ -55,8 +55,7 @@ angular.module('app')
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
-      feedFunc.getPledgePosts(pledge.pledgename, function(data){        
-        console.log('data: ', data);
+      feedFunc.getPledgePosts(pledge.pledgename, function(data){
         data.forEach(function(post) {
           console.log('post: ', post);
           $scope.tempObj.date = data.created;
@@ -65,7 +64,6 @@ angular.module('app')
         })
         $scope.pledgeCatObj.postList.push($scope.tempObj);
         $scope.pledgeCategories.push($scope.pledgeCatObj);
-        console.log('scope.pledgeCategories', $scope.pledgeCategories); 
       })
     })
   });
@@ -130,7 +128,7 @@ angular.module('app')
     .error(function(data, status, headers, config) {
       console.log('error with get request for api/pledge/posts', data, status, headers, config);
     });
-  }; 
+  };
 
   var getPledgeView = function(pledgename, callback) {
     $http.get('/api/pledge/posts', {
@@ -173,5 +171,3 @@ angular.module('app')
     getPostComments: getPostComments
   };
 });
-
- 
