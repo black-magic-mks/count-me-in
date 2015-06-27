@@ -3,12 +3,11 @@
     <h2 ui-sref="tab.user.dashboard({username: '{{username}}'})" class="title username left">@{{username}}</h2>
     <p class="postDate left">{{date}} ago</p>
   </div>
-  pledgename: {{pledgename}}
   <p class="pledgeMission left">Mission Statement: {{mission}}</p>
   <div class="feedImages clearfix">
     <img ng-src="{{awsurl}}" height="200px" width="200px" class="posts" />
   </div>
-   <button ui-sref="tab.user.pledge({username: '{{username}}', pledgename: '{{pledgeName}}'})" class="button button-small button-positive left">
+   <button ui-sref="tab.user.pledge({username: '{{username}}', pledgename: '{{pledgename}}'})" class="button button-small button-positive left">
     View {{username}}'s Posts
   </button>
 </div>
