@@ -28,7 +28,7 @@ angular.module('app', [
       controller: 'FeedController'
     })
     .state('tab.feed.pledge', {
-      url: '/pledge',
+      url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
       controller: 'FeedController'
     })
@@ -61,7 +61,7 @@ angular.module('app', [
       controller: 'viewPostController'
     })
     .state('tab.user.pledge', {
-      url: '/pledge/:pledgename',
+      url: '/:pledgename',
       templateUrl: '/views/user.pledge.html',
       controller: 'UserPledgeController'
     })
@@ -74,7 +74,6 @@ angular.module('app', [
         }
       }
     })
-
     .state('tab.signup', {
       url: '/signup',
       views: {
