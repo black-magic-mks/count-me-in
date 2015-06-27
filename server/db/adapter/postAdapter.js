@@ -124,7 +124,7 @@ var likePost = function(req, res, next) {
   Q.all([
     User.where({username: req.username})
     .then(function(user) {
-      if (user.length === 0) throw new Error('Username not found');
+      if (user.length === 0) throw new Error('User not logged in');
       return user[0];
     }),
     Post.read(postId)
@@ -142,9 +142,41 @@ var likePost = function(req, res, next) {
   .catch(next);
 };
 
+var unlikePost = function(req, res, next) {
+  User.where({username: req.username})
+  .then(function(user) {
+    if (user.length === 0) throw new Error('User not logged in');
+    return user[0];
+  })
+  .then(function(user) {
+    return query([
+      'MATCH (u)-[like:LIKED]->(p)',
+      'WHERE id(u)={user} AND id(p)={post}',
+      'RETURN like'
+    ].join(' '),
+    {
+      user: user.id,
+      post: parseInt(req.body.postId,10)
+    });
+  })
+  .then(function(like) {
+    if (like.length === 0) throw new Error('No like found for this post');
+    return User.rel.delete(like[0]);
+  })
+  .then(function() {
+    return Post.read(req.body.postId);
+  })
+  .then(function(post) {
+    res.send(post);
+  })
+  .catch(next);
+};
+
 module.exports = {
   getPost: getPost,
   createPost: createPost,
   createComment: createComment,
-  likePost: likePost
+  getPostComments: getPostComments,
+  likePost: likePost,
+  unlikePost: unlikePost
 };

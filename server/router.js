@@ -13,12 +13,14 @@ var routes = {
     '/user/posts': userAdapter.getUserPosts,
     '/user/likes': userAdapter.getUserLikes,
     '/user/pledges': userAdapter.getUserPledges,
+    //'/user/feed': userAdapter.getFeed,
     '/user/comments': userAdapter.getUserComments,
     '/user/following': userAdapter.getFollowingUsers,
     '/pledge': pledgeAdapter.getPledge,
     '/pledge/users': pledgeAdapter.getPledgeUsers,
     '/pledge/posts': pledgeAdapter.getPledgePosts,
     '/post': postAdapter.getPost,
+    '/post/comments': postAdapter.getPostComments,
     '/test/clear': testAdapter.clearData,
     '/test/fill': testAdapter.fillData
   },
@@ -31,7 +33,8 @@ var routes = {
     '/pledge/subscribe': pledgeAdapter.subscribeToPledge,
     '/post/new': postAdapter.createPost,
     '/post/comment': postAdapter.createComment,
-    '/post/like': postAdapter.likePost
+    '/post/like': postAdapter.likePost,
+    '/post/unlike': postAdapter.unlikePost
   }
 };
 
