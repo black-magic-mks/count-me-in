@@ -1,6 +1,6 @@
 var express = require('express');
 
-var authAdapter = require('./db/adapter/authAdapter');
+var authAdapter = require('./auth');
 var userAdapter = require('./db/adapter/userAdapter');
 var pledgeAdapter = require('./db/adapter/pledgeAdapter');
 var postAdapter = require('./db/adapter/postAdapter');
@@ -8,6 +8,7 @@ var testAdapter = require('./db/adapter/testAdapter');
 
 var routes = {
   'get': {
+    '/auth/authorized': authAdapter.authorize,
     '/user': userAdapter.getUser,
     '/user/posts': userAdapter.getUserPosts,
     '/user/likes': userAdapter.getUserLikes,

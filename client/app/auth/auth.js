@@ -3,21 +3,27 @@ angular.module('app')
 .run(function($state, $rootScope, Auth) {
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    Auth.isLoggedIn()
-    .then(function(authenticated) {
-      if (!authenticated) {
-        $rootScope.loggedIn = false;
-      } else {
-        $rootScope.loggedIn = true;
-      }
-    })
+    if ($state !== 'login' && $state !== 'signup') {
+      Auth.isLoggedIn()
+      .then(function(authenticated) {
+        if (authenticated) {
+          $rootScope.loggedIn = true;
+        } else {
+          $rootScope.loggedIn = false;
+        }
+      })
+    }
   })
 })
 
 .controller('AuthController', function($scope, $rootScope, $state, Auth) {
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
-  angular.extends($scope, Auth);
+  angular.extend($scope, Auth);
+  $scope.register = function(user) {
+    Auth.register(user);
+    $scope.submitted = true;
+  }
 })
 
 .factory('Auth', function($http, $state) {
@@ -29,11 +35,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      // $rootScope.loggedIn = true;
-      $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      // $rootScope.loggedIn = false;
+      $state.go('tab.logIn');
       console.error(err);
     });
   }
@@ -46,12 +51,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      // $rootScope.loggedIn = true;
-      $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      // $rootScope.loggedIn = false;
-      console.error(err);
+      $state.go('tab.signup')
     });
   }
 
@@ -60,15 +63,12 @@ angular.module('app')
   var logOut = function() {
     return $http({
       method: 'POST',
-      url: '/api/auth/logout',
-      data: user
+      url: '/api/auth/logout'
     })
     .then(function(res) {
-      // $rootScope.loggedIn = false;
-      $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      // $rootScope.loggedIn = true;
       console.error(err);
     });
   }
@@ -77,15 +77,13 @@ angular.module('app')
   var isLoggedIn = function() {
     return $http({
       method: 'GET',
-      url: '/api/auth/authorized',
-      data: user
+      url: '/api/auth/authorized'
     })
     .then(function(res) {
-      // $rootScope.loggedIn = true;
       return true;
     })
     .catch(function(err) {
-      // $rootScope.loggedIn = false;
+      console.log("Not logged in");
       return false;
     });
   }
