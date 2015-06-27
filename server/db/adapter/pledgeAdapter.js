@@ -62,6 +62,9 @@ var getPledgePosts = function(req, res, next) {
     return Pledge.getRelatedTo(pledge[0],'POSTED_IN');
   })
   .then(function(posts) {
+    return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
+  })
+  .then(function(posts) {
     res.send(posts);
   })
   .catch(next);

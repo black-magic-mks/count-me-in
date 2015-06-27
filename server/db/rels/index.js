@@ -36,7 +36,14 @@ var addRelMethods = function(model,seraphModel) {
   model.type = seraphModel.type;
 
   addGetRelated(model,seraphModel);
-  model.relate = Q.nbind(seraphModel.db.relate,seraphModel.db);
+  model.rel = {
+    create: Q.nbind(seraphModel.db.rel.create,seraphModel.db.rel),
+    read: Q.nbind(seraphModel.db.rel.read,seraphModel.db.rel),
+    update: Q.nbind(seraphModel.db.rel.update,seraphModel.db.rel),
+    delete: Q.nbind(seraphModel.db.rel.delete,seraphModel.db.rel),
+  };
+  model.relate = model.rel.create;
+  model.relationships = Q.nbind(seraphModel.db.relationships,seraphModel.db);
 
   return model;
 };
