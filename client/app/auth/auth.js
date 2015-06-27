@@ -4,7 +4,7 @@ angular.module('app')
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if ($state !== 'login' && $state !== 'signup') {
-      console.log("yo you're in login or signup")
+      console.log("state changed; you're not in login or signup")
       // Auth.isLoggedIn()
       // .then(function(authenticated) {
       //   if (!authenticated) {
@@ -39,10 +39,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      console.log(res)
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
+      $state.go('tab.logIn');
       console.error(err);
     });
   }
@@ -55,11 +55,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      console.log(res);
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      console.log("error in register")
+      $state.go('tab.signup')
       console.error(err);
     });
   }
@@ -72,8 +71,7 @@ angular.module('app')
       url: '/api/auth/logout'
     })
     .then(function(res) {
-      console.log(res);
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
       console.error(err);
