@@ -8,7 +8,7 @@ angular.module('app')
   $scope.tempObj = {};
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  $scope.comments = [{username: 'monica', text: 'great job', date: '3 days'}];
+  $scope.comments = [];
   $scope.commentsObj = {};
   $scope.postId;
 
@@ -39,8 +39,23 @@ angular.module('app')
 
   $scope.usercomment = function(postId, text) {      
     feedFunc.postComment(postId, text, function(data) {
-      $scope.date = $scope.timeSince(data.created);
-      $scope.comments.push({text: text, username: $scope.currentUser, date: $scope.date});
+      $scope.created = $scope.timeSince(data.created);
+      $scope.comments.push({text: text, username: $scope.currentUser, created: $scope.created});
+    });
+  };
+
+  $scope.getComments = function(pledgeName) {
+    feedFunc.getPledgePosts(pledgeName, function(data) {
+      data.forEach(function(post) {
+        feedFunc.getPostComments(post.id, function(data) {
+          data.forEach(function(comment) {
+            console.log('comment', comment);
+            comment.created = $scope.timeSince(comment.created);
+           $scope.comments.push(comment); 
+          });
+        });
+        console.log('$scope.comments :', $scope.comments); 
+      })
     });
   };
 
@@ -49,15 +64,12 @@ angular.module('app')
   });
 
   feedFunc.getFollowedPledges('mengel', function(data) {
-    console.log('data1', data);
     data.forEach(function(pledge) {
-      console.log('pledge: ', pledge);
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){
         data.forEach(function(post) {
-          console.log('post: ', post);
           $scope.tempObj.date = data.created;
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
@@ -75,12 +87,6 @@ angular.module('app')
       $scope.postId = post.id;  
       $scope.graphData.posts.push(post);
     })
-  });
-
-  feedFunc.getPostComments($scope.postId, function(data) {
-    data.forEach(function(comment) {
-      $scope.comments.push(comment);
-    });
   });
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -152,8 +158,9 @@ angular.module('app')
   };
 
   var getPostComments = function(postId, callback) {
+    console.log('getting postComments, id: ', postId);
     $http.get('/api/post/comments', {
-      params: {post_id: postId} 
+      params: {postId: postId} 
     })
     .success(function(data, status, headers, config) {
       callback(data);

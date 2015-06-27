@@ -4,7 +4,8 @@ angular.module('app')
     restrict: 'E',
     scope: {
       pledgeName: '=',
-      pledgeList: '='
+      pledgeList: '=',
+      getcomments: '='
     },
     templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {
