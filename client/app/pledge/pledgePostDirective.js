@@ -5,8 +5,6 @@ angular.module('app')
     scope: {
       post: '=',
       comments: '=',
-      postNewComment: '=',
-      test: '=',
       usercomment: '=',
       date: '=',
       pledgename: '='

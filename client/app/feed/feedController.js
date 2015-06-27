@@ -16,7 +16,7 @@ angular.module('app')
     $scope.currentUser = data.username;
   });
 
-  feedFunc.getFollowedPledges('mengel', function(data) {
+  feedFunc.getFollowedPledges($scope.currentUser, function(data) {
     data.forEach(function(pledge) {
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;

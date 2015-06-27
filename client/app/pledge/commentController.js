@@ -2,6 +2,7 @@ angular.module('app')
 
 .controller('CommentController', function($scope, $ionicModal, commentRequests) {
   $scope.timeSince = function(date) {
+    
     var seconds = Math.floor((new Date() - date) / 1000);
     var interval = Math.floor(seconds / 31536000);
     if (interval > 1) {
