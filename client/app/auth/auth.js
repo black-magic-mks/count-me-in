@@ -4,18 +4,14 @@ angular.module('app')
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
     if ($state !== 'login' && $state !== 'signup') {
-      console.log("yo you're in login or signup")
-      // Auth.isLoggedIn()
-      // .then(function(authenticated) {
-      //   if (!authenticated) {
-      //     $rootScope.loggedIn = false;
-      //   } else {
-      //     $rootScope.loggedIn = true;
-      //   }
-      // })
-      // .catch(function(err) {
-      //   console.log("hi");
-      // })
+      Auth.isLoggedIn()
+      .then(function(authenticated) {
+        if (authenticated) {
+          $rootScope.loggedIn = true;
+        } else {
+          $rootScope.loggedIn = false;
+        }
+      })
     }
   })
 })
@@ -39,10 +35,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      console.log(res)
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
+      $state.go('tab.logIn');
       console.error(err);
     });
   }
@@ -55,12 +51,10 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      console.log(res);
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      console.log("error in register")
-      console.error(err);
+      $state.go('tab.signup')
     });
   }
 
@@ -72,8 +66,7 @@ angular.module('app')
       url: '/api/auth/logout'
     })
     .then(function(res) {
-      console.log(res);
-      // $state.go('tab.feed');
+      $state.go('tab.feed.all');
     })
     .catch(function(err) {
       console.error(err);
@@ -90,6 +83,7 @@ angular.module('app')
       return true;
     })
     .catch(function(err) {
+      console.log("Not logged in");
       return false;
     });
   }
