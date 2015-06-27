@@ -2,12 +2,11 @@
   <div class="directiveHeader clearfix">  
     <h1 class="left"> <a ui-sref="tab.feed.pledge">#{{graphData.name}}</a> </h1>
     <div class="left">
-      {{test}}
       <button ng-click="modal.show()" class="button button-small button-positive right">
         Join
       </button>
     </div>
   </div>
-  <pledge-post ng-repeat="post in graphData.posts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment"></pledge-post>
+  <pledge-post ng-repeat="post in graphData.posts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="graphData.n"></pledge-post>
 </div>
 

@@ -6,7 +6,10 @@ angular.module('app')
       username: '=',
       mission: '=',
       pledgePost: '=',
-      date: '='    },
+      pledgeName: '=',
+      aws_url: '=',
+      date: '='    
+    },
     templateUrl: './templates/feedPledgePost.html',
     link: function(scope, element, attr) {
     }

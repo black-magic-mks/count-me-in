@@ -9,7 +9,6 @@ angular.module('app')
     },
     templateUrl: './templates/comment.html',
     link: function(scope, element, attr) {
-      console.log('scope', scope);
     }
   }
 })

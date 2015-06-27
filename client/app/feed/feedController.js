@@ -71,7 +71,6 @@ angular.module('app')
       $scope.graphData.date = data.created;
       $scope.postId = post.id;  
       $scope.graphData.posts.push(post);
-  console.log('post-id', $scope.postId);
     })
   });
 
