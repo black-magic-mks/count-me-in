@@ -2,7 +2,7 @@ angular.module('app')
 
 .controller('UserPledgeController', function($scope, UserPledgeFactory, subscribe) {
 
-  // TODO: replace null with pledgename the user is subscribing to
+  // TODO: replace null with pledgename the user is subscribing instead of null
   UserPledgeFactory.getUserPledgeData(null, function(data) {
     $scope.pledgename = data.pledgename;
   });
