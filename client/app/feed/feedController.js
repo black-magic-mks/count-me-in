@@ -8,15 +8,13 @@ angular.module('app')
   $scope.tempObj = {};
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  $scope.comments = [];
+  $scope.comments = [{username: 'monica', text: 'great job'}];
   $scope.commentsObj = {};
 
 
   $scope.usercomment = function(postId, text) {      
     feedFunc.postComment(postId, text, function(data) {
-      $scope.commentsObj.text = text;
-      $scope.commentsObj.username = $scope.currentUser;
-      $scope.comments.push($scope.commentsObj);
+      $scope.comments.push({text: text, username: $scope.currentUser});
       console.log('comments array: ', $scope.comments);
     });
   };
