@@ -17,7 +17,7 @@ angular.module('app')
       $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){
-        
+
         data.forEach(function(post) {
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
@@ -26,7 +26,7 @@ angular.module('app')
         $scope.pledgeCatObj.postList.push($scope.tempObj);
         $scope.pledgeCategories.push($scope.pledgeCatObj);
         console.log('pledgecat', $scope.pledgeCategories);
-      
+
       })
     })
   });
@@ -78,7 +78,7 @@ angular.module('app')
     .error(function(data, status, headers, config) {
       console.log('error with get request for api/pledge/posts', data, status, headers, config);
     });
-  }; 
+  };
 
   var getPledgeView = function(pledgename, callback) {
     $http.get('/api/pledge/posts', {
@@ -98,5 +98,3 @@ angular.module('app')
     getPledgeView: getPledgeView
   };
 });
-
- 

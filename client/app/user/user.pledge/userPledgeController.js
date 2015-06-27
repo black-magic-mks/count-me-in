@@ -1,34 +1,31 @@
 angular.module('app')
 
-.controller('UserPledgeController', function($scope, UserPledgeFactory, subscribe) {
+.controller('UserPledgeController', function($scope, $stateParams, UserPledgeFactory) {
+  UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
+    $scope.userPledgePosts = pledgeData.data;
 
-  // TODO: replace null with pledgename the user is subscribing instead of null
-  UserPledgeFactory.getUserPledgeData(null, function(data) {
-    $scope.pledgename = data.pledgename;
   });
-
-  $scope.subscribedPledges = [];
-
-  $scope.subscribePledge = function() {
-    subscribe.subscribeToPledge($scope.pledgename, function(data) {
-      $scope.subscribedPledges = $scope.subscribedPledges.push (data);
-      console.log('subscribedPledges: ', data, $scope.subscribedPledges);
-    });
-  };
+  $scope.pledgename = $stateParams.pledgename;
 })
-.factory('UserPledgeFactory', function($http) {
-  var getUserPledgeData = function(pledgename, callback) {
-    console.log('pledgename start of getUserPledgeData: ', pledgename);
-    $http.get('/api/pledge/posts', {pledgename: pledgename})
-    .success(function(data, status, headers, config) {
-      callback(data);
-      console.log('getUserPledgeData data: ', data);
+.factory('UserPledgeFactory', function($http, $stateParams) {
+  var getUserPledgeData = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/pledge/posts',
+      params: {pledgename: $stateParams.pledgename}
     })
-    .error(function(data, status, headers, config) {
-      console.log('THIS IS THE PLEDGENAME IN ERROR: ', pledgename);
-      console.log('error status with getUserPledgeData: ', status, data, headers, config);
-    });
-  };
+    .success(function(data) {
+      data = data.filter(function(postObj) {
+        return postObj.username === $stateParams.username;
+      }).sort(function(postObj1, postObj2) {
+        return postObj1.createdAt - postObj2.createdAt;
+      })
+      return data;
+    })
+    .catch(function(err) {
+      console.error(err);
+    })
+  }
 
   return {
     getUserPledgeData: getUserPledgeData
@@ -51,5 +48,5 @@ angular.module('app')
   return {
     subscribeToPledge: subscribeToPledge
   }
-
 });
+

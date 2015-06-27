@@ -23,16 +23,25 @@ module.exports = function(grunt) {
       unit: {
         configFile: 'client/karma.conf.js'
       }
+    },
+    shell: {
+      options: {
+        stderr: true
+      },
+      cljs: {
+        command: 'lein cljsbuild auto'
+      }
     }
-
   });
 
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-nodemon');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-shell');
 
   grunt.registerTask('dev', ['concat', 'watch']);
+  grunt.registerTask('cljs', ['shell:cljs']);
   grunt.registerTask('serve', ['nodemon']);
 
 };
