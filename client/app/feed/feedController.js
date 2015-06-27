@@ -8,37 +8,59 @@ angular.module('app')
   $scope.tempObj = {};
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  $scope.comments = [{username: 'monica', text: 'great job'}];
+  $scope.comments = [{username: 'monica', text: 'great job', date: '3 days'}];
   $scope.commentsObj = {};
+  $scope.postId;
 
+  $scope.timeSince = function(date) {
+    var seconds = Math.floor((new Date() - date) / 1000);
+    var interval = Math.floor(seconds / 31536000);
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  };
 
   $scope.usercomment = function(postId, text) {      
     feedFunc.postComment(postId, text, function(data) {
-      $scope.comments.push({text: text, username: $scope.currentUser});
-      console.log('comments array: ', $scope.comments);
+      $scope.date = $scope.timeSince(data.created);
+      $scope.comments.push({text: text, username: $scope.currentUser, date: $scope.date});
     });
   };
 
   feedFunc.getCurrentUser(function(data){
-    console.log('data from getCurrentUser', data);
     $scope.currentUser = data.username;
   });
 
   feedFunc.getFollowedPledges('mengel', function(data) {
     data.forEach(function(pledge) {
-
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
-      feedFunc.getPledgePosts(pledge.pledgename, function(data){
-        
+      feedFunc.getPledgePosts(pledge.pledgename, function(data){        
         data.forEach(function(post) {
+          $scope.tempObj.date = data.created;
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
         })
-
         $scope.pledgeCatObj.postList.push($scope.tempObj);
-        $scope.pledgeCategories.push($scope.pledgeCatObj);      
+        $scope.pledgeCategories.push($scope.pledgeCatObj); 
       })
     })
   });
@@ -46,8 +68,17 @@ angular.module('app')
   feedFunc.getPledgeView('piano', function(data) {
     data.forEach(function(post) {
       $scope.graphData.name = 'piano';
+      $scope.graphData.date = data.created;
+      $scope.postId = post.id;  
       $scope.graphData.posts.push(post);
+  console.log('post-id', $scope.postId);
     })
+  });
+
+  feedFunc.getPostComments($scope.postId, function(data) {
+    data.forEach(function(comment) {
+      $scope.comments.push(comment);
+    });
   });
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
@@ -90,6 +121,7 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .success(function(data, status, headers, config) {
+      console.log('getPledgePosts', data);
       callback(data);
     })
     .error(function(data, status, headers, config) {
@@ -119,7 +151,9 @@ angular.module('app')
   };
 
   var getPostComments = function(postId, callback) {
-    $http.get('', {post_id: postId} )
+    $http.get('/api/post/comments', {
+      params: {post_id: postId} 
+    })
     .success(function(data, status, headers, config) {
       callback(data);
     }).error(function(data, status, headers, config) {
@@ -132,7 +166,8 @@ angular.module('app')
     getPledgePosts: getPledgePosts,
     getPledgeView: getPledgeView,
     postComment: postComment,
-    getCurrentUser: getCurrentUser
+    getCurrentUser: getCurrentUser,
+    getPostComments: getPostComments
   };
 });
 
