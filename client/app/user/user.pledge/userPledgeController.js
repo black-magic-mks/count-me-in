@@ -1,11 +1,21 @@
 angular.module('app')
 
-.controller('UserPledgeController', function($scope, $stateParams, UserPledgeFactory) {
+.controller('UserPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
   UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
     $scope.userPledgePosts = pledgeData.data;
 
   });
+
   $scope.pledgename = $stateParams.pledgename;
+
+  $scope.subscribedPledges = [];
+
+  $scope.subscribePledge = function() {
+    subscribe.subscribeToPledge($scope.pledgename, function(data) {
+      $scope.subscribedPledges = $scope.subscribedPledges.push(data);
+      console.log('subscribedPledges: ', data, $scope.subscribedPledges);
+    });
+  };
 })
 .factory('UserPledgeFactory', function($http, $stateParams) {
   var getUserPledgeData = function() {
