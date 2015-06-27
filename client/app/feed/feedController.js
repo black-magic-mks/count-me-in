@@ -1,32 +1,34 @@
 angular.module('app')
 
 .controller('FeedController', function($scope, $ionicModal, feedFunc) {
-  // angular.extend($scope, feedFunc);
+  $scope.currentUser;
   $scope.pledgeCategories = [];
   $scope.pledgeCatObj = {};
   $scope.pledgeCatObj.postList = [];
   $scope.tempObj = {};
-
   $scope.graphData = {};
   $scope.graphData.posts = [];
+  $scope.comments = [];
+  $scope.commentsObj = {};
+  $scope.postId;
 
-  feedFunc.getFollowedPledges('mengel', function(data) {
+  feedFunc.getCurrentUser(function(data){
+    $scope.currentUser = data.username;
+  });
+
+  feedFunc.getFollowedPledges($scope.currentUser, function(data) {
     data.forEach(function(pledge) {
-
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){
-
         data.forEach(function(post) {
+          $scope.tempObj.date = data.created;
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
         })
-
         $scope.pledgeCatObj.postList.push($scope.tempObj);
         $scope.pledgeCategories.push($scope.pledgeCatObj);
-        console.log('pledgecat', $scope.pledgeCategories);
-
       })
     })
   });
@@ -34,6 +36,8 @@ angular.module('app')
   feedFunc.getPledgeView('piano', function(data) {
     data.forEach(function(post) {
       $scope.graphData.name = 'piano';
+      $scope.graphData.date = data.created;
+      $scope.postId = post.id;  
       $scope.graphData.posts.push(post);
     })
   });
@@ -46,15 +50,19 @@ angular.module('app')
   $scope.saveMission = function() {
     $scope.modal.hide();
   };
-
-  $scope.viewPledge = function() {
-    //pass in clicked element
-    // feedFunc.getPledgeView();
-    // console.log('viewPledge running');
-  };
 })
 
 .factory('feedFunc', function($http) {
+
+  var getCurrentUser = function(callback) {
+    $http.get('/api/user')
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error getting current user: ', data, status, headers, config);
+    })
+  };
 
   var getFollowedPledges = function(username, callback) {
     $http.get('/api/user/pledges', {
@@ -88,13 +96,14 @@ angular.module('app')
       callback(data);
 
     }).error(function(data, status, headers, config) {
-      console.log('error with request');
+      console.log('error getting pledge: ', data, status, headers, config);
     });
   };
 
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
-    getPledgeView: getPledgeView
+    getPledgeView: getPledgeView,
+    getCurrentUser: getCurrentUser
   };
 });

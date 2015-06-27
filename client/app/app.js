@@ -25,12 +25,12 @@ angular.module('app', [
     .state('tab.feed.all', {
       url: '/all',
       templateUrl: '/views/feed.all.html',
-      controller: 'FeedController'
+      controller: 'CommentController'
     })
     .state('tab.feed.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
-      controller: 'FeedController'
+      controller: 'CommentController'
     })
 
     .state('tab.user', {
@@ -87,4 +87,5 @@ angular.module('app', [
 
 .controller('MainController', function($scope) {
 
-});
+})
+

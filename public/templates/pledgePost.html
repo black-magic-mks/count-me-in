@@ -1,12 +1,15 @@
 <div class="feedPledgeDirective clearfix">
   <div class="postTopBar">
-    <h2 ui-sref="tab.user.dashboard({username: post.username})" class="title username left">@{{post.username}}</h2>
-    <p class="postDate left">{{post.date}}</p>
+    <h2 ui-sref="tab.user.dashboard({username: '{{post.username}}'})" class="title username left">@{{post.username}}</h2>
+    <p class="postDate left">{{post.date}} ago</p>
   </div>
-
-  <img src="{{post.aws_url}}" height="400px" width="400px" />
+  <img ng-src="{{post.aws_url}}" height="400px" width="400px" />
   <p>{{post.text}}</p>
-  <button <a ui-sref="tab.user.pledge({username: post.username, pledgename: pledgename})" class="button button-small button-positive">
-  View Pledges
+  <button <a ui-sref="tab.user.dashboard({username: '{{post.username}}'})" class="button button-small button-positive">
+  View all @{{post.username}}'s posts
   </button>
+
+  <comment-form></comment-form>
+
+  <post-comment ng-repeat="comment in comments" username="comment.username" created="comment.created" text="comment.text"></post-comment>
 </div>
