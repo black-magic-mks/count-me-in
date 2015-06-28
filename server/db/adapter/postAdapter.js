@@ -113,7 +113,16 @@ var createComment = function(req, res, next) {
 var getPostComments = function(req, res, next) {
   Post.read(req.body.postId)
   .then(function(post) {
-    return Post.getRelatedTo(post,'WRITTEN_IN');
+    return Post.getRelatedTo(post,'WRITTEN_IN')
+    .then(function(comments) {
+      return Q.all(comments.map(function(comment) {
+        return Comment.getRelatedTo(comment,'WROTE')
+        .then(function(user) {
+          comment.username = user[0].username;
+          return comment;
+        });
+      }));
+    });
   })
   .then(function(comments) {
     res.send(comments);
