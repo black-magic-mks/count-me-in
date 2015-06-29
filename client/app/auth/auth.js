@@ -87,7 +87,6 @@ angular.module('app')
       return true;
     })
     .catch(function(err) {
-      console.log("Not logged in");
       return false;
     });
   }
