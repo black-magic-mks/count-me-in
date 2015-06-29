@@ -26,7 +26,7 @@ angular.module('app')
   }
 })
 
-.factory('Auth', function($http, $state) {
+.factory('Auth', function($http, $state, $rootScope) {
   // creates a session on the server
   var logIn = function(user) {
     return $http({
@@ -53,6 +53,7 @@ angular.module('app')
     })
     .then(function(res) {
       $rootScope.username = user.username;
+      $rootScope.loggedIn = true;
       $state.go('tab.feed.all');
     })
     .catch(function(err) {
