@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('UserPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
+.controller('viewPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
   UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
     $scope.userPledgePosts = pledgeData.data;
 

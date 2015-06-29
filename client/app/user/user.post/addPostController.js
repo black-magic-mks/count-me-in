@@ -21,6 +21,7 @@ angular.module('app')
     fd.append('pledgeName', $scope.post.pledgeName);
 
     var file = document.getElementById("user-post-add").files[0];
+    console.log('FILE: ', file);
     var postData = {
       title: $scope.post.title,
       text: $scope.post.text,
