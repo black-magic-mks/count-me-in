@@ -1,39 +1,27 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, $ionicModal, feedFunc) {
-  $scope.currentUser;
-  $scope.pledgeCategories = [];
-  $scope.graphData = {};
-  $scope.graphData.posts = [];
+.controller('FeedController', function($scope, $ionicModal, feedFactory) {
+  $scope.feedPosts = [];
   $scope.comments = [];
   $scope.commentsObj = {};
-  $scope.postId;
 
-  feedFunc.getPublicFeedPosts()
+  $scope.getPublicFeedPosts = function() {
+    feedFactory.getPublicFeedPosts()
     .then(function(posts) {
-      $scope.publicFeedPosts = posts;
-  });
-
-  feedFunc.getCurrentUser(function(data){
-    $scope.currentUser = data.username;
-  });
-
-  feedFunc.getUserFeed(function(data) {
-    data.forEach(function(post) {
-      console.log('post ', post)
-        $scope.pledgeCategories.push(post);
-    })
-  });
-
-  feedFunc.getPledgeView('piano', function(data) {
-    data.forEach(function(post) {
-      $scope.graphData.name = 'piano';
-      $scope.graphData.date = data.created;
-      $scope.postId = post.id;
-      $scope.graphData.posts.push(post);
-    })
-  });
-
+      $scope.feedPosts = posts;
+    });
+  }
+  $scope.getPrivateFeedPosts = function() {
+    feedFactory.getPrivateFeedPosts()
+    .then(function(posts) {
+      $scope.feedPosts = posts;
+    });
+  }
+  if ($scope.username) {
+    $scope.getPrivateFeedPosts()
+  } else {
+    $scope.getPublicFeedPosts()
+  }
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
@@ -45,57 +33,38 @@ angular.module('app')
   };
 })
 
-.factory('feedFunc', function($http) {
-
+.factory('feedFactory', function($http) {
   var getPublicFeedPosts = function() {
     return $http({
       method: 'GET',
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      return posts;
+      console.log("public: ", posts.data)
+      return posts.data;
     })
     .catch(function(err) {
-      console.log("error in getting all pledges in feedController.js: getPublicFeedPosts()")
+      console.log("error in getting posts in feedController.js: getPublicFeedPosts()")
     })
   }
 
-  var getUserFeed = function(callback) {
-    $http.get('/api/user/feed')
-    .success(function(data, status, headers, config) {
-      callback(data);
+  var getPrivateFeedPosts = function() {
+    console.log("hi")
+    return $http({
+      method: 'GET',
+      url: '/api/user/feed'
     })
-    .error(function(data, status, headers, config) {
-      console.log('Error getting user feed: ', data, status, headers, config);
+    .then(function(posts) {
+      console.log("private: ", posts.data)
+      return posts.data;
+    })
+    .catch(function(err) {
+      console.log("error in getting posts in feedController.js: getPrivateFeedPosts()")
     })
   }
-
-  var getCurrentUser = function(callback) {
-    $http.get('/api/user')
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error getting current user: ', data, status, headers, config);
-    })
-  };
-
-  var getPledgeView = function(pledgename, callback) {
-    $http.get('/api/pledge/posts', {
-      params: {pledgename: pledgename}
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-
-    }).error(function(data, status, headers, config) {
-      console.log('error getting pledge: ', data, status, headers, config);
-    });
-  };
 
   return {
-    getPledgeView: getPledgeView,
-    getCurrentUser: getCurrentUser,
     getPublicFeedPosts: getPublicFeedPosts,
-    getUserFeed: getUserFeed
+    getPrivateFeedPosts: getPrivateFeedPosts
   };
 });

@@ -1,14 +1,14 @@
 <div class="item item-text-wrap">
   <div class="feedPledgeDirective clearfix">
     <div class="postTopBar">
-      <h2><a ui-sref="tab.user.dashboard({username: '{{username}}'})" class="title username left">@{{post.username}}&nbsp;</a>in <a ui-sref="tab.feed.pledge({pledgename: '{{pledgeName}}'})" ng-click="getcomments(pledgeName)">#{{post.pledgeName}}</a></h2>
+      <h2><a ui-sref="tab.user.dashboard({username: post.username})" class="title username left">@{{post.username}}&nbsp;</a>in <a ui-sref="tab.feed.pledge({pledgename: post.pledgeName})" ng-click="getcomments(pledgeName)">#{{post.pledgename}}</a></h2>
       <p class="postDate left">{{post.date}} ago</p>
     </div>
     <p class="pledgeMission left">{{post.text}}</p>
     <div class="feedImages clearfix">
       <img ng-src="{{post.aws_url}}" height="400px" class="posts" />
     </div>
-    <button ui-sref="tab.user.pledge({username: '{{username}}', pledgename: '{{pledgename}}'})" class="button button-small button-positive left">
+    <button ui-sref="tab.user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive left">
       View {{post.username}}'s Posts
     </button>
   </div>
