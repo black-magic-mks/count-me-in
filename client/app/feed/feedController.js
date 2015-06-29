@@ -3,10 +3,8 @@ angular.module('app')
 .controller('FeedController', function($scope, $ionicModal, feedFunc) {
   $scope.currentUser;
   $scope.pledgeCategories = [];
-
   $scope.graphData = {};
   $scope.graphData.posts = [];
-
   $scope.comments = [];
   $scope.commentsObj = {};
   $scope.postId;
@@ -20,8 +18,6 @@ angular.module('app')
       console.log('post ', post)
         $scope.pledgeCategories.push(post);
     })
-    console.log('pledgeCategories ', $scope.pledgeCategories);
-    console.log('data from user feed', data);
   });
 
   feedFunc.getPledgeView('piano', function(data) {
