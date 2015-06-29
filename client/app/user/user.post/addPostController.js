@@ -53,7 +53,7 @@ angular.module('app')
     .then(function(response) {
       upload(file, response.data.signed_request, response.data.url, function(url) {
         $scope.loadingPost = false;
-        $state.go('user.post.view', {post_id: response.data.id});
+        $state.go('tab.user.post.view', {post_id: response.data.id});
       })
     })
   }
