@@ -6,7 +6,7 @@ angular.module('app')
 
   $scope.graphData = {};
   $scope.graphData.posts = [];
-  
+
   $scope.comments = [];
   $scope.commentsObj = {};
   $scope.postId;
@@ -66,30 +66,6 @@ angular.module('app')
     })
   };
 
-  var getFollowedPledges = function(username, callback) {
-    $http.get('/api/user/pledges', {
-      params: {username: username}
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error with get request for api/user/pledges');
-    });
-  };
-
-  var getPledgePosts = function(pledgename, callback) {
-    $http.get('/api/pledge/posts', {
-      params: {pledgename: pledgename}
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error with get request for api/pledge/posts', data, status, headers, config);
-    });
-  };
-
   var getPledgeView = function(pledgename, callback) {
     $http.get('/api/pledge/posts', {
       params: {pledgename: pledgename}
@@ -103,8 +79,6 @@ angular.module('app')
   };
 
   return {
-    // getFollowedPledges: getFollowedPledges,
-    // getPledgePosts: getPledgePosts,
     getPledgeView: getPledgeView,
     getCurrentUser: getCurrentUser,
     getUserFeed: getUserFeed
