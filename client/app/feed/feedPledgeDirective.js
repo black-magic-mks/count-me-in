@@ -4,7 +4,13 @@ angular.module('app')
     restrict: 'E',
     scope: {
       pledgeName: '=',
-      pledgeList: '=',
+      awsurl: '=',
+      hasLiked: '=',
+      likes: '=',
+      text: '=',
+      title: '=',
+      username: '=',
+      date: '=',
       getcomments: '='
     },
     templateUrl: './templates/feedPledge.html',

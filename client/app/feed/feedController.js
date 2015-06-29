@@ -6,6 +6,7 @@ angular.module('app')
 
   $scope.graphData = {};
   $scope.graphData.posts = [];
+  
   $scope.comments = [];
   $scope.commentsObj = {};
   $scope.postId;
@@ -13,24 +14,6 @@ angular.module('app')
   feedFunc.getCurrentUser(function(data){
     $scope.currentUser = data.username;
   });
-
-  // feedFunc.getFollowedPledges($scope.currentUser, function(data) {
-  //   data.forEach(function(pledge) {
-  //     $scope.pledgeCatObj.name = pledge.pledgename;
-  //     $scope.tempObj.mission = pledge.mission;
-
-  //     feedFunc.getPledgePosts(pledge.pledgename, function(data){
-  //       data.forEach(function(post) {
-  //         $scope.tempObj.date = data.created;
-  //         $scope.tempObj.aws_url = post.aws_url;
-  //         $scope.tempObj.username = post.username;
-  //       })
-  //       $scope.pledgeCatObj.postList.push($scope.tempObj);
-  //       $scope.pledgeCategories.push($scope.pledgeCatObj);
-  //       console.log('pledgeCategories: ', $scope.pledgeCategories);
-  //     })
-  //   })
-  // });
 
   feedFunc.getUserFeed(function(data) {
     data.forEach(function(post) {

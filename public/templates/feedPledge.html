@@ -1,17 +1,16 @@
 <div class="item item-text-wrap">
   <div class="feedPledgeDirective clearfix">
-  <div class="postTopBar">
-    <h2 ui-sref="tab.user.dashboard({username: '{{username}}'})" class="title username left">@{{username}} in <a ui-sref="tab.feed.pledge({pledgename: '{{pledgeName}}'})" ng-click="getcomments(pledgeName)">#{{pledgeName}}</a></h2>
-    <p class="postDate left">{{date}} ago</p>
+    <div class="postTopBar">
+      <h2 ui-sref="tab.user.dashboard({username: '{{username}}'})" class="title username left">@{{username}} in <a ui-sref="tab.feed.pledge({pledgename: '{{pledgeName}}'})" ng-click="getcomments(pledgeName)">#{{pledgeName}}</a></h2>
+      <p class="postDate left">{{date}} ago</p>
+    </div>
+    <p class="pledgeMission left">{{text}}</p>
+    <div class="feedImages clearfix">
+      <img ng-src="{{awsurl}}" height="200px" width="200px" class="posts" />
+    </div>
+    <button ui-sref="tab.user.pledge({username: '{{username}}', pledgename: '{{pledgename}}'})" class="button button-small button-positive left">
+      View {{username}}'s Posts
+    </button>
   </div>
-  <p class="pledgeMission left">{{text}}</p>
-  <div class="feedImages clearfix">
-    <img ng-src="{{awsurl}}" height="200px" width="200px" class="posts" />
-  </div>
-   <button ui-sref="tab.user.pledge({username: '{{username}}', pledgename: '{{pledgename}}'})" class="button button-small button-positive left">
-    View {{username}}'s Posts
-  </button>
-</div>
-<!--   <feed-pledge-post ng-repeat="pledgePost in pledgeList" username="pledgePost.username" mission="pledgePost.mission" awsurl="pledgePost.aws_url" date="pledgePost.date" pledgename="pledgeName" view-pledge="viewPledge()"/> -->
 </div>
 
