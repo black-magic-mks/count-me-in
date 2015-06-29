@@ -3,7 +3,11 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      post: '='
+      post: '=',
+      comments: '=',
+      usercomment: '=',
+      date: '=',
+      pledgename: '='
     },
     templateUrl: './templates/pledgePost.html',
     link: function(scope, element, attr) {

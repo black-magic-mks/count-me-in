@@ -1,35 +1,34 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, feedFunc) {
-  // angular.extend($scope, feedFunc);
-  console.log('in FeedController');
+.controller('FeedController', function($scope, $ionicModal, feedFunc) {
+  $scope.currentUser;
   $scope.pledgeCategories = [];
   $scope.pledgeCatObj = {};
   $scope.pledgeCatObj.postList = [];
   $scope.tempObj = {};
-
-  $scope.testName = 'mangles';
-
   $scope.graphData = {};
   $scope.graphData.posts = [];
+  $scope.comments = [];
+  $scope.commentsObj = {};
+  $scope.postId;
 
-  feedFunc.getFollowedPledges('mengel', function(data) {
+  feedFunc.getCurrentUser(function(data){
+    $scope.currentUser = data.username;
+  });
+
+  feedFunc.getFollowedPledges($scope.currentUser, function(data) {
     data.forEach(function(pledge) {
-
       $scope.pledgeCatObj.name = pledge.pledgename;
       $scope.tempObj.mission = pledge.mission;
 
       feedFunc.getPledgePosts(pledge.pledgename, function(data){
-        
         data.forEach(function(post) {
+          $scope.tempObj.date = data.created;
           $scope.tempObj.aws_url = post.aws_url;
           $scope.tempObj.username = post.username;
         })
-
         $scope.pledgeCatObj.postList.push($scope.tempObj);
         $scope.pledgeCategories.push($scope.pledgeCatObj);
-        console.log('pledgecat', $scope.pledgeCategories);
-      
       })
     })
   });
@@ -37,27 +36,33 @@ angular.module('app')
   feedFunc.getPledgeView('piano', function(data) {
     data.forEach(function(post) {
       $scope.graphData.name = 'piano';
+      $scope.graphData.date = data.created;
+      $scope.postId = post.id;  
       $scope.graphData.posts.push(post);
     })
   });
 
-  // $ionicModal.fromTemplateUrl('templates/modal.html', {
-  //   scope: $scope,
-  //   animation: 'slide-in-up'
-  // }).then(function(modal) { $scope.modal = modal; });
+  $ionicModal.fromTemplateUrl('templates/modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) { $scope.modal = modal; });
 
-  // $scope.saveMission = function() {
-  //   $scope.modal.hide();
-  // };
-
-  $scope.viewPledge = function() {
-    //pass in clicked element
-    // feedFunc.getPledgeView();
-    // console.log('viewPledge running');
+  $scope.saveMission = function() {
+    $scope.modal.hide();
   };
 })
 
 .factory('feedFunc', function($http) {
+
+  var getCurrentUser = function(callback) {
+    $http.get('/api/user')
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error getting current user: ', data, status, headers, config);
+    })
+  };
 
   var getFollowedPledges = function(username, callback) {
     $http.get('/api/user/pledges', {
@@ -81,7 +86,7 @@ angular.module('app')
     .error(function(data, status, headers, config) {
       console.log('error with get request for api/pledge/posts', data, status, headers, config);
     });
-  }; 
+  };
 
   var getPledgeView = function(pledgename, callback) {
     $http.get('/api/pledge/posts', {
@@ -91,15 +96,14 @@ angular.module('app')
       callback(data);
 
     }).error(function(data, status, headers, config) {
-      console.log('error with request');
+      console.log('error getting pledge: ', data, status, headers, config);
     });
   };
 
   return {
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
-    getPledgeView: getPledgeView
+    getPledgeView: getPledgeView,
+    getCurrentUser: getCurrentUser
   };
 });
-
- 

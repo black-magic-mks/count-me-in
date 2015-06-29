@@ -1,6 +1,6 @@
 var express = require('express');
 
-var authAdapter = require('./db/adapter/authAdapter');
+var authAdapter = require('./auth');
 var userAdapter = require('./db/adapter/userAdapter');
 var pledgeAdapter = require('./db/adapter/pledgeAdapter');
 var postAdapter = require('./db/adapter/postAdapter');
@@ -8,16 +8,19 @@ var testAdapter = require('./db/adapter/testAdapter');
 
 var routes = {
   'get': {
+    '/auth/authorized': authAdapter.authorize,
     '/user': userAdapter.getUser,
     '/user/posts': userAdapter.getUserPosts,
     '/user/likes': userAdapter.getUserLikes,
     '/user/pledges': userAdapter.getUserPledges,
     '/user/comments': userAdapter.getUserComments,
     '/user/following': userAdapter.getFollowingUsers,
+    '/user/feed': userAdapter.getFeed,
     '/pledge': pledgeAdapter.getPledge,
     '/pledge/users': pledgeAdapter.getPledgeUsers,
     '/pledge/posts': pledgeAdapter.getPledgePosts,
     '/post': postAdapter.getPost,
+    '/post/comments': postAdapter.getPostComments,
     '/test/clear': testAdapter.clearData,
     '/test/fill': testAdapter.fillData
   },
@@ -30,7 +33,8 @@ var routes = {
     '/pledge/subscribe': pledgeAdapter.subscribeToPledge,
     '/post/new': postAdapter.createPost,
     '/post/comment': postAdapter.createComment,
-    '/post/like': postAdapter.likePost
+    '/post/like': postAdapter.likePost,
+    '/post/unlike': postAdapter.unlikePost
   }
 };
 

@@ -34,10 +34,29 @@ var prepareModel = function(seraphModel) {
   return rels.addRelMethods(promisifyModel(seraphModel),seraphModel);
 };
 
+Post = prepareModel(Post);
+Post.addHasLiked = function(username, post) {
+  return query([
+    'MATCH (:User {username:{user}})-[like:LIKED]->(p)',
+    'WHERE id(p)={post}',
+    'RETURN like'
+  ].join(' '),
+  {
+    user: username,
+    post: post.id
+  })
+  .then(function(like) {
+    return [Post.read(post),!!like.length];
+  })
+  .spread(function(post,hasLiked) {
+    post.hasLiked = hasLiked;
+    return post;
+  });
+};
 
 module.exports = {
   User: prepareModel(User),
   Pledge: prepareModel(Pledge),
-  Post: prepareModel(Post),
+  Post: Post,
   Comment: prepareModel(Comment)
 };
