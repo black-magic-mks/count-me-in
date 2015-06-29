@@ -12,6 +12,11 @@ angular.module('app')
   $scope.commentsObj = {};
   $scope.postId;
 
+  feedFunc.getPublicFeedPosts()
+    .then(function(posts) {
+      $scope.publicFeedPosts = posts;
+  });
+
   feedFunc.getCurrentUser(function(data){
     $scope.currentUser = data.username;
   });
@@ -37,7 +42,7 @@ angular.module('app')
     data.forEach(function(post) {
       $scope.graphData.name = 'piano';
       $scope.graphData.date = data.created;
-      $scope.postId = post.id;  
+      $scope.postId = post.id;
       $scope.graphData.posts.push(post);
     })
   });
@@ -53,6 +58,19 @@ angular.module('app')
 })
 
 .factory('feedFunc', function($http) {
+
+  var getPublicFeedPosts = function() {
+    return $http({
+      method: 'GET',
+      url: '/api/public/feed',
+    })
+    .then(function(posts) {
+      return posts;
+    })
+    .catch(function(err) {
+      console.log("error in getting all pledges in feedController.js: getPublicFeedPosts()")
+    })
+  }
 
   var getCurrentUser = function(callback) {
     $http.get('/api/user')
@@ -104,6 +122,7 @@ angular.module('app')
     getFollowedPledges: getFollowedPledges,
     getPledgePosts: getPledgePosts,
     getPledgeView: getPledgeView,
-    getCurrentUser: getCurrentUser
+    getCurrentUser: getCurrentUser,
+    getPublicFeedPosts: getPublicFeedPosts
   };
 });

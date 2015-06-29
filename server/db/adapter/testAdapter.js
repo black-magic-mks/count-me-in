@@ -41,6 +41,8 @@ var fillData = function(req, res, next) {
    'CREATE (u1)-[:LIKED]->(po2)',
    'CREATE (u1)-[:WROTE]->(co1)',
    'CREATE (co1)-[:WRITTEN_IN]->(po2)',
+   'CREATE (po3)-[:POSTED_IN]->(pl3)',
+   'CREATE (po4)-[:POSTED_IN]->(pl3)',
    'CREATE (u3)-[:POSTED]->(po3)',
    'CREATE (u3)-[:POSTED]->(po4)'
    ].join(' ');
