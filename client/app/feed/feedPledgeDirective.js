@@ -3,7 +3,6 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      pledgeName: '=',
       post: '=',
       getcomments: '='
     },
