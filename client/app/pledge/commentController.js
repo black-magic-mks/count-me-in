@@ -35,6 +35,7 @@ angular.module('app')
   };
 
   $scope.getComments = function(pledgeName) {
+    console.log('pledgeName ', pledgeName);
     commentRequests.getPledgePosts(pledgeName, function(data) {
       data.forEach(function(post) {
         commentRequests.getPostComments(post.id, function(data) {

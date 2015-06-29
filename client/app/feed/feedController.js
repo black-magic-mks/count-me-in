@@ -15,20 +15,20 @@ angular.module('app')
 
   feedFunc.getUserFeed(function(data) {
     data.forEach(function(post) {
-      console.log('post ', post)
-        $scope.pledgeCategories.push(post);
+      $scope.pledgeCategories.push(post);
     })
   });
 
-  feedFunc.getPledgeView('piano', function(data) {
-    data.forEach(function(post) {
-      $scope.graphData.name = 'piano';
-      $scope.graphData.date = data.created;
-      $scope.postId = post.id;  
-      $scope.graphData.posts.push(post);
-    })
-  });
-
+  $scope.getPledgePosts = function(pledgeName){
+    feedFunc.getPledgeView('piano', function(data) {
+      data.forEach(function(post) {
+        $scope.pledgeview = 'piano';
+        $scope.graphData.posts.push(post);
+        $scope.postId = post.id;  
+        // console.log('pledgeview post', post);
+      });
+    });
+  };
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
     scope: $scope,
