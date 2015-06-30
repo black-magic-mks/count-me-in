@@ -46,13 +46,6 @@ angular.module('app')
       })
     });
   };
-
-  $scope.toggleComments = function(){
-    console.log('toggle comments');
-    // $scope.comments.filter('slice', function(item) {
-    //   return (function)
-    // })
-  }
 })
 
 .filter('slice', function(){
