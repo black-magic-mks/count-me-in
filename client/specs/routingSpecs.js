@@ -97,4 +97,29 @@ describe('Routing', function () {
     expect(view.templateUrl).to.be('/views/signup.html');
     expect(view.controller).to.be('AuthController')
   });
+
+  it('Should have \'tab.user.pledge\' state, url, template, and no controller', function () {
+    var state = $state.get('tab.user.pledge');
+    expect(state.name).to.be('tab.user.pledge');
+    expect(state.url).to.be('/pledge');
+    expect(state.templateUrl).to.be('/views/user.pledge.html');
+    expect(state.controller).to.be(undefined);    
+  });
+
+  it('Should have \'tab.user.pledge.add\' state, url, template, and ontroller', function () {
+    var state = $state.get('tab.user.pledge.add');
+    expect(state.name).to.be('tab.user.pledge.add');
+    expect(state.url).to.be('/new');
+    expect(state.templateUrl).to.be('/views/user.pledge.add.html');
+    expect(state.controller).to.be('addPledgeController');    
+  });
+
+  it('Should have \'tab.user.pledge.view\' state, url, template, and controller', function () {
+    var state = $state.get('tab.user.pledge.view');
+    expect(state.name).to.be('tab.user.pledge.view');
+    expect(state.url).to.be('/:pledgename');
+    expect(state.templateUrl).to.be('/views/user.pledge.view.html');
+    expect(state.controller).to.be('viewPledgeController');    
+  });
+
 });
