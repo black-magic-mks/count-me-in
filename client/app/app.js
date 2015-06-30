@@ -42,9 +42,9 @@ angular.module('app', [
         }
       }
     })
-    .state('tab.user.dashboard', {
-      url: '/:username/dashboard',
-      templateUrl: '/views/user.dashboard.html'
+    .state('tab.user.profile', {
+      url: '/:username/profile',
+      templateUrl: '/views/user.profile.html'
     })
     .state('tab.user.post', {
       url: '/:username/post',
