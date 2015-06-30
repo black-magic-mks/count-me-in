@@ -5,6 +5,7 @@ angular.module('app')
   
   viewPostFunc.getPost($stateParams.post_id, function(postData) {
     $scope.title = postData.title;
+    $scope.text = postData.text;
     $scope.awsUrl = postData.aws_url;
     $scope.created = postData.created;
     $scope.loadingPost = false;

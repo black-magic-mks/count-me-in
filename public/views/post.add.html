@@ -5,8 +5,6 @@
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
 
-          <input type="radio" ng-model="post.pledgeName" value="code" />#code
-          <input type="radio" ng-model="post.pledgeName" value="piano" />#piano<br />
 
           <select ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]">
             <div>
@@ -39,7 +37,7 @@
           <br />
 
           <button class="btn" ng-click="cancelPost()">cancel</button>
-          <button class="btn" ng-click="addPost()">post!</button>
+          <button class="btn" ng-click="addPost()">submit</button>
 
         </form>
     </div>
