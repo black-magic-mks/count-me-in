@@ -83,11 +83,10 @@ angular.module('app')
 
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory) {
   $scope.pledgename = $stateParams.pledgename;
-  console.log($scope.pledgename, $stateParams.pledgename);
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
     $scope.feedPledgePosts = posts;
-  })
+  });
 })
 .factory('feedPledgeFactory', function($http) {
   var getFeedPledgePosts = function(pledgename) {
@@ -98,7 +97,6 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .then(function(posts) {
-      console.log("feed pledge posts: ", posts.data)
       return posts.data;
     })
     .catch(function(err) {
