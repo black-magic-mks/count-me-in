@@ -16,7 +16,6 @@ angular.module('app')
           }
         })
         .then(function(postData) {
-          console.log("postData", postData)
           var likeData = {};
           likeData.numLikes = postData.data.likes;
           likeData.hasLiked = postData.data.hasLiked;

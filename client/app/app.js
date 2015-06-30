@@ -25,12 +25,12 @@ angular.module('app', [
     .state('tab.feed.all', {
       url: '/all',
       templateUrl: '/views/feed.all.html',
-      controller: 'CommentController'
+      controller: 'FeedController' // controller is called twice, decide which one will keep the controller
     })
     .state('tab.feed.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
-      controller: 'CommentController'
+      controller: 'FeedPledgeController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
 
     .state('tab.user', {
