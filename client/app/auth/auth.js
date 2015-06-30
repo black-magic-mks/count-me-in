@@ -39,7 +39,7 @@ angular.module('app')
       $state.go('tab.feed.all');
     })
     .catch(function(err) {
-      $state.go('tab.logIn');
+      $state.go('tab.login');
       console.error(err);
     });
   }

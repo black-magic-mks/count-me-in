@@ -1,4 +1,4 @@
-<div class="feedPledgeDirective clearfix">
+<div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
   <div class="postTopBar">
     <h2 ui-sref="tab.user.dashboard({username: '{{post.username}}'})" class="title username left">@{{post.username}}</h2>
     <p class="postDate left">{{post.date}} ago</p>
@@ -10,6 +10,9 @@
   </button>
 
   <comment-form></comment-form>
-
-  <post-comment ng-repeat="comment in comments" username="comment.username" created="comment.created" text="comment.text"></post-comment>
+  
+  <a ng-click="end=comments.length">+ More</a>
+  <a ng-click="end=4">- Less</a>
+  
+  <post-comment ng-repeat="comment in comments.slice().reverse() | slice:start:end"  username="comment.username" created="comment.created" text="comment.text"></post-comment>
 </div>
