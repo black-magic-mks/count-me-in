@@ -34,7 +34,7 @@ angular.module('app', [
     })
 
     .state('tab.user', {
-      url: '/user',
+      url: '/user/:username',
       views: {
         'tab-user': {
           templateUrl: '/views/user.html',
@@ -43,7 +43,11 @@ angular.module('app', [
       }
     })
     .state('tab.user.dashboard', {
-      url: '/:username/dashboard',
+      url: '/dashboard',
+      templateUrl: '/views/user.dashboard.html'
+    })
+    .state('tab.user.dashboard.following', {
+      url: '/dashboard/following',
       templateUrl: '/views/user.dashboard.html'
     })
     .state('tab.user.post', {
