@@ -13,8 +13,6 @@ brew install leiningen
 ### After pulling run:
 npm install
 bower install
-grunt dev
-grunt serve
 
 ### Neo4j database
 
