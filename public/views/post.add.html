@@ -8,6 +8,16 @@
           <input type="radio" ng-model="post.pledgeName" value="code" />#code
           <input type="radio" ng-model="post.pledgeName" value="piano" />#piano<br />
 
+          <select ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]">
+            <div>
+              <option 
+                ng-repeat="pledgename in pledgenames" 
+                value="{{pledgename}}">
+                {{pledgename}}
+              </option>
+            </div>
+          </select>
+
           <a class="pledge-button" ui-sref="tab.user.pledge.add">Add Pledge</a>
 
           <br />
@@ -19,7 +29,6 @@
           <textarea name="post-text" ng-model="post.text" placeholder="Describe what you did..."></textarea>
           
           <br />
-
 
           <label class="post-upload">
               <input type="file" class="post-file" id="user-post-add" name="post-file" ng-model="post.file" valid-file required on-file-change="fileChanged" ></input>

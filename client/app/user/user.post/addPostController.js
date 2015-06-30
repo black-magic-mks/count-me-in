@@ -3,6 +3,20 @@ angular.module('app')
 .controller('addPostController', function($scope, $http, $state) {
   $scope.loadingPost = false;
 
+  $scope.getUsersPledges = function() {
+    // make a call to the api for the pledges
+      // set the drop down for pledges to the names of teh return data
+  };
+
+  
+  $scope.pledgenames = [
+    'code',
+    'piano',
+    'beactive'
+  ];
+
+  $scope.pledgename = 'code';
+  
   $scope.cancelPost = function() {
     $state.go('user.dashboard');
   };
@@ -11,7 +25,9 @@ angular.module('app')
     var files = event.target.files;
     console.log(files[0]);
     var fileName = files[0].name;
-    $scope.fileName = fileName;
+    $scope.$apply(function() {
+      $scope.fileName = fileName;
+    });
   };
   
   $scope.addPost = function() {
