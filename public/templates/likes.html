@@ -1,9 +1,6 @@
 <div>
-  <!-- how do you pass functions to a directive from the parent scope? -->
-  <div ng-if="!likeData.hasLiked" ng-click="postLike(postId)">Like<div>
-  <div ng-if="likeData.hasLiked" ng-click="postUnlike(postId)">Unlike<div>
-  <!-- the below div is for the image of liking, like the facebook thumbs up -->
-  <div></div>
+  <input type="button" value="Like" ng-if="!likeData.hasLiked" ng-click="postLike(postId)"/>
+  <input type="button" value="Unlike" ng-if="likeData.hasLiked" ng-click="postUnlike(postId)"/>
   <div>{{likeData.numLikes}}</div>
 </div>
 

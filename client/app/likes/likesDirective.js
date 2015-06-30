@@ -8,15 +8,18 @@ angular.module('app')
     templateUrl: './templates/likes.html',
     link: function(scope, element, attribute) {
       scope.getPost = function(postId) {
-        $http({
-          method: 'POST',
+        return $http({
+          method: 'GET',
           url: '/api/post',
-          data: {postId: postId}
+          params: {
+            postId: postId
+          }
         })
-        .then(function(data) {
+        .then(function(postData) {
+          console.log("postData", postData)
           var likeData = {};
-          likeData.numLikes = data.likes;
-          likeData.hasLiked = data.hasLiked
+          likeData.numLikes = postData.data.likes;
+          likeData.hasLiked = postData.data.hasLiked;
           return likeData;
         })
         .catch(function(err) {
@@ -25,15 +28,16 @@ angular.module('app')
       }
 
       scope.postLike = function(postId) {
-        $http({
+        return $http({
           method: 'POST',
           url: '/api/post/like',
           data: {postId: postId}
         })
-        .then(function(data) {
+        .then(function(postData) {
           var likeData = {};
-          likeData.numLikes = data.likes;
-          likeData.hasLiked = data.hasLiked
+          likeData.numLikes = postData.data.likes;
+          likeData.hasLiked = postData.data.hasLiked;
+          scope.likeData = likeData;
           return likeData;
         })
         .catch(function(err) {
@@ -41,24 +45,26 @@ angular.module('app')
         })
       }
       scope.postUnlike = function(postId) {
-        $http({
+        return $http({
           method:'POST',
           url: '/api/post/unlike',
           data: {postId: postId}
         })
-        .then(function(data) {
+        .then(function(postData) {
           var likeData = {};
-          likeData.numLikes = data.likes;
-          likeData.hasLiked = data.hasLiked
+          likeData.numLikes = postData.data.likes;
+          likeData.hasLiked = postData.data.hasLiked;
+          scope.likeData = likeData;
           return likeData;
         })
         .catch(function(err) {
           console.log('error in postUnlike: ', err)
         })
       }
-    },
-    controller: function(scope) {
-      scope.getPost(scope.postId).then(function(likeData) {
+
+      // gets the data for the initial load
+      scope.getPost(scope.postId)
+      .then(function(likeData) {
         scope.likeData = likeData;
       });
     }
