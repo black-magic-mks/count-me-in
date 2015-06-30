@@ -42,11 +42,11 @@ describe('Routing', function () {
     expect(view.controller).to.be('UserController');
   });
 
-  it('Should have \'tab.user.dashboard\' state, url, and template', function () {
-    var state = $state.get('tab.user.dashboard');
-    expect(state.name).to.be('tab.user.dashboard');
-    expect(state.url).to.be('/dashboard');
-    expect(state.templateUrl).to.be('/views/user.dashboard.html');
+  it('Should have \'tab.user.profile\' state, url, and template', function () {
+    var state = $state.get('tab.user.profile');
+    expect(state.name).to.be('tab.user.profile');
+    expect(state.url).to.be('/profile');
+    expect(state.templateUrl).to.be('/views/user.profile.html');
   });
 
   it('Should have \'tab.user.post\' state, url, and template', function () {

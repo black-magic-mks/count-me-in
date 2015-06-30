@@ -22,7 +22,8 @@ var routes = {
     '/post': postAdapter.getPost,
     '/post/comments': postAdapter.getPostComments,
     '/test/clear': testAdapter.clearData,
-    '/test/fill': testAdapter.fillData
+    '/test/fill': testAdapter.fillData,
+    '/public/feed': postAdapter.getPublicFeedPosts
   },
   'post': {
     '/auth/login': authAdapter.login,
@@ -40,7 +41,6 @@ var routes = {
 
 var createApiRouter = function() {
   var router = express.Router();
-
   for (var method in routes) {
     for (var route in routes[method]) {
       router[method](route, routes[method][route]);

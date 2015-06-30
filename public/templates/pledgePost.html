@@ -1,14 +1,14 @@
 <div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
   <div class="postTopBar">
-    <h2 ui-sref="tab.user.dashboard({username: '{{post.username}}'})" class="title username left">@{{post.username}}</h2>
+    <h2 ui-sref="tab.user.profile({username: post.username})" class="title username left">@{{post.username}}</h2>
     <p class="postDate left">{{post.date}} ago</p>
   </div>
   <img ng-src="{{post.aws_url}}" height="400px" width="400px" />
   <p>{{post.text}}</p>
-  <button <a ui-sref="tab.user.dashboard({username: '{{post.username}}'})" class="button button-small button-positive">
+  <button <a ui-sref="tab.user.profile({username: post.username})" class="button button-small button-positive">
   View all @{{post.username}}'s posts
   </button>
-
+  <likes post-id="post.id"></likes>
   <comment-form></comment-form>
   
   <a ng-click="end=comments.length">+ More</a>

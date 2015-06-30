@@ -1,12 +1,12 @@
 <div class="item item-text-wrap">
-  <div class="directiveHeader clearfix">  
-    <h1 class="left"> <a ui-sref="tab.feed.pledge">#{{graphData.name}}</a> </h1>
+  <div class="directiveHeader clearfix">
+    <h1 class="left"> <a ui-sref="tab.feed.pledge({pledgename: pledgename})">#{{pledgename}}</a> </h1>
     <div class="left">
       <button ng-click="modal.show()" class="button button-small button-positive right">
         Join
       </button>
     </div>
   </div>
-  <pledge-post ng-repeat="post in graphData.posts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="graphData.n" toggle-comments="toggleComments"></pledge-post>
+  <pledge-post ng-repeat="post in feedPledgePosts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="pledgename"></pledge-post>
 </div>
 
