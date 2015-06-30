@@ -3,7 +3,7 @@
     <div class="postTopBar">
       <h2>
         <a ui-sref="tab.user.dashboard({username: '{{username}}'})" class="title username left">@{{post.username}}&nbsp;</a>in 
-        <a ui-sref="tab.feed.pledge({pledgename: post.pledgeName})" ng-click="getcomments('coding'); getPledgePosts('coding')">#{{post.pledgeName}}</a>
+        <a ui-sref="tab.feed.pledge({pledgename: 'piano'})" ng-click="getcomments('piano'); getPledgePosts('piano')">#{{post.pledgeName}}</a>
       </h2>
       <p class="postDate left">{{post.date}} ago</p>
     </div>

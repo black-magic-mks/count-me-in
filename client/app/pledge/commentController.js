@@ -35,7 +35,6 @@ angular.module('app')
   };
 
   $scope.getComments = function(pledgeName) {
-    console.log('pledgeName ', pledgeName);
     commentRequests.getPledgePosts(pledgeName, function(data) {
       data.forEach(function(post) {
         commentRequests.getPostComments(post.id, function(data) {
@@ -47,6 +46,19 @@ angular.module('app')
       })
     });
   };
+
+  $scope.toggleComments = function(){
+    console.log('toggle comments');
+    // $scope.comments.filter('slice', function(item) {
+    //   return (function)
+    // })
+  }
+})
+
+.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  }
 })
 
 .factory('commentRequests', function($http) {
