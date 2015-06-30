@@ -17,10 +17,12 @@ angular.module('app')
       $scope.feedPosts = posts;
     });
   }
-  if ($scope.username) {
-    $scope.getPrivateFeedPosts()
-  } else {
-    $scope.getPublicFeedPosts()
+  $scope.init = function() {
+    if ($scope.username) {
+      $scope.getPrivateFeedPosts()
+    } else {
+      $scope.getPublicFeedPosts()
+    }
   }
 
   $ionicModal.fromTemplateUrl('templates/modal.html', {
