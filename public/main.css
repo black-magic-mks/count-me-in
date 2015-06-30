@@ -142,3 +142,29 @@ img.coverImg {
 .feedPledgeDirective > img {
   margin: 0 10px 0 0;
 }
+
+/* Navigation bar*/
+
+.nav {
+  display: flex;
+  justify-content: space-around;
+  background-color: #0A0D0F;
+}
+
+.nav .fa {
+  color: #B2B2B2;
+}
+
+/* Add post */
+
+.addPostForm input[type="file"] {
+    display: none;
+}
+
+.post-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 10px 10px;
+  cursor: pointer;
+  border-radius: 50%;
+}

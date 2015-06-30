@@ -46,6 +46,10 @@ angular.module('app', [
       url: '/:username/profile',
       templateUrl: '/views/user.profile.html'
     })
+    .state('tab.user.profile.following', {
+      url: '/following',
+      templateUrl: '/views/user.profile.html'
+    })
     .state('tab.user.post', {
       url: '/:username/post',
       templateUrl: '/views/post.html',
@@ -64,6 +68,16 @@ angular.module('app', [
       url: '/:username/:pledgename',
       templateUrl: '/views/user.pledge.html',
       controller: 'UserPledgeController'
+    })
+    .state('tab.user.pledge.add', {
+      url: '/new',
+      templateUrl: '/views/user.pledge.add.html',
+      controller: 'addPledgeController'
+    })
+    .state('tab.user.pledge.view', {
+      url: '/view',
+      templateUrl: '/views/user.pledge.view.html',
+      controller: 'viewPledgeController'
     })
     .state('tab.login', {
       url: '/login',
