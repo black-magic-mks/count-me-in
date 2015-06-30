@@ -26,7 +26,7 @@ angular.module('app')
   }
 })
 
-.factory('Auth', function($http, $state) {
+.factory('Auth', function($http, $state, $rootScope) {
   // creates a session on the server
   var logIn = function(user) {
     return $http({
@@ -35,6 +35,7 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
+      $rootScope.username = user.username;
       $state.go('tab.feed.all');
     })
     .catch(function(err) {
@@ -51,6 +52,8 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
+      $rootScope.username = user.username;
+      $rootScope.loggedIn = true;
       $state.go('tab.feed.all');
     })
     .catch(function(err) {
@@ -66,6 +69,7 @@ angular.module('app')
       url: '/api/auth/logout'
     })
     .then(function(res) {
+      $rootScope.username = null;
       $state.go('tab.feed.all');
     })
     .catch(function(err) {

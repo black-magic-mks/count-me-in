@@ -7,7 +7,8 @@ angular.module('app')
       comments: '=',
       usercomment: '=',
       date: '=',
-      pledgename: '='
+      pledgename: '=',
+      toggleComments: '='
     },
     templateUrl: './templates/pledgePost.html',
     link: function(scope, element, attr) {

@@ -36,6 +36,7 @@ var prepareModel = function(seraphModel) {
 
 Post = prepareModel(Post);
 Post.addHasLiked = function(username, post) {
+  if (!username) return Q(post);
   return query([
     'MATCH (:User {username:{user}})-[like:LIKED]->(p)',
     'WHERE id(p)={post}',
