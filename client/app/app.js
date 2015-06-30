@@ -61,9 +61,18 @@ angular.module('app', [
       controller: 'viewPostController'
     })
     .state('tab.user.pledge', {
+      url: '/pledge',
+      templateUrl: '/views/user.pledge.html'
+    })
+    .state('tab.user.pledge.add', {
+      url: '/new',
+      templateUrl: '/views/user.pledge.add.html',
+      controller: 'addPledgeController'
+    })
+    .state('tab.user.pledge.view', {
       url: '/:pledgename',
-      templateUrl: '/views/user.pledge.html',
-      controller: 'UserPledgeController'
+      templateUrl: '/views/user.pledge.view.html',
+      controller: 'viewPledgeController'
     })
     .state('tab.login', {
       url: '/login',

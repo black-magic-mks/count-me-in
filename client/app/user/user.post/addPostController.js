@@ -3,6 +3,17 @@ angular.module('app')
 .controller('addPostController', function($scope, $http, $state) {
   $scope.loadingPost = false;
 
+  $scope.cancelPost = function() {
+    $state.go('user.dashboard');
+  };
+
+  $scope.fileChanged = function(event) {
+    var files = event.target.files;
+    console.log(files[0]);
+    var fileName = files[0].name;
+    $scope.fileName = fileName;
+  };
+  
   $scope.addPost = function() {
     var fd = new FormData();
     fd.append('title', $scope.post.title);
@@ -10,6 +21,7 @@ angular.module('app')
     fd.append('pledgeName', $scope.post.pledgeName);
 
     var file = document.getElementById("user-post-add").files[0];
+    console.log('FILE: ', file);
     var postData = {
       title: $scope.post.title,
       text: $scope.post.text,
