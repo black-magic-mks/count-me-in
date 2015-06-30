@@ -17,8 +17,7 @@ angular.module('app', [
       url: '/feed',
       views: {
         'tab-feed': {
-          templateUrl: '/views/feed.html',
-          controller: 'FeedController'
+          templateUrl: '/views/feed.html'
         }
       }
     })
