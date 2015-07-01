@@ -155,6 +155,19 @@ img.coverImg {
   color: #B2B2B2;
 }
 
+/*Upload*/
+
+.upload {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+}
+
+.upload h3 {
+  text-align: center;
+}
+
 /* Add post */
 
 .addPostForm input[type="file"] {

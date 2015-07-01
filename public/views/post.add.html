@@ -1,6 +1,6 @@
-<div>
+<div class="upload">
   <div ng-show="!loadingPost">
-    <h3>Add a post</h3>
+    <h3>add a post</h3>
 
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
@@ -8,7 +8,9 @@
           <select name="pledgename" ng-model="post.pledgename" ng-options="pledgename for pledgename in pledgenames" required>
           </select>
 
-          <a class="pledge-button" ui-sref="tab.user.pledge.add">Add Pledge</a>
+          <br />
+
+          <a class="pledge-button" ui-sref="tab.user.pledge.add">+pledge</a>
 
           <br />
 
