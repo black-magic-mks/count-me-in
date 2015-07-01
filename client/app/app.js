@@ -65,8 +65,7 @@ angular.module('app', [
     })
     .state('tab.user.pledge', {
       url: '/:username/:pledgename',
-      templateUrl: '/views/user.pledge.html',
-      controller: 'UserPledgeController'
+      templateUrl: '/views/user.pledge.html'
     })
     .state('tab.user.pledge.add', {
       url: '/new',
