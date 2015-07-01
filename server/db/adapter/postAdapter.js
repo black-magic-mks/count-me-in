@@ -33,7 +33,7 @@ var createPost = function(req, res, next) {
   var s3 = new aws.S3()
   var directoryOnS3 = req.body.username + '/' + (new Date().getTime()).toString() + '/' + req.body.file.name;
   var awsUrl = 'https://s3.amazonaws.com/' + S3_BUCKET + '/' + directoryOnS3;
-  
+
   var options = {
     Bucket: S3_BUCKET,
     Key: directoryOnS3,
@@ -50,7 +50,7 @@ var createPost = function(req, res, next) {
 
     var postData = req.body;
     postData['aws_url'] = awsUrl;
-    
+
     Q.all([
       User.where({username: req.username})
       .then(function(user) {
@@ -193,11 +193,35 @@ var unlikePost = function(req, res, next) {
   .catch(next);
 };
 
+var getPublicFeedPosts = function(req, res, next) {
+  Post.findAll()
+  .then(function(allPosts) {
+    if (allPosts.length === 0) throw new Error('There are no posts');
+    return allPosts;
+  })
+  .then(function(allPosts) {
+    return Q.all(allPosts.map(function(post) {
+      return Post.getRelated(post, 'POSTED_IN')
+      .then(function(pledge) {
+        if (pledge.length !== 0) {
+          post.pledgename = pledge[0].pledgename;
+        }
+        return post;
+      });
+    }));
+  })
+  .then(function(posts) {
+    res.send(posts);
+  })
+  .catch(next);
+}
+
 module.exports = {
   getPost: getPost,
   createPost: createPost,
   createComment: createComment,
   getPostComments: getPostComments,
   likePost: likePost,
-  unlikePost: unlikePost
+  unlikePost: unlikePost,
+  getPublicFeedPosts: getPublicFeedPosts
 };

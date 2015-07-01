@@ -13,8 +13,6 @@ brew install leiningen
 ### After pulling run:
 npm install
 bower install
-grunt dev
-grunt serve
 
 ### Neo4j database
 
@@ -44,7 +42,15 @@ To start up the server with `nodemon`, which restarts every time you make a chan
 grunt serve
 ```
 
-### AmazonS3
+To compile the auth clojure files, use:
+
+```
+grunt cljs
+```
+
+### Config files
+
+#### AmazonS3
 
 To allow post image/video uploads to store on on AmazonS3, add the S3 credentials as a config file to `server/db/adapter/amazonS3Config.js`. The config file should use this structure:
 
@@ -58,7 +64,25 @@ module.exports = {
 
 The AWS credentials are available on this [Google Doc](https://docs.google.com/document/d/1TzxPP-hfm_p5H_gI3S8qP4N8m2JUzrTRPdNRZmJhWXQ/edit).
 
+#### Auth
 
+For session tokens, create `server/auth/jwtConfig.js`. The file structure: 
 
+module.exports = {
+  key: '',
+  expiresInMinutes: 1440,
+  issuer: ''
+};
+
+The credentials are available at [this doc](https://docs.google.com/document/d/1Sd_zXhSkAJzQVhhoJR1OPg4nOuhhkvE5NguweNTEcsU/edit).
+
+### Dummy data
+
+Run get requests to the following URLs:
+
+```
+/api/test/clear
+/api/test/fill
+```
 
 

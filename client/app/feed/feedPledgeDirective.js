@@ -3,9 +3,9 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      pledgeName: '=',
-      pledgeList: '=',
-      getcomments: '='
+      post: '=',
+      getcomments: '=',
+      getPledgePosts: '='
     },
     templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {

@@ -48,6 +48,12 @@ angular.module('app')
   };
 })
 
+.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
+  }
+})
+
 .factory('commentRequests', function($http) {
   var postComment = function(postId, text, callback) {
     $http.post('/api/post/comment', { post_id: postId, text: text} )
