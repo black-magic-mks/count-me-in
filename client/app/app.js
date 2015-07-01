@@ -17,14 +17,14 @@ angular.module('app', [
       url: '/feed',
       views: {
         'tab-feed': {
-          templateUrl: '/views/feed.html'
+          templateUrl: '/views/feed.html',
+          controller: 'FeedController'
         }
       }
     })
     .state('tab.feed.all', {
       url: '/all',
-      templateUrl: '/views/feed.all.html',
-      controller: 'FeedController' // controller is called twice, decide which one will keep the controller
+      templateUrl: '/views/feed.all.html' // controller is called twice, decide which one will keep the controller
     })
     .state('tab.feed.pledge', {
       url: '/pledge/:pledgename',
