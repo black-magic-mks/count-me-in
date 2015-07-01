@@ -169,7 +169,12 @@ img.coverImg {
   border-radius: 50%;
 }
 
+/* Forms */
 .validation-error {
   font-size: 80%;
   color: red;
+}
+
+form .pledgename {
+  display: inline;
 }
