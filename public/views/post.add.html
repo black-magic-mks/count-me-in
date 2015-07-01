@@ -5,8 +5,7 @@
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
 
-
-          <select ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]">
+          <select name="pledgename" ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]" required>
             <div>
               <option 
                 ng-repeat="pledgename in pledgenames" 
@@ -20,26 +19,37 @@
 
           <br />
 
-          <input name="post-title" type="text" ng-model="post.title" placeholder="Post title..."/>
+          <input name="title" type="text" ng-model="post.title" placeholder="Post title..." required />
+          
+          <span ng-if="addPostForm.title.$dirty">
+            <span class="validation-error" ng-show="addPostForm.title.$error.required">Must include a title for your post</span>
+          </span>
 
           <br />
 
-          <textarea name="post-text" ng-model="post.text" placeholder="Describe what you did..."></textarea>
+          <textarea name="text" ng-model="post.text" placeholder="Describe what you did..."></textarea>
           
           <br />
 
           <label class="post-upload">
-              <input type="file" class="post-file" id="user-post-add" name="post-file" ng-model="post.file" valid-file required on-file-change="fileChanged" ></input>
-              <i class="fa fa-camera fa-2x"></i>
+            <input type="file" class="post-file" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged"></input>
+            <i class="fa fa-camera fa-2x"></i>
           </label>
-          {{ fileName }}
+
+          <span ng-if="!(fileName)">
+            Upload an image
+          </span>
+          <span ng-if="!!(fileName)">
+            {{ fileName }}
+          </span>
 
           <br />
 
           <button class="btn" ng-click="cancelPost()">cancel</button>
-          <button class="btn" ng-click="addPost()">submit</button>
+          <button class="btn" ng-disabled="addPostForm.$invalid || !(fileName)" ng-click="addPost()">submit</button>
 
         </form>
+
     </div>
   </div>
   <div ng-show="loadingPost">
