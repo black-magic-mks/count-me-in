@@ -82,44 +82,6 @@ angular.module('app', [
       templateUrl: '/views/user.pledge.view.html',
       controller: 'viewPledgeController'
     })
-
-
-
-    // .state('tab.user.post', {
-    //   url: '/:username/post',
-    //   views: {
-    //     'tab-user-post': {
-    //       templateUrl: '/views/post.html',
-    //       controller: 'addPostController'
-    //     }
-    //   }
-    // })
-    // .state('tab.user.post.add', {
-    //   url: '/new',
-    //   templateUrl: '/views/post.add.html',
-    //   controller: 'addPostController'    
-    // })
-    // .state('tab.user.post.view', {
-    //   url: '/:post_id',
-    //   templateUrl: '/views/post.view.html',
-    //   controller: 'viewPostController'
-    // })
-    // .state('tab.user.pledge', {
-    //   url: '/:username/:pledgename',
-    //   templateUrl: '/views/user.pledge.html',
-    //   controller: 'UserPledgeController'
-    // })
-    // .state('tab.user.pledge.add', {
-    //   url: '/new',
-    //   templateUrl: '/views/user.pledge.add.html',
-    //   controller: 'addPledgeController'
-    // })
-    // .state('tab.user.pledge.view', {
-    //   url: '/view',
-    //   templateUrl: '/views/user.pledge.view.html',
-    //   controller: 'viewPledgeController'
-    // })
-
     .state('tab.login', {
       url: '/login',
       views: {
