@@ -49,30 +49,35 @@ angular.module('app', [
       url: '/following',
       templateUrl: '/views/user.profile.html'
     })
-    .state('tab.user.post', {
+
+     .state('tab.post', {
       url: '/:username/post',
-      templateUrl: '/views/post.html',
+      views: {
+        'tab-post': {
+          templateUrl: '/views/post.html',
+          controller: 'addPostController'
+        }
+      }
     })
-    .state('tab.user.post.add', {
-      url: '/:username/new',
-      templateUrl: '/views/post.add.html',
-      controller: 'addPostController'
+    .state('tab.post.add', {
+      url: '/new',
+      templateUrl: '/views/post.add.html'
     })
-    .state('tab.user.post.view', {
+    .state('tab.post.view', {
       url: '/:post_id',
       templateUrl: '/views/post.view.html',
-      controller: 'viewPostController'
+      controller: 'viewPostController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
-    .state('tab.user.pledge', {
+    .state('tab.post.pledge', {
       url: '/:username/:pledgename',
       templateUrl: '/views/user.pledge.html'
     })
-    .state('tab.user.pledge.add', {
+    .state('tab.post.pledge.add', {
       url: '/new',
       templateUrl: '/views/user.pledge.add.html',
       controller: 'addPledgeController'
     })
-    .state('tab.user.pledge.view', {
+    .state('tab.post.pledge.view', {
       url: '/view',
       templateUrl: '/views/user.pledge.view.html',
       controller: 'viewPledgeController'

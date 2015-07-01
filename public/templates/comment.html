@@ -1,5 +1,9 @@
-<div class="postedComments">
-  <div class=""><strong>@{{username}}</strong></div>
-  <div class="">{{created}} ago</div>
-  <div class="">{{text}}</div>
-</div>
+<form ng-submit="usercomment(post.id, commentText)">
+  <textarea form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="4" cols="50">Comments...</textarea>
+  <button class="button" type="submit">Post Comment</button>
+</form>
+
+<a ng-click="end=comments.length">+ More</a>
+<a ng-click="end=4">- Less</a>
+
+<comment-post ng-repeat="comment in comments" comment="comment"></comment-post>
