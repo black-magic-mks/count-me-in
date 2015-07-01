@@ -178,3 +178,8 @@ img.coverImg {
 form .pledgename {
   display: inline;
 }
+
+.loading {
+  text-align: center;
+  color: gray;
+}
