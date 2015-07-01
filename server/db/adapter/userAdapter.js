@@ -31,6 +31,15 @@ var getUserPostRelatedMiddleware = function(relationship) {
       return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
     })
     .then(function(posts) {
+      return Q.all(posts.map(function(post) {
+        return Post.getRelatedTo(post,'WRITTEN_IN')
+        .then(function(comments) {
+          post.comments = comments;
+          return post;
+        });
+      }));
+    })
+    .then(function(posts) {
       res.send(posts);
     })
     .catch(next);
