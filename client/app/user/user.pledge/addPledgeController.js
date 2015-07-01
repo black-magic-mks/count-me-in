@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('addPledgeController', function($scope, $http) {
+.controller('addPledgeController', function($scope, $http, $state) {
 
   $scope.addPledge = function() {
     var pledgeData = {
@@ -21,7 +21,8 @@ angular.module('app')
   };
 
   $scope.cancelPledge = function() {
-    $state.go('tab.user.dashboard');
+    console.log('in cancelPledge');
+    $state.go('tab.user.post.add');
   };
 
 });
