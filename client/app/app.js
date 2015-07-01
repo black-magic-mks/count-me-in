@@ -35,7 +35,7 @@ angular.module('app', [
     .state('tab.user', {
       url: '/user',
       views: {
-        'tab-user': {
+        'tab-user-profile': {
           templateUrl: '/views/user.html',
           controller: 'UserController'
         }
@@ -43,11 +43,7 @@ angular.module('app', [
     })
     .state('tab.user.profile', {
       url: '/:username/profile',
-      views: {
-        'tab-user-profile': {
-        templateUrl: '/views/user.profile.html'  
-        }
-      }
+      templateUrl: '/views/user.profile.html'
     })
     .state('tab.user.profile.following', {
       url: '/following',
@@ -55,17 +51,17 @@ angular.module('app', [
     })
     .state('tab.user.post', {
       url: '/:username/post',
-      templateUrl: '/views/post.html',
+      views: {
+        'tab-user-post': {
+          templateUrl: '/views/post.html',
+          controller: 'addPostController'
+        }
+      }
     })
     .state('tab.user.post.add', {
       url: '/new',
-      views: {
-        'tab-user-post-add': {
-          templateUrl: '/views/post.add.html',
-          controller: 'addPostController'
-          
-        }
-      }
+      templateUrl: '/views/post.add.html',
+      controller: 'addPostController'    
     })
     .state('tab.user.post.view', {
       url: '/:post_id',
