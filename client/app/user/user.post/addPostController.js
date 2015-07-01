@@ -4,6 +4,8 @@ angular.module('app')
 
   $scope.pledgenames = [];
   $scope.loadingPost = false;
+  $scope.post = {};
+
   
   var init = function() {
     $scope.getUsersPledges();
@@ -19,7 +21,7 @@ angular.module('app')
         pledgenames.push(data[i].pledgename);
       };
       $scope.pledgenames = pledgenames;
-      $scope.pledgename = pledgenames[0];
+      $scope.post.pledgename = pledgenames[0];
     })
     .error(function(data, status, headers, config) {
       console.log('error with get request for api/post');

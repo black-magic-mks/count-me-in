@@ -5,14 +5,7 @@
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
 
-          <select name="pledgename" ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]" required>
-            <div>
-              <option 
-                ng-repeat="pledgename in pledgenames" 
-                value="{{pledgename}}">
-                {{pledgename}}
-              </option>
-            </div>
+          <select name="pledgename" ng-model="post.pledgename" ng-options="pledgename for pledgename in pledgenames" required>
           </select>
 
           <a class="pledge-button" ui-sref="tab.user.pledge.add">Add Pledge</a>
