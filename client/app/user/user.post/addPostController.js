@@ -1,7 +1,31 @@
 angular.module('app')
 
 .controller('addPostController', function($scope, $http, $state) {
+
+  $scope.pledgenames = [];
   $scope.loadingPost = false;
+  
+  var init = function() {
+    $scope.getUsersPledges();
+  };
+
+  $scope.getUsersPledges = function() {
+
+    $http.get('/api/user/pledges')
+    .success(function(data, status, headers, config) {
+      console.log('data from api', data);
+      var pledgenames = [];
+      for (var i = 0; i < data.length; i++) {
+        pledgenames.push(data[i].pledgename);
+      };
+      $scope.pledgenames = pledgenames;
+      $scope.pledgename = pledgenames[0];
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error with get request for api/post');
+    });
+
+  };
 
   $scope.cancelPost = function() {
     $state.go('user.dashboard');
@@ -11,21 +35,18 @@ angular.module('app')
     var files = event.target.files;
     console.log(files[0]);
     var fileName = files[0].name;
-    $scope.fileName = fileName;
+    $scope.$apply(function() {
+      $scope.fileName = fileName;
+    });
   };
   
   $scope.addPost = function() {
-    var fd = new FormData();
-    fd.append('title', $scope.post.title);
-    fd.append('text', $scope.post.text);
-    fd.append('pledgeName', $scope.post.pledgeName);
 
     var file = document.getElementById("user-post-add").files[0];
-    console.log('FILE: ', file);
     var postData = {
       title: $scope.post.title,
       text: $scope.post.text,
-      pledgename: $scope.post.pledgeName,
+      pledgename: $scope.post.pledgename,
       file: {
         name: file.name,
         type: file.type
@@ -58,4 +79,7 @@ angular.module('app')
       })
     })
   }
+
+  init();
+
 });
