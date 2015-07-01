@@ -43,7 +43,11 @@ angular.module('app', [
     })
     .state('tab.user.profile', {
       url: '/:username/profile',
-      templateUrl: '/views/user.profile.html'
+      views: {
+        'tab-user-profile': {
+        templateUrl: '/views/user.profile.html'  
+        }
+      }
     })
     .state('tab.user.profile.following', {
       url: '/following',
@@ -54,9 +58,14 @@ angular.module('app', [
       templateUrl: '/views/post.html',
     })
     .state('tab.user.post.add', {
-      url: '/:username/new',
-      templateUrl: '/views/post.add.html',
-      controller: 'addPostController'
+      url: '/new',
+      views: {
+        'tab-user-post-add': {
+          templateUrl: '/views/post.add.html',
+          controller: 'addPostController'
+          
+        }
+      }
     })
     .state('tab.user.post.view', {
       url: '/:post_id',
