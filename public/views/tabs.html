@@ -5,7 +5,7 @@
 
     <!-- TODO: add username based on auth -->
     <ion-tab title="My Profile" icon="icon ion-ios-person" ui-sref="tab.user.profile({username: username})">
-      <ion-nav-view name="tab-user-profile"></ion-nav-view>
+      <ion-nav-view name="tab-user"></ion-nav-view>
     </ion-tab>
 
     <ion-tab title="Sign In" icon="ion-log-out" ui-sref="tab.login">
@@ -16,8 +16,8 @@
       <ion-nav-view name="tab-signup"></ion-nav-view>
     </ion-tab>
 
-    <ion-tab title="New Post" icon="icon ion-ios-plus" ui-sref="tab.user.post.add({username: username})">
-      <ion-nav-view name="tab-user-post"></ion-nav-view>
+    <ion-tab title="New Post" icon="icon ion-ios-plus" ui-sref="tab.post.add({username: username})">
+      <ion-nav-view name="tab-post"></ion-nav-view>
     </ion-tab>
 
   </ion-tabs>
