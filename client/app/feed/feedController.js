@@ -9,6 +9,7 @@ angular.module('app')
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
+      console.log('getPublicFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -16,6 +17,7 @@ angular.module('app')
   $scope.getPrivateFeedPosts = function() {
     feedFactory.getPrivateFeedPosts()
     .then(function(posts) {
+    console.log('getPrivateFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -85,6 +87,7 @@ angular.module('app')
   $scope.pledgename = $stateParams.pledgename;
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
+    console.log('feedPledgeController', posts)
     $scope.feedPledgePosts = posts;
   });
 })
