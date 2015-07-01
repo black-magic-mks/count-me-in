@@ -1,5 +1,39 @@
 angular.module('app')
 
+.controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
+  $scope.username = $stateParams.username || $rootScope.username;
+    UserProfileFactory.getUserProfilePledges($scope.username)
+    .then(function(pledges) {
+      console.log("profile pledges:", pledges)
+      $scope.profilePledges = pledges;
+    })
+})
+.factory('UserProfileFactory', function($http, $stateParams) {
+  var getUserProfilePledges = function(username) {
+    return $http({
+      method: 'GET',
+      url: '/api/user/pledges',
+      params: {username: username}
+    })
+    .then(function(pledges) {
+      return pledges.data;
+    })
+    .catch(function(err) {
+      console.log('error in UserProfileFactory: getUserProfilePledges()');
+    })
+  }
+
+  return {
+    getUserProfilePledges: getUserProfilePledges
+  }
+})
+
+
+
+
+
+
+
 .controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow) {
   $scope.pledgePreview = [];
   $scope.followingList = [];

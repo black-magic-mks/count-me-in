@@ -1,14 +1,11 @@
 <div class="item item-text-wrap">
   <div class="directiveHeader clearfix">
-    <h1 class="left"> <a ui-sref="tab.user.profile({username: username})">{{username}}</a> </h1>
-     <h2 class="followingList">
-      <a ui-sref="tab.user.profile.following({followingList: followingList})">Following</a>
-    </h2>
+    <h1 class="left"> <a ui-sref="tab.user.profile({username: username})">@{{username}}</a> </h1>
     <div class="left">
       <button ng-click="addFollower()" class="button button-small button-positive right">
         Follow
       </button>
     </div>
   </div>
-<pledge-preview ng-repeat="pledge in pledgePreview"/>
+<pledge-preview ng-repeat="pledge in profilePledges" pledge="pledge"/>
 </div>
