@@ -1,6 +1,4 @@
-<div>
-  <input type="button" value="Like" ng-if="!likeData.hasLiked" ng-click="postLike(postId)"/>
-  <input type="button" value="Unlike" ng-if="likeData.hasLiked" ng-click="postUnlike(postId)"/>
+  <button class="actionButton left" type="button" value="Like" ng-if="!likeData.hasLiked" ng-click="postLike(postId)"><i class="fa fa-thumbs-up"></i> like</button>
+  <button class="actionButton left" type="button" value="Unlike" ng-if="likeData.hasLiked" ng-click="postUnlike(postId)"><i class="fa fa-thumbs-down"></i> unlike</button>
   <div>{{likeData.numLikes}}</div>
-</div>
 

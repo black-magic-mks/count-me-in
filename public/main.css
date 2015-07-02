@@ -1,3 +1,55 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* BEGINS COUNT ME IN STYLES */ 
+
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -14,6 +66,14 @@ a, h1, h2 {
   cursor: pointer;
 }
 
+.hide {
+  display:none;
+}
+
+.show {
+  display:block;
+}
+
 .left {
   float:left;
 }
@@ -23,18 +83,62 @@ a, h1, h2 {
 }
 
 button {
-  margin: 5px 0 !important;
+  /*margin: 5px 0 !important;*/
 }
 
+.actionButton, .directButton {
+  border-radius: 2px;
+  padding: 6px 8px;
+  border: none;
+  color: #FFF;
+  font-size: 1em !important;
+  margin:5px 5px 5px 0;
+  cursor: pointer;
+}
 
+.actionButton {
+  background-color: #F24C27;
+  margin-right:10px;
+}
+
+.directButton {
+  background-color: #037E8C;
+}
+
+.standardLink {
+  color: #037E8C;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0 !important;
+  color: #777;
+  background-color: #EEE;
+}
+
+.block {
+  display:block;
+}
 .mainContainer {
   width:60%;
+  padding:10px;
   margin:0 auto;
-  background-color:#F2EFDC;
 }
 
+.feedOption {
+  width:100%;
+}
+
+.feedOptionButton {
+  width:50%;
+  padding:10px 20px;
+}
 .feedPledgeDirective {
   margin: 25px 0;
+  border-radius: 3px;
+  padding:10px 0;
+  background: #FFF;
+  box-shadow: 0px 1px 3px #CCC;
 }
 
 .feedPledge.item:last-child {
@@ -56,16 +160,87 @@ h2.username {
 }
 
 .postTopBar {
-  width:100%;
+  margin: 10px 15px 15px 10px;
 }
 
-.postTopBar > .username {
+.postTopBar > h2 {
   width:60%;
+  display:inline-block;
+  font-size:1.7em;
 }
 
 .postTopBar > .postDate {
   width:40%;
   text-align: right;
+}
+
+.buttonBar {
+  margin: 5px 20px 15px 20px;
+  display:block;
+}
+
+.toggleComments {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.toggleComments a{
+  padding: 0 15px 0 0;
+}
+
+.commentContent {
+  width:100%;
+  margin:5px 0px;
+}
+
+.postedComments {
+  border-top: 1px solid #CCC;
+  padding: 15px 10px;
+  /*margin: 0px 20px;*/
+}
+
+.commentForm, .postedComments {
+  margin: 0px 25px;
+}
+
+.commentUser {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.commentTimeStamp {
+  color: #AAA;
+}
+
+.postedComments > .commentText {
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  color: #666;
+  line-height:1.3em;
+  display:block;
+  margin: 5px 0;
+}
+
+.feedImages {
+  background-color: #404040;
+}
+
+.feedImages > .image {
+  width:65%;
+}
+
+.feedImages > .image > img {
+  width:100%;
+  margin-bottom: -2px;
+}
+.feedImages > .postText {
+  font-weight: lighter;
+  padding:10px;
+  font-size: 1.3em;
+  line-height:1.3em;
+  width:25%;
+  color: #EFEFEF;
+  background-color: #404040;
 }
 
 .directiveHeader h1 {
@@ -96,7 +271,6 @@ p.pledgeMission {
 
 .feedImages img {
   margin-right:10px;
-  border: 1px solid #ccc;
 }
 
 img.coverImg {
@@ -150,7 +324,7 @@ img.coverImg {
 nav {
   display: flex;
   justify-content: space-around;
-  background-color: #0A0D0F;
+  background-color: #024959;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -158,7 +332,7 @@ nav {
 }
 
 nav .fa {
-  color: #B2B2B2;
+  color: #EFEFEF;
 }
 
 /*Upload*/

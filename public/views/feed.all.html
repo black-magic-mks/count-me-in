@@ -1,4 +1,5 @@
-<button ng-click="getPublicFeedPosts()">Public</button>
-<button ng-click="getPrivateFeedPosts()">Private</button>
-<p ng-if="$root.loggedIn">logged in</p>
+<div class="feedOption block clearfix">
+  <button class="feedOptionButton left" ng-click="getPublicFeedPosts()">Public</button>
+  <button class="feedOptionButton left" ng-click="getPrivateFeedPosts()">Private</button>
+</div>
 <feed-pledge ng-repeat="post in feedPosts" post="post"></feed-pledge>

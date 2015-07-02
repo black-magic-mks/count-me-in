@@ -1,17 +1,24 @@
 <div class="item item-text-wrap">
   <div class="feedPledgeDirective clearfix">
-    <div class="postTopBar">
-      <h2><a ui-sref="user.profile({username: post.username})" class="title username left">@{{post.username}}&nbsp;</a>in <a ui-sref="feed.pledge({pledgename: post.pledgename})" ng-click="getcomments(pledgeName)">#{{post.pledgename}}</a></h2>
+    <div class="postTopBar clearfix">
+      <h2 class="left"><a ui-sref="user.profile({username: post.username})" class="title standardLink">@{{post.username}}&nbsp;</a>in <a class="standardLink" ui-sref="feed.pledge({pledgename: post.pledgename})" ng-click="getcomments(pledgeName)">#{{post.pledgename}}</a></h2>
       <p class="postDate left">{{post.date}} ago</p>
     </div>
-    <p class="pledgeMission left">{{post.text}}</p>
     <div class="feedImages clearfix">
-      <img ng-src="{{post.aws_url}}" height="400px" class="posts" />
+      <div class="image left clearfix">
+        <img ng-src="{{post.aws_url}}" class="posts" />
+      </div>
+      <div class="postText left clearfix">
+        <p class="left">{{post.text}}</p>
+      </div>
     </div>
-    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
-    <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive left">
-      View {{post.username}}'s Posts
-    </button>
+    <div class="buttonBar clearfix">
+      <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+      <button class="actionButton left" ng-click="showCommentBox"><i class="fa fa-comment"></i> Comment</button>
+      <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive right directButton">
+        View {{post.username}}'s Posts
+      </button>
+    </div>
     <comment post-id="post.id" post-comments="post.comments"></comment>
   </div>
 </div>
