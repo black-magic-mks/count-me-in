@@ -1,10 +1,12 @@
-<form ng-submit="usercomment(postId, commentText)">
-  <textarea form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="4" cols="50">Comments...</textarea>
-  <button class="button" type="submit">Post Comment</button>
-</form>
-<a ng-click="end=comments.length">+ More</a>
-<a ng-click="end=4">- Less</a>
-<!-- PostID:{{postId}} 
-Comments: {{comments}}
-Comment: {{postComments}} -->
-<comment-post ng-repeat="comment in postComments.slice().reverse() | slice:start:end" username="comment.username" text="comment.text" created="comment.created"></comment-post>
+<div ng-init="end=4">
+  <form ng-submit="usercomment(postId, commentText)">
+    <textarea form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="4" cols="50">Comments...</textarea>
+    <button class="button" type="submit">Post Comment</button>
+  </form>
+  <a ng-click="end=comments.length">+ More</a>
+  <a ng-click="end=4">- Less</a>
+  <!-- PostID:{{postId}} 
+  Comments: {{comments}}
+  Comment: {{postComments}} -->
+  <comment-post ng-repeat="comment in postComments.slice().reverse() | slice:start:end" username="comment.username" text="comment.text" created="comment.created"></comment-post>
+</div>
