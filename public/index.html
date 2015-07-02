@@ -18,9 +18,6 @@
   <body ng-controller="MainController">
 
     <nav>
-<!--       <a ui-sref="login">Login</a>
-      <a ui-sref="signup">Signup</a> -->
-
       <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
       <a ui-sref="user.post.add">
         <span class="fa-stack fa-lg">
@@ -28,7 +25,8 @@
           <i class="fa fa-plus fa-stack-1x"></i>
         </span>
       </a>
-      <a ui-sref="user.profile({username: username})"><i class="fa fa-user fa-2x"></i></a>
+      <a ng-if="!!(username)" ui-sref="user.profile({username: username})"><i class="fa fa-user fa-2x"></i></a>
+      <a ng-if="!(username)" ui-sref="login"><i class="fa fa-power-off fa-2x"></i></a>
     </nav>
 
     <div ui-view></div>

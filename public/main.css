@@ -149,6 +149,7 @@ nav {
   display: flex;
   justify-content: space-around;
   background-color: #0A0D0F;
+  align-items: center;
 }
 
 nav .fa {
