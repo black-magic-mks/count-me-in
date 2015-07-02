@@ -80,7 +80,7 @@ angular.module('app')
 
 
 
-.controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory) {
+.controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
 
   $scope.timeSince = function(date) {
@@ -118,6 +118,17 @@ angular.module('app')
       console.log('each post.comments', post.comments);
     })
   });
+
+   $scope.subscribedPledges = [];
+  console.log('subscribedPledges: ', $scope.subscribedPledges);
+
+  $scope.subscribePledge = function() {
+    console.log('in subscribe pledge');
+    subscribe.subscribeToPledge($scope.pledgename, function(data) {
+      $scope.subscribedPledges = $scope.subscribedPledges.push(data);
+      console.log('subscribedPledges: ', data, $scope.subscribedPledges);
+    });
+  };
 })
 .factory('feedPledgeFactory', function($http) {
 
@@ -142,3 +153,21 @@ angular.module('app')
     getFeedPledgePosts: getFeedPledgePosts
   }
 })
+
+.factory('subscribe', function($http) {
+  var subscribeToPledge = function(pledgename, callback) {
+    console.log('pledgename: ', pledgename);
+    $http.post('/api/pledge/subscribe', {pledgename: pledgename})
+    .success(function(data, status, headers, config) {
+      callback(data);
+      console.log('subscribeToPledge data: ', data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error status with subscribeToPledge: ', status, data, headers, config);
+    });
+  };
+
+  return {
+    subscribeToPledge: subscribeToPledge
+  }
+});
