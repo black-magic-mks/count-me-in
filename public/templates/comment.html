@@ -7,4 +7,4 @@
 <!-- PostID:{{postId}} 
 Comments: {{comments}}
 Comment: {{postComments}} -->
-<comment-post ng-repeat="comment in postComments" username="comment.username" text="comment.text" created="comment.created"></comment-post>
+<comment-post ng-repeat="comment in postComments.slice().reverse() | slice:start:end" username="comment.username" text="comment.text" created="comment.created"></comment-post>
