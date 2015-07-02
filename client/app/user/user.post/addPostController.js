@@ -15,7 +15,6 @@ angular.module('app')
 
     $http.get('/api/user/pledges')
     .success(function(data, status, headers, config) {
-      console.log('data from api', data);
       var pledgenames = [];
       for (var i = 0; i < data.length; i++) {
         pledgenames.push(data[i].pledgename);
@@ -69,19 +68,22 @@ angular.module('app')
 
     $scope.loadingPost = true;
 
-    $http({
-      method: 'POST',
-      url: '/api/post/new',
-      data: postData,
-    })
-    .then(function(response) {
-      upload(file, response.data.signed_request, response.data.url, function(url) {
+    $http.post('/api/post/new', postData)
+    .success(function(data, status, headers, config) {
+      upload(file, data.signed_request, data.url, function(url) {
         $scope.loadingPost = false;
-        $state.go('user.post.view', {post_id: response.data.id});
-      })
+        $state.go('user.post.view', {post_id: data.id});
+      });
     })
+    .error(function(data, status, headers, config) {
+      console.log('error with get request for /api/post/new');
+    });
+
+
   }
 
   init();
-
 });
+
+
+

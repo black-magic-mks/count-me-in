@@ -1,5 +1,11 @@
 <div class="upload">
+
   <div ng-show="!loadingPost">
+
+    <div class="error-message" ng-messages="true" role="alert">
+      <div ng-message="maxlength">Your field is too long</div>
+    </div>
+
     <h3>add a post</h3>
 
     <div>
