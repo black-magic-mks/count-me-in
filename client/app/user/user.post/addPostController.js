@@ -5,8 +5,9 @@ angular.module('app')
   $scope.pledgenames = [];
   $scope.loadingPost = false;
   $scope.post = {};
+  $scope.hasError = false;
+  $scope.error = "";
 
-  
   var init = function() {
     $scope.getUsersPledges();
   };
@@ -76,10 +77,10 @@ angular.module('app')
       });
     })
     .error(function(data, status, headers, config) {
-      console.log('error with get request for /api/post/new');
+      $scope.error = data.toString() + ' (' + status + ').';
+      $scope.hasError = true;
+      $scope.loadingPost = false;
     });
-
-
   }
 
   init();
