@@ -8,7 +8,7 @@
     <div class="feedImages clearfix">
       <img ng-src="{{post.aws_url}}" height="400px" class="posts" />
     </div>
-    <likes post-id="post.id"></likes>
+    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
     <button ui-sref="tab.user.profile({username: post.username})" class="button button-small button-positive left">
       View {{post.username}}'s Posts
     </button>

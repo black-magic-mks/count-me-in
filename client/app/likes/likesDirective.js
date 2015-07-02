@@ -3,7 +3,9 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      postId: '='
+      postId: '=',
+      likes: '=',
+      hasLiked: '='
     },
     templateUrl: './templates/likes.html',
     link: function(scope, element, attribute) {
@@ -61,11 +63,10 @@ angular.module('app')
         })
       }
 
-      // gets the data for the initial load
-      scope.getPost(scope.postId)
-      .then(function(likeData) {
-        scope.likeData = likeData;
-      });
+      scope.likeData = {
+        likes: likes,
+        hasLiked: hasLiked
+      }
     }
   }
 })
