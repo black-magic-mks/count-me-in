@@ -68,11 +68,12 @@
   (.send res true))
 
 (defn authorize [req res next]
-  (if (nil? (.-username req))
-    (->
-      (.status res 401)
-      (.send false))
-    (.send res true)))
+  (let [username (.-username req)]
+    (if (nil? username)
+      (->
+        (.status res 401)
+        (.send false))
+      (.send res username))))
 
 
 (defn noop [] nil)
