@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, $ionicModal, feedFactory) {
+.controller('FeedController', function($scope, feedFactory) {
   $scope.feedPosts = [];
   $scope.comments = [];
   $scope.commentsObj = {};
@@ -31,11 +31,6 @@ angular.module('app')
 
   // initializes the post data
   $scope.init();
-
-  $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) { $scope.modal = modal; });
 
   $scope.saveMission = function() {
     $scope.modal.hide();

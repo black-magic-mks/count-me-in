@@ -1,4 +1,4 @@
-angular.module('app')
+  angular.module('app')
 .directive('pledgePost', function() {
   return {
     restrict: 'E',

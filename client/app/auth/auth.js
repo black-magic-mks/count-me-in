@@ -39,10 +39,10 @@ angular.module('app')
     })
     .then(function(res) {
       $rootScope.currentUser = user.username;
-      $state.go('tab.feed.all');
+      $state.go('feed.all');
     })
     .catch(function(err) {
-      $state.go('tab.login');
+      $state.go('login');
       console.error(err);
     });
   }
@@ -57,10 +57,10 @@ angular.module('app')
     .then(function(res) {
       $rootScope.currentUser = user.username;
       $rootScope.loggedIn = true;
-      $state.go('tab.feed.all');
+      $state.go('feed.all');
     })
     .catch(function(err) {
-      $state.go('tab.signup')
+      $state.go('signup')
     });
   }
 
@@ -73,7 +73,7 @@ angular.module('app')
     })
     .then(function(res) {
       $rootScope.currentUser = null;
-      $state.go('tab.feed.all');
+      $state.go('feed.all');
     })
     .catch(function(err) {
       console.error(err);

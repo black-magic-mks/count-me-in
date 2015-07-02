@@ -26,11 +26,11 @@ button {
   margin: 5px 0 !important;
 }
 
-ion-content {
+/*ion-content {
   max-width:800px;
   margin: 0 auto;
 }
-
+*/
 .feedPledgeDirective {
   margin: 25px 0;
 }
@@ -145,13 +145,17 @@ img.coverImg {
 
 /* Navigation bar*/
 
-.nav {
+nav {
   display: flex;
   justify-content: space-around;
   background-color: #0A0D0F;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
-.nav .fa {
+nav .fa {
   color: #B2B2B2;
 }
 
