@@ -1,7 +1,7 @@
 angular.module('app')
 
 .controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
-  $scope.username = $stateParams.username || $rootScope.username;
+  $scope.username = $stateParams.username || $rootScope.currentUser;
     UserProfileFactory.getUserProfilePledges($scope.username)
     .then(function(pledges) {
       console.log("profile pledges:", pledges)
