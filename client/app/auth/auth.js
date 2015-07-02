@@ -3,10 +3,13 @@ angular.module('app')
 .run(function($state, $rootScope, Auth) {
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    console.log('state changed')
     if ($state !== 'login' && $state !== 'signup') {
       Auth.isLoggedIn()
       .then(function(authenticated) {
+        console.log('authentication: ', authenticated)
         if (authenticated) {
+          console.log($rootScope.currentUser)
           $rootScope.loggedIn = true;
         } else {
           $rootScope.loggedIn = false;
@@ -35,11 +38,11 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      $rootScope.username = user.username;
-      $state.go('tab.feed.all');
+      $rootScope.currentUser = user.username;
+      $state.go('feed.all');
     })
     .catch(function(err) {
-      $state.go('tab.login');
+      $state.go('login');
       console.error(err);
     });
   }
@@ -52,12 +55,12 @@ angular.module('app')
       data: user
     })
     .then(function(res) {
-      $rootScope.username = user.username;
+      $rootScope.currentUser = user.username;
       $rootScope.loggedIn = true;
-      $state.go('tab.feed.all');
+      $state.go('feed.all');
     })
     .catch(function(err) {
-      $state.go('tab.signup')
+      $state.go('signup')
     });
   }
 
@@ -69,8 +72,8 @@ angular.module('app')
       url: '/api/auth/logout'
     })
     .then(function(res) {
-      $rootScope.username = null;
-      $state.go('tab.feed.all');
+      $rootScope.currentUser = null;
+      $state.go('feed.all');
     })
     .catch(function(err) {
       console.error(err);

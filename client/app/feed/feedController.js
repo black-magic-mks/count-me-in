@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, $ionicModal, feedFactory) {
+.controller('FeedController', function($scope, feedFactory) {
   $scope.feedPosts = [];
   // uses promises to put the public data onto the scope
   $scope.getPublicFeedPosts = function() {
@@ -30,11 +30,6 @@ angular.module('app')
 
   // initializes the post data
   $scope.init();
-
-  $ionicModal.fromTemplateUrl('templates/modal.html', {
-    scope: $scope,
-    animation: 'slide-in-up'
-  }).then(function(modal) { $scope.modal = modal; });
 
   $scope.saveMission = function() {
     $scope.modal.hide();
@@ -113,21 +108,18 @@ angular.module('app')
     $scope.feedPledgePosts = posts;
   });
 
-   $scope.subscribedPledges = [];
-  console.log('subscribedPledges: ', $scope.subscribedPledges);
+  $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
     console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges = $scope.subscribedPledges.push(data);
-      console.log('subscribedPledges: ', data, $scope.subscribedPledges);
     });
   };
 })
 .factory('feedPledgeFactory', function($http) {
 
   var getFeedPledgePosts = function(pledgename) {
-    console.log(pledgename)
     return $http({
       method: 'GET',
       url: '/api/pledge/posts',
@@ -150,11 +142,9 @@ angular.module('app')
 
 .factory('subscribe', function($http) {
   var subscribeToPledge = function(pledgename, callback) {
-    console.log('pledgename: ', pledgename);
     $http.post('/api/pledge/subscribe', {pledgename: pledgename})
     .success(function(data, status, headers, config) {
       callback(data);
-      console.log('subscribeToPledge data: ', data);
     })
     .error(function(data, status, headers, config) {
       console.log('error status with subscribeToPledge: ', status, data, headers, config);
