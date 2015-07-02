@@ -1,21 +1,16 @@
-<div>
+<div class="upload">
   <div ng-show="!loadingPost">
-    <h3>Add a post</h3>
+    <h3>add a post</h3>
 
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
 
-          <select name="pledgename" ng-model="post.pledgename" ng-init="post.pledgename = pledgenames[0]" required>
-            <div>
-              <option 
-                ng-repeat="pledgename in pledgenames" 
-                value="{{pledgename}}">
-                {{pledgename}}
-              </option>
-            </div>
+          <select name="pledgename" ng-model="post.pledgename" ng-options="pledgename for pledgename in pledgenames" required>
           </select>
 
-          <a class="pledge-button" ui-sref="tab.user.pledge.add">Add Pledge</a>
+          <br />
+
+          <a class="pledge-button" ui-sref="tab.user.pledge.add">+pledge</a>
 
           <br />
 
@@ -52,7 +47,8 @@
 
     </div>
   </div>
-  <div ng-show="loadingPost">
-    <div>uploading your post</div>
+  <div class="loading" ng-show="loadingPost">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+    <div>loading...</div>
   </div>
 </div>

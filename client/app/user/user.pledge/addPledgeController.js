@@ -11,7 +11,7 @@ angular.module('app')
     // TODO: confirm correct back-end route
     $http({
       method: 'POST',
-      url: '/api/pledge/new',
+      url: '/api/pledge',
       data: pledgeData,
     })
     .then(function(response) {
