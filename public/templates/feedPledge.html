@@ -9,7 +9,7 @@
       <img ng-src="{{post.aws_url}}" height="400px" class="posts" />
     </div>
     <likes post-id="post.id"></likes>
-    <button ui-sref="tab.user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive left">
+    <button ui-sref="tab.user.profile({username: post.username})" class="button button-small button-positive left">
       View {{post.username}}'s Posts
     </button>
   </div>

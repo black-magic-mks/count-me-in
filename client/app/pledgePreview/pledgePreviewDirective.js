@@ -4,7 +4,8 @@ angular.module('app')
   return {
     restrict: 'E',
     scope: {
-      pledge: '='
+      pledge: '=',
+      username: '='
     },
     templateUrl: '/templates/pledgePreview.html'
   };
