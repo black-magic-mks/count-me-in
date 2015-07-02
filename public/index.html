@@ -25,7 +25,7 @@
           <i class="fa fa-plus fa-stack-1x"></i>
         </span>
       </a>
-      <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: username})"><i class="fa fa-user fa-2x"></i></a>
+      <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: currentUser})"><i class="fa fa-user fa-2x"></i></a>
       <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-power-off fa-2x"></i></a>
     </nav>
 
