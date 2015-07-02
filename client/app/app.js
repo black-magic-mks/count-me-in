@@ -39,6 +39,11 @@ angular.module('app', [
     .state('user.post', {
       url: '/:username/post',
       templateUrl: '/views/post.html',
+      }
+    })
+    .state('tab.post.add', {
+      url: '/new',
+      templateUrl: '/views/post.add.html'
     })
     .state('user.post.add', {
       url: '/:username/new',
@@ -48,7 +53,7 @@ angular.module('app', [
     .state('user.post.view', {
       url: '/:post_id',
       templateUrl: '/views/post.view.html',
-      controller: 'viewPostController'
+      controller: 'viewPostController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
     .state('user.pledge', {
       url: '/:username/:pledgename',

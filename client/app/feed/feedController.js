@@ -2,13 +2,11 @@ angular.module('app')
 
 .controller('FeedController', function($scope, feedFactory) {
   $scope.feedPosts = [];
-  $scope.comments = [];
-  $scope.commentsObj = {};
-
   // uses promises to put the public data onto the scope
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
+      // console.log('getPublicFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -16,6 +14,7 @@ angular.module('app')
   $scope.getPrivateFeedPosts = function() {
     feedFactory.getPrivateFeedPosts()
     .then(function(posts) {
+    // console.log('getPrivateFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -45,7 +44,7 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      console.log("public: ", posts.data)
+      console.log('get public posts: ', posts);
       return posts.data;
     })
     .catch(function(err) {
@@ -60,7 +59,6 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
-      console.log("private: ", posts.data)
       return posts.data;
     })
     .catch(function(err) {
@@ -78,6 +76,33 @@ angular.module('app')
 
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
+
+  $scope.timeSince = function(date) {
+    
+    var seconds = Math.floor((new Date() - date) / 1000);
+    var interval = Math.floor(seconds / 31536000);
+    if (interval > 1) {
+        return interval + " years";
+    }
+    interval = Math.floor(seconds / 2592000);
+    if (interval > 1) {
+        return interval + " months";
+    }
+    interval = Math.floor(seconds / 86400);
+    if (interval > 1) {
+        return interval + " days";
+    }
+    interval = Math.floor(seconds / 3600);
+    if (interval > 1) {
+        return interval + " hours";
+    }
+    interval = Math.floor(seconds / 60);
+    if (interval > 1) {
+        return interval + " minutes";
+    }
+    return Math.floor(seconds) + " seconds";
+  };
+
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
     $scope.feedPledgePosts = posts;
@@ -93,6 +118,7 @@ angular.module('app')
   };
 })
 .factory('feedPledgeFactory', function($http) {
+
   var getFeedPledgePosts = function(pledgename) {
     return $http({
       method: 'GET',
@@ -100,6 +126,8 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .then(function(posts) {
+      console.log('posts', posts);
+      // posts.data.comments.created = timeSince(posts.data.comments.created);
       return posts.data;
     })
     .catch(function(err) {
@@ -125,5 +153,11 @@ angular.module('app')
 
   return {
     subscribeToPledge: subscribeToPledge
+  }
+})
+
+.filter('slice', function(){
+  return function(arr, start, end){
+    return arr.slice(start, end);
   }
 });
