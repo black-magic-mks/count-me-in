@@ -150,6 +150,9 @@ nav {
   justify-content: space-around;
   background-color: #0A0D0F;
   align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 nav .fa {
