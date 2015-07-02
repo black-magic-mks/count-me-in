@@ -49,7 +49,7 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      console.log("public: ", posts.data)
+      console.log('get public posts: ', posts);
       return posts.data;
     })
     .catch(function(err) {
@@ -64,7 +64,6 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
-      console.log("private: ", posts.data)
       return posts.data;
     })
     .catch(function(err) {
@@ -112,11 +111,6 @@ angular.module('app')
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
     $scope.feedPledgePosts = posts;
-    console.log('scope.feedPledgePosts', $scope.feedPledgePosts);
-    $scope.feedPledgePosts.forEach(function(post) {
-      console.log('each post', post);
-      console.log('each post.comments', post.comments);
-    })
   });
 
    $scope.subscribedPledges = [];
