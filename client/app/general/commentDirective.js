@@ -4,7 +4,9 @@ angular.module('app')
     restrict: 'E',
     scope: {
       comments: '=',
-      usercomment: '=',
+      postId: '=',
+      // comment: '=',
+      usercomment: '='
     },
     templateUrl: './templates/comment.html',
     link: function(scope, element, attr) {
@@ -27,11 +29,7 @@ angular.module('app')
       //     console.log('error in sending user comment: ', err)
       //   })
       // };
-      
-      //get comments on load
-      
-
-      
+            
     }
   }
 })

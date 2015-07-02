@@ -5,7 +5,8 @@ angular.module('app')
     scope: {
       username: '=',
       text: '=',
-      created: '='
+      created: '=',
+      comment: '='
     },
     templateUrl: './templates/commentPost.html',
     link: function(scope, element, attr) {
