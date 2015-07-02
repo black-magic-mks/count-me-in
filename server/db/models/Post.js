@@ -19,6 +19,7 @@ Post.addComputedField('username', function(post, done) {
     post: post.id
   })
   .then(function(user) {
+    if (user.length === 0) done(null,null);
     done(null,user[0].username);
   })
   .catch(function(err) {
@@ -36,6 +37,7 @@ Post.addComputedField('pledgename', function(post, done) {
     post: post.id
   })
   .then(function(pledge) {
+    if (pledge.length === 0) done(null,null);
     done(null,pledge[0].pledgename);
   })
   .catch(function(err) {
