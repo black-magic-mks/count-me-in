@@ -2,8 +2,10 @@
 
   <div ng-show="!loadingPost">
 
-    <div class="error-message" ng-messages="hasError" role="alert">
-      <div>{{ error }}</div>
+    <div ng-if="hasError">
+      <div class="error-message" ng-messages="hasError" role="alert">
+        <div>{{ error }}</div>
+      </div>
     </div>
 
     <h3>add a post</h3>

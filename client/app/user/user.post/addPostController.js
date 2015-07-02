@@ -77,7 +77,7 @@ angular.module('app')
       });
     })
     .error(function(data, status, headers, config) {
-      $scope.error = data.toString() + ' (' + status + ').';
+      $scope.error = data.toString() + ' (' + status + ')';
       $scope.hasError = true;
       $scope.loadingPost = false;
     });
