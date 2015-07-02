@@ -39,7 +39,6 @@ angular.module('app', [
     .state('user.post', {
       url: '/:username/post',
       templateUrl: '/views/post.html',
-      }
     })
     .state('tab.post.add', {
       url: '/new',
