@@ -88,20 +88,17 @@ angular.module('app')
     $scope.feedPledgePosts = posts;
   });
 
-   $scope.subscribedPledges = [];
-  console.log('subscribedPledges: ', $scope.subscribedPledges);
+  $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
     console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges = $scope.subscribedPledges.push(data);
-      console.log('subscribedPledges: ', data, $scope.subscribedPledges);
     });
   };
 })
 .factory('feedPledgeFactory', function($http) {
   var getFeedPledgePosts = function(pledgename) {
-    console.log(pledgename)
     return $http({
       method: 'GET',
       url: '/api/pledge/posts',
@@ -122,11 +119,9 @@ angular.module('app')
 
 .factory('subscribe', function($http) {
   var subscribeToPledge = function(pledgename, callback) {
-    console.log('pledgename: ', pledgename);
     $http.post('/api/pledge/subscribe', {pledgename: pledgename})
     .success(function(data, status, headers, config) {
       callback(data);
-      console.log('subscribeToPledge data: ', data);
     })
     .error(function(data, status, headers, config) {
       console.log('error status with subscribeToPledge: ', status, data, headers, config);

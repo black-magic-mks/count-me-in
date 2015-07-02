@@ -43,7 +43,8 @@ angular.module('app', [
     })
     .state('tab.user.profile', {
       url: '/:username/profile',
-      templateUrl: '/views/user.profile.html'
+      templateUrl: '/views/user.profile.html',
+      controller: 'UserProfileController'
     })
     .state('tab.user.profile.following', {
       url: '/following',
