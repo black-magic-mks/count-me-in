@@ -1,6 +1,5 @@
 angular.module('app', [
   'ui.router',
-  'ionic',
   'ngFileUpload'
 ])
 
@@ -8,92 +7,71 @@ angular.module('app', [
   $urlRouterProvider.otherwise('/feed/all');
 
   $stateProvider
-    .state('tab', {
-      url: '',
-      abstract: true,
-      templateUrl: 'views/tabs.html'
-    })
-    .state('tab.feed', {
+    .state('feed', {
       url: '/feed',
-      views: {
-        'tab-feed': {
-          templateUrl: '/views/feed.html',
-          controller: 'FeedController'
-        }
-      }
+      templateUrl: '/views/feed.html',
+      controller: 'FeedController'
     })
-    .state('tab.feed.all', {
+    .state('feed.all', {
       url: '/all',
       templateUrl: '/views/feed.all.html' // controller is called twice, decide which one will keep the controller
     })
-    .state('tab.feed.pledge', {
+    .state('feed.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
       controller: 'FeedPledgeController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
 
-    .state('tab.user', {
+    .state('user', {
       url: '/user',
-      views: {
-        'tab-user': {
-          templateUrl: '/views/user.html',
-          controller: 'UserController'
-        }
-      }
+      templateUrl: '/views/user.html',
+      controller: 'UserController'
     })
-    .state('tab.user.profile', {
+    .state('user.profile', {
       url: '/:username/profile',
       templateUrl: '/views/user.profile.html'
     })
-    .state('tab.user.profile.following', {
+    .state('user.profile.following', {
       url: '/following',
       templateUrl: '/views/user.profile.html'
     })
-    .state('tab.user.post', {
+    .state('user.post', {
       url: '/:username/post',
       templateUrl: '/views/post.html',
     })
-    .state('tab.user.post.add', {
+    .state('user.post.add', {
       url: '/:username/new',
       templateUrl: '/views/post.add.html',
       controller: 'addPostController'
     })
-    .state('tab.user.post.view', {
+    .state('user.post.view', {
       url: '/:post_id',
       templateUrl: '/views/post.view.html',
       controller: 'viewPostController'
     })
-    .state('tab.user.pledge', {
+    .state('user.pledge', {
       url: '/:username/:pledgename',
       templateUrl: '/views/user.pledge.html'
     })
-    .state('tab.user.pledge.add', {
+    .state('user.pledge.add', {
       url: '/new',
       templateUrl: '/views/user.pledge.add.html',
       controller: 'addPledgeController'
     })
-    .state('tab.user.pledge.view', {
+    .state('user.pledge.view', {
       url: '/view',
       templateUrl: '/views/user.pledge.view.html',
       controller: 'viewPledgeController'
     })
-    .state('tab.login', {
+    .state('login', {
       url: '/login',
-      views: {
-        'tab-login': {
-          templateUrl: '/views/login.html',
-          controller: 'AuthController'
-        }
-      }
+      templateUrl: '/views/login.html',
+      controller: 'AuthController'
     })
-    .state('tab.signup', {
+    .state('signup', {
       url: '/signup',
-      views: {
-        'tab-signup': {
-          templateUrl: '/views/signup.html',
-          controller: 'AuthController'
-        }
-      }
+      templateUrl: '/views/signup.html',
+      controller: 'AuthController'
     })
 })
 

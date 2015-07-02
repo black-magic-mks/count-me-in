@@ -26,11 +26,11 @@ button {
   margin: 5px 0 !important;
 }
 
-ion-content {
+/*ion-content {
   max-width:800px;
   margin: 0 auto;
 }
-
+*/
 .feedPledgeDirective {
   margin: 25px 0;
 }

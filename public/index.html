@@ -1,32 +1,31 @@
 <!DOCTYPE html>
 <html ng-app="app">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+  <head>
+    <meta charset="utf-8" />
 
-  <title>Count Me In</title>
-  <link rel="stylesheet" type="text/css" href="/bower_components/ionic/release/css/ionic.css">
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" type="text/css" href="/main.css">
-  <script src="/bower_components/ionic/release/js/ionic.bundle.min.js"></script>
-  <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <title>Count Me In</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
+    <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="/scripts.js"></script>
 
-  <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
-  <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
-
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-  <script src="/scripts.js"></script>
-
-</head>
+  </head>
+  
   <body ng-controller="MainController">
 
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-icon icon ion-chevron-left">
-      </ion-nav-back-button>
-    </ion-nav-bar>
+    <nav>
+      <a ui-sref="feed.all">News Feed</a>
+      <a ui-sref="user.profile({username: username})">My Profile</a>
+      <a ui-sref="user.post.add">Add Post</a>
+      <a ui-sref="login">Login</a>
+      <a ui-sref="signup">Signup</a>
+    </nav>
 
-    <ion-nav-view></ion-nav-view>
+    <div ui-view></div>
   </body>
 </html>
 

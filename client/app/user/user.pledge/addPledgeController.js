@@ -15,14 +15,14 @@ angular.module('app')
       data: pledgeData,
     })
     .then(function(response) {
-      $state.go('tab.user.pledge.view', {pledgename: response.data.pledgename});
+      $state.go('user.pledge.view', {pledgename: response.data.pledgename});
     });
 
   };
 
   $scope.cancelPledge = function() {
     console.log('in cancelPledge');
-    $state.go('tab.user.post.add');
+    $state.go('user.post.add');
   };
 
 });
