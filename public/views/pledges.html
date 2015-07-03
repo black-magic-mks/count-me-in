@@ -1,0 +1,9 @@
+<div class="search">
+  <h1>find a pledge</h1>
+  <form>
+    <input class="pledge-search" type="text" ng-model="searchText" placeholder="search a pledge"/>
+  </form>
+</div>
+<div ng-repeat="pledge in pledges | filter:searchText">
+  <div>{{ pledge.pledgename }}</div>
+</div>

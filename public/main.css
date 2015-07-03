@@ -200,3 +200,11 @@ form .pledgename {
   text-align: center;
   color: gray;
 }
+
+.search {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  text-align: center;
+}
