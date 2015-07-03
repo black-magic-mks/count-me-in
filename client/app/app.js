@@ -21,7 +21,11 @@ angular.module('app', [
       templateUrl: '/views/feed.pledge.html',
       controller: 'FeedPledgeController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
-
+    .state('pledge.all', {
+      url: '/pledge/all',
+      templateUrl: '/views/pledge.all.html',
+      controller: 'AllPledgeController'
+    })
     .state('user', {
       url: '/user',
       templateUrl: '/views/user.html',
@@ -38,12 +42,7 @@ angular.module('app', [
     })
     .state('user.post', {
       url: '/:username/post',
-      templateUrl: '/views/post.html',
-      }
-    })
-    .state('tab.post.add', {
-      url: '/new',
-      templateUrl: '/views/post.add.html'
+      templateUrl: '/views/post.html'
     })
     .state('user.post.add', {
       url: '/:username/new',
