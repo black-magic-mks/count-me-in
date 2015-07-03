@@ -87,6 +87,7 @@ angular.module('app')
       url: '/api/auth/authorized'
     })
     .then(function(res) {
+      $rootScope.currentUser = res.data;
       return true;
     })
     .catch(function(err) {
