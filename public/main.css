@@ -137,12 +137,17 @@ button {
   color: #024959;
 }
 
+.minorLink {
+  margin: 0px 0px 20px 20px;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   margin: 0 !important;
   color: #777;
   background-color: #EDEDED;
-  padding-top:50px;
+  padding-bottom: 20px;
+  background-image: url(./images/bg.png);
 }
 
 .block {
@@ -154,6 +159,10 @@ body {
   margin:0 auto;
 }
 
+.feedContainer {
+  position:relative;
+  top:30px;
+}
 .feedOption {
   width:60%;
   font-size: 2em;
@@ -199,7 +208,7 @@ body {
 } 
 
 .directiveHeader {
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #DDD;
   padding: 0 0 0px 0;
 }
 
@@ -291,11 +300,6 @@ h2.username {
   position:relative;
 }
 
-/*.feedImages > .image {
-  width:100%;
-  position:relative;
-}
-*/
 .feedImages img {
   width:100%;
   margin-bottom: -2px;
@@ -316,7 +320,6 @@ h2.username {
   font-weight:normal;
   margin-bottom:10px;
   padding:20px 20px 0px 20px;
-
 }
 
 .postText p {
@@ -392,29 +395,75 @@ nav .fa {
 
 /*Upload*/
 
-.upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-start;
+.upload .postTopBar {
+  margin: 10px 15px 2px 20px
 }
 
-.upload h3 {
-  text-align: center;
+.upload form {
+  margin:30px 20px 20px 20px;
 }
+
+select {
+  font-family: 'Lato', sans-serif;
+  width: 90%;
+}
+
+p.formLabel {
+  color: #037E8C;
+  padding: 20px 0 10px 0;
+  border-top:1px solid #DDD;
+  margin-top:25px;
+}
+
+.upload form input, .upload form textarea {
+  min-width: 90%;
+  padding: 5px;
+}
+
+.upload form button {
+  padding: 10px 18px;
+}
+
 
 /* Add post */
 
 .addPostForm input[type="file"] {
-    display: none;
+  display: none;
 }
 
 .post-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 10px 10px;
+  padding: 10px 0px 20px 0;
   cursor: pointer;
+  color: #037E8C;
+  margin-bottom:20px;
+  border-bottom: 1px solid #DDD;
+}
+
+.fa-camera {
+  border:1px solid #037E8C;
   border-radius: 50%;
+  padding:6px;
+}
+
+.uploadText {
+  position:relative;
+  bottom:4px;
+  padding-left:5px;
+}
+
+.post-upload:hover {
+  color: #024959;
+}
+
+/* Add Pledge */
+.addPledgeForm .pledgename {
+  margin-bottom: 25px;
+}
+
+.pledgeForm {
+    border-bottom: 1px solid #DDD;
+    margin-bottom:20px;
+
 }
 
 /* Forms */
