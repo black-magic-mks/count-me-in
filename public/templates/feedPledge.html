@@ -1,17 +1,22 @@
 <div class="item item-text-wrap">
   <div class="feedPledgeDirective clearfix">
-    <div class="postTopBar">
-      <h2><a ui-sref="user.profile({username: post.username})" class="title username left">@{{post.username}}&nbsp;</a>in <a ui-sref="feed.pledge({pledgename: post.pledgename})" ng-click="getcomments(pledgeName)">#{{post.pledgename}}</a></h2>
-      <p class="postDate left">{{post.date}} ago</p>
+    <div class="postTopBar clearfix">
+      <h2 class="left"><a ui-sref="user.profile({username: post.username})" class="title standardLink">@{{post.username}}&nbsp;</a>in <a class="standardLink" ui-sref="feed.pledge({pledgename: post.pledgename})">#{{post.pledgename}}</a></h2>
+      <p class="postDate left">{{post.date}} Jan 6</p>
     </div>
-    <p class="pledgeMission left">{{post.text}}</p>
     <div class="feedImages clearfix">
-      <img ng-src="{{post.aws_url}}" height="400px" class="posts" />
+        <img ng-src="{{post.aws_url}}" class="posts" />
+      <div class="postText left clearfix">
+        <h3 class="postTitle">{{post.title}}</h3>
+        <p class="left">{{post.text}}</p>
+      </div>
     </div>
-    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
-    <button ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive left">
-      View {{post.username}}'s Posts
-    </button>
-    <comment post-id="post.id" post-comments="post.comments"></comment>
+    <div class="buttonBar clearfix">
+      <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+      <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+      <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive right directButton"><i class="fa fa-eye"></i> more
+      </button>
+    </div>
+    <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed" box-visible="boxVisible"></comment>
   </div>
 </div>

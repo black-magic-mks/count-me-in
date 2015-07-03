@@ -5,7 +5,9 @@ angular.module('app')
     scope: {
       comments: '=',
       postId: '=',
-      postComments: '='
+      postComments: '=',
+      model: '=',
+      collapsed: '='
     },
     templateUrl: './templates/comment.html',
     link: function(scope, element, attr) {
