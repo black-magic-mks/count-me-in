@@ -1,3 +1,55 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* BEGINS COUNT ME IN STYLES */ 
+
 .clearfix:after {
   visibility: hidden;
   display: block;
@@ -14,6 +66,18 @@ a, h1, h2 {
   cursor: pointer;
 }
 
+a {
+  font-weight:lighter;
+}
+
+.hide {
+  display:none;
+}
+
+.show {
+  display:block;
+}
+
 .left {
   float:left;
 }
@@ -23,16 +87,110 @@ a, h1, h2 {
 }
 
 button {
-  margin: 5px 0 !important;
+  cursor: pointer;
 }
 
-/*ion-content {
-  max-width:800px;
-  margin: 0 auto;
+.actionButton, .directButton {
+  border-radius: 3px;
+  padding: 6px 8px;
+  border: none;
+  color: #FFF;
+  font-size: 1em !important;
+  margin:5px 5px 5px 0;
+  cursor: pointer;
 }
-*/
+
+.actionButton {
+  border-top:1px solid #E8764A;
+  border-left:1px solid #F2593B;
+  border-bottom:1px solid #B04733;
+  border-right:1px solid #EB4925;
+  background-color: #F24C27;
+  margin-right:10px;
+}
+
+.actionButton:hover {
+  border-top:1px solid #E8764A;
+  border-left:1px solid #F2593B;
+  border-bottom:1px solid #B04733;
+  border-right:1px solid #EB4925;
+  background-color: #FA5E41;
+  margin-right:10px;
+}
+
+.directButton {
+  border-top:1px solid #04ACBF;
+  border-bottom:1px solid #038A99;
+  background-color: #037E8C;
+}
+
+.directButton:hover {
+  background-color: #08888C;
+}
+
+.standardLink {
+  color: #037E8C;
+  cursor: pointer;
+}
+
+.standardLink:hover {
+  color: #024959;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  margin: 0 !important;
+  color: #777;
+  background-color: #EDEDED;
+  padding-top:50px;
+}
+
+.block {
+  display:block;
+}
+.mainContainer {
+  width:60%;
+  padding:0px 10px 50px 10px;
+  margin:0 auto;
+}
+
+.feedOption {
+  width:60%;
+  font-size: 2em;
+  position:fixed;
+  top:0;
+  z-index: 100;
+}
+
+.fa-globe, .fa-lock {
+  font-size: 2em;
+  color:#FFF;
+}
+
+.feedOptionButton {
+  width:50%;
+  padding:10px 20px;
+  border: 1px solid #024959;
+  background-color: #385159;
+}
+
+.public {
+  border-bottom-left-radius: 4px;
+}
+
+.private {
+  border-bottom-right-radius: 4px;
+}
+
+.active {
+  background-color: #024959;
+}
 .feedPledgeDirective {
   margin: 25px 0;
+  border-radius: 4px;
+  padding:10px 0;
+  background: #FFF;
+  box-shadow: 0px 1px 3px #CCC;
 }
 
 .feedPledge.item:last-child {
@@ -50,20 +208,118 @@ button {
 
 h2.username {
   font-size: 1.2em;
-  font-weight:bold;
+  /*font-weight:bold;*/
 }
 
 .postTopBar {
-  width:100%;
+  margin: 10px 15px 20px 15px;
 }
 
-.postTopBar > .username {
+.postTopBar > h2 {
   width:60%;
+  display:inline-block;
+  font-size:1.7em;
+  font-weight:lighter;
 }
 
 .postTopBar > .postDate {
   width:40%;
   text-align: right;
+  position:relative;
+  top:5px;
+  font-size:1.2em;
+  font-weight: lighter;
+}
+
+.buttonBar {
+  margin: 10px 20px 15px 22px;
+  display:block;
+}
+
+.toggleComments {
+  text-align: center;
+  margin: 5px 0 10px 0;
+  border-top: 1px solid #DDD;
+  padding-top: 10px;
+}
+
+.toggleComments a{
+  padding: 0 15px 0 0;
+}
+
+.commentContent {
+  width:100%;
+  margin:5px 0px;
+}
+
+.postedComments {
+  border-top: 1px solid #DDD;
+  padding: 10px;
+  /*margin: 0px 20px;*/
+}
+
+.commentForm, .postedComments {
+  margin: 0px 22px;
+}
+
+.commentForm textarea {
+  width:99%;
+  min-height:80px;
+}
+
+.commentUser {
+  font-size: 1.2em;
+}
+
+.commentTimeStamp {
+  color: #AAA;
+}
+
+.postedComments > .commentText {
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
+  color: #666;
+  line-height:1.2em;
+  display:block;
+  margin: 5px 0;
+}
+
+.feedImages {
+  background-color: #333;
+  width: 100%;
+  position:relative;
+}
+
+/*.feedImages > .image {
+  width:100%;
+  position:relative;
+}
+*/
+.feedImages img {
+  width:100%;
+  margin-bottom: -2px;
+}
+.feedImages > .postText {
+  font-weight: lighter;
+  font-size: 1.2em;
+  line-height:1.2em;
+  color: #EFEFEF;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom:80px;
+  max-width:80%;
+}
+
+.postText > h3.postTitle {
+  font-size:1.2em;
+  font-weight:normal;
+  margin-bottom:10px;
+  padding:20px 20px 0px 20px;
+
+}
+
+.postText p {
+  padding: 0 20px 20px 20px;
 }
 
 .directiveHeader h1 {
@@ -72,33 +328,6 @@ h2.username {
 
 .directiveHeader > div.left {
   width:30%;
-}
-
-.postTopBar button {
-  position:relative;
-  bottom:10px;
-}
-
-.pledgeMission {
-  width: 100%;
-}
-
-p.pledgeMission {
-  font-size: 1.2em;
-  padding: 0px 0 7px 0;
-}
-
-.feedImages {
-  width:100%;
-}
-
-.feedImages img {
-  margin-right:10px;
-  border: 1px solid #ccc;
-}
-
-img.coverImg {
-  width: 100%;
 }
 
 .pledgePreviewDescBar {
@@ -148,15 +377,16 @@ img.coverImg {
 nav {
   display: flex;
   justify-content: space-around;
-  background-color: #0A0D0F;
+  background-color: #024959;
   align-items: center;
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 100;
 }
 
 nav .fa {
-  color: #B2B2B2;
+  color: #EFEFEF;
 }
 
 /*Upload*/
@@ -201,6 +431,130 @@ form .pledgename {
   color: gray;
 }
 
+<<<<<<< HEAD
+@media (max-width: 900) {
+  .mainContainer {
+    width:80%;
+    margin:0 auto;
+    padding: 0 0 30px 0;
+  }
+
+  .feedOption {
+    width:100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .mainContainer {
+    width:100%;
+    margin:0 auto;
+    padding: 0 0 30px 0;
+  }
+
+  .feedOption {
+    width:100%;
+  }
+
+  .feedImages > .postText {
+    max-width:100%;
+    width: 100% !important;
+    display:block;
+    bottom: 0;
+  }
+}
+
+@media(max-width: 450px) {
+  .postTopBar > h2 {
+    font-size: 1.5em;
+  }
+
+  .feedImages > .postText {
+    font-size: 1.1em;
+    line-height: 1.3em;
+  }
+
+  .feedImages {
+    background-color: #333;
+  }
+
+  .feedImages > .image {
+    width:100%;
+  }
+
+  .feedImages > .image > img {
+    width:100%;
+    margin-bottom: -2px;
+  }
+  .feedImages > .postText {
+    font-weight: lighter;
+    font-size: 1em;
+    line-height:1.1em;
+    color: #EFEFEF;
+    max-width:100%;
+    width: 100% !important;
+    display:block;
+    bottom: 0;
+  }
+  .postedComments {
+    font-size:.9em;
+    line-height: 1.1em;
+    padding: 7px;
+  }
+
+  .buttonBar {
+    margin: 5px 8px 15px 8px;
+  }
+
+  .commentForm, .postedComments {
+    margin: 0px 8px;
+  }
+}
+
+/*Searching all pledges*/
+.search {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  text-align: center;
+}
+
+.pledge-search {
+  width: 250px;
+  height: 30px;
+  font-size: 100%;
+}
+
+.pledge-list {
+  flex-wrap: wrap;
+  display: flex;
+  margin: 15px 10;
+}
+.pledge-list .pledgename-item {
+  flex: 1 0 250px;
+  box-sizing: border-box;
+  background: #e0ddd5;
+  color: #171e42;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+@media (min-width: 410px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(50% - 10px);
+  }
+}
+@media (min-width: 620px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(33.33333% - 10px);
+  }
+}
+@media (min-width: 830px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(25% - 10px);
+  }
+  
 /* Error handling */
 
 .error-message {

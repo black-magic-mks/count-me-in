@@ -56,9 +56,9 @@ To allow post image/video uploads to store on on AmazonS3, add the S3 credential
 
 ```
 module.exports = {
-  AWS_ACCESS_KEY: '',
-  AWS_SECRET_KEY: '',
-  S3_BUCKET: ''
+  AWS_ACCESS_KEY: 'XXX-needs-amazon-key-XXX',
+  AWS_SECRET_KEY: 'XXX-needs-amazon-secret-key-XXX',
+  S3_BUCKET: 'XXX-needs-amazon-bucket-XXX'
 };
 ```
 
