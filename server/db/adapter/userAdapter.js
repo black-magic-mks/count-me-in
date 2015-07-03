@@ -18,27 +18,42 @@ var getUser = function(req, res, next) {
   .catch(next);
 };
 
-var getUserPostRelatedMiddleware = function(relationship) {
-  return function(req, res, next) {
-    var username = req.body.username || req.username;
-
-    User.where({username: username})
-    .then(function(user) {
-      if (user.length === 0) throw new Error('Username not found');
-      return User.getRelated(user[0], relationship);
-    })
-    .then(function(posts) {
-      return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
-    })
-    .then(function(posts) {
-      res.send(posts);
-    })
-    .catch(next);
-  };
+var getUserPosts = function(req, res, next) {
+  User.where({username: req.body.username})
+  .then(function(user) {
+    if (user.length === 0) throw new Error('Username not found');
+    return User.getRelated(user[0], "POSTED");
+  })
+  .then(function(posts) {
+    return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
+  })
+  .then(function(posts) {
+    return Q.all(posts.map(function(post) {
+      return Post.read(post);
+    }));
+  })
+  .then(function(posts) {
+    var pledgenames = posts.reduce(function(pledges,post) {
+      if (!pledges[post.pledgename]) pledges[post.pledgename] = [];
+      pledges[post.pledgename].push(post);
+      return pledges;
+    },{});
+    console.log('pledgenames:',pledgenames);
+    return Q.all(Object.keys(pledgenames).map(function(pledgename) {
+      return Pledge.where({pledgename: pledgename})
+      .then(function(pledge) {
+        console.log(pledge);
+        pledge = pledge[0];
+        pledge.posts = pledgenames[pledge.pledgename];
+        return pledge;
+      });
+    }));
+  })
+  .then(function(pledgesWithPosts) {
+    res.send(pledgesWithPosts);
+  })
+  .catch(next);
 };
-
-var getUserPosts = getUserPostRelatedMiddleware('POSTED');
-var getUserLikes = getUserPostRelatedMiddleware('LIKED');
 
 var getUserRelatedMiddleware = function(relationship) {
   return function(req, res, next) {
@@ -137,7 +152,6 @@ var getFeed = function(req, res, next) {
 module.exports = {
   getUser: getUser,
   getUserPosts: getUserPosts,
-  getUserLikes: getUserLikes,
   getUserPledges: getUserPledges,
   getUserComments: getUserComments,
   getFollowingUsers: getFollowingUsers,

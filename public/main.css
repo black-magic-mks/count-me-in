@@ -245,4 +245,16 @@ form .pledgename {
   .pledge-list .pledgename-item {
     max-width: calc(25% - 10px);
   }
+  
+/* Error handling */
+
+.error-message {
+  padding: .75rem 1rem .75rem 3rem;
+  border: 1px solid #e8e8e8;
+  background: #fff;
+  color: #555459;
+  border-left-width: 5px;
+  margin: 0 auto 1rem;
+  border-radius: .25rem;
+  border-left-color: red;
 }
