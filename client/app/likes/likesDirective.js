@@ -62,10 +62,9 @@ angular.module('app')
           console.log('error in postUnlike: ', err)
         })
       }
-
       scope.likeData = {
-        likes: likes,
-        hasLiked: hasLiked
+        likes: scope.likes,
+        hasLiked: scope.hasLiked
       }
     }
   }
