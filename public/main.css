@@ -252,6 +252,7 @@ h2.username {
 
 .commentForm textarea {
   width:99%;
+  min-height:80px;
 }
 
 .commentUser {
