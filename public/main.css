@@ -201,6 +201,51 @@ form .pledgename {
   color: gray;
 }
 
+/*Searching all pledges*/
+.search {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+  text-align: center;
+}
+
+.pledge-search {
+  width: 250px;
+  height: 30px;
+  font-size: 100%;
+}
+
+.pledge-list {
+  flex-wrap: wrap;
+  display: flex;
+  margin: 15px 10;
+}
+.pledge-list .pledgename-item {
+  flex: 1 0 250px;
+  box-sizing: border-box;
+  background: #e0ddd5;
+  color: #171e42;
+  padding: 10px;
+  margin-left: 10px;
+  margin-top: 10px;
+}
+
+@media (min-width: 410px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(50% - 10px);
+  }
+}
+@media (min-width: 620px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(33.33333% - 10px);
+  }
+}
+@media (min-width: 830px) {
+  .pledge-list .pledgename-item {
+    max-width: calc(25% - 10px);
+  }
+  
 /* Error handling */
 
 .error-message {
