@@ -119,7 +119,10 @@ angular.module('app')
   $scope.hasSubscribed = function() {
     console.log('in hasSubscribed in FeedPledgeController');
     subscribe.hasSubscribed($scope.pledgename, function(data) {
-      $scope.subscribed = data;
+      console.log('hasSubscribed data.hasSubscribed: ', data);
+      //TODO: figure out what the property on data is called
+      $scope.subscribed = data.hasSubscribed;
+      console.log('hasSubscribed property: ', data.hasSubscribed);
     });
   };
   
@@ -131,6 +134,7 @@ angular.module('app')
     console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges.push(data);
+      console.log('SubscribedPledgesArray: ', $scope.subscribedPledges);
     });
   };
 })
@@ -169,7 +173,9 @@ angular.module('app')
   };
 
   var hasSubscribed = function(pledgename, callback) {
-    $http.get('api/pledge/hasSubscribed', {pledgename: pledgename})
+    $http.get('/api/pledge', {
+      params: {pledgename: pledgename}
+    })
     .success(function(data, status, headers, config) {
       callback(data);
     })
