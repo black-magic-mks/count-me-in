@@ -13,7 +13,13 @@ var getUser = function(req, res, next) {
   User.where({username: username})
   .then(function(user) {
     if (user.length === 0) throw new Error('Username not found');
-    res.send(user[0]);
+    return user[0];
+  })
+  .then(function(user) {
+    return User.addHasFollowed(req.username, user);
+  })
+  .then(function(user) {
+    res.send(user);
   })
   .catch(next);
 };
@@ -73,7 +79,6 @@ var getUserRelatedMiddleware = function(relationship) {
 
 var getUserPledges = getUserRelatedMiddleware('SUBSCRIBES_TO');
 var getUserComments = getUserRelatedMiddleware('WROTE');
-var getFollowingUsers = getUserRelatedMiddleware('FOLLOWS');
 
 var followUser = function(req, res, next) {
   Q.all([
@@ -154,7 +159,6 @@ module.exports = {
   getUserPosts: getUserPosts,
   getUserPledges: getUserPledges,
   getUserComments: getUserComments,
-  getFollowingUsers: getFollowingUsers,
   followUser: followUser,
   getFeed: getFeed
 };

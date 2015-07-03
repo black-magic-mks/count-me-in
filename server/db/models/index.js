@@ -34,6 +34,32 @@ var prepareModel = function(seraphModel) {
   return rels.addRelMethods(promisifyModel(seraphModel),seraphModel);
 };
 
+User = prepareModel(User);
+User.addHasFollowed = function(username, followed) {
+  if (!username) return Q(followed);
+  return query([
+    'MATCH (:User {username:{username}})-[follow:FOLLOWS]->(u)',
+    'WHERE id(u)={followed}',
+    'RETURN follow'
+  ].join(' '),
+  {
+    username: username,
+    followed: followed.id
+  })
+  .then(function(follow) {
+    return [User.read(followed),!!follow.length];
+  })
+  .spread(function(followed,hasFollowed) {
+    followed.hasFollowed = hasFollowed;
+    return followed;
+  });
+};
+
+Pledge = prepareModel(Pledge);
+Pledge.addHasSubscribed = function(username, pledge) {
+
+};
+
 Post = prepareModel(Post);
 Post.addHasLiked = function(username, post) {
   if (!username) return Q(post);
@@ -56,8 +82,8 @@ Post.addHasLiked = function(username, post) {
 };
 
 module.exports = {
-  User: prepareModel(User),
-  Pledge: prepareModel(Pledge),
+  User: User,
+  Pledge: Pledge,
   Post: Post,
   Comment: prepareModel(Comment)
 };
