@@ -40,10 +40,6 @@ angular.module('app', [
       url: '/:username/post',
       templateUrl: '/views/post.html'
     })
-    .state('tab.post.add', {
-      url: '/new',
-      templateUrl: '/views/post.add.html'
-    })
     .state('user.post.add', {
       url: '/:username/new',
       templateUrl: '/views/post.add.html',
