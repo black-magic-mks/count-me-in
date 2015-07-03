@@ -7,9 +7,9 @@
       </div>
     </div>
     <div class="postTopBar clearfix">
-      <h2 class="left">Add a Post</h2>
-      <a class="pledge-button left" ui-sref="user.pledge.add">or add a pledge</a>
+      <h2 class="left block">Add a Post</h2>
     </div>
+    <a class="standardLink minorLink" ui-sref="user.pledge.add">+ add a pledge</a>
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
         <p class="formLabel">Pledge:</p>
@@ -21,21 +21,19 @@
           <span class="validation-error" ng-show="addPostForm.title.$error.required">Must include a title for your post</span>
         </span>
         <p class="formLabel">Description:</p>
-        <textarea name="text" ng-model="post.text" placeholder="Tell us a little bit about what you did"></textarea>
+        <textarea name="text" ng-model="post.text" rows="7" placeholder="Tell us a little bit about what you did"></textarea>
         <p class="formLabel">Prove it:</p>
-        <label class="post-upload">
+        <label class="post-upload block">
           <input type="file" class="post-file" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged"></input>
           <i class="fa fa-camera fa-2x"></i>
-        </label>
-        <span ng-if="!(fileName)">
+        <span class="uploadText" ng-if="!(fileName)">
           Upload an image
         </span>
         <span ng-if="!!(fileName)">
           {{ fileName }}
         </span>
-
-
-        <button class="btn actionButton" ng-disabled="addPostForm.$invalid || !(fileName)" ng-click="addPost()">submit</button>
+        </label>
+        <button class="btn actionButton " ng-disabled="addPostForm.$invalid || !(fileName)" ng-click="addPost()">Post it!</button>
         <a class="standardLink" ui-sref="user.profile({username: post.username})">cancel</a>
       </form>
 
