@@ -5,7 +5,7 @@
   </div>
   <img ng-src="{{post.aws_url}}" height="400px" width="400px" />
   <p>{{post.text}}</p>
-  <button <a ui-sref="user.profile({username: post.username})" class="button button-small button-positive">
+  <button <a ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive">
   View all @{{post.username}}'s posts
   </button>
 
