@@ -57,7 +57,23 @@ User.addHasFollowed = function(username, followed) {
 
 Pledge = prepareModel(Pledge);
 Pledge.addHasSubscribed = function(username, pledge) {
-
+  if (!username) return Q(pledge);
+  return query([
+    'MATCH (:User {username:{username}})-[sub:SUBSCRIBES_TO]->(p)',
+    'WHERE id(p)={pledge}',
+    'RETURN sub'
+  ].join(' '),
+  {
+    username: username,
+    pledge: pledge.id
+  })
+  .then(function(sub) {
+    return [Pledge.read(pledge),!!sub.length];
+  })
+  .spread(function(pledge,hasSubscribed) {
+    pledge.hasSubscribed = hasSubscribed;
+    return pledge;
+  });
 };
 
 Post = prepareModel(Post);

@@ -12,7 +12,6 @@ var routes = {
     '/user': userAdapter.getUser,
     '/user/posts': userAdapter.getUserPosts,
     '/user/pledges': userAdapter.getUserPledges,
-    '/user/comments': userAdapter.getUserComments,
     '/user/feed': userAdapter.getFeed,
     '/pledge': pledgeAdapter.getPledge,
     '/pledge/all': pledgeAdapter.getAllPledges,

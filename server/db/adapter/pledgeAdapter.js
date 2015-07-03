@@ -8,13 +8,27 @@ var getPledge = function(req, res, next) {
   Pledge.where({pledgename: req.body.pledgename})
   .then(function(pledge) {
     if (pledge.length === 0) throw new Error('Pledge not found');
-    res.send(pledge[0]);
+    return pledge[0];
+  })
+  .then(function(pledge) {
+    return Pledge.addHasSubscribed(req.username,pledge);
+  })
+  .then(function(pledge) {
+    res.send(pledge);
   })
   .catch(next);
 };
 
 var getAllPledges = function(req, res, next) {
   Pledge.findAll()
+  .then(function(pledges) {
+    return Q.all(pledges.map(function(pledge) {
+      return Pledge.read(pledge)
+      .then(function(pledge) {
+        return Pledge.addHasSubscribed(req.username,pledge);
+      });
+    }));
+  })
   .then(function(pledges) {
     res.send(pledges);
   })
