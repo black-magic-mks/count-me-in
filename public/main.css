@@ -130,6 +130,11 @@ button {
 
 .standardLink {
   color: #037E8C;
+  cursor: pointer;
+}
+
+.standardLink:hover {
+  color: #024959;
 }
 
 body {
