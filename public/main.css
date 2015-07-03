@@ -393,14 +393,19 @@ nav .fa {
 /*Upload*/
 
 .upload {
-  display: flex;
+/*  display: flex;
   align-items: center;
   justify-content: center;
-  align-self: flex-start;
+  align-self: flex-start;*/
 }
 
-.upload h3 {
-  text-align: center;
+.upload form {
+  margin:0 20px 20px 20px;
+}
+
+select {
+  font-family: 'Lato', sans-serif;
+  width:300px;
 }
 
 /* Add post */
