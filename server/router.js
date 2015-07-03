@@ -17,6 +17,7 @@ var routes = {
     '/user/following': userAdapter.getFollowingUsers,
     '/user/feed': userAdapter.getFeed,
     '/pledge': pledgeAdapter.getPledge,
+    '/pledge/all': pledgeAdapter.getAllPledges,
     '/pledge/users': pledgeAdapter.getPledgeUsers,
     '/pledge/posts': pledgeAdapter.getPledgePosts,
     '/post': postAdapter.getPost,
