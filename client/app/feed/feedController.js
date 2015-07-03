@@ -117,11 +117,8 @@ angular.module('app')
   });
 
   $scope.hasSubscribed = function() {
-    console.log('in hasSubscribed in FeedPledgeController');
     subscribe.hasSubscribed($scope.pledgename, function(data) {
-      console.log('hasSubscribed data.hasSubscribed: ', data);
       $scope.subscribed = data.hasSubscribed;
-      console.log('hasSubscribed property: ', data.hasSubscribed);
     });
   };
   
@@ -130,10 +127,8 @@ angular.module('app')
   $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
-    console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges.push(data);
-      console.log('SubscribedPledgesArray: ', $scope.subscribedPledges);
     });
   };
 })
