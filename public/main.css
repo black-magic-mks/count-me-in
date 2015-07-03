@@ -225,6 +225,10 @@ h2.username {
 .postTopBar > .postDate {
   width:40%;
   text-align: right;
+  position:relative;
+  top:5px;
+  font-size:1.2em;
+  font-weight: lighter;
 }
 
 .buttonBar {
