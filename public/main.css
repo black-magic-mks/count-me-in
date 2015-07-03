@@ -154,6 +154,7 @@ body {
   font-size: 2em;
   position:fixed;
   top:0;
+  z-index: 100;
 }
 
 .fa-globe, .fa-lock {
@@ -275,30 +276,40 @@ h2.username {
 
 .feedImages {
   background-color: #333;
+  width: 100%;
+  position:relative;
 }
 
-.feedImages > .image {
-  width:65%;
+/*.feedImages > .image {
+  width:100%;
+  position:relative;
 }
-
-.feedImages > .image > img {
+*/
+.feedImages img {
   width:100%;
   margin-bottom: -2px;
 }
 .feedImages > .postText {
   font-weight: lighter;
-  padding:10px;
   font-size: 1.2em;
   line-height:1.2em;
-  width:30%;
   color: #EFEFEF;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.6);
+  bottom:80px;
+  max-width:80%;
 }
 
 .postText > h3.postTitle {
   font-size:1.2em;
   font-weight:normal;
   margin-bottom:10px;
+  padding:20px 20px 0px 20px;
 
+}
+
+.postText p {
+  padding: 0 20px 20px 20px;
 }
 
 .directiveHeader h1 {
@@ -307,32 +318,6 @@ h2.username {
 
 .directiveHeader > div.left {
   width:30%;
-}
-
-.postTopBar button {
-  position:relative;
-  bottom:10px;
-}
-
-.pledgeMission {
-  width: 100%;
-}
-
-p.pledgeMission {
-  font-size: 1.2em;
-  padding: 0px 0 7px 0;
-}
-
-.feedImages {
-  width:100%;
-}
-
-.feedImages img {
-  margin-right:10px;
-}
-
-img.coverImg {
-  width: 100%;
 }
 
 .pledgePreviewDescBar {
@@ -387,6 +372,7 @@ nav {
   position: fixed;
   bottom: 0;
   width: 100%;
+  z-index: 100;
 }
 
 nav .fa {
@@ -435,7 +421,6 @@ form .pledgename {
   color: gray;
 }
 
-<<<<<<< HEAD
 @media (max-width: 900) {
   .mainContainer {
     width:80%;
@@ -457,6 +442,13 @@ form .pledgename {
 
   .feedOption {
     width:100%;
+  }
+
+  .feedImages > .postText {
+    max-width:100%;
+    width: 100% !important;
+    display:block;
+    bottom: 0;
   }
 }
 
@@ -488,7 +480,10 @@ form .pledgename {
     font-size: 1em;
     line-height:1.1em;
     color: #EFEFEF;
-    width: 100%;
+    max-width:100%;
+    width: 100% !important;
+    display:block;
+    bottom: 0;
   }
   .postedComments {
     font-size:.9em;
