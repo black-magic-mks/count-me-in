@@ -21,7 +21,11 @@ angular.module('app', [
       templateUrl: '/views/feed.pledge.html',
       controller: 'FeedPledgeController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
     })
-
+    .state('pledges', {
+      url: '/pledges',
+      templateUrl: '/views/pledges.html',
+      controller: 'PledgesController'
+    })
     .state('user', {
       url: '/user',
       templateUrl: '/views/user.html',

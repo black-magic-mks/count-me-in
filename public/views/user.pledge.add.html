@@ -5,10 +5,11 @@
       <form name="addPledgeForm" class="addPledgeForm" id="addPledgeForm" novalidate>
 
           #
-          <input class="pledgename" name="pledgename" type="text" ng-model="pledge.pledgename" placeholder="pledgetitlehere" required/>
+          <input class="pledgename" name="pledgename" type="text" ng-model="pledge.pledgename" placeholder="pledgetitlehere" ng-pattern="pledgenameValidation" required/>
 
           <span ng-if="addPledgeForm.pledgename.$dirty">
             <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.required">Must include a pledge name</span>
+            <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.pattern">It's a hashtag! Keep it short, remove white spaces and symbols.</span>
           </span>
 
           <br />

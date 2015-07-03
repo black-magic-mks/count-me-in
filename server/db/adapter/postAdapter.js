@@ -102,7 +102,10 @@ var createComment = function(req, res, next) {
       User.relate(user,'WROTE',comment),
       Comment.relate(comment,'WRITTEN_IN',post)
     ])
-    .then(function() { return comment; });
+    .then(function() {
+      comment.username = user.username;
+      return comment;
+    });
   })
   .then(function(comment) {
     res.send(comment);
@@ -199,15 +202,9 @@ var getPublicFeedPosts = function(req, res, next) {
     if (allPosts.length === 0) throw new Error('There are no posts');
     return allPosts;
   })
-  .then(function(allPosts) {
-    return Q.all(allPosts.map(function(post) {
-      return Post.getRelated(post, 'POSTED_IN')
-      .then(function(pledge) {
-        if (pledge.length !== 0) {
-          post.pledgename = pledge[0].pledgename;
-        }
-        return post;
-      });
+  .then(function(posts) {
+    return Q.all(posts.map(function(post) {
+      return Post.addHasLiked(req.username,post);
     }));
   })
   .then(function(posts) {
