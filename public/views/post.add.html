@@ -1,5 +1,13 @@
 <div class="upload">
+
   <div ng-show="!loadingPost">
+
+    <div ng-if="hasError">
+      <div class="error-message" ng-messages="hasError" role="alert">
+        <div>{{ error }}</div>
+      </div>
+    </div>
+
     <h3>add a post</h3>
 
     <div>
@@ -8,14 +16,10 @@
           <select name="pledgename" ng-model="post.pledgename" ng-options="pledgename for pledgename in pledgenames" required>
           </select>
 
-<<<<<<< HEAD
-          <a class="pledge-button" ui-sref="tab.post.pledge.add">Add Pledge</a>
-=======
           <br />
 
           <a class="pledge-button" ui-sref="user.pledge.add">+pledge</a>
 
->>>>>>> dev
           <br />
 
           <input name="title" type="text" ng-model="post.title" placeholder="Post title..." required />
