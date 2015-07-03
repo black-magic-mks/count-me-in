@@ -160,6 +160,7 @@ body {
   position:fixed;
   top:0;
   z-index: 100;
+  box-shadow: 0px 1px 3px #CCC;
 }
 
 .fa-globe, .fa-lock {
@@ -431,7 +432,6 @@ form .pledgename {
   color: gray;
 }
 
-<<<<<<< HEAD
 @media (max-width: 900) {
   .mainContainer {
     width:80%;
