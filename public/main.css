@@ -137,6 +137,7 @@ body {
   margin: 0 !important;
   color: #777;
   background-color: #EDEDED;
+  padding-top:50px;
 }
 
 .block {
@@ -167,19 +168,23 @@ body {
   background-color: #385159;
 }
 
+.public {
+  border-bottom-left-radius: 4px;
+}
+
+.private {
+  border-bottom-right-radius: 4px;
+}
+
 .active {
   background-color: #024959;
 }
 .feedPledgeDirective {
   margin: 25px 0;
-  border-radius: 3px;
+  border-radius: 4px;
   padding:10px 0;
   background: #FFF;
   box-shadow: 0px 1px 3px #CCC;
-}
-
-.feedPledgeDirective:first-child {
-  margin:70px 0;
 }
 
 .feedPledge.item:last-child {
@@ -217,13 +222,13 @@ h2.username {
 }
 
 .buttonBar {
-  margin: 10px 20px 15px 20px;
+  margin: 10px 20px 15px 22px;
   display:block;
 }
 
 .toggleComments {
   text-align: center;
-  margin: 5px 0;
+  margin: 5px 0 10px 0;
 }
 
 .toggleComments a{
@@ -242,7 +247,11 @@ h2.username {
 }
 
 .commentForm, .postedComments {
-  margin: 0px 25px;
+  margin: 0px 22px;
+}
+
+.commentForm textarea {
+  width:99%;
 }
 
 .commentUser {
@@ -278,10 +287,17 @@ h2.username {
 .feedImages > .postText {
   font-weight: lighter;
   padding:10px;
-  font-size: 1.3em;
-  line-height:1.3em;
+  font-size: 1.2em;
+  line-height:1.2em;
   width:30%;
   color: #EFEFEF;
+}
+
+.postText > h3.postTitle {
+  font-size:1.2em;
+  font-weight:normal;
+  margin-bottom:10px;
+
 }
 
 .directiveHeader h1 {
@@ -418,6 +434,18 @@ form .pledgename {
   color: gray;
 }
 
+@media (max-width: 900) {
+  .mainContainer {
+    width:80%;
+    margin:0 auto;
+    padding: 0 0 30px 0;
+  }
+
+  .feedOption {
+    width:100%;
+  }
+}
+
 @media (max-width: 680px) {
   .mainContainer {
     width:100%;
@@ -438,6 +466,40 @@ form .pledgename {
   .feedImages > .postText {
     font-size: 1.1em;
     line-height: 1.3em;
+  }
+
+  .feedImages {
+    background-color: #333;
+  }
+
+  .feedImages > .image {
+    width:100%;
+  }
+
+  .feedImages > .image > img {
+    width:100%;
+    margin-bottom: -2px;
+  }
+  .feedImages > .postText {
+    font-weight: lighter;
+    padding:10px;
+    font-size: 1em;
+    line-height:1.1em;
+    color: #EFEFEF;
+    width: 100%;
+  }
+  .postedComments {
+    font-size:.9em;
+    line-height: 1.1em;
+    padding: 7px;
+  }
+
+  .buttonBar {
+    margin: 5px 8px 15px 8px;
+  }
+
+  .commentForm, .postedComments {
+    margin: 0px 8px;
   }
 }
 

@@ -1,5 +1,5 @@
 <div class="feedOption block clearfix">
-  <button class="feedOptionButton left active" ng-click="getPublicFeedPosts()"><i class="fa fa-globe"></i></button>
-  <button class="feedOptionButton left" ng-click="getPrivateFeedPosts()"><i class="fa fa-lock"></i></button>
+  <button class="feedOptionButton left active public" ng-click="getPublicFeedPosts()"><i class="fa fa-globe"></i></button>
+  <button class="feedOptionButton left private" ng-click="getPrivateFeedPosts()"><i class="fa fa-lock"></i></button>
 </div>
 <feed-pledge ng-repeat="post in feedPosts" getcommentbox="getcommentbox" post="post"></feed-pledge>
