@@ -78,9 +78,5 @@ angular.module('app', [
       templateUrl: '/views/signup.html',
       controller: 'AuthController'
     })
-})
-
-.controller('MainController', function($scope) {
-
-})
+});
 
