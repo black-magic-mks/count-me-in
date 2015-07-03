@@ -14,19 +14,19 @@
     <script src="/scripts.js"></script>
 
   </head>
-  
+
   <body ng-controller="MainController">
 
     <nav>
       <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
-      <a ui-sref="user.post.add">
+      <a ui-sref="user.post.add({username: currentUser})">
         <span class="fa-stack fa-lg">
           <i class="fa fa-circle-o-notch fa-spin fa-stack-2x"></i>
           <i class="fa fa-plus fa-stack-1x"></i>
         </span>
       </a>
-      <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-power-off fa-2x"></i></a>
       <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: currentUser})"><i class="fa fa-user fa-2x"></i></a>
+      <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-power-off fa-2x"></i></a>
     </nav>
 
     <div ui-view></div>
