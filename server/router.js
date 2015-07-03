@@ -27,7 +27,7 @@ var routes = {
     '/auth/logout': authAdapter.logout,
     '/auth/register': authAdapter.register,
     '/user/follow': userAdapter.followUser,
-    '/pledge': pledgeAdapter.createPledge,
+    '/pledge/new': pledgeAdapter.createPledge,
     '/pledge/subscribe': pledgeAdapter.subscribeToPledge,
     '/post/new': postAdapter.createPost,
     '/post/comment': postAdapter.createComment,

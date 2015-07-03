@@ -12,7 +12,7 @@ angular.module('app')
 
     $http({
       method: 'POST',
-      url: '/api/pledge',
+      url: '/api/pledge/new',
       data: pledgeData,
     })
     .then(function(response) {
