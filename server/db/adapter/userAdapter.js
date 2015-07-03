@@ -13,7 +13,13 @@ var getUser = function(req, res, next) {
   User.where({username: username})
   .then(function(user) {
     if (user.length === 0) throw new Error('Username not found');
-    res.send(user[0]);
+    return user[0];
+  })
+  .then(function(user) {
+    return User.addHasFollowed(req.username, user);
+  })
+  .then(function(user) {
+    res.send(user);
   })
   .catch(next);
 };
@@ -29,7 +35,10 @@ var getUserPosts = function(req, res, next) {
   })
   .then(function(posts) {
     return Q.all(posts.map(function(post) {
-      return Post.read(post);
+      return Post.read(post)
+      .then(function(post) {
+        return Post.addHasLiked(req.username,post);
+      });
     }));
   })
   .then(function(posts) {
@@ -38,12 +47,13 @@ var getUserPosts = function(req, res, next) {
       pledges[post.pledgename].push(post);
       return pledges;
     },{});
-    console.log('pledgenames:',pledgenames);
     return Q.all(Object.keys(pledgenames).map(function(pledgename) {
       return Pledge.where({pledgename: pledgename})
       .then(function(pledge) {
-        console.log(pledge);
         pledge = pledge[0];
+        return Pledge.addHasSubscribed(req.username,pledge);
+      })
+      .then(function(pledge) {
         pledge.posts = pledgenames[pledge.pledgename];
         return pledge;
       });
@@ -55,25 +65,27 @@ var getUserPosts = function(req, res, next) {
   .catch(next);
 };
 
-var getUserRelatedMiddleware = function(relationship) {
-  return function(req, res, next) {
-    var username = req.body.username || req.username;
+var getUserPledges = function(req, res, next) {
+  var username = req.body.username || req.username;
 
-    User.where({username: username})
-    .then(function(user) {
-      if (user.length === 0) throw new Error('Username not found');
-      return User.getRelated(user[0],relationship);
-    })
-    .then(function(nodes) {
-      res.send(nodes);
-    })
-    .catch(next);
-  };
+  User.where({username: username})
+  .then(function(user) {
+    if (user.length === 0) throw new Error('Username not found');
+    return User.getRelated(user[0],'SUBSCRIBES_TO');
+  })
+  .then(function(pledges) {
+    return Q.all(pledges.map(function(pledge) {
+      return Pledge.read(pledge)
+      .then(function(pledge) {
+        return Pledge.addHasSubscribed(req.username,pledge);
+      });
+    }));
+  })
+  .then(function(pledges) {
+    res.send(pledges);
+  })
+  .catch(next);
 };
-
-var getUserPledges = getUserRelatedMiddleware('SUBSCRIBES_TO');
-var getUserComments = getUserRelatedMiddleware('WROTE');
-var getFollowingUsers = getUserRelatedMiddleware('FOLLOWS');
 
 var followUser = function(req, res, next) {
   Q.all([
@@ -111,30 +123,10 @@ var getFeed = function(req, res, next) {
   })
   .spread(function(users,pledges) {
     var userPosts = users.reduce(function(posts,user) {
-      var postsWithUsername = User.getRelated(user,'POSTED')
-      .then(function(posts) {
-        return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
-      })
-      .then(function(posts) {
-        return posts.map(function(post) {
-          post.username = user.username;
-          return post;
-        });
-      });
-      return posts.concat(postsWithUsername);
+      return posts.concat(User.getRelated(user,'POSTED'));
     },[]);
     var pledgePosts = pledges.reduce(function(posts,pledge) {
-      var postsWithPledgename = Pledge.getRelatedTo(pledge,'POSTED_IN')
-      .then(function(posts) {
-        return Q.all(posts.map(Post.addHasLiked.bind(null, req.username)));
-      })
-      .then(function(posts) {
-        return posts.map(function(post) {
-          post.pledgename = pledge.pledgename;
-          return post;
-        });
-      });
-      return posts.concat(postsWithPledgename);
+      return posts.concat(Pledge.getRelatedTo(pledge,'POSTED_IN'));
     },[]);
     return Q.all([].concat(userPosts).concat(pledgePosts));
   })
@@ -142,6 +134,14 @@ var getFeed = function(req, res, next) {
     return postLists.reduce(function(posts,list) {
       return posts.concat(list);
     },[]);
+  })
+  .then(function(posts) {
+    return Q.all(posts.map(function(post) {
+      return Post.read(post)
+      .then(function(post) {
+        return Post.addHasLiked(req.username,post);
+      });
+    }));
   })
   .then(function(posts){
     res.send(posts);
@@ -153,8 +153,6 @@ module.exports = {
   getUser: getUser,
   getUserPosts: getUserPosts,
   getUserPledges: getUserPledges,
-  getUserComments: getUserComments,
-  getFollowingUsers: getFollowingUsers,
   followUser: followUser,
   getFeed: getFeed
 };
