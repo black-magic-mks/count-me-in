@@ -208,7 +208,7 @@ body {
 
 h2.username {
   font-size: 1.2em;
-  font-weight:bold;
+  /*font-weight:bold;*/
 }
 
 .postTopBar {
@@ -269,7 +269,6 @@ h2.username {
 
 .commentUser {
   font-size: 1.2em;
-  font-weight: bold;
 }
 
 .commentTimeStamp {
