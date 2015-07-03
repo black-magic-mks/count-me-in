@@ -120,7 +120,6 @@ angular.module('app')
     console.log('in hasSubscribed in FeedPledgeController');
     subscribe.hasSubscribed($scope.pledgename, function(data) {
       console.log('hasSubscribed data.hasSubscribed: ', data);
-      //TODO: figure out what the property on data is called
       $scope.subscribed = data.hasSubscribed;
       console.log('hasSubscribed property: ', data.hasSubscribed);
     });
