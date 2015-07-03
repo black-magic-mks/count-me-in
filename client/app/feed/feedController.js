@@ -108,6 +108,13 @@ angular.module('app')
     $scope.feedPledgePosts = posts;
   });
 
+  $scope.hasSubscribed = function() {
+    console.log('in hasSubscribed in FeedPledgeController');
+    subscribe.hasSubscribed($scope.pledgename, function(data) {
+      $scope.subscribed = data;
+    });
+  };
+
   $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
@@ -151,8 +158,19 @@ angular.module('app')
     });
   };
 
+  var hasSubscribed = function(pledgename, callback) {
+    $http.get('api/pledge/hasSubscribed', {pledgename: pledgename})
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error status with hasSubscribed: ', status, data, headers, config);
+    });
+  };
+
   return {
-    subscribeToPledge: subscribeToPledge
+    subscribeToPledge: subscribeToPledge,
+    hasSubscribed: hasSubscribed
   }
 })
 
