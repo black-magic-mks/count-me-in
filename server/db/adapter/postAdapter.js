@@ -102,7 +102,10 @@ var createComment = function(req, res, next) {
       User.relate(user,'WROTE',comment),
       Comment.relate(comment,'WRITTEN_IN',post)
     ])
-    .then(function() { return comment; });
+    .then(function() {
+      comment.username = user.username;
+      return comment;
+    });
   })
   .then(function(comment) {
     res.send(comment);
