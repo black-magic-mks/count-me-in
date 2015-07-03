@@ -4,6 +4,9 @@
     <input class="pledge-search" type="text" ng-model="searchText" placeholder="search a pledge"/>
   </form>
 </div>
-<div ng-repeat="pledge in pledges | filter:searchText">
-  <div>{{ pledge.pledgename }}</div>
+<div class="pledge-list">
+  <div class="pledgename-item" ng-repeat="pledge in pledges | filter:searchText" ui-sref="feed.pledge({pledgename: pledge.pledgename})">
+    #{{ pledge.pledgename }}
+  </div>
 </div>
+
