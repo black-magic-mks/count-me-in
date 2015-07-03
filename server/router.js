@@ -11,7 +11,6 @@ var routes = {
     '/auth/authorized': authAdapter.authorize,
     '/user': userAdapter.getUser,
     '/user/posts': userAdapter.getUserPosts,
-    '/user/likes': userAdapter.getUserLikes,
     '/user/pledges': userAdapter.getUserPledges,
     '/user/comments': userAdapter.getUserComments,
     '/user/following': userAdapter.getFollowingUsers,
