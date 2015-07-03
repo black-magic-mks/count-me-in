@@ -114,13 +114,15 @@ angular.module('app')
       $scope.subscribed = data;
     });
   };
+  
+  $scope.hasSubscribed();
 
   $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
     console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
-      $scope.subscribedPledges = $scope.subscribedPledges.push(data);
+      $scope.subscribedPledges.push(data);
     });
   };
 })
