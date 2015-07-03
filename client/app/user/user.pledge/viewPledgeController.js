@@ -2,8 +2,7 @@ angular.module('app')
 
 .controller('viewPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
   UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
-    $scope.userPledgePosts = pledgeData.data;
-
+    $scope.userPledgePosts = pledgeData;
   });
 
   $scope.pledgename = $stateParams.pledgename;
@@ -15,8 +14,8 @@ angular.module('app')
       url: '/api/pledge/posts',
       params: {pledgename: $stateParams.pledgename}
     })
-    .success(function(data) {
-      data = data.filter(function(postObj) {
+    .then(function(data) {
+      data = data.data.filter(function(postObj) {
         return postObj.username === $stateParams.username;
       }).sort(function(postObj1, postObj2) {
         return postObj1.createdAt - postObj2.createdAt;
