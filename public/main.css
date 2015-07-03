@@ -113,7 +113,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0 !important;
   color: #777;
-  background-color: #EEE;
+  background-color: #EFEFEF;
 }
 
 .block {
@@ -175,7 +175,7 @@ h2.username {
 }
 
 .buttonBar {
-  margin: 5px 20px 15px 20px;
+  margin: 10px 20px 15px 20px;
   display:block;
 }
 
@@ -216,7 +216,7 @@ h2.username {
   font-family: 'Lato', sans-serif;
   font-weight: lighter;
   color: #666;
-  line-height:1.3em;
+  line-height:1.2em;
   display:block;
   margin: 5px 0;
 }

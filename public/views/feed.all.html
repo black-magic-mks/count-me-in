@@ -2,4 +2,4 @@
   <button class="feedOptionButton left" ng-click="getPublicFeedPosts()">Public</button>
   <button class="feedOptionButton left" ng-click="getPrivateFeedPosts()">Private</button>
 </div>
-<feed-pledge ng-repeat="post in feedPosts" post="post"></feed-pledge>
+<feed-pledge ng-repeat="post in feedPosts" getcommentbox="getcommentbox" post="post"></feed-pledge>

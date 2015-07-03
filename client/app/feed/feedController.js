@@ -34,6 +34,14 @@ angular.module('app')
   $scope.saveMission = function() {
     $scope.modal.hide();
   };
+
+  // shows/toggles comment box
+  $scope.boxVisible = false;
+
+  $scope.showCommentBox = function () {
+    $scope.boxVisible = true;
+    console.log('showCommentBox');
+  }
 })
 
 .factory('feedFactory', function($http) {

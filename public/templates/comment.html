@@ -1,6 +1,6 @@
 <div class="commentContent" ng-init="end=4">
   <div class="commentForm">
-    <form ng-submit="usercomment(postId, commentText)" class="hide">
+    <form ng-submit="usercomment(postId, commentText)" ng-show="collapsed">
       <textarea class="block" form="commentForm" ng-model="commentText" style="border:1px solid #ccc" rows="7" cols="70">Comments...</textarea>
       <button class="actionButton" type="submit">Post</button>
     </form>
