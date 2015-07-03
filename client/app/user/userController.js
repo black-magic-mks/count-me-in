@@ -28,12 +28,6 @@ angular.module('app')
   }
 })
 
-
-
-
-
-
-
 .controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow) {
   $scope.pledgePreview = [];
   $scope.followingList = [];
