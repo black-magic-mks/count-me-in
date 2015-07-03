@@ -454,6 +454,17 @@ p.formLabel {
   color: #024959;
 }
 
+/* Add Pledge */
+.addPledgeForm .pledgename {
+  margin-bottom: 25px;
+}
+
+.pledgeForm {
+    border-bottom: 1px solid #DDD;
+    margin-bottom:20px;
+
+}
+
 /* Forms */
 .validation-error {
   font-size: 80%;
