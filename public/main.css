@@ -147,6 +147,7 @@ body {
   color: #777;
   background-color: #EDEDED;
   padding-bottom: 20px;
+  background-image: url(./images/bg.png);
 }
 
 .block {
