@@ -66,6 +66,10 @@ a, h1, h2 {
   cursor: pointer;
 }
 
+a {
+  font-weight:lighter;
+}
+
 .hide {
   display:none;
 }
@@ -83,11 +87,11 @@ a, h1, h2 {
 }
 
 button {
-  /*margin: 5px 0 !important;*/
+  cursor: pointer;
 }
 
 .actionButton, .directButton {
-  border-radius: 2px;
+  border-radius: 3px;
   padding: 6px 8px;
   border: none;
   color: #FFF;
@@ -97,12 +101,31 @@ button {
 }
 
 .actionButton {
+  border-top:1px solid #E8764A;
+  border-left:1px solid #F2593B;
+  border-bottom:1px solid #B04733;
+  border-right:1px solid #EB4925;
   background-color: #F24C27;
   margin-right:10px;
 }
 
+.actionButton:hover {
+  border-top:1px solid #E8764A;
+  border-left:1px solid #F2593B;
+  border-bottom:1px solid #B04733;
+  border-right:1px solid #EB4925;
+  background-color: #FA5E41;
+  margin-right:10px;
+}
+
 .directButton {
+  border-top:1px solid #04ACBF;
+  border-bottom:1px solid #038A99;
   background-color: #037E8C;
+}
+
+.directButton:hover {
+  background-color: #08888C;
 }
 
 .standardLink {
@@ -113,7 +136,7 @@ body {
   font-family: 'Lato', sans-serif;
   margin: 0 !important;
   color: #777;
-  background-color: #EFEFEF;
+  background-color: #EDEDED;
 }
 
 .block {
@@ -121,17 +144,31 @@ body {
 }
 .mainContainer {
   width:60%;
-  padding:10px;
+  padding:0px 10px 50px 10px;
   margin:0 auto;
 }
 
 .feedOption {
-  width:100%;
+  width:60%;
+  font-size: 2em;
+  position:fixed;
+  top:0;
+}
+
+.fa-globe, .fa-lock {
+  font-size: 2em;
+  color:#FFF;
 }
 
 .feedOptionButton {
   width:50%;
   padding:10px 20px;
+  border: 1px solid #024959;
+  background-color: #385159;
+}
+
+.active {
+  background-color: #024959;
 }
 .feedPledgeDirective {
   margin: 25px 0;
@@ -139,6 +176,10 @@ body {
   padding:10px 0;
   background: #FFF;
   box-shadow: 0px 1px 3px #CCC;
+}
+
+.feedPledgeDirective:first-child {
+  margin:70px 0;
 }
 
 .feedPledge.item:last-child {
@@ -160,13 +201,14 @@ h2.username {
 }
 
 .postTopBar {
-  margin: 10px 15px 15px 10px;
+  margin: 10px 15px 20px 15px;
 }
 
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
   font-size:1.7em;
+  font-weight:lighter;
 }
 
 .postTopBar > .postDate {
@@ -194,8 +236,8 @@ h2.username {
 }
 
 .postedComments {
-  border-top: 1px solid #CCC;
-  padding: 15px 10px;
+  border-top: 1px solid #DDD;
+  padding: 10px;
   /*margin: 0px 20px;*/
 }
 
@@ -222,7 +264,7 @@ h2.username {
 }
 
 .feedImages {
-  background-color: #404040;
+  background-color: #333;
 }
 
 .feedImages > .image {
@@ -238,9 +280,8 @@ h2.username {
   padding:10px;
   font-size: 1.3em;
   line-height:1.3em;
-  width:25%;
+  width:30%;
   color: #EFEFEF;
-  background-color: #404040;
 }
 
 .directiveHeader h1 {
@@ -376,3 +417,27 @@ form .pledgename {
   text-align: center;
   color: gray;
 }
+
+@media (max-width: 680px) {
+  .mainContainer {
+    width:100%;
+    margin:0 auto;
+    padding: 0 0 30px 0;
+  }
+
+  .feedOption {
+    width:100%;
+  }
+}
+
+@media(max-width: 450px) {
+  .postTopBar > h2 {
+    font-size: 1.5em;
+  }
+
+  .feedImages > .postText {
+    font-size: 1.1em;
+    line-height: 1.3em;
+  }
+}
+

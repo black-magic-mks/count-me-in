@@ -14,9 +14,8 @@
     </div>
     <div class="buttonBar clearfix">
       <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
-      <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> Comment</button>
-      <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive right directButton">
-        View {{post.username}}'s Posts
+      <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+      <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive right directButton"><i class="fa fa-eye"></i> more
       </button>
     </div>
     <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed" box-visible="boxVisible"></comment>
