@@ -207,6 +207,61 @@ body {
   border-bottom:none;
 } 
 
+.userHeader {
+  width: 100%;
+  display:block;
+  padding: 20px 0 10px 0;
+  border-bottom: 1px solid #AAA;
+  /*position:fixed;*/
+}
+
+.userHeader > .username {
+  font-size:1.5em;
+  width: 80%;
+}
+
+.userHeader > .follow {
+  width:20%;
+}
+
+.userHeader > .follow > button {
+  position: relative;
+  bottom:10px;
+}
+
+/***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
+
+h1.username {
+  font-weight:bold !important;
+  font-size:1.8em !important;
+}
+
+.feedPledgeDirective .pledgename {
+  /*display:block;*/
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+}
+
+img.coverImg {
+  width:60%;
+  float: left;
+  margin: 0 10px 0 15px;
+}
+
+.pledgePreview .textDesc {
+  width:35%;
+}
+
+.pledgePreview .textDesc button {
+  margin-top: 10px;
+}
+.pledgePreview .pledgeDate {
+  position: relative;
+  top: 3px;
+}
+/**** END SCREENSHOTS ****/
+
 .directiveHeader {
   border-bottom: 1px solid #DDD;
   padding: 0 0 0px 0;
@@ -374,6 +429,7 @@ h2.username {
 
 .feedPledgeDirective > img {
   margin: 0 10px 0 0;
+  width: 100%;
 }
 
 /* Navigation bar*/

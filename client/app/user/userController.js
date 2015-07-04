@@ -48,7 +48,7 @@ angular.module('app')
 
   $scope.addFollower = function() {
     follow.followUser($scope.username, function(data) {
-      $scope.followingList = $scope.followingList.push(data);
+      $scope.followingList.push(data);
       console.log('followingList: ', data, $scope.followingList);
     });
   };
