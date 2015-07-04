@@ -3,9 +3,9 @@ angular.module('app')
 .controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
   $scope.username = $stateParams.username || $rootScope.currentUser;
     UserProfileFactory.getUserProfilePosts($scope.username)
-    .then(function(pledges) {
-      console.log("profile pledges and posts:", pledges)
-      $scope.profilePledges = pledges;
+    .then(function(posts) {
+      console.log("profile pledges and posts:", posts)
+      $scope.profilePledges = posts;
     })
 })
 .factory('UserProfileFactory', function($http, $stateParams) {
