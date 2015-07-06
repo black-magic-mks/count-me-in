@@ -6,7 +6,6 @@ angular.module('app')
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
-      // console.log('getPublicFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -14,7 +13,6 @@ angular.module('app')
   $scope.getPrivateFeedPosts = function() {
     feedFactory.getPrivateFeedPosts()
     .then(function(posts) {
-    // console.log('getPrivateFeedPosts', posts);
       $scope.feedPosts = posts;
     });
   }
@@ -23,6 +21,9 @@ angular.module('app')
   $scope.init = function() {
     if ($scope.username) {
       $scope.getPrivateFeedPosts()
+      if (scope.feedPosts.length === 0) {
+        $scope.getPublicFeedPosts();
+      }
     } else {
       $scope.getPublicFeedPosts()
     }
@@ -85,32 +86,6 @@ angular.module('app')
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
 
-  $scope.timeSince = function(date) {
-    
-    var seconds = Math.floor((new Date() - date) / 1000);
-    var interval = Math.floor(seconds / 31536000);
-    if (interval > 1) {
-        return interval + " years";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
-  };
-
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
     $scope.feedPledgePosts = posts;
@@ -121,7 +96,7 @@ angular.module('app')
       $scope.subscribed = data.hasSubscribed;
     });
   };
-  
+
   $scope.hasSubscribed();
 
   $scope.subscribedPledges = [];
@@ -141,8 +116,6 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .then(function(posts) {
-      console.log('posts', posts);
-      // posts.data.comments.created = timeSince(posts.data.comments.created);
       return posts.data;
     })
     .catch(function(err) {
