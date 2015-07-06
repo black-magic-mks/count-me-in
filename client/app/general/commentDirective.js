@@ -28,6 +28,7 @@ angular.module('app')
           $timeout(function(){
             scope.postComments.push(commentData.data);
           })
+          scope.commentText = "";
           return commentData;
         })
         .catch(function(err) {
