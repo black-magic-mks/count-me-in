@@ -1,8 +1,8 @@
 <div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
   <div class="pledgePreview clearfix">
     <img class="coverImg left" ng-src="{{post.aws_url}}"/>
-    <h2>{{post.title}}</h2>
-    <h4>{{post.created}} date here</h2>
+    <h1>{{post.title}}</h1>
+    <h4 class="date">{{post.created}} date here</h4>
     <div class="pledgeText right">{{post.text}}</div>
     <button ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="directButton">
     <i class="fa fa-eye"></i> more

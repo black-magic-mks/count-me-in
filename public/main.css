@@ -256,6 +256,11 @@ body {
   font-weight: lighter;
 }
 
+
+.pledgePreview {
+  margin-bottom:25px;
+}
+
 .pledgePreview h2 {
   font-size: 1.2em;
   color: #555;
@@ -263,19 +268,27 @@ body {
   margin-bottom: 10px;
 }
 
+.pledgePreview h4 {
+  font-weight: lighter;
+  font-size: 1em !important;
+  margin: 5px;
+  padding-left:3px;
+}
+
 .pledgePreview .pledgeText {
-  width:36%;
+  width:38%;
   font-weight: lighter;
   line-height: 18px;
+  padding-left:2px;
 }
 
 .pledgePreview button {
-  margin: 15px 0 0 3px;
+  margin: 15px 0 0 5px;
 }
 
 
 img.coverImg {
-  width:60%;
+  width:58%;
   float: left;
   margin: 0 10px 0 15px;
 }
@@ -578,6 +591,15 @@ form .pledgename {
   color: gray;
 }
 
+@media (max-width: 1060px) {
+  .pledgePreview .pledgeText {
+    width: 37%;
+    font-weight: lighter;
+    line-height: 18px;
+    padding-left: 1px;
+}
+}
+
 @media (max-width: 900px) {
   .mainContainer {
     width:80%;
@@ -590,7 +612,7 @@ form .pledgename {
   }
 
   img.coverImg {
-    width:59%;
+    width:58%;
     float: left;
     margin: 0 10px 0 10px;
   }
@@ -657,12 +679,32 @@ form .pledgename {
     margin: 5px 8px 15px 8px;
   }
 
+  .pledgePreview h2 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom:2px;
+  }
+
+  .pledgePreview .pledgeText {
+    font-size: .8em;
+    width:39%;
+  }
+
+  .pledgePreview button {
+    padding: 2px 5px;
+    margin-top: 5px;
+  }
+
+  .pledgePreview {
+    margin-bottom:20px;
+  }
+
   .commentForm, .postedComments {
     margin: 0px 8px;
   }
 
   img.coverImg {
-    width:58%;
+    width:54%;
     float: left;
     margin: 0 8px 0 13px;
   }
