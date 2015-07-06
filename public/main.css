@@ -160,8 +160,8 @@ p.formError {
 }
 
 .directButton {
-  border-top:1px solid #04ACBF;
-  border-bottom:1px solid #038A99;
+  border-top:1px solid #038594;
+  border-bottom:1px solid #036E7A;
   background-color: #037E8C;
 }
 
@@ -211,27 +211,38 @@ body {
 
 .feedContainer {
   position:relative;
-  top:30px;
+  top:50px;
 }
 .feedOption {
   width:60%;
-  font-size: 2em;
+  padding: 10px 0;
   position:fixed;
   top:0;
   z-index: 100;
   box-shadow: 0px 1px 3px #CCC;
+  background-color: #024959;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.explorePledges {
+  margin-right: 15px;
 }
 
 .fa-globe, .fa-lock {
-  font-size: 2em;
+  font-size: 1.2em;
   color:#FFF;
+  padding-right:5px;
 }
 
 .feedOptionButton {
-  width:50%;
+  font-family: 'Lato', sans-serif;
+  background-color: #024959;
   padding:10px 20px;
   border: 1px solid #024959;
-  background-color: #385159;
+  color:#FFF;
+  font-size:1em;
+  font-weight: lighter !important;
 }
 
 .public {
@@ -243,7 +254,7 @@ body {
 }
 
 .active {
-  background-color: #024959;
+  /*background-color: #024959;*/
 }
 .feedPledgeDirective {
   margin: 25px 0;
