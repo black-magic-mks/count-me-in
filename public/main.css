@@ -313,7 +313,32 @@ body {
   margin-bottom:25px;
 }
 
-.pledgePreview h2 {
+.postInfo {
+  width:36%;
+}
+
+.postInfo h2 {
+  font-weight: normal;
+  font-size:1.1em;
+  margin-bottom:5px;
+}
+
+.postInfo .pledgeText {
+  font-weight: lighter;
+  margin-bottom:5px;
+}
+
+.prevImg {
+  width:63%;
+}
+
+img.coverImg {
+  width:90%;
+  float: left;
+  padding: 0 10px 0 15px;
+}
+
+/*.pledgePreview h2 {
   font-size: 1.2em;
   color: #555;
   font-weight:lighter;
@@ -336,14 +361,8 @@ body {
 
 .pledgePreview button {
   margin: 15px 0 0 5px;
-}
+}*/
 
-
-img.coverImg {
-  width:58%;
-  float: left;
-  margin: 0 10px 0 15px;
-}
 
 /***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
 
@@ -643,14 +662,6 @@ form .pledgename {
   color: gray;
 }
 
-@media (max-width: 1060px) {
-  .pledgePreview .pledgeText {
-    width: 37%;
-    font-weight: lighter;
-    line-height: 18px;
-    padding-left: 1px;
-}
-}
 
 @media (max-width: 900px) {
   .mainContainer {
@@ -664,9 +675,9 @@ form .pledgename {
   }
 
   img.coverImg {
-    width:58%;
+/*    width:58%;
     float: left;
-    margin: 0 10px 0 10px;
+    margin: 0 10px 0 10px;*/
   }
 }
 
@@ -741,14 +752,14 @@ form .pledgename {
   }
 
   .pledgePreview h2 {
-    font-size: 1em;
+    font-size: .9em;
     font-weight: bold;
     margin-bottom:2px;
   }
 
   .pledgePreview .pledgeText {
-    font-size: .8em;
-    width:39%;
+    font-size: .9em;
+    line-height: 1.2em;
   }
 
   .pledgePreview button {
@@ -762,12 +773,6 @@ form .pledgename {
 
   .commentForm, .postedComments {
     margin: 0px 8px;
-  }
-
-  img.coverImg {
-    width:54%;
-    float: left;
-    margin: 0 8px 0 13px;
   }
 }
 
