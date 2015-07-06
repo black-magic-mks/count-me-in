@@ -1,6 +1,6 @@
 <div class="item item-text-wrap">
   <div class="userHeader clearfix">
-    <h1 class="left username"> <a class="standardLink" ui-sref="user.profile({username: username})">@{{username}}</a> </h1>
+    <h1 class="left username"> <a class="standardLinkReversed" ui-sref="user.profile({username: username})">@{{username}}</a> </h1>
     <div class="left follow">
       <button ng-if="!(currentUser === username && loggedIn)" ng-click="addFollower()" class="actionButton right">
         Follow

@@ -16,7 +16,7 @@
 
   </head>
 
-  <body ng-controller="MainController">
+  <body>
 
     <nav>
       <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
@@ -28,7 +28,6 @@
       <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: currentUser})"><i class="fa fa-user fa-2x"></i></a>
       <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-sign-in fa-2x"></i></i></a>
     </nav>
-
     <div ui-view class="mainContainer"></div>
   </body>
 </html>

@@ -133,12 +133,21 @@ button {
   cursor: pointer;
 }
 
+.standardLinkReversed {
+  color: #FFF;
+  cursor: pointer;
+}
+
 .standardLink:hover {
   color: #024959;
 }
 
 .minorLink {
   margin: 0px 0px 20px 20px;
+}
+
+.date {
+  color: #888;
 }
 
 body {
@@ -208,11 +217,13 @@ body {
 } 
 
 .userHeader {
-  width: 100%;
+  max-width: 100%;
   display:block;
-  padding: 20px 0 10px 0;
+  padding: 20px 10px 10px 13px;
   border-bottom: 1px solid #AAA;
-  /*position:fixed;*/
+  background-color: #024959;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
 }
 
 .userHeader > .username {
@@ -229,25 +240,49 @@ body {
   bottom:10px;
 }
 
-/***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
-
-h1.username {
-  font-weight:bold !important;
-  font-size:1.8em !important;
+.userHeader h1 {
+  font-size: 1.4em;
 }
 
 .feedPledgeDirective .pledgename {
-  /*display:block;*/
   border-bottom: 1px solid #DDD;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
   padding-bottom: 10px;
 }
+
+.feedPledgeDirective h1 {
+  font-size:1.5em;
+  font-weight: lighter;
+}
+
+.pledgePreview h2 {
+  font-size: 1.2em;
+  color: #555;
+  font-weight:lighter;
+  padding-left: 14px; 
+  margin-bottom: 10px;
+}
+
+.pledgePreview .pledgeText {
+  width:36%;
+  font-weight: lighter;
+  line-height: 18px;
+}
+
+.pledgePreview button {
+  margin: 15px 0 0 3px;
+}
+
 
 img.coverImg {
   width:60%;
   float: left;
   margin: 0 10px 0 15px;
 }
+
+/***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
+
+
 
 .pledgePreview .textDesc {
   width:35%;
@@ -319,7 +354,7 @@ h2.username {
 
 .postedComments {
   border-top: 1px solid #DDD;
-  padding: 10px;
+  padding: 15px 10px;
   /*margin: 0px 20px;*/
 }
 
@@ -537,7 +572,7 @@ form .pledgename {
   color: gray;
 }
 
-@media (max-width: 900) {
+@media (max-width: 900px) {
   .mainContainer {
     width:80%;
     margin:0 auto;
@@ -546,6 +581,12 @@ form .pledgename {
 
   .feedOption {
     width:100%;
+  }
+
+  img.coverImg {
+    width:59%;
+    float: left;
+    margin: 0 10px 0 10px;
   }
 }
 
@@ -612,6 +653,12 @@ form .pledgename {
 
   .commentForm, .postedComments {
     margin: 0px 8px;
+  }
+
+  img.coverImg {
+    width:58%;
+    float: left;
+    margin: 0 8px 0 13px;
   }
 }
 
