@@ -225,6 +225,10 @@ body {
   border-bottom-left-radius: 3px;
 }
 
+.feedOptionButton:hover{
+  opacity: .8;
+}
+
 .explorePledges {
   margin-right: 15px;
 }
