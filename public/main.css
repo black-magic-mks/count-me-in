@@ -96,7 +96,7 @@ button {
   border: none;
   color: #FFF;
   font-size: 1em !important;
-  margin:5px 5px 5px 0;
+  margin:5px 5px 0px 0;
   cursor: pointer;
 }
 
@@ -219,7 +219,7 @@ body {
 .userHeader {
   max-width: 100%;
   display:block;
-  padding: 20px 10px 10px 13px;
+  padding: 20px 10px 20px 13px;
   border-bottom: 1px solid #AAA;
   background-color: #024959;
   border-bottom-left-radius: 4px;
@@ -238,6 +238,7 @@ body {
 .userHeader > .follow > button {
   position: relative;
   bottom:10px;
+  margin-bottom: -20px;
 }
 
 .userHeader h1 {
@@ -259,7 +260,6 @@ body {
   font-size: 1.2em;
   color: #555;
   font-weight:lighter;
-  padding-left: 14px; 
   margin-bottom: 10px;
 }
 
@@ -336,6 +336,10 @@ h2.username {
 .buttonBar {
   margin: 10px 20px 15px 22px;
   display:block;
+}
+
+.buttonBar .actionButton {
+  margin-right: 10px;
 }
 
 .toggleComments {
