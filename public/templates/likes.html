@@ -1,3 +1,3 @@
-  <button class="actionButton left" type="button" value="Like" ng-if="!likeData.hasLiked" ng-click="postLike(postId)"><i class="fa fa-thumbs-up"></i> like {{likeData.numLikes}}</button>
-  <button class="actionButton left" type="button" value="Unlike" ng-if="likeData.hasLiked" ng-click="postUnlike(postId)"><i class="fa fa-thumbs-down"></i> unlike {{likeData.numLikes}}</button>
+  <button class="actionButton left" type="button" value="Like" ng-if="!hasLiked" ng-click="postLike(postId)"><i class="fa fa-thumbs-up"></i> like <span ng-if="likes !== 0">{{likes}}</span></button>
+  <button class="actionButton left" type="button" value="Unlike" ng-if="hasLiked" ng-click="postUnlike(postId)"><i class="fa fa-thumbs-down"></i> unlike {{likes}}</button>
 
