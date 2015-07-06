@@ -6,6 +6,9 @@ angular.module('app')
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
+      for (var i = 0; i < posts.length; i++) {
+        posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+      }
       $scope.feedPosts = posts;
     });
   }
@@ -13,6 +16,9 @@ angular.module('app')
   $scope.getPrivateFeedPosts = function() {
     feedFactory.getPrivateFeedPosts()
     .then(function(posts) {
+      for (var i = 0; i < posts.length; i++) {
+        posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+      }
       $scope.feedPosts = posts;
     });
   }
