@@ -106,7 +106,7 @@ button {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #F24C27;
-  margin-right:10px;
+  /*margin-right:10px;*/
 }
 
 .actionButton:hover {
@@ -313,6 +313,8 @@ h2.username {
 
 .postTopBar {
   margin: 10px 15px 20px 15px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom:15px;
 }
 
 .postTopBar > h2 {
