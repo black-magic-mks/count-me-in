@@ -1,18 +1,15 @@
 <div class="feedPledgeDirective clearfix">
   <div class="postTopBar">
-    <h2 ui-sref="feed.pledge({pledgename: pledge.pledgename})" class="title username left">#{{pledge.pledgename}}</h2>
-    <p class="pledgeMission left">{{pledge.mission}}</p>
+    <div>
+      <h2 ui-sref="feed.pledge({pledgename: pledge.pledgename})" class="title username left">#{{pledge.pledgename}}</h2>
+    </div>  
+    <ul>
+      <li ng-repeat="post in pledge.posts">
+        <div>{{post.title}}</div>
+        <img src="{{post.aws_url}}"/>
+      </li>
+    </ul>
   </div>
-  <div class="pledgePreview">
-    <img class="coverImg" ng-src="{{pledge.coverimage}}" />
-    <div class="pledgePreviewDescBar clearfix">
-      <div class="imgThumbs left">
-        <img src="{{thumbnail}}" ng-repeat="thumbnail in pledge.images"/>
-      </div>
-      <div class="textDesc left">{{pledge.lastpost}}
-      </div>
-    </div>
-    <button ui-sref="user.pledge.view({username: username, pledgename: pledge.pledgename})" class="left button button-small button-positive">View All</button>
-  </div>
+  <button ui-sref="user.pledge.view({username: username, pledgename: pledge.pledgename})" class="left button button-small button-positive">View All</button>
 </div>
 

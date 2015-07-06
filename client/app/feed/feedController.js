@@ -116,12 +116,19 @@ angular.module('app')
     $scope.feedPledgePosts = posts;
   });
 
+  $scope.hasSubscribed = function() {
+    subscribe.hasSubscribed($scope.pledgename, function(data) {
+      $scope.subscribed = data.hasSubscribed;
+    });
+  };
+  
+  $scope.hasSubscribed();
+
   $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
-    console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
-      $scope.subscribedPledges = $scope.subscribedPledges.push(data);
+      $scope.subscribedPledges.push(data);
     });
   };
 })
@@ -159,8 +166,21 @@ angular.module('app')
     });
   };
 
+  var hasSubscribed = function(pledgename, callback) {
+    $http.get('/api/pledge', {
+      params: {pledgename: pledgename}
+    })
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error status with hasSubscribed: ', status, data, headers, config);
+    });
+  };
+
   return {
-    subscribeToPledge: subscribeToPledge
+    subscribeToPledge: subscribeToPledge,
+    hasSubscribed: hasSubscribed
   }
 })
 
