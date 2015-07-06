@@ -4,13 +4,16 @@
     <p class="right date">{{pledge.created}}June 2 REPLACE ME</p>
   </div>
   <div class="pledgePreview clearfix" ng-repeat="post in pledge.posts.slice().reverse()">
-    <div class="clearfix">
+    <div class="prevImg">
       <img class="coverImg left" src="{{post.aws_url}}"/>
-      <div class="pledgeText right">
+    </div>
+    <div class="postInfo left">
       <h2>{{post.title}}</h2>
+      <div class="pledgeText">
         {{post.text}}
       </div>
       <button ui-sref="user.pledge.view({username: username, pledgename: pledge.pledgename})" class="left directButton"><i class="fa fa-eye"></i> All</button>
+    </div>
   </div>
   <div class="buttonBar clearfix">
     <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
