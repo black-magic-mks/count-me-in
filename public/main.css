@@ -320,7 +320,13 @@ body {
 .postInfo h2 {
   font-weight: normal;
   font-size:1.1em;
-  margin-bottom:5px;
+  margin-bottom:3px;
+}
+
+.postInfo .date {
+  font-size: 1em;
+  font-weight: normal;
+   margin-bottom: 2px;
 }
 
 .postInfo .pledgeText {
@@ -755,6 +761,11 @@ form .pledgename {
     font-size: .9em;
     font-weight: bold;
     margin-bottom:2px;
+  }
+
+  .pledgePreview .date {
+    font-size:.9em;
+    font-weight: normal;
   }
 
   .pledgePreview .pledgeText {
