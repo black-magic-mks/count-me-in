@@ -6,8 +6,10 @@ angular.module('app')
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
-      for (var i = 0; i < posts.length; i++) {
-        posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+      if (posts) {
+        for (var i = 0; i < posts.length; i++) {
+          posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+        }
       }
       $scope.feedPosts = posts;
     });
@@ -16,8 +18,11 @@ angular.module('app')
   $scope.getPrivateFeedPosts = function() {
     feedFactory.getPrivateFeedPosts()
     .then(function(posts) {
-      for (var i = 0; i < posts.length; i++) {
-        posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+      // could move this logic into the backend??
+      if (posts) {
+        for (var i = 0; i < posts.length; i++) {
+          posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+        }
       }
       $scope.feedPosts = posts;
     });
@@ -59,7 +64,6 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      console.log('get public posts: ', posts);
       return posts.data;
     })
     .catch(function(err) {
@@ -74,7 +78,7 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPrivateFeedPosts()")
