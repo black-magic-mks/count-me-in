@@ -7,5 +7,5 @@
       </button>
     </div>
   </div>
-<user-post ng-repeat="post in userPledgePosts" numPosts="userPledgePosts.length" post="post"/>
+<user-post ng-repeat="post in userPledgePosts" num-posts="userPledgePosts.length - userPledgePosts.indexOf(post)" post="post"/>
 

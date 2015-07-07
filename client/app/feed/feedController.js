@@ -16,7 +16,6 @@ angular.module('app')
   }
   // uses promises to put the private data onto the scope
   $scope.getPrivateFeedPosts = function() {
-    console.log($rootScope.loggedIn);
     if ($rootScope.loggedIn) {
       feedFactory.getPrivateFeedPosts()
       .then(function(posts) {
@@ -64,7 +63,7 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPublicFeedPosts()")
