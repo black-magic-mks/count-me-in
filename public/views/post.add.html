@@ -35,8 +35,12 @@
         <span ng-if="addPostForm.title.$dirty">
           <span class="validation-error" ng-show="addPostForm.title.$error.required">Must include a title for your post</span>
         </span>
+        
+        <!-- Post description -->
         <p class="formLabel">Description:</p>
         <textarea name="text" ng-model="post.text" rows="7" placeholder="Tell us a little bit about what you did"></textarea>
+        
+        <!-- Form submit -->
         <button class="btn actionButton " ng-disabled="addPostForm.$invalid || !(fileName)" ng-click="addPost()">Post it!</button>
         <a class="standardLink" ui-sref="user.profile({username: post.username})">cancel</a>
       </form>

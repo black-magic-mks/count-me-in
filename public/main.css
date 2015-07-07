@@ -118,6 +118,11 @@ button {
   margin-right:10px;
 }
 
+button[disabled="disabled"], button[disabled="disabled"]:hover {
+    background-color: lightgray;
+    border-color: gray;
+}
+
 .directButton {
   border-top:1px solid #04ACBF;
   border-bottom:1px solid #038A99;
@@ -412,8 +417,6 @@ nav .fa {
 p.formLabel {
   color: #037E8C;
   padding: 20px 0 10px 0;
-  border-top:1px solid #DDD;
-  margin-top:25px;
 }
 
 .upload form input, .upload form textarea {
@@ -433,11 +436,10 @@ p.formLabel {
 }
 
 .post-upload {
-  padding: 10px 0px 20px 0;
+  padding: 15px 0px 10px 0;
   cursor: pointer;
   color: #037E8C;
-  margin-bottom:20px;
-  border-bottom: 1px solid #DDD;
+  margin-top: 10px;
 }
 
 .fa-camera {
@@ -459,10 +461,12 @@ p.formLabel {
 /* Add Pledge */
 .addPledgeForm .pledgename {
   margin-bottom: 25px;
+  font-family: 'Lato', sans-serif;
+  width: 40%;
+  font-size: 150%;
 }
 
 .pledgeForm {
-    border-bottom: 1px solid #DDD;
     margin-bottom:20px;
 }
 
