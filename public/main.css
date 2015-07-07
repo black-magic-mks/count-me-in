@@ -403,9 +403,10 @@ nav .fa {
   margin:30px 20px 20px 20px;
 }
 
-select {
+.addPostForm select {
   font-family: 'Lato', sans-serif;
-  width: 90%;
+  width: 40%;
+  font-size: 150%;
 }
 
 p.formLabel {
@@ -463,7 +464,6 @@ p.formLabel {
 .pledgeForm {
     border-bottom: 1px solid #DDD;
     margin-bottom:20px;
-
 }
 
 /* Forms */
