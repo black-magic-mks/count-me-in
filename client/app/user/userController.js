@@ -28,7 +28,7 @@ angular.module('app')
   }
 })
 
-.controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow) {
+.controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow, logOut) {
   $scope.followingList = [];
 
   userFunc.getUser($stateParams.username, function(data) {
@@ -41,6 +41,11 @@ angular.module('app')
       console.log('followingList: ', data, $scope.followingList);
     });
   };
+
+  $scope.signOut = function() {
+    logOut.clearSessionToken();
+  };
+
 })
 .factory('userFunc', function($http) {
   var username;
@@ -80,5 +85,24 @@ angular.module('app')
     followUser: followUser
   }
 
+})
+
+.factory('logOut', function($http, $state) {
+    var clearSessionToken = function() {
+    return $http({
+      method: 'POST',
+      url: '/api/auth/logout',
+    })
+    .then(function(username) {
+      $state.go('login');
+    })
+    .catch(function(err) {
+      console.log("error logging user out", err);
+    })
+  };
+
+  return {
+    clearSessionToken: clearSessionToken
+  }
 });
 

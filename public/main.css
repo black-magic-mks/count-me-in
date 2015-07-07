@@ -156,7 +156,7 @@ p.formError {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #FA5E41;
-  margin-right:10px;
+  /*margin-right:10px;*/
 }
 
 .directButton {
