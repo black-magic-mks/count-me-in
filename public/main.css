@@ -852,3 +852,12 @@ form .pledgename {
   border-radius: .25rem;
   border-left-color: red;
 }
+
+/* Formats size of images on user page */
+.thumb {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: center;
+  background-size: cover;
+}

@@ -24,7 +24,7 @@
         <textarea name="text" ng-model="post.text" rows="7" placeholder="Tell us a little bit about what you did"></textarea>
         <p class="formLabel">Prove it:</p>
         <label class="post-upload block">
-          <input type="file" class="post-file" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged"></input>
+          <input type="file" class="thumb" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged"></input>
           <i class="fa fa-camera fa-2x"></i>
         <span class="uploadText" ng-if="!(fileName)">
           Upload an image
