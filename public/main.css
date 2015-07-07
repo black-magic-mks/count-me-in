@@ -156,7 +156,7 @@ p.formError {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #FA5E41;
-  margin-right:10px;
+  /*margin-right:10px;*/
 }
 
 .directButton {
@@ -851,4 +851,13 @@ form .pledgename {
   margin: 0 auto 1rem;
   border-radius: .25rem;
   border-left-color: red;
+}
+
+/* Formats size of images on user page */
+.thumb {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: center;
+  background-size: cover;
 }
