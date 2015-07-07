@@ -60,6 +60,19 @@ var getUserPosts = function(req, res, next) {
     }));
   })
   .then(function(pledgesWithPosts) {
+    console.log(pledgesWithPosts)
+    // sort the posts inside of pledgesWithPosts
+    // sort the pledges by the last posted post
+    for (var i = 0; i < pledgesWithPosts.length; i++) {
+      pledgesWithPosts[i].posts = pledgesWithPosts[i].posts.sort(function(post1, post2) {
+        return post2.created - post1.created;
+      });
+    }
+    return pledgesWithPosts.sort(function(pledge1, pledge2) {
+      return pledge1.posts[0] - pledge2.posts[0];
+    })
+  })
+  .then(function(pledgesWithPosts) {
     res.send(pledgesWithPosts);
   })
   .catch(next);
@@ -142,6 +155,11 @@ var getFeed = function(req, res, next) {
         return Post.addHasLiked(req.username,post);
       });
     }));
+  })
+  .then(function(posts) {
+    return posts.sort(function(post1 ,post2) {
+      return post2.created - post1.created;
+    })
   })
   .then(function(posts){
     res.send(posts);

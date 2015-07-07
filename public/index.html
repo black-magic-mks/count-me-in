@@ -11,6 +11,7 @@
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/bower_components/ng-file-upload/ng-file-upload-shim.js"></script>
     <script src="/bower_components/ng-file-upload/ng-file-upload.js"></script>
+    <script src="/bower_components/moment/moment.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="/scripts.js"></script>
 
@@ -22,11 +23,11 @@
       <a ui-sref="feed.all"><i class="fa fa-home fa-2x"></i></a>
       <a ui-sref="user.post.add({username: currentUser})">
         <span class="fa-stack fa-lg">
-          <i class="fa fa-plus-circle"></i>
+          <i class="fa fa-plus-circle fa-2x"></i>
         </span>
       </a>
       <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: currentUser})"><i class="fa fa-user fa-2x"></i></a>
-      <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-power-off fa-2x"></i></a>
+      <a ng-if="!(loggedIn)" ui-sref="login"><i class="fa fa-sign-in fa-2x"></i></i></a>
     </nav>
     <div ui-view class="mainContainer"></div>
   </body>

@@ -208,6 +208,11 @@ var getPublicFeedPosts = function(req, res, next) {
     }));
   })
   .then(function(posts) {
+    return posts.sort(function(post1 ,post2) {
+      return post2.created - post1.created;
+    })
+  })
+  .then(function(posts) {
     res.send(posts);
   })
   .catch(next);

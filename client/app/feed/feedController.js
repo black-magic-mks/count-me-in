@@ -1,29 +1,39 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, feedFactory) {
+.controller('FeedController', function($scope, $rootScope, feedFactory) {
   $scope.feedPosts = [];
   // uses promises to put the public data onto the scope
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
+      if (posts) {
+        for (var i = 0; i < posts.length; i++) {
+          posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+        }
+      }
       $scope.feedPosts = posts;
     });
   }
   // uses promises to put the private data onto the scope
   $scope.getPrivateFeedPosts = function() {
-    feedFactory.getPrivateFeedPosts()
-    .then(function(posts) {
-      $scope.feedPosts = posts;
-    });
+    if ($rootScope.loggedIn) {
+      feedFactory.getPrivateFeedPosts()
+      .then(function(posts) {
+        // could move this logic into the backend??
+        if (posts) {
+          for (var i = 0; i < posts.length; i++) {
+            posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+          }
+        }
+        $scope.feedPosts = posts;
+      });
+    }
   }
 
   // init function; feed will default to private feed if logged in and public feed if not
   $scope.init = function() {
     if ($scope.username) {
       $scope.getPrivateFeedPosts()
-      if (scope.feedPosts.length === 0) {
-        $scope.getPublicFeedPosts();
-      }
     } else {
       $scope.getPublicFeedPosts()
     }
@@ -53,8 +63,7 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      console.log('get public posts: ', posts);
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPublicFeedPosts()")
@@ -68,7 +77,7 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPrivateFeedPosts()")
