@@ -18,8 +18,9 @@ var routes = {
     '/pledge/posts': pledgeAdapter.getPledgePosts,
     '/post': postAdapter.getPost,
     '/post/comments': postAdapter.getPostComments,
-    '/test/clear': testAdapter.clearData,
+    '/test/reset': testAdapter.resetData,
     '/test/fill': testAdapter.fillData,
+    '/test/clear': testAdapter.clearData,
     '/public/feed': postAdapter.getPublicFeedPosts
   },
   'post': {

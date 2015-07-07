@@ -2,18 +2,10 @@ var db = require('seraph')();
 var Q = require('q');
 var query = Q.nbind(db.query,db);
 
-var clearData = function(req, res, next) {
-  var cypherRels = 'MATCH ()-[r]->() DELETE r';
-  var cypherNodes = 'MATCH (n) DELETE n';
 
-  query(cypherRels)
-  .then(function(){
-    return query(cypherNodes);
-  })
-  .then(function() {
-    res.send('Removed all data from database');
-  })
-  .catch(next);
+
+var resetData = function(req, res, next) {
+
 };
 
 var fillData = function(req, res, next) {
@@ -54,7 +46,22 @@ var fillData = function(req, res, next) {
    .catch(next);
  };
 
+var clearData = function(req, res, next) {
+  var cypherRels = 'MATCH ()-[r]->() DELETE r';
+  var cypherNodes = 'MATCH (n) DELETE n';
+
+  query(cypherRels)
+  .then(function(){
+    return query(cypherNodes);
+  })
+  .then(function() {
+    res.send('Removed all data from database');
+  })
+  .catch(next);
+};
+
  module.exports = {
-  clearData: clearData,
-  fillData: fillData
+  resetData: resetData,
+  fillData: fillData,
+  clearData: clearData
 };
