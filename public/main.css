@@ -302,7 +302,7 @@ body {
 }
 
 .feedPledgeDirective .pledgename {
-  border-bottom: 1px solid #DDD;
+  /*border-bottom: 1px solid #DDD;*/
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
@@ -323,8 +323,8 @@ body {
 
 .postInfo h2 {
   font-weight: normal;
-  font-size:1.1em;
-  margin-bottom:3px;
+  font-size:1.2em;
+  margin-bottom:4px;
 }
 
 .postInfo .date {
@@ -336,6 +336,7 @@ body {
 .postInfo .pledgeText {
   font-weight: lighter;
   margin-bottom:5px;
+  line-height: 1.2em
 }
 
 .prevImg {
@@ -405,10 +406,11 @@ h2.username {
   /*font-weight:bold;*/
 }
 
+
 .postTopBar {
   margin: 10px 15px 20px 15px;
-/*  border-bottom: 1px solid #DDD;
-  padding-bottom:15px;*/
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
 }
 
 .postTopBar > h2 {
@@ -587,7 +589,9 @@ nav .fa {
 /*Upload*/
 
 .upload .postTopBar {
-  margin: 10px 15px 2px 20px
+  margin: 10px 15px 2px 20px;
+  border-bottom: none;
+  padding-bottom: 0px;
 }
 
 .upload form {
@@ -774,7 +778,7 @@ form .pledgename {
 
   .pledgePreview .pledgeText {
     font-size: .9em;
-    line-height: 1.2em;
+    line-height: 1.1em;
   }
 
   .pledgePreview button {
