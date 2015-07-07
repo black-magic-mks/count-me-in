@@ -1,16 +1,28 @@
 <div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
-  <div class="postTopBar">
-    <h2 ui-sref="user.profile({username: post.username})" class="title username left">@{{post.username}}</h2>
+  <div class="postTopBar clearfix">
+    <h2 ui-sref="user.profile({username: post.username})" class="standardLink title username left">@{{post.username}}</h2>
     <p class="postDate left">{{post.date}} ago</p>
   </div>
-  <img ng-src="{{post.aws_url}}" height="400px" width="400px" />
-  <p>{{post.text}}</p>
-  <button <a ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive">
-  View all @{{post.username}}'s posts
-  </button>
 
-  <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+  <div class="pledgePreview clearfix">
+    <div class="prevImg">
+      <img class="coverImg" ng-src="{{post.aws_url}}" />
+    </div>
+    <div class="postInfo left">
+      <h2>{{post.title}}</h2>
+      <div class="pledgeText">{{post.text}}</div>
+      <button ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="directButton">
+      <i class="fa fa-eye"></i> more
+      </button>
+    </div>
+  </div>
+  <div class="buttonBar clearfix">
+    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+    <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+  </div>
 
-  <comment post-id="post.id" post-comments="post.comments"></comment>
+  <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>
 
 </div>
+
+
