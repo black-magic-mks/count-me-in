@@ -60,6 +60,10 @@ var getUserPosts = function(req, res, next) {
     }));
   })
   .then(function(pledgesWithPosts) {
+    console.log(pledgesWithPosts)
+    return pledgesWithPosts;
+  })
+  .then(function(pledgesWithPosts) {
     res.send(pledgesWithPosts);
   })
   .catch(next);
