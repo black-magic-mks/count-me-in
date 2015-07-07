@@ -86,7 +86,6 @@ angular.module('app')
   }
 
 })
-
 .factory('logOut', function($http, $state) {
     var clearSessionToken = function() {
     return $http({
