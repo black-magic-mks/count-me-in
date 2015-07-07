@@ -36,10 +36,17 @@ angular.module('app')
   $scope.fileChanged = function(event) {
     var files = event.target.files;
     console.log(files[0]);
+
+    
     var fileName = files[0].name;
+
+
+
     $scope.$apply(function() {
       $scope.fileName = fileName;
     });
+
+
   };
   
   $scope.addPost = function() {

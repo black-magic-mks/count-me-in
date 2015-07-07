@@ -470,6 +470,7 @@ p.formLabel {
 .validation-error {
   font-size: 80%;
   color: red;
+  display: block;
 }
 
 form .pledgename {
