@@ -1,11 +1,10 @@
 <div class="item item-text-wrap">
-  <div class="directiveHeader clearfix">
-    <h1 class="left"><a ui-sref="feed.pledge({pledgename: pledgename})">{{pledgename}}</a></h1>
-    <div class="left">
-      <button ui-sref="user.post.add" class="button button-small button-positive right">
+  <div class="userHeader clearfix">
+    <h1 class="left username"><a class="standardLinkReversed">@{{username}}</a> <span style="color:#037E8C">in </span><a class="standardLinkReversed" ui-sref="feed.pledge({pledgename: pledgename})">#{{pledgename}}</a></h1>
+    <div class="left follow">
+      <button ui-sref="user.post.add" class="actionButton right">
         New
       </button>
     </div>
   </div>
 <user-post ng-repeat="post in userPledgePosts" numPosts="userPledgePosts.length" post="post"/>
-

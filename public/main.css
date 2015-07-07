@@ -96,7 +96,7 @@ button {
   border: none;
   color: #FFF;
   font-size: 1em !important;
-  margin:5px 5px 5px 0;
+  margin:5px 5px 0px 0;
   cursor: pointer;
 }
 
@@ -106,7 +106,7 @@ button {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #F24C27;
-  margin-right:10px;
+  /*margin-right:10px;*/
 }
 
 .actionButton:hover {
@@ -133,12 +133,21 @@ button {
   cursor: pointer;
 }
 
+.standardLinkReversed {
+  color: #FFF;
+  cursor: pointer;
+}
+
 .standardLink:hover {
   color: #024959;
 }
 
 .minorLink {
   margin: 0px 0px 20px 20px;
+}
+
+.date {
+  color: #888;
 }
 
 body {
@@ -207,8 +216,102 @@ body {
   border-bottom:none;
 } 
 
+.userHeader {
+  max-width: 100%;
+  display:block;
+  padding: 20px 10px 20px 13px;
+  border-bottom: 1px solid #AAA;
+  background-color: #024959;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.userHeader > .username {
+  font-size:1.5em;
+  width: 80%;
+}
+
+.userHeader > .follow {
+  width:20%;
+}
+
+.userHeader > .follow > button {
+  position: relative;
+  bottom:10px;
+  margin-bottom: -20px;
+}
+
+.userHeader h1 {
+  font-size: 1.4em;
+}
+
+.feedPledgeDirective .pledgename {
+  border-bottom: 1px solid #DDD;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.feedPledgeDirective h1 {
+  font-size:1.5em;
+  font-weight: lighter;
+}
+
+
+.pledgePreview {
+  margin-bottom:25px;
+}
+
+.pledgePreview h2 {
+  font-size: 1.2em;
+  color: #555;
+  font-weight:lighter;
+  margin-bottom: 10px;
+}
+
+.pledgePreview h4 {
+  font-weight: lighter;
+  font-size: 1em !important;
+  margin: 5px;
+  padding-left:3px;
+}
+
+.pledgePreview .pledgeText {
+  width:38%;
+  font-weight: lighter;
+  line-height: 18px;
+  padding-left:2px;
+}
+
+.pledgePreview button {
+  margin: 15px 0 0 5px;
+}
+
+
+img.coverImg {
+  width:58%;
+  float: left;
+  margin: 0 10px 0 15px;
+}
+
+/***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
+
+
+
+.pledgePreview .textDesc {
+  width:35%;
+}
+
+.pledgePreview .textDesc button {
+  margin-top: 10px;
+}
+.pledgePreview .pledgeDate {
+  position: relative;
+  top: 3px;
+}
+/**** END SCREENSHOTS ****/
+
 .directiveHeader {
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #DDD;
   padding: 0 0 0px 0;
 }
 
@@ -223,6 +326,8 @@ h2.username {
 
 .postTopBar {
   margin: 10px 15px 20px 15px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom:15px;
 }
 
 .postTopBar > h2 {
@@ -246,6 +351,10 @@ h2.username {
   display:block;
 }
 
+.buttonBar .actionButton {
+  margin-right: 10px;
+}
+
 .toggleComments {
   text-align: center;
   margin: 5px 0 10px 0;
@@ -264,7 +373,7 @@ h2.username {
 
 .postedComments {
   border-top: 1px solid #DDD;
-  padding: 10px;
+  padding: 15px 10px;
   /*margin: 0px 20px;*/
 }
 
@@ -374,6 +483,7 @@ h2.username {
 
 .feedPledgeDirective > img {
   margin: 0 10px 0 0;
+  width: 100%;
 }
 
 /* Navigation bar*/
@@ -481,7 +591,16 @@ form .pledgename {
   color: gray;
 }
 
-@media (max-width: 900) {
+@media (max-width: 1060px) {
+  .pledgePreview .pledgeText {
+    width: 37%;
+    font-weight: lighter;
+    line-height: 18px;
+    padding-left: 1px;
+}
+}
+
+@media (max-width: 900px) {
   .mainContainer {
     width:80%;
     margin:0 auto;
@@ -490,6 +609,12 @@ form .pledgename {
 
   .feedOption {
     width:100%;
+  }
+
+  img.coverImg {
+    width:58%;
+    float: left;
+    margin: 0 10px 0 10px;
   }
 }
 
@@ -554,8 +679,34 @@ form .pledgename {
     margin: 5px 8px 15px 8px;
   }
 
+  .pledgePreview h2 {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom:2px;
+  }
+
+  .pledgePreview .pledgeText {
+    font-size: .8em;
+    width:39%;
+  }
+
+  .pledgePreview button {
+    padding: 2px 5px;
+    margin-top: 5px;
+  }
+
+  .pledgePreview {
+    margin-bottom:20px;
+  }
+
   .commentForm, .postedComments {
     margin: 0px 8px;
+  }
+
+  img.coverImg {
+    width:54%;
+    float: left;
+    margin: 0 8px 0 13px;
   }
 }
 

@@ -1,10 +1,19 @@
-<div class="feedPledgeDirective clearfix">
-  <img class="pledgePostImg left" ng-src="{{post.aws_url}}" height="400px" width="400px" />
-  <div class="pledgePost left">
-    <div class="postDay left">
-      <h4 class="left">Day {{numPosts}}</h4>
-      <h4 class="right">{{post.date}}</h4>
-    </div>
-    <p class="pledgePostDesc left">{{post.text}}</p>
+<div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
+  <div class="pledgePreview clearfix">
+    <img class="coverImg left" ng-src="{{post.aws_url}}"/>
+    <h1>{{post.title}}</h1>
+    <h4 class="date">{{post.created}} date here</h4>
+    <div class="pledgeText right">{{post.text}}</div>
+    <button ui-sref="user.pledge.view({username: post.username, pledgename: post.pledgename})" class="directButton">
+    <i class="fa fa-eye"></i> more
+    </button>
+
   </div>
+  <div class="buttonBar clearfix">
+    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+    <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+  </div>
+
+  <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>
+
 </div>

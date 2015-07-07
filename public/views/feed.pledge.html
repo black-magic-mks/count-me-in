@@ -1,12 +1,11 @@
 <div class="item item-text-wrap">
-  <div class="directiveHeader clearfix">
-    <h1 class="left"> <a ui-sref="feed.pledge({pledgename: pledgename})">#{{pledgename}}</a> </h1>
-    <div class="left">
-      <button ng-if="!subscribed && loggedIn" ng-click="subscribePledge()" class="button button-small button-positive right">
+  <div class="userHeader clearfix">
+    <h1 class="left username"> <a class="standardLinkReversed" ui-sref="user.profile({username: username})">#{{pledgename}}</a> </h1>
+    <div class="left follow">
+      <button ng-if="!subscribed && loggedIn" ng-click="addFollower()" class="actionButton right">
         Join
       </button>
     </div>
   </div>
-  <pledge-post ng-repeat="post in feedPledgePosts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="pledgename"></pledge-post>
+  <pledge-post ng-repeat="post in feedPledgePosts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="pledgename"/>
 </div>
-
