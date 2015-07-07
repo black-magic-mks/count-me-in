@@ -4,23 +4,24 @@
     <p class="right date">{{pledge.created}}June 2 REPLACE ME</p>
   </div>
   <div class="pledgePreview clearfix" ng-repeat="post in pledge.posts.slice().reverse()">
-    <div class="prevImg">
-      <img class="coverImg left" src="{{post.aws_url}}"/>
-    </div>
-    <div class="postInfo left">
-      <h2>{{post.title}}</h2>
-      <div class="pledgeText">
-        {{post.text}}
+    <div class="clearfix">
+      <div class="prevImg">
+        <img class="coverImg left" src="{{post.aws_url}}"/>
       </div>
-      <button ui-sref="user.pledge.view({username: username, pledgename: pledge.pledgename})" class="left directButton"><i class="fa fa-eye"></i> All</button>
+      <div class="postInfo left">
+        <h2>{{post.title}}</h2>
+        <div class="pledgeText">
+          {{post.text}}
+        </div>
+        <button ui-sref="user.pledge.view({username: username, pledgename: pledge.pledgename})" class="left directButton"><i class="fa fa-eye"></i> All</button>
+      </div>
     </div>
-  </div>
-  <div class="buttonBar clearfix">
-    <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
-    <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
-  </div>
+    <div class="buttonBar clearfix block">
+      <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
+      <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+    </div>
 
-  <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>   
+    <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>   
   </div>
 </div>
 
