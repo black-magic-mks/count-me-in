@@ -295,6 +295,8 @@ body {
   position: relative;
   bottom:10px;
   margin-bottom: -20px;
+  font-weight: lighter;
+  font-size: .9em;
 }
 
 .userHeader h1 {
@@ -416,7 +418,7 @@ h2.username {
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
-  font-size:1.7em;
+  font-size:1.5em;
   font-weight:lighter;
 }
 
@@ -457,6 +459,7 @@ h2.username {
 .postedComments {
   border-top: 1px solid #DDD;
   padding: 15px 10px;
+  font-size: .9em;
   /*margin: 0px 20px;*/
 }
 
@@ -574,6 +577,7 @@ h2.username {
 nav {
   display: flex;
   justify-content: space-around;
+  border-top: 1px solid #025761 ;
   background-color: #024959;
   align-items: center;
   position: fixed;
@@ -638,6 +642,12 @@ p.formLabel {
   border:1px solid #037E8C;
   border-radius: 50%;
   padding:6px;
+}
+
+.fa-plus {
+  border:2px solid #FFF;
+  border-radius: 50%;
+  padding:5px;
 }
 
 .uploadText {
@@ -720,6 +730,15 @@ form .pledgename {
 
 @media(max-width: 450px) {
 
+  .userHeader > .username {
+    font-size: 1.5em;
+    width: 70%;
+  }
+
+  .userHeader > .follow {
+    width:30%;
+  }
+
   .entryForm {
     width: 80%;
   }
@@ -792,6 +811,15 @@ form .pledgename {
 
   .commentForm, .postedComments {
     margin: 0px 8px;
+  }
+
+  .feedOptionButton {
+    padding:10px 0px 10px 20px;
+    font-size: .9em;
+  }
+
+  .actionButton, .directButton {
+    font-size: .9em !important;
   }
 }
 
