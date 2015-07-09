@@ -7,10 +7,10 @@
         <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
         <button class="actionButton" type="submit" value="Submit">Login</button>
     </form>
-      <div ng-show='(loginForm.username.$dirty && submitted) && loginForm.username.$error.minlength'>
+      <div ng-show='loginForm.username.$dirty && loginForm.$submitted && loginForm.username.$error.minlength'>
         <p class="formError signup-text">Username Is At Least 4 Characters</p>
       </div>
-      <div ng-show='(loginForm.password.$dirty && submitted) && loginForm.password.$error.minlength'>
+      <div ng-show='loginForm.password.$dirty && loginForm.$submitted && (loginForm.password.$error.pattern || loginForm.password.$error.minlength)'>
         <p class="formError signup-text">Password Is At Least 6 Characters And Contains Both A Number and A Capital Letter</p>
       </div>
       <a class="standardLink" ui-sref='signup'>or create an account</a>
