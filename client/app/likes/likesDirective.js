@@ -9,24 +9,6 @@ angular.module('app')
     },
     templateUrl: './templates/likes.html',
     link: function(scope, element, attribute) {
-      scope.getPost = function(postId) {
-        return $http({
-          method: 'GET',
-          url: '/api/post',
-          params: {
-            postId: postId
-          }
-        })
-        .then(function(postData) {
-          scope.likes = postData.data.likes;
-          scope.hasLiked = postData.data.hasLiked;
-          return;
-        })
-        .catch(function(err) {
-          console.log('error in getPost: ', err);
-        })
-      }
-
       scope.postLike = function(postId) {
         return $http({
           method: 'POST',
