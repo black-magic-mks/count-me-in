@@ -18,7 +18,7 @@ angular.module('app')
     .success(function(data, status, headers, config) {
       var pledgenames = [];
       for (var i = 0; i < data.length; i++) {
-        pledgenames.push(data[i].pledgename);
+        pledgenames.push('#' + data[i].pledgename);
       };
       $scope.pledgenames = pledgenames;
       $scope.post.pledgename = pledgenames[0];
@@ -35,8 +35,9 @@ angular.module('app')
 
   $scope.fileChanged = function(event) {
     var files = event.target.files;
-    console.log(files[0]);
+
     var fileName = files[0].name;
+
     $scope.$apply(function() {
       $scope.fileName = fileName;
     });
@@ -45,10 +46,11 @@ angular.module('app')
   $scope.addPost = function() {
 
     var file = document.getElementById("user-post-add").files[0];
+    var pledgename = $scope.post.pledgename.replace('#', '');
     var postData = {
       title: $scope.post.title,
       text: $scope.post.text,
-      pledgename: $scope.post.pledgename,
+      pledgename: pledgename,
       file: {
         name: file.name,
         type: file.type
