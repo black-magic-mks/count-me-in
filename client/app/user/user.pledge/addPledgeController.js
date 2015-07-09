@@ -2,7 +2,7 @@ angular.module('app')
 
 .controller('addPledgeController', function($scope, $http, $state) {
 
-  $scope.pledgenameValidation = /^[a-zA-Z0-9\-_]{0,40}$/;
+  $scope.pledgenameValidation = /^[a-zA-Z0-9\_]{0,40}$/;
 
   $scope.addPledge = function() {
     var pledgeData = {
