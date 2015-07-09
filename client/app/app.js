@@ -45,7 +45,7 @@ angular.module('app', [
       templateUrl: '/views/post.html'
     })
     .state('user.post.add', {
-      url: '/:username/new',
+      url: '/new',
       templateUrl: '/views/post.add.html',
       controller: 'addPostController'
     })

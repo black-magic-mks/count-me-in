@@ -8,7 +8,7 @@
     <div class="postTopBar clearfix">
       <h2 class="left block">Add a Post</h2>
     </div>
-    <a class="standardLink minorLink" ui-sref="user.pledge.add">+ add a pledge</a>
+    <a class="standardLink minorLink" ui-sref="user.pledge.add({username: currentUser, pledgename: 'pledge'})">+ add a pledge</a>
     <div>
       <form name="addPostForm" class="addPostForm" id="addPostForm" novalidate>
         
@@ -31,7 +31,7 @@
 
         <!-- Post title -->
         <p class="formLabel">Post Title:</p>
-        <input name="title" type="text" ng-model="post.title" placeholder="Post title" required />    
+        <input name="title" type="text" ng-model="post.title" placeholder="Post title" required />
         <span ng-if="addPostForm.title.$dirty">
           <span class="validation-error" ng-show="addPostForm.title.$error.required">Must include a title for your post</span>
         </span>

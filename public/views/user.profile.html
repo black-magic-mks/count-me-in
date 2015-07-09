@@ -2,11 +2,11 @@
   <div class="userHeader clearfix">
     <h1 class="left username"> <a class="standardLinkReversed" ui-sref="user.profile({username: username})">@{{username}}</a> </h1>
     <div class="left follow">
-      <button ng-if="!(currentUser === username && loggedIn)" ng-click="addFollower()" class="
+      <button ng-if="currentUser !== username && loggedIn" ng-click="addFollower()" class="
       actionButton right">
         <i class="fa fa-user-plus"></i> Follow
       </button>
-      <button ng-if="currentUser === username && loggedIn" ng-click="signOut()" class="directButton right">
+      <button ng-if="currentUser === username && loggedIn" ng-click="signOut()" class="directButton right signout">
         <i class="fa fa-sign-out"></i> Sign Out
       </button>
     </div>
