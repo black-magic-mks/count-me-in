@@ -1,22 +1,35 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, feedFactory) {
+.controller('FeedController', function($scope, $rootScope, feedFactory) {
   $scope.feedPosts = [];
   // uses promises to put the public data onto the scope
   $scope.getPublicFeedPosts = function() {
     feedFactory.getPublicFeedPosts()
     .then(function(posts) {
-      // console.log('getPublicFeedPosts', posts);
+      if (posts) {
+        for (var i = 0; i < posts.length; i++) {
+          posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+        }
+      }
       $scope.feedPosts = posts;
     });
   }
   // uses promises to put the private data onto the scope
   $scope.getPrivateFeedPosts = function() {
-    feedFactory.getPrivateFeedPosts()
-    .then(function(posts) {
-    // console.log('getPrivateFeedPosts', posts);
-      $scope.feedPosts = posts;
-    });
+    if ($rootScope.loggedIn) {
+      feedFactory.getPrivateFeedPosts()
+      .then(function(posts) {
+        // could move this logic into the backend??
+        if (posts.length !== 0) {
+          if (posts) {
+            for (var i = 0; i < posts.length; i++) {
+              posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+            }
+          }
+          $scope.feedPosts = posts;
+        }
+      });
+    }
   }
 
   // init function; feed will default to private feed if logged in and public feed if not
@@ -52,8 +65,7 @@ angular.module('app')
       url: '/api/public/feed',
     })
     .then(function(posts) {
-      console.log('get public posts: ', posts);
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPublicFeedPosts()")
@@ -67,7 +79,7 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
-      return posts.data;
+      return posts.data || [];
     })
     .catch(function(err) {
       console.log("error in getting posts in feedController.js: getPrivateFeedPosts()")
@@ -85,43 +97,24 @@ angular.module('app')
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
 
-  $scope.timeSince = function(date) {
-    
-    var seconds = Math.floor((new Date() - date) / 1000);
-    var interval = Math.floor(seconds / 31536000);
-    if (interval > 1) {
-        return interval + " years";
-    }
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) {
-        return interval + " months";
-    }
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) {
-        return interval + " days";
-    }
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) {
-        return interval + " hours";
-    }
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) {
-        return interval + " minutes";
-    }
-    return Math.floor(seconds) + " seconds";
-  };
-
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
     $scope.feedPledgePosts = posts;
   });
 
+  $scope.hasSubscribed = function() {
+    subscribe.hasSubscribed($scope.pledgename, function(data) {
+      $scope.subscribed = data.hasSubscribed;
+    });
+  };
+
+  $scope.hasSubscribed();
+
   $scope.subscribedPledges = [];
 
   $scope.subscribePledge = function() {
-    console.log('in subscribe pledge');
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
-      $scope.subscribedPledges = $scope.subscribedPledges.push(data);
+      $scope.subscribedPledges.push(data);
     });
   };
 })
@@ -134,8 +127,6 @@ angular.module('app')
       params: {pledgename: pledgename}
     })
     .then(function(posts) {
-      console.log('posts', posts);
-      // posts.data.comments.created = timeSince(posts.data.comments.created);
       return posts.data;
     })
     .catch(function(err) {
@@ -159,8 +150,21 @@ angular.module('app')
     });
   };
 
+  var hasSubscribed = function(pledgename, callback) {
+    $http.get('/api/pledge', {
+      params: {pledgename: pledgename}
+    })
+    .success(function(data, status, headers, config) {
+      callback(data);
+    })
+    .error(function(data, status, headers, config) {
+      console.log('error status with hasSubscribed: ', status, data, headers, config);
+    });
+  };
+
   return {
-    subscribeToPledge: subscribeToPledge
+    subscribeToPledge: subscribeToPledge,
+    hasSubscribed: hasSubscribed
   }
 })
 

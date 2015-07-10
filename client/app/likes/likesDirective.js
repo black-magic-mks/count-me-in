@@ -9,25 +9,6 @@ angular.module('app')
     },
     templateUrl: './templates/likes.html',
     link: function(scope, element, attribute) {
-      scope.getPost = function(postId) {
-        return $http({
-          method: 'GET',
-          url: '/api/post',
-          params: {
-            postId: postId
-          }
-        })
-        .then(function(postData) {
-          var likeData = {};
-          likeData.numLikes = postData.data.likes;
-          likeData.hasLiked = postData.data.hasLiked;
-          return likeData;
-        })
-        .catch(function(err) {
-          console.log('error in getPost: ', err);
-        })
-      }
-
       scope.postLike = function(postId) {
         return $http({
           method: 'POST',
@@ -35,11 +16,9 @@ angular.module('app')
           data: {postId: postId}
         })
         .then(function(postData) {
-          var likeData = {};
-          likeData.numLikes = postData.data.likes;
-          likeData.hasLiked = postData.data.hasLiked;
-          scope.likeData = likeData;
-          return likeData;
+          scope.likes = postData.data.likes;
+          scope.hasLiked = postData.data.hasLiked;
+          return;
         })
         .catch(function(err) {
           console.log('error in postLike: ', err);
@@ -52,19 +31,13 @@ angular.module('app')
           data: {postId: postId}
         })
         .then(function(postData) {
-          var likeData = {};
-          likeData.numLikes = postData.data.likes;
-          likeData.hasLiked = postData.data.hasLiked;
-          scope.likeData = likeData;
-          return likeData;
+          scope.likes = postData.data.likes;
+          scope.hasLiked = postData.data.hasLiked;
+          return;
         })
         .catch(function(err) {
           console.log('error in postUnlike: ', err)
         })
-      }
-      scope.likeData = {
-        likes: scope.likes,
-        hasLiked: scope.hasLiked
       }
     }
   }

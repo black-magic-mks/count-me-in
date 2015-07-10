@@ -72,7 +72,19 @@ var getPledgePosts = function(req, res, next) {
     return Pledge.getRelatedTo(pledge[0],'POSTED_IN');
   })
   .then(function(posts) {
-    return Q.all(posts.map(Post.addHasLiked.bind(null,req.username)));
+    return Q.all(posts.map(function(post) {
+      return Post.read(post)
+      .then(function(post) {
+        return Post.addHasLiked(req.username,post);
+      });
+    }));
+  })
+  .then(function(posts) {
+    console.log(posts);
+    return posts.sort(function(post1, post2) {
+      return post2.created - post1.created;
+    })
+    return posts;
   })
   .then(function(posts) {
     res.send(posts);

@@ -90,13 +90,54 @@ button {
   cursor: pointer;
 }
 
+.entryForm {
+  background: #FFF;
+  box-shadow: 0px 1px 3px #CCC;
+  width: 50%;
+  margin: 140px auto;
+  padding:30px;
+  /*text-align: center;*/
+}
+
+.entryForm h1 {
+  color: #037E8C;
+  font-size: 2.2em;
+  margin-bottom:10px;
+  text-align: center
+}
+
+.entryForm input {
+  display:block;
+  width:90%;
+  text-align:left;
+  padding:6px 8px;
+}
+
+.entryForm .signupFormLabel {
+  text-align: left;
+  color: #037E8C;
+  padding: 20px 0 10px 0;
+}
+
+.entryForm button {
+  margin:20px 0 15px 0;
+}
+
+p.formError {
+  color: #C22F20;
+  font-size:.9em;
+  line-height: 1.5em;
+  font-style:italic;
+  font-family: sans-serif;
+}
+
 .actionButton, .directButton {
   border-radius: 3px;
   padding: 6px 8px;
   border: none;
   color: #FFF;
   font-size: 1em !important;
-  margin:5px 5px 5px 0;
+  margin:5px 5px 0px 0;
   cursor: pointer;
 }
 
@@ -106,7 +147,7 @@ button {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #F24C27;
-  margin-right:10px;
+  /*margin-right:10px;*/
 }
 
 .actionButton:hover {
@@ -115,12 +156,17 @@ button {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #FA5E41;
-  margin-right:10px;
+  /*margin-right:10px;*/
+}
+
+button[disabled="disabled"], button[disabled="disabled"]:hover {
+    background-color: lightgray;
+    border-color: gray;
 }
 
 .directButton {
-  border-top:1px solid #04ACBF;
-  border-bottom:1px solid #038A99;
+  border-top:1px solid #038594;
+  border-bottom:1px solid #036E7A;
   background-color: #037E8C;
 }
 
@@ -133,8 +179,21 @@ button {
   cursor: pointer;
 }
 
+.standardLinkReversed {
+  color: #FFF;
+  cursor: pointer;
+}
+
 .standardLink:hover {
   color: #024959;
+}
+
+.minorLink {
+  margin: 0px 0px 20px 20px;
+}
+
+.date {
+  color: #888;
 }
 
 body {
@@ -142,7 +201,8 @@ body {
   margin: 0 !important;
   color: #777;
   background-color: #EDEDED;
-  padding-top:50px;
+  padding-bottom: 20px;
+  background-image: url(./images/bg.png);
 }
 
 .block {
@@ -154,24 +214,44 @@ body {
   margin:0 auto;
 }
 
+.feedContainer {
+  position:relative;
+  top:50px;
+}
 .feedOption {
   width:60%;
-  font-size: 2em;
+  padding: 10px 0;
   position:fixed;
   top:0;
   z-index: 100;
+  box-shadow: 0px 1px 3px #CCC;
+  background-color: #024959;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.feedOptionButton:hover{
+  opacity: .8;
+}
+
+.explorePledges {
+  margin-right: 15px;
 }
 
 .fa-globe, .fa-lock {
-  font-size: 2em;
+  font-size: 1.2em;
   color:#FFF;
+  padding-right:5px;
 }
 
 .feedOptionButton {
-  width:50%;
+  font-family: 'Lato', sans-serif;
+  background-color: #024959;
   padding:10px 20px;
   border: 1px solid #024959;
-  background-color: #385159;
+  color:#FFF;
+  font-size:1em;
+  font-weight: lighter !important;
 }
 
 .public {
@@ -183,7 +263,7 @@ body {
 }
 
 .active {
-  background-color: #024959;
+  /*background-color: #024959;*/
 }
 .feedPledgeDirective {
   margin: 25px 0;
@@ -197,8 +277,130 @@ body {
   border-bottom:none;
 } 
 
+.userHeader {
+  max-width: 100%;
+  display:block;
+  padding: 20px 10px 20px 13px;
+  border-bottom: 1px solid #AAA;
+  background-color: #024959;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+.userHeader > .username {
+  font-size:1.5em;
+  width: 80%;
+}
+
+.userHeader > .follow {
+  width:20%;
+}
+
+.userHeader > .follow > button {
+  position: relative;
+  bottom:10px;
+  margin-bottom: -20px;
+  font-weight: lighter;
+  font-size: .9em;
+}
+
+.userHeader h1 {
+  font-size: 1.4em;
+}
+
+.feedPledgeDirective .pledgename {
+  /*border-bottom: 1px solid #DDD;*/
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}
+
+.feedPledgeDirective h1 {
+  font-size:1.5em;
+  font-weight: lighter;
+}
+
+
+.pledgePreview {
+  margin-bottom:25px;
+}
+
+.postInfo {
+  width:36%;
+}
+
+.postInfo h2 {
+  font-weight: normal;
+  font-size:1.2em;
+  margin-bottom:4px;
+}
+
+.postInfo .date {
+  font-size: 1em;
+  font-weight: normal;
+   margin-bottom: 2px;
+}
+
+.postInfo .pledgeText {
+  font-weight: lighter;
+  margin-bottom:5px;
+  line-height: 1.2em
+}
+
+.prevImg {
+  width:63%;
+}
+
+img.coverImg {
+  width:90%;
+  float: left;
+  padding: 0 10px 0 15px;
+}
+
+/*.pledgePreview h2 {
+  font-size: 1.2em;
+  color: #555;
+  font-weight:lighter;
+  margin-bottom: 10px;
+}
+
+.pledgePreview h4 {
+  font-weight: lighter;
+  font-size: 1em !important;
+  margin: 5px;
+  padding-left:3px;
+}
+
+.pledgePreview .pledgeText {
+  width:38%;
+  font-weight: lighter;
+  line-height: 18px;
+  padding-left:2px;
+}
+
+.pledgePreview button {
+  margin: 15px 0 0 5px;
+}*/
+
+
+/***** CSS JUST FOR SCREENSHOTS THAT SHOULD BE REFACTORED OR REPLACES *****/
+
+
+
+.pledgePreview .textDesc {
+  width:35%;
+}
+
+.pledgePreview .textDesc button {
+  margin-top: 10px;
+}
+.pledgePreview .pledgeDate {
+  position: relative;
+  top: 3px;
+}
+/**** END SCREENSHOTS ****/
+
 .directiveHeader {
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #DDD;
   padding: 0 0 0px 0;
 }
 
@@ -211,14 +413,17 @@ h2.username {
   /*font-weight:bold;*/
 }
 
+
 .postTopBar {
   margin: 10px 15px 20px 15px;
+  border-bottom: 1px solid #DDD;
+  padding-bottom: 10px;
 }
 
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
-  font-size:1.7em;
+  font-size:1.5em;
   font-weight:lighter;
 }
 
@@ -234,6 +439,10 @@ h2.username {
 .buttonBar {
   margin: 10px 20px 15px 22px;
   display:block;
+}
+
+.buttonBar .actionButton {
+  margin-right: 10px;
 }
 
 .toggleComments {
@@ -254,7 +463,8 @@ h2.username {
 
 .postedComments {
   border-top: 1px solid #DDD;
-  padding: 10px;
+  padding: 15px 10px;
+  font-size: .9em;
   /*margin: 0px 20px;*/
 }
 
@@ -290,11 +500,6 @@ h2.username {
   position:relative;
 }
 
-/*.feedImages > .image {
-  width:100%;
-  position:relative;
-}
-*/
 .feedImages img {
   width:100%;
   margin-bottom: -2px;
@@ -315,7 +520,6 @@ h2.username {
   font-weight:normal;
   margin-bottom:10px;
   padding:20px 20px 0px 20px;
-
 }
 
 .postText p {
@@ -370,6 +574,7 @@ h2.username {
 
 .feedPledgeDirective > img {
   margin: 0 10px 0 0;
+  width: 100%;
 }
 
 /* Navigation bar*/
@@ -377,6 +582,7 @@ h2.username {
 nav {
   display: flex;
   justify-content: space-around;
+  border-top: 1px solid #025761 ;
   background-color: #024959;
   align-items: center;
   position: fixed;
@@ -391,35 +597,92 @@ nav .fa {
 
 /*Upload*/
 
-.upload {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-start;
+.upload .postTopBar {
+  margin: 10px 15px 2px 20px;
+  border-bottom: none;
+  padding-bottom: 0px;
 }
 
-.upload h3 {
-  text-align: center;
+.upload form {
+  margin:30px 20px 20px 20px;
+}
+
+.addPostForm select {
+  font-family: 'Lato', sans-serif;
+  width: 40%;
+  font-size: 150%;
+}
+
+p.formLabel {
+  color: #037E8C;
+  padding: 20px 0 10px 0;
+}
+
+.upload form input, .upload form textarea {
+  min-width: 90%;
+  padding: 5px;
+}
+
+.upload form button {
+  padding: 10px 18px;
+}
+
+.preview-post {
+  margin-top: 10%;
 }
 
 /* Add post */
 
 .addPostForm input[type="file"] {
-    display: none;
+  display: none;
 }
 
 .post-upload {
-  border: 1px solid #ccc;
-  display: inline-block;
-  padding: 10px 10px;
+  padding: 15px 0px 10px 0;
   cursor: pointer;
+  color: #037E8C;
+  margin-top: 10px;
+}
+
+.fa-camera {
+  border:1px solid #037E8C;
   border-radius: 50%;
+  padding:6px;
+}
+
+.fa-plus {
+  border:2px solid #FFF;
+  border-radius: 50%;
+  padding:5px;
+}
+
+.uploadText {
+  position:relative;
+  bottom:4px;
+  padding-left:5px;
+}
+
+.post-upload:hover {
+  color: #024959;
+}
+
+/* Add Pledge */
+.addPledgeForm .pledgename {
+  margin-bottom: 25px;
+  font-family: 'Lato', sans-serif;
+  width: 40%;
+  font-size: 150%;
+}
+
+.pledgeForm {
+    margin-bottom:20px;
 }
 
 /* Forms */
 .validation-error {
   font-size: 80%;
   color: red;
+  display: block;
 }
 
 form .pledgename {
@@ -431,8 +694,8 @@ form .pledgename {
   color: gray;
 }
 
-<<<<<<< HEAD
-@media (max-width: 900) {
+
+@media (max-width: 900px) {
   .mainContainer {
     width:80%;
     margin:0 auto;
@@ -441,6 +704,12 @@ form .pledgename {
 
   .feedOption {
     width:100%;
+  }
+
+  img.coverImg {
+/*    width:58%;
+    float: left;
+    margin: 0 10px 0 10px;*/
   }
 }
 
@@ -461,9 +730,27 @@ form .pledgename {
     display:block;
     bottom: 0;
   }
+
+  .entryForm {
+    width: 80%;
+  }
 }
 
 @media(max-width: 450px) {
+
+  .userHeader > .username {
+    font-size: 1.5em;
+    width: 70%;
+  }
+
+  .userHeader > .follow {
+    width:30%;
+  }
+
+  .entryForm {
+    width: 80%;
+  }
+
   .postTopBar > h2 {
     font-size: 1.5em;
   }
@@ -505,8 +792,42 @@ form .pledgename {
     margin: 5px 8px 15px 8px;
   }
 
+  .pledgePreview h2 {
+    font-size: .9em;
+    font-weight: bold;
+    margin-bottom:2px;
+  }
+
+  .pledgePreview .date {
+    font-size:.9em;
+    font-weight: normal;
+  }
+
+  .pledgePreview .pledgeText {
+    font-size: .9em;
+    line-height: 1.1em;
+  }
+
+  .pledgePreview button {
+    padding: 2px 5px;
+    margin-top: 5px;
+  }
+
+  .pledgePreview {
+    margin-bottom:20px;
+  }
+
   .commentForm, .postedComments {
     margin: 0px 8px;
+  }
+
+  .feedOptionButton {
+    padding:10px 0px 10px 20px;
+    font-size: .9em;
+  }
+
+  .actionButton, .directButton {
+    font-size: .9em !important;
   }
 }
 
@@ -566,4 +887,13 @@ form .pledgename {
   margin: 0 auto 1rem;
   border-radius: .25rem;
   border-left-color: red;
+}
+
+/* Formats size of images on user page */
+.thumb {
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+  background: center;
+  background-size: cover;
 }

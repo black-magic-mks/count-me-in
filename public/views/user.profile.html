@@ -1,11 +1,15 @@
 <div class="item item-text-wrap">
-  <div class="directiveHeader clearfix">
-    <h1 class="left"> <a ui-sref="user.profile({username: username})">@{{username}}</a> </h1>
-    <div class="left">
-      <button ng-if="!(currentUser === username && loggedIn)" ng-click="addFollower()" class="button button-small button-positive right">
-        Follow
+  <div class="userHeader clearfix">
+    <h1 class="left username"> <a class="standardLinkReversed" ui-sref="user.profile({username: username})">@{{username}}</a> </h1>
+    <div class="left follow">
+      <button ng-if="currentUser !== username && loggedIn" ng-click="addFollower()" class="
+      actionButton right">
+        <i class="fa fa-user-plus"></i> Follow
+      </button>
+      <button ng-if="currentUser === username && loggedIn" ng-click="signOut()" class="directButton right signout">
+        <i class="fa fa-sign-out"></i> Sign Out
       </button>
     </div>
   </div>
-<pledge-preview ng-repeat="pledge in profilePledges" pledge="pledge" username="username"/>
+  <pledge-preview ng-repeat="pledge in profilePledges" pledge="pledge" username="username"/>
 </div>

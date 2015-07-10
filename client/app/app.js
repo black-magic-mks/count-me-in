@@ -45,7 +45,7 @@ angular.module('app', [
       templateUrl: '/views/post.html'
     })
     .state('user.post.add', {
-      url: '/:username/new',
+      url: '/new',
       templateUrl: '/views/post.add.html',
       controller: 'addPostController'
     })
@@ -78,9 +78,5 @@ angular.module('app', [
       templateUrl: '/views/signup.html',
       controller: 'AuthController'
     })
-})
-
-.controller('MainController', function($scope) {
-
-})
+});
 

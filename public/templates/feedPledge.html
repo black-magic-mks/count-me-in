@@ -2,7 +2,7 @@
   <div class="feedPledgeDirective clearfix">
     <div class="postTopBar clearfix">
       <h2 class="left"><a ui-sref="user.profile({username: post.username})" class="title standardLink">@{{post.username}}&nbsp;</a>in <a class="standardLink" ui-sref="feed.pledge({pledgename: post.pledgename})">#{{post.pledgename}}</a></h2>
-      <p class="postDate left">{{post.date}} Jan 6</p>
+      <p class="postDate left">{{post.created}}</p>
     </div>
     <div class="feedImages clearfix">
         <img ng-src="{{post.aws_url}}" class="posts" />
@@ -14,9 +14,8 @@
     <div class="buttonBar clearfix">
       <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
       <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
-      <button ui-sref="user.pledge({username: post.username, pledgename: post.pledgename})" class="button button-small button-positive right directButton"><i class="fa fa-eye"></i> more
-      </button>
+      <button ui-sref="user.profile({username: post.username})" class="button button-small button-positive right directButton"><i class="fa fa-eye"></i> more
     </div>
-    <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed" box-visible="boxVisible"></comment>
+    <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>
   </div>
 </div>

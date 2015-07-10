@@ -1,20 +1,23 @@
 angular.module('app')
 
-.run(function($state, $rootScope, Auth) {
+.run(function($state, $rootScope, $timeout, Auth) {
   // do we want to do .then().catch() to do the $rootScope.loggedIn stuff???
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
-    console.log('state changed')
-    if ($state !== 'login' && $state !== 'signup') {
+    console.log('state changed to :', toState.name)
+    if (toState.name !== 'login' && toState.name !== 'signup') {
       Auth.isLoggedIn()
       .then(function(authenticated) {
         console.log('authentication: ', authenticated)
         if (authenticated) {
-          console.log($rootScope.currentUser)
           $rootScope.loggedIn = true;
         } else {
           $rootScope.loggedIn = false;
         }
       })
+    } else if ($rootScope.loggedIn && (toState.name === 'login' || toState.name === 'signup')) {
+      $timeout(function() {
+        $state.go('feed.all');
+      });
     }
   })
 })
@@ -23,10 +26,6 @@ angular.module('app')
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
   angular.extend($scope, Auth);
-  $scope.register = function(user) {
-    Auth.register(user);
-    $scope.submitted = true;
-  }
 })
 
 .factory('Auth', function($http, $state, $rootScope) {

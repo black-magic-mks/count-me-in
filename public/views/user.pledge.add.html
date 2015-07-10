@@ -1,30 +1,24 @@
-<div>
-    <h3>Add a pledge</h3>
+<div class="upload feedPledgeDirective">
+  <div class="postTopBar clearfix">
+    <h2 class="left block">Add a Pledge</h2>
+  </div>
+  <a class="standardLink minorLink" ui-sref="user.post.add({username: currentUser})">+ add a post</a>
+  <div>
+    <form name="addPledgeForm" class="addPledgeForm" id="addPledgeForm" novalidate>
+      <div class="pledgeForm">
+        <p class="formLabel">Pledge:</p>
+        #
+        <input class="pledgename" name="pledgename" type="text" ng-model="pledge.pledgename" placeholder="new_pledgename?" ng-pattern="pledgenameValidation" required/>
+        <span ng-if="addPledgeForm.pledgename.$dirty">
+          <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.required">Must include a pledge name</span>
+          <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.pattern">It's a hashtag! Keep it short; remove white spaces and random symbols.</span>
+        </span>
+      </div>
 
-    <div>
-      <form name="addPledgeForm" class="addPledgeForm" id="addPledgeForm" novalidate>
+      <button class="btn actionButton" ng-disabled="addPledgeForm.$invalid" ng-click="addPledge()">Pledge it!</button>
+      <a class="standardLink" ui-sref="user.profile({username: username})">cancel</a>
 
-          #
-          <input class="pledgename" name="pledgename" type="text" ng-model="pledge.pledgename" placeholder="pledgetitlehere" ng-pattern="pledgenameValidation" required/>
+    </form>
+  </div>
 
-          <span ng-if="addPledgeForm.pledgename.$dirty">
-            <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.required">Must include a pledge name</span>
-            <span class="validation-error" ng-show="addPledgeForm.pledgename.$error.pattern">It's a hashtag! Keep it short, remove white spaces and symbols.</span>
-          </span>
-
-          <br />
-
-          <textarea name="mission" ng-model="pledge.mission" placeholder="What is your mission..." required></textarea>
-
-          <span ng-if="addPledgeForm.mission.$dirty">
-            <span class="validation-error" ng-show="addPledgeForm.mission.$error.required">Must include a mission homie</span>
-          </span>
-
-          <br />
-
-          <button class="btn" ng-click="cancelPledge()">cancel</button>
-          <button class="btn" ng-disabled="addPledgeForm.$invalid" ng-click="addPledge()">pledge!</button>
-
-        </form>
-    </div>
 </div>

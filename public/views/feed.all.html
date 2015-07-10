@@ -1,6 +1,7 @@
 <div class="feedOption block clearfix">
-  <button class="feedOptionButton left active public" ng-click="getPublicFeedPosts()"><i class="fa fa-globe"></i></button>
-  <button class="feedOptionButton left private" ng-click="getPrivateFeedPosts()"><i class="fa fa-lock"></i></button>
+  <button class="feedOptionButton left active public" ng-click="getPublicFeedPosts()"><i class="fa fa-globe"></i> <span class="publicText">Public </span></button>
+  <button class="feedOptionButton left private" ng-click="getPrivateFeedPosts()"><i class="fa fa-lock"></i> <span class="publicText">Private</span> </button>
+  <a ui-sref="pledges" class="right directButton explorePledges">Explore Pledges</a>
 </div>
-<feed-pledge ng-repeat="post in feedPosts" getcommentbox="getcommentbox" post="post"></feed-pledge>
+<feed-pledge class="feedContainer clearfix" ng-repeat="post in feedPosts" getcommentbox="getcommentbox" post="post"></feed-pledge>
 

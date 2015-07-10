@@ -1,26 +1,24 @@
 angular.module('app')
 
 .controller('viewPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
-  UserPledgeFactory.getUserPledgeData().then(function(pledgeData) {
+  UserPledgeFactory.getUserPledgeData($stateParams.username).then(function(pledgeData) {
     $scope.userPledgePosts = pledgeData;
   });
-
+  $scope.username = $stateParams.username;
   $scope.pledgename = $stateParams.pledgename;
 })
 .factory('UserPledgeFactory', function($http, $stateParams) {
-  var getUserPledgeData = function() {
+  var getUserPledgeData = function(username) {
     return $http({
       method: 'GET',
-      url: '/api/pledge/posts',
-      params: {pledgename: $stateParams.pledgename}
+      url: '/api/user/posts',
+      params: {username: username}
     })
-    .then(function(data) {
-      data = data.data.filter(function(postObj) {
-        return postObj.username === $stateParams.username;
-      }).sort(function(postObj1, postObj2) {
-        return postObj1.createdAt - postObj2.createdAt;
+    .then(function(posts) {
+      posts = posts.data.filter(function(postObject) {
+        return postObject.pledgename === $stateParams.pledgename;
       })
-      return data;
+      return posts[0].posts;
     })
     .catch(function(err) {
       console.error(err);

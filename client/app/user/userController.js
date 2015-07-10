@@ -2,17 +2,17 @@ angular.module('app')
 
 .controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
   $scope.username = $stateParams.username || $rootScope.currentUser;
-    UserProfileFactory.getUserProfilePledges($scope.username)
-    .then(function(pledges) {
-      console.log("profile pledges:", pledges)
-      $scope.profilePledges = pledges;
+    UserProfileFactory.getUserProfilePosts($scope.username)
+    .then(function(posts) {
+      console.log("profile pledges and posts:", posts)
+      $scope.profilePledges = posts;
     })
 })
 .factory('UserProfileFactory', function($http, $stateParams) {
-  var getUserProfilePledges = function(username) {
+  var getUserProfilePosts = function(username) {
     return $http({
       method: 'GET',
-      url: '/api/user/pledges',
+      url: '/api/user/posts',
       params: {username: username}
     })
     .then(function(pledges) {
@@ -24,34 +24,28 @@ angular.module('app')
   }
 
   return {
-    getUserProfilePledges: getUserProfilePledges
+    getUserProfilePosts: getUserProfilePosts
   }
 })
 
-
-
-
-
-
-
-.controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow) {
-  $scope.pledgePreview = [];
+.controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow, logOut) {
   $scope.followingList = [];
 
   userFunc.getUser($stateParams.username, function(data) {
     $scope.username = data.username;
   });
-  userFunc.getUserPledges($stateParams.username, function(data) {
-    $scope.pledgePreview = $scope.pledgePreview.concat(data);
-    console.log(data,$scope.pledgePreview);
-  });
 
   $scope.addFollower = function() {
     follow.followUser($scope.username, function(data) {
-      $scope.followingList = $scope.followingList.push(data);
+      $scope.followingList.push(data);
       console.log('followingList: ', data, $scope.followingList);
     });
   };
+
+  $scope.signOut = function() {
+    logOut.clearSessionToken();
+  };
+
 })
 .factory('userFunc', function($http) {
   var username;
@@ -67,21 +61,9 @@ angular.module('app')
       console.log('error status with getUser: ', status, data, headers, config);
     });
   };
-  var getUserPledges = function(username, callback) {
-    $http.get('/api/user/pledges', {
-      params: {username: username}
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error status with getUserPledges: ', status, data, headers, config);
-    });
-  };
 
   return {
     getUser: getUser,
-    getUserPledges: getUserPledges,
     username: username
   }
 
@@ -103,5 +85,23 @@ angular.module('app')
     followUser: followUser
   }
 
+})
+.factory('logOut', function($http, $state) {
+    var clearSessionToken = function() {
+    return $http({
+      method: 'POST',
+      url: '/api/auth/logout',
+    })
+    .then(function(username) {
+      $state.go('login');
+    })
+    .catch(function(err) {
+      console.log("error logging user out", err);
+    })
+  };
+
+  return {
+    clearSessionToken: clearSessionToken
+  }
 });
 
