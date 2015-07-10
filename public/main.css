@@ -432,7 +432,7 @@ h2.username {
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
-  font-size:1.5em;
+  font-size:1.6em;
   font-weight:lighter;
 }
 
@@ -618,8 +618,10 @@ nav .fa {
 
 .addPostForm select {
   font-family: 'Lato', sans-serif;
-  width: 40%;
-  font-size: 150%;
+  width: 60%;
+  font-size: 110%;
+  -webkit-appearance: menulist-button;
+   height: 30px;
 }
 
 p.formLabel {
@@ -627,11 +629,14 @@ p.formLabel {
   padding: 20px 0 10px 0;
   border-top: 1px solid #DDD;
   margin-top: 25px;
+  font-size:1.1em;
 }
 
 .upload form input, .upload form textarea {
   min-width: 90%;
-  padding: 5px;
+  font-family: 'Lato', sans-serif;
+  padding: 8px 5px;
+  font-size:1em;
 }
 
 .upload form button {
@@ -843,6 +848,9 @@ form .pledgename {
 
   .actionButton, .directButton {
     font-size: .9em !important;
+  }
+  .addPostForm select {
+    width: 100%;
   }
 }
 
