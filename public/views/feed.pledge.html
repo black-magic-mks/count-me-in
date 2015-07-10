@@ -5,6 +5,9 @@
       <button ng-if="!subscribed && loggedIn" ng-click="subscribePledge()" class="actionButton right">
         Join
       </button>
+      <button ng-if="subscribed && loggedIn" ui-sref="user.post.add({username: currentUser})" class="actionButton right">
+        Add post
+      </button>
     </div>
   </div>
   <pledge-post ng-repeat="post in feedPledgePosts" post="post" comments="comments" postNewComment="postNewComment" usercomment="usercomment" pledgename="pledgename"/>

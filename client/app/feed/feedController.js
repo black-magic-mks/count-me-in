@@ -96,6 +96,7 @@ angular.module('app')
 
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
+  $scope.subscribed = false;
 
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
@@ -116,6 +117,7 @@ angular.module('app')
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges.push(data);
     });
+    $scope.subscribed = true;
   };
 })
 .factory('feedPledgeFactory', function($http) {
