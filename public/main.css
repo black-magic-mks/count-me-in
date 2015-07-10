@@ -169,8 +169,8 @@ p.formError {
 }
 
 button[disabled="disabled"], button[disabled="disabled"]:hover {
-    background-color: lightgray;
-    border-color: gray;
+   background-color: #F24C27;
+   opacity: .6;
 }
 
 .directButton {
@@ -625,6 +625,8 @@ nav .fa {
 p.formLabel {
   color: #037E8C;
   padding: 20px 0 10px 0;
+  border-top: 1px solid #DDD;
+  margin-top: 25px;
 }
 
 .upload form input, .upload form textarea {
@@ -634,6 +636,10 @@ p.formLabel {
 
 .upload form button {
   padding: 10px 18px;
+}
+
+.upload textarea {
+  margin-bottom:20px;
 }
 
 .preview-post {
