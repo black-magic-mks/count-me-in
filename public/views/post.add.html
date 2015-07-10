@@ -18,11 +18,12 @@
         </select>
 
         <!-- Upload file -->
-        <label class="post-upload block">
+        <p class="formLabel">Prove it:</p>
+        <label class="post-upload">
           <input type="file" class="post-file" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged" accept="image/*"></input>
           <i class="fa fa-camera fa-2x"></i>
           <span class="uploadText" ng-if="!(fileName)">
-            Prove it! Upload an image.
+            Upload an image.
           </span>
           <span ng-if="!!(fileName)">
             {{ fileName }}
