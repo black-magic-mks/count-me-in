@@ -673,7 +673,7 @@ p.formLabel {
 .fa-plus {
   border:2px solid #FFF;
   border-radius: 50%;
-  padding:5px;
+  padding:5px 6px;
 }
 
 .uploadText {
