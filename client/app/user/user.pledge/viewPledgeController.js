@@ -2,7 +2,6 @@ angular.module('app')
 
 .controller('viewPledgeController', function($scope, $stateParams, UserPledgeFactory, subscribe) {
   UserPledgeFactory.getUserPledgeData($stateParams.username).then(function(pledgeData) {
-    console.log(pledgeData); // check how this is sorted
     $scope.userPledgePosts = pledgeData;
   });
   $scope.username = $stateParams.username;
@@ -16,7 +15,10 @@ angular.module('app')
       params: {username: username}
     })
     .then(function(posts) {
-      return posts.data[0].posts;
+      posts = posts.data.filter(function(postObject) {
+        return postObject.pledgename === $stateParams.pledgename;
+      })
+      return posts[0].posts;
     })
     .catch(function(err) {
       console.error(err);
