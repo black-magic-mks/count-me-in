@@ -172,12 +172,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/dxELaOj.png',
       username: 'CTO_NLinksta',
       likes: [],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'learningtounicycle',
@@ -200,12 +194,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/8OEbCcb.png',
       username: 'mangle9',
       likes: ['therealréal'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'doPushUps',
@@ -214,12 +202,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/tVRtGDW.png',
       username: 'mangle9',
       likes: ['DaGoldberg', 'shahshaank'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'doPushUps',
@@ -228,12 +210,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/RhwKpzO.png',
       username: 'mangle9',
       likes: ['therealréal'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'doPushUps',
@@ -242,12 +218,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/Xt7SKYh.png',
       username: 'mangle9',
       likes: ['DaGoldberg', 'therealréal', 'shahshaank'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'doPushUps',
@@ -256,12 +226,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/adzYGgI.png',
       username: 'mangle9',
       likes: ['DaGoldberg', 'shahshaank'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'doPushUps',
@@ -298,12 +262,6 @@ module.exports = {
       aws_url: 'https://i.imgur.com/ZbCn10B.jpg',
       username: 'therealréal',
       likes: ['mangle9'],
-      comments: [
-        {
-          text: '',
-          username: ''
-        }
-      ]
     },
     {
       pledgename: 'beaDOG',
