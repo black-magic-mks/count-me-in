@@ -4,9 +4,9 @@ var Q = require('q');
 var query = Q.nbind(db.query,db);
 
 Post.schema = {
-  title: {type: String, required: true},
-  aws_url: String,
-  text: {type: String, trim: true}
+  title: { type: String, required: true },
+  aws_url: { type: String, required: true },
+  text: { type: String, trim: true }
 };
 
 Post.addComputedField('username', function(post, done) {
