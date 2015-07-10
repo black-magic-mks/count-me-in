@@ -18,11 +18,12 @@
         </select>
 
         <!-- Upload file -->
-        <label class="post-upload block">
+        <p class="formLabel">Prove it:</p>
+        <label class="post-upload">
           <input type="file" class="post-file" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged" accept="image/*"></input>
           <i class="fa fa-camera fa-2x"></i>
           <span class="uploadText" ng-if="!(fileName)">
-            Prove it! Upload an image.
+            Upload an image.
           </span>
           <span ng-if="!!(fileName)">
             {{ fileName }}
@@ -39,19 +40,6 @@
         <!-- Post description -->
         <p class="formLabel">Description:</p>
         <textarea name="text" ng-model="post.text" rows="7" placeholder="Tell us a little bit about what you did"></textarea>
-        
-        <!-- Form submit -->
-        <p class="formLabel">Prove it:</p>
-        <label class="post-upload block">
-          <input type="file" class="thumb" id="user-post-add" name="file" ng-model="post.file" valid-file on-file-change="fileChanged"></input>
-          <i class="fa fa-camera fa-2x"></i>
-          <span class="uploadText" ng-if="!(fileName)">
-            Upload an image
-          </span>
-          <span ng-if="!!(fileName)">
-            {{ fileName }}
-          </span>
-        </label>
 
         <!-- Form submit -->
         <button class="btn actionButton " ng-disabled="addPostForm.$invalid || !(fileName)" ng-click="addPost()">Post it!</button>
