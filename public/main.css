@@ -191,6 +191,10 @@ button[disabled="disabled"], button[disabled="disabled"]:hover {
   color: #024959;
 }
 
+.standardLinkReversed:hover {
+  color: #DFDFDF;
+}
+
 .minorLink {
   margin: 0px 0px 20px 20px;
 }
