@@ -26,10 +26,6 @@ angular.module('app')
   $scope.user = {};
   $scope.passwordValidation = /.*(\d(?=.*[A-Z])|[A-Z](?=.*\d)).*/;
   angular.extend($scope, Auth);
-  $scope.register = function(user) {
-    Auth.register(user);
-    $scope.submitted = true;
-  }
 })
 
 .factory('Auth', function($http, $state, $rootScope) {

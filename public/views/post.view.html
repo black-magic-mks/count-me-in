@@ -1,10 +1,16 @@
-<div>
+<div class="preview-post">
   <div ng-show="!loadingPost">
-    <div>
-      <h3>{{ title }}</h3>
-      <p>{{ text }}</p>
-      <img src="{{ awsUrl }}"> 
+    <div class="prevImg">
+      <img class="coverImg left" ng-src="{{aws_url}}"/>
     </div>
+    <div class="postInfo left">
+      <h2>{{title}}</h2>
+      <h3>This is the right page</h3>
+      <div class="pledgeText">{{text}} Soem example text /n and some more example text</div>
+    </div>
+    <button ui-sref="user.profile({username: username})" class="directButton">
+      <i class="fa fa-check"></i> approve
+    </button>
   </div>
   <div class="loading" ng-show="loadingPost">
       <i class="fa fa-spinner fa-pulse fa-5x"></i>

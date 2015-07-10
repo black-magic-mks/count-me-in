@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('addPostController', function($scope, $http, $state) {
+.controller('addPostController', function($scope, $http, $state, $rootScope) {
 
   $scope.pledgenames = [];
   $scope.loadingPost = false;
@@ -75,7 +75,7 @@ angular.module('app')
     .success(function(data, status, headers, config) {
       upload(file, data.signed_request, data.url, function(url) {
         $scope.loadingPost = false;
-        $state.go('user.post.view', {post_id: data.id});
+        $state.go('user.profile', {username: $rootScope.currentUser});
       });
     })
     .error(function(data, status, headers, config) {

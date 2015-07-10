@@ -20,12 +20,14 @@ angular.module('app')
       feedFactory.getPrivateFeedPosts()
       .then(function(posts) {
         // could move this logic into the backend??
-        if (posts) {
-          for (var i = 0; i < posts.length; i++) {
-            posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+        if (posts.length !== 0) {
+          if (posts) {
+            for (var i = 0; i < posts.length; i++) {
+              posts[i].created = moment.unix(posts[i].created / 1000).fromNow();
+            }
           }
+          $scope.feedPosts = posts;
         }
-        $scope.feedPosts = posts;
       });
     }
   }

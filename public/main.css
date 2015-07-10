@@ -337,8 +337,9 @@ body {
 
 .postInfo h2 {
   font-weight: normal;
-  font-size:1.2em;
+  font-size:1.3em;
   margin-bottom:4px;
+  color:#555;
 }
 
 .postInfo .date {
@@ -466,6 +467,8 @@ h2.username {
 .commentContent {
   width:100%;
   margin:5px 0px;
+  border-bottom: 1px solid #037E8C;
+  padding-bottom:25px;
 }
 
 .postedComments {
@@ -648,6 +651,11 @@ p.formLabel {
   margin-bottom:30px;
 }
 
+.preview-post {
+  margin-top: 10%;
+
+}
+
 /* Add post */
 
 .addPostForm input[type="file"] {
@@ -670,7 +678,7 @@ p.formLabel {
 .fa-plus {
   border:2px solid #FFF;
   border-radius: 50%;
-  padding:5px;
+  padding:5px 7px;
 }
 
 .uploadText {
