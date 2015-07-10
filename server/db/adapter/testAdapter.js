@@ -5,22 +5,25 @@ var models = require('../models');
 var Pledge = models.Pledge;
 var User = models.User;
 var Post = models.Post;
+var Comment = models.Comment;
 
 var db = require('seraph')();
 var Q = require('q');
 var query = Q.nbind(db.query,db);
 
 var resetData = function(req, res, next) {
-  var deleteRels = 'MATCH ()-[r]->() DELETE r';
-  var deleteNodes = 'MATCH (n) DELETE n';
-
   // remove old data
-  query(deleteRels)
-  .then(function() {
-    return query(deleteNodes);
+  query('MATCH n WITH count(n) as nodes MATCH ()-[r]->() RETURN nodes, count(r) AS rels')
+  .then(function(counts) {
+    return query('MATCH n, ()-[r]-() DELETE n, r')
+    .then(function() {
+      return counts;
+    });
   })
-  .then(function() {
-    console.log('Removed all data from database');
+  .then(function(counts) {
+    console.log();
+    console.log('---------------');
+    console.log('Removed ' + counts.nodes + ' nodes and ' + counts.rels + ' relationships from database');
   })
   .then(function() {
     //register users from testData.users
@@ -105,27 +108,49 @@ var resetData = function(req, res, next) {
           ]);
         })
         .spread(function(postNode, likedUsers) {
-          console.log('likedUsers:',likedUsers);
           return Q.all(likedUsers.map(function(userNode) {
-            console.log('liking user:',userNode,postNode);
             return User.relate(userNode,'LIKED',postNode);
           }));
+        })
+        .then(function() {
+          return postNode
         });
       })
-      .then(function() {
-        return post.title;
+      .then(function(postNode) {
+        var comments = post.comments || [];
+        return Q.all(comments.map(function(comment) {
+          return Q.all([
+            Comment.save(comment),
+            User.where({ username: comment.username })
+          ])
+          .spread(function(commentNode, userNode) {
+            return Q.all([
+              Comment.relate(commentNode,'WRITTEN_IN',postNode),
+              User.relate(userNode,'WROTE',commentNode)
+            ]);
+          })
+          .then(function() {
+            return comment.text;
+          });
+        }));
+      })
+      .then(function(comments) {
+        return [post.title,comments];
       });
     }));
   })
   .then(function(posts) {
     console.log();
-    console.log('Created Posts, including POSTED, POSTED_IN, and LIKED:');
+    console.log('Created Posts, including POSTED, POSTED_IN, and LIKED; with Comments, including WROTE and WRITTEN_IN:');
     console.log(posts);
   })
   .then(function() {
+    return query('MATCH n WITH count(n) as nodes MATCH ()-[r]->() RETURN nodes, count(r) AS rels');
+  })
+  .then(function(counts) {
     console.log();
-    console.log('Finished resetting database');
-    res.send('Finished resetting database');
+    console.log('Finished resetting database; created ' + counts.nodes + ' nodes and ' + counts.rels + ' relationships');
+    res.send('Finished resetting database; created ' + counts.nodes + ' nodes and ' + counts.rels + ' relationships');
   })
   .catch(next);
 };
