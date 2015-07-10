@@ -3,9 +3,11 @@ angular.module('app')
 .controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
   $scope.username = $stateParams.username || $rootScope.currentUser;
     UserProfileFactory.getUserProfilePosts($scope.username)
-    .then(function(posts) {
-      console.log("profile pledges and posts:", posts)
-      $scope.profilePledges = posts;
+    .then(function(pledges) {
+      pledges.sort(function(pledge1, pledge2) {
+        return pledge2.posts[0].created - pledge1.posts[0].created;
+      })
+      $scope.profilePledges = pledges;
     })
 })
 .factory('UserProfileFactory', function($http, $stateParams) {
