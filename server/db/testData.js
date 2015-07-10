@@ -61,7 +61,7 @@ module.exports = {
       text: 'Push press, 5x6-1x12, 65-75-80x3-45\nDb bench press, 5x6, 40-45-50x3\nKettle bell Arnold press, 4x8, 12kg?\n Bosu ball push-ups, 4x10',
       aws_url: 'http://i.imgur.com/ZDA7HL8.png',
       username: 'mangle9',
-      likes: [],
+      likes: ['DaGoldberg'],
       comments: [
         {
           text: '',

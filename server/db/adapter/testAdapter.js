@@ -52,7 +52,7 @@ var resetData = function(req, res, next) {
   })
   .then(function(users) {
     console.log();
-    console.log('Created users:');
+    console.log('Created Users, including FOLLOWS:');
     console.log(users);
   })
   .then(function() {
@@ -60,7 +60,7 @@ var resetData = function(req, res, next) {
     return Q.all(testData.pledges.map(function(pledge) {
       return Pledge.save(pledge)
       .then(function(pledgeNode) {
-        //set up user-pledge relationship
+        //set up user-pledge subscribes_to relationship
         return Q.all(pledge.subscribers.map(function(username) {
           return User.where({ username: username })
           .then(function(userNode) {
@@ -75,7 +75,7 @@ var resetData = function(req, res, next) {
   })
   .then(function(pledges) {
     console.log();
-    console.log('Created pledges:');
+    console.log('Created Pledges, including SUBSCRIBES_TO:');
     console.log(pledges);
   })
   .then(function() {
@@ -83,7 +83,7 @@ var resetData = function(req, res, next) {
     return Q.all(testData.posts.map(function(post) {
       return Post.save(post)
       .then(function(postNode) {
-        //set up user-post-pledge relationships
+        //set up user-post-pledge posted relationships
         return Q.all([
           postNode,
           User.where({ username: post.username }),
@@ -94,7 +94,23 @@ var resetData = function(req, res, next) {
         return Q.all([
           User.relate(user,'POSTED',postNode),
           Post.relate(postNode,'POSTED_IN',pledge)
-        ]);
+        ])
+        //set up user-post like relationship
+        .then(function() {
+          return Q.all([
+            postNode,
+            Q.all(post.likes.map(function(username) {
+              return User.where({ username: username });
+            }))
+          ]);
+        })
+        .spread(function(postNode, likedUsers) {
+          console.log('likedUsers:',likedUsers);
+          return Q.all(likedUsers.map(function(userNode) {
+            console.log('liking user:',userNode,postNode);
+            return User.relate(userNode,'LIKED',postNode);
+          }));
+        });
       })
       .then(function() {
         return post.title;
@@ -103,7 +119,7 @@ var resetData = function(req, res, next) {
   })
   .then(function(posts) {
     console.log();
-    console.log('Created posts:');
+    console.log('Created Posts, including POSTED, POSTED_IN, and LIKED:');
     console.log(posts);
   })
   .then(function() {
