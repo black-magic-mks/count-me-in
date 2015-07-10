@@ -1,18 +1,21 @@
 <div class="entryForm login">
-    <h1 class="login-title">Login</h1>
-    <form name="loginForm" ng-submit="logIn(user)">
-        <p class="signupFormLabel">Username:</p>
-        <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="4" required>
-        <p class="signupFormLabel">Password:</p>
-        <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
-        <button class="actionButton" type="submit" value="Submit">Login</button>
-    </form>
-      <div ng-show='loginForm.username.$dirty && loginForm.$submitted && loginForm.username.$error.minlength'>
-        <p class="formError signup-text">Username Is At Least 4 Characters</p>
-      </div>
-      <div ng-show='loginForm.password.$dirty && loginForm.$submitted && (loginForm.password.$error.pattern || loginForm.password.$error.minlength)'>
-        <p class="formError signup-text">Password Is At Least 6 Characters And Contains Both A Number and A Capital Letter</p>
-      </div>
-      <a class="standardLink" ui-sref='signup'>Create an account</a>
+  <div class="logo">
+    <img src="../images/countMeIn_logo.png"/>
+  </div>
+  <h1 class="login-title">Login</h1>
+  <form name="loginForm" ng-submit="logIn(user)">
+      <p class="signupFormLabel">Username:</p>
+      <input name="username" type="text" ng-model="user.username" placeholder="Username" ng-minlength="4" required>
+      <p class="signupFormLabel">Password:</p>
+      <input name="password" type="password" ng-model="user.password" placeholder="Password" ng-minlength="6" ng-pattern="passwordValidation" required>
+      <button class="actionButton" type="submit" value="Submit">Login</button>
+  </form>
+    <div ng-show='loginForm.username.$dirty && loginForm.$submitted && loginForm.username.$error.minlength'>
+      <p class="formError signup-text">Username Is At Least 4 Characters</p>
+    </div>
+    <div ng-show='loginForm.password.$dirty && loginForm.$submitted && (loginForm.password.$error.pattern || loginForm.password.$error.minlength)'>
+      <p class="formError signup-text">Password Is At Least 6 Characters And Contains Both A Number and A Capital Letter</p>
+    </div>
+    <a class="standardLink" ui-sref='signup'>Create an account</a>
 </div>
 
