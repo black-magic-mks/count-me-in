@@ -49,7 +49,7 @@ module.exports = {
       subscribers: []
     },
     {
-      pledgename: 'learningtounicycle',
+      pledgename: 'unicycling',
       subscribers: ['CTO_NLinksta','mangle9']
     }
   ],
