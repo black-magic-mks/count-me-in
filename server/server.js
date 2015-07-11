@@ -6,7 +6,7 @@ var router = require('./router');
 var aws = require('aws-sdk');
 var expressSession = require('express-session');
 
-var port = 8080;
+var port = process.env.PORT || 8080;
 var app = express();
 
 app.use(expressSession({
