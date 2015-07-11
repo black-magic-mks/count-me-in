@@ -7,7 +7,7 @@ var User = models.User;
 var Post = models.Post;
 var Comment = models.Comment;
 
-var db = require('seraph')();
+var db = require('../seraph');
 var Q = require('q');
 var query = Q.nbind(db.query,db);
 

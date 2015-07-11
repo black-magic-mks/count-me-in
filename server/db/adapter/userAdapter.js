@@ -2,7 +2,7 @@ var models = require('../models');
 var User = models.User;
 var Post = models.Post;
 var Pledge = models.Pledge;
-var db = require('seraph')();
+var db = require('../seraph');
 var Q = require('q');
 var query = Q.nbind(db.query,db);
 

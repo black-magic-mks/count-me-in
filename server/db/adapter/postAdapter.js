@@ -5,7 +5,7 @@ var Pledge = models.Pledge;
 var Comment = models.Comment;
 
 var Q = require('q');
-var db = require('seraph')();
+var db = require('../seraph');
 var query = Q.nbind(db.query,db)
 
 var aws = require('aws-sdk');

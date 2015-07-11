@@ -4,7 +4,7 @@ var Post = require('./Post');
 var Comment = require('./Comment');
 var rels = require('../rels');
 
-var db = require('seraph')();
+var db = require('../seraph');
 var Q = require('q');
 var query = Q.nbind(db.query,db);
 
