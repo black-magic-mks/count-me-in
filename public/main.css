@@ -804,6 +804,11 @@ form .pledgename {
     font-size: 1.5em;
   }
 
+  .postTopBar .postDate {
+    font-size:.9em;
+  }
+
+
   .feedImages > .postText {
     font-size: 1.1em;
     line-height: 1.3em;
