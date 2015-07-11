@@ -29,7 +29,7 @@ module.exports = function(grunt) {
         stderr: true
       },
       cljs: {
-        command: 'lein cljsbuild auto'
+        command: 'lein cljsbuild once'
       }
     }
   });
