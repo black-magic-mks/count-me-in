@@ -10,9 +10,6 @@ angular.module('app')
     templateUrl: './templates/likes.html',
     link: function(scope, element, attribute) {
       scope.postLike = function(postId) {
-        if (!$rootScope.username) {
-          $state.go('login');
-        }
         return $http({
           method: 'POST',
           url: '/api/post/like',
@@ -24,7 +21,7 @@ angular.module('app')
           return;
         })
         .catch(function(err) {
-          console.log('err');
+          $state.go('login');
           console.log('error in postLike: ', err);
         })
       }
