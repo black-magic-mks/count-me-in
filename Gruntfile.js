@@ -43,5 +43,6 @@ module.exports = function(grunt) {
   grunt.registerTask('dev', ['concat', 'watch']);
   grunt.registerTask('cljs', ['shell:cljs']);
   grunt.registerTask('serve', ['nodemon']);
+  grunt.registerTask('deploy', ['concat','shell:cljs','nodemon']);
 
 };
