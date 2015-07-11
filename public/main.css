@@ -470,7 +470,7 @@ h2.username {
 }
 
 .buttonBar {
-  margin: 10px 20px 15px 22px;
+  margin: 5px 20px 15px 22px;
   display:block;
 }
 
@@ -649,7 +649,8 @@ nav .fa:hover {
   width: 60%;
   font-size: 110%;
   -webkit-appearance: menulist-button;
-   height: 30px;
+  height: 30px;
+  color:#666;
 }
 
 p.formLabel {

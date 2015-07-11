@@ -5,7 +5,8 @@ angular.module('app')
     scope: {
       post: '=',
       getPledgePosts: '=',
-      showcommentbox: '='
+      showcommentbox: '=',
+      loggedIn: '='
     },
     templateUrl: './templates/feedPledge.html',
     link: function(scope, element, attr) {
