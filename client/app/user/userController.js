@@ -1,14 +1,18 @@
 angular.module('app')
 
-.controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory) {
+.controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory, follow) {
   $scope.username = $stateParams.username || $rootScope.currentUser;
-    UserProfileFactory.getUserProfilePosts($scope.username)
-    .then(function(pledges) {
-      pledges.sort(function(pledge1, pledge2) {
-        return pledge2.posts[0].created - pledge1.posts[0].created;
-      })
-      $scope.profilePledges = pledges;
+  UserProfileFactory.getUserProfilePosts($scope.username)
+  .then(function(pledges) {
+    pledges.sort(function(pledge1, pledge2) {
+      return pledge2.posts[0].created - pledge1.posts[0].created;
     })
+    $scope.profilePledges = pledges;
+  })
+  $scope.addFollower = function() {
+    console.log($stateParams)
+    follow.followUser($stateParams.username);
+  };
 })
 .factory('UserProfileFactory', function($http, $stateParams) {
   var getUserProfilePosts = function(username) {
@@ -30,24 +34,12 @@ angular.module('app')
   }
 })
 
+// we don't use this at all but it causes bugs if we just remove it
 .controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow, logOut) {
-  $scope.followingList = [];
-
-  userFunc.getUser($stateParams.username, function(data) {
-    $scope.username = data.username;
-  });
-
-  $scope.addFollower = function() {
-    follow.followUser($scope.username, function(data) {
-      $scope.followingList.push(data);
-      console.log('followingList: ', data, $scope.followingList);
-    });
-  };
-
   $scope.signOut = function() {
+    // length error???
     logOut.clearSessionToken();
   };
-
 })
 .factory('userFunc', function($http) {
   var username;
@@ -71,16 +63,18 @@ angular.module('app')
 
 })
 .factory('follow', function($http) {
-  var followUser = function(username, callback) {
-    console.log('username: ', username);
-    $http.post('/api/user/follow', {username: username})
-    .success(function(data, status, headers, config) {
-      callback(data);
-      console.log('followUser data: ', data);
+  var followUser = function(username) {
+    return $http({
+      method: 'POST',
+      url: '/api/user/follow',
+      data: {username: username}
     })
-    .error(function(data, status, headers, config) {
-      console.log('error status with followUser: ', status, data, headers, config);
-    });
+    .then(function(user) {
+      return user.data;
+    })
+    .catch(function(err) {
+      console.log('error in following a user');
+    })
   };
 
   return {
@@ -88,18 +82,19 @@ angular.module('app')
   }
 
 })
-.factory('logOut', function($http, $state) {
+.factory('logOut', function($http, $state, $rootScope) {
     var clearSessionToken = function() {
-    return $http({
-      method: 'POST',
-      url: '/api/auth/logout',
-    })
-    .then(function(username) {
-      $state.go('login');
-    })
-    .catch(function(err) {
-      console.log("error logging user out", err);
-    })
+      return $http({
+        method: 'POST',
+        url: '/api/auth/logout'
+      })
+      .then(function(res) {
+        $rootScope.currentUser = null;
+        $state.go('feed.all');
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
   };
 
   return {
