@@ -21,7 +21,7 @@
 
     <nav>
       <a ui-sref="feed.all" ui-sref-active="active"><i class="fa fa-home fa-2x"></i></a>
-      <a ui-sref="user.post.add({username: currentUser})" ui-sref-active="active"><i class="fa fa-plus"></i></a>
+      <a ui-sref="user.post.add({username: currentUser})" ui-sref-active="active"><i class="fa fa-plus-circle fa-2x"></i></a>
       <a ng-if="!!(loggedIn)" ui-sref="user.profile({username: currentUser})" ui-sref-active="active"><i class="fa fa-user fa-2x"></i></a>
       <a ng-if="!(loggedIn)" ui-sref="login" ui-sref-active="active"><i class="fa fa-sign-in fa-2x"></i></a>
     </nav>

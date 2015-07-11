@@ -625,6 +625,7 @@ nav {
 
 nav .fa {
   color: #EFEFEF;
+  margin: 1px 0;
 }
 
 nav .fa:hover {
@@ -712,7 +713,7 @@ p.formLabel {
 .fa-plus {
   border:2px solid #FFF;
   border-radius: 50%;
-  padding:7px 8px;
+  padding:3px 4px;
 }
 
 .uploadText {
