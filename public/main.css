@@ -86,6 +86,11 @@ a {
   float:right;
 }
 
+input {
+  font-family: 'Lato', sans-serif;
+  /*border-radius: 2px;*/
+}
+
 button {
   cursor: pointer;
   font-family: 'Lato', sans-serif;
@@ -888,9 +893,16 @@ form .pledgename {
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
-  text-align: center;
+  width: 90%;
 }
+
+.search h1 {
+  float:left;
+  text-align: left;
+  width: 100%;
+  margin-bottom:10px;
+}
+
 
 .pledge-search {
   width: 250px;
@@ -901,16 +913,37 @@ form .pledgename {
 .pledge-list {
   flex-wrap: wrap;
   display: flex;
-  margin: 15px 10;
+  width: 90%;
+  margin: 10px auto 30px auto;
+
 }
 .pledge-list .pledgename-item {
   flex: 1 0 250px;
   box-sizing: border-box;
-  background: #e0ddd5;
-  color: #171e42;
+  background: #024959;
+  border-radius:3px;
+  color: #FFF;
   padding: 10px;
-  margin-left: 10px;
+  margin-right: 10px;
   margin-top: 10px;
+  cursor: pointer;
+  font-weight: lighter;
+}
+
+.pledge-list .pledgename-item:hover {
+  background-color: #037E8C;
+  color: #FFF;
+}
+
+form.searchPledge {
+  width: 90%;
+  margin: 0 auto;
+}
+
+form.searchPledge p {
+  border: none !important;
+  margin-top:10px !important;
+  padding: 0 0 10px 0 !important;
 }
 
 @media (min-width: 410px) {
