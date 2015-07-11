@@ -3,5 +3,5 @@
   <button class="feedOptionButton left private" ng-click="getPrivateFeedPosts()"><i class="fa fa-lock"></i> <span class="publicText">Private</span> </button>
   <a ui-sref="pledges" class="right directButton explorePledges">Explore Pledges</a>
 </div>
-<feed-pledge class="feedContainer clearfix" ng-repeat="post in feedPosts" getcommentbox="getcommentbox" post="post"></feed-pledge>
+<feed-pledge class="feedContainer clearfix" ng-repeat="post in feedPosts" logged-in="loggedIn" getcommentbox="getcommentbox" post="post"></feed-pledge>
 

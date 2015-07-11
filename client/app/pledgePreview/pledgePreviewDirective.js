@@ -5,7 +5,8 @@ angular.module('app')
     restrict: 'E',
     scope: {
       pledge: '=',
-      username: '='
+      username: '=',
+      loggedIn: '='
     },
     templateUrl: '/templates/pledgePreview.html',
     link: function(scope, element, attr) {

@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('comment', function($http, $state, $rootScope, $timeout) {
+.directive('comment', function($http, $rootScope, $timeout) {
   return {
     restrict: 'E',
     scope: {
@@ -13,10 +13,6 @@ angular.module('app')
     link: function(scope, element, attr) {
       // post new user comment on form submission
       scope.usercomment = function(postId, text) {
-        // if not logged in, redirect to login
-        if (!$rootScope.username) {
-          $state.go('login');
-        }
         return $http({
           method: 'POST',
           url: '/api/post/comment',

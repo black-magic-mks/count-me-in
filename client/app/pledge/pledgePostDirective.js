@@ -8,7 +8,8 @@
       usercomment: '=',
       date: '=',
       pledgename: '=',
-      toggleComments: '='
+      toggleComments: '=',
+      loggedIn: '='
     },
     templateUrl: './templates/pledgePost.html',
     link: function(scope, element, attr) {
