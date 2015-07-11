@@ -456,7 +456,7 @@ h2.username {
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
-  font-size:1.6em;
+  font-size:1.4em;
   font-weight:lighter;
 }
 
@@ -465,7 +465,7 @@ h2.username {
   text-align: right;
   position:relative;
   top:5px;
-  font-size:1.2em;
+  font-size:1 em;
   font-weight: lighter;
 }
 
@@ -615,7 +615,6 @@ h2.username {
 nav {
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid #025761 ;
   background-color: #024959;
   align-items: center;
   position: fixed;
@@ -626,10 +625,22 @@ nav {
 
 nav .fa {
   color: #EFEFEF;
+  margin: 1px 0;
 }
 
 nav .fa:hover {
   color: #DDD;
+}
+
+nav a {
+  width:33%;
+  text-align: center
+}
+
+nav .active {
+  background-color: #037E8C;
+  text-align: center;
+  width:33%;
 }
 
 /*Upload*/
@@ -702,7 +713,7 @@ p.formLabel {
 .fa-plus {
   border:2px solid #FFF;
   border-radius: 50%;
-  padding:5px 6px;
+  padding:3px 4px;
 }
 
 .uploadText {
