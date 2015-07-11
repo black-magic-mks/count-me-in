@@ -456,7 +456,7 @@ h2.username {
 .postTopBar > h2 {
   width:60%;
   display:inline-block;
-  font-size:1.6em;
+  font-size:1.4em;
   font-weight:lighter;
 }
 
@@ -465,7 +465,7 @@ h2.username {
   text-align: right;
   position:relative;
   top:5px;
-  font-size:1.2em;
+  font-size:1 em;
   font-weight: lighter;
 }
 
