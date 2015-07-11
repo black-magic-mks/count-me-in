@@ -26,6 +26,7 @@
     "credential": "^0.2.5",
     "express": "^4.12.4",
     "express-session": "^1.11.3",
+    "grunt-cli": "^0.1.13",
     "jsonwebtoken": "^5.0.2",
     "q": "^1.4.1",
     "s3-upload-stream": "^1.0.7",
