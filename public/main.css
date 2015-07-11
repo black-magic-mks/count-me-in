@@ -615,7 +615,6 @@ h2.username {
 nav {
   display: flex;
   justify-content: space-around;
-  border-top: 1px solid #025761 ;
   background-color: #024959;
   align-items: center;
   position: fixed;
@@ -630,6 +629,17 @@ nav .fa {
 
 nav .fa:hover {
   color: #DDD;
+}
+
+nav a {
+  width:33%;
+  text-align: center
+}
+
+nav .active {
+  background-color: #037E8C;
+  text-align: center;
+  width:33%;
 }
 
 /*Upload*/
@@ -702,7 +712,7 @@ p.formLabel {
 .fa-plus {
   border:2px solid #FFF;
   border-radius: 50%;
-  padding:5px 6px;
+  padding:7px 8px;
 }
 
 .uploadText {
