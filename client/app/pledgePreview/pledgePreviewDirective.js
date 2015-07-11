@@ -10,12 +10,18 @@ angular.module('app')
     },
     templateUrl: '/templates/pledgePreview.html',
     link: function(scope, element, attr) {
-      console.log(scope.pledge)
       var convertTime = function(time) {
         return moment.unix(time / 1000).fromNow();
       }
-      var lastUpdatedPost = scope.pledge.posts[scope.pledge.posts.length - 1].created;
+      var convertLocalTime = function(time) {
+        return moment.unix(time / 1000).format('LLL');
+      }
+      var lastUpdatedPost = scope.pledge.posts[0].created;
       scope.lastUpdatedPost = convertTime(lastUpdatedPost);
+      var posts = scope.pledge.posts;
+      for (var i = 0; i < posts.length; i++) {
+        posts[i].created = convertLocalTime(posts[i].created)
+      }
     }
   };
 });

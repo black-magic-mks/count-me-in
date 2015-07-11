@@ -36,9 +36,46 @@ var getAllPledges = function(req, res, next) {
 };
 
 var createPledge = function(req, res, next) {
-  Pledge.save(req.body)
-  .then(function(pledge) {
-    res.send(pledge);
+  Q.all([
+    User.where({username: req.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return user[0];
+    }),
+    Pledge.where({pledgename: req.body.pledgename})
+    .then(function(pledges) {
+      if (pledges.length !== 0) {
+        return [pledges[0]];
+      }
+      return pledges;
+    }),
+    User.where({username: req.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return User.getRelated(user[0],'SUBSCRIBES_TO');
+    })
+  ])
+  .spread(function(user, pledge, userSubscribedTo) {
+    // check if pledge exists
+    // if it does, check it user is subscribed to it
+    // if not, build it and subscribe
+    // if the user isn't subscribed to the pledge and the pledge doesn't exist, then make the pledge and subscribe the user
+    if (pledge.length === 0) {
+      Pledge.save(req.body)
+      .then(function(pledge) {
+        return User.relate(user,'SUBSCRIBES_TO',pledge);
+      })
+    } else {
+      for (var i = 0; i < userSubscribedTo.length; i++) {
+        if (userSubscribedTo[i].pledgename === pledge[0].pledgename) {
+          return;
+        }
+      }
+      return User.relate(user,'SUBSCRIBES_TO',pledge);
+    }
+  })
+  .then(function() {
+    res.send(true);
   })
   .catch(next);
 };
@@ -54,13 +91,23 @@ var subscribeToPledge = function(req, res, next) {
     .then(function(pledge) {
       if (pledge.length === 0) throw new Error('Pledge not found');
       return pledge[0];
+    }),
+    User.where({username: req.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return User.getRelated(user[0],'SUBSCRIBES_TO');
     })
   ])
-  .spread(function(user,pledge) {
+  .spread(function(user,pledge, userSubscribedTo) {
+    for (var i = 0; i < userSubscribedTo.length; i++) {
+      if (userSubscribedTo[i].pledgename === pledge.pledgename) {
+        return;
+      }
+    }
     return User.relate(user,'SUBSCRIBES_TO',pledge);
   })
-  .then(function(sub) {
-    res.send(sub);
+  .then(function() {
+    res.send(true);
   })
   .catch(next);
 };
@@ -80,7 +127,6 @@ var getPledgePosts = function(req, res, next) {
     }));
   })
   .then(function(posts) {
-    console.log(posts);
     return posts.sort(function(post1, post2) {
       return post2.created - post1.created;
     })
