@@ -9,7 +9,16 @@ var db = require('seraph')();
 var query = Q.nbind(db.query,db)
 
 var aws = require('aws-sdk');
-var awsCredentials = require('./amazonS3Config.js');
+var awsCredentials;
+if (process.env.NODE_ENV === 'production') {
+  awsCredentials = {
+    AWS_ACCESS_KEY: process.env.AWS_ACCESS_KEY,
+    AWS_SECRET_KEY: process.env.AWS_SECRET_KEY,
+    S3_BUCKET: process.env.S3_BUCKET
+  }
+} else {
+  awsCredentials = require('./amazonS3Config.js');
+}
 
 var getPost = function(req, res, next) {
   Post.read(req.body.postId)
