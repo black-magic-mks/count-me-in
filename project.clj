@@ -11,6 +11,7 @@
             [lein-npm "0.4.0"]]
 
   :min-lein-version "2.0.0"
+  :hooks [leiningen.cljsbuild]
 
   :source-paths ["server/cljs"]
 
