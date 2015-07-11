@@ -1,1 +1,1 @@
-web: grunt serve
+web: grunt deploy
