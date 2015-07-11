@@ -4,7 +4,13 @@
 
 (def models (node/require "../../db/models"))
 (def User (.-User models))
-(def config (node/require "../jwtConfig"))
+
+(def config
+  (if (= (.. node/process -env -NODE_ENV) "production")
+    #js {:key (.. node/process -env -JWT_KEY)
+         :expiresInMinutes (.. node/process -env -JWT_EXPIRES_IN_MINUTES)
+         :issuer (.. node/process -env -JWT_ISSUER)}
+    (node/require "../jwtConfig")))
 
 (def Q (node/require "q"))
 (aset Q "longStackSupport" true)
