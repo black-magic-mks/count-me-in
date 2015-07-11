@@ -88,6 +88,8 @@ a {
 
 button {
   cursor: pointer;
+  font-family: 'Lato', sans-serif;
+  font-weight: lighter;
 }
 
 .logo {
@@ -105,14 +107,12 @@ button {
   width: 50%;
   margin: 100px auto;
   padding:15px 30px 30px 30px;
-  /*text-align: center;*/
 }
 
 .entryForm h1 {
   color: #037E8C;
   font-size: 1.8em;
-  /*margin-bottom:10px;*/
-  /*text-align: center*/
+
 }
 
 .entryForm input {
@@ -156,7 +156,6 @@ p.formError {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #F24C27;
-  /*margin-right:10px;*/
 }
 
 .actionButton:hover {
@@ -165,7 +164,6 @@ p.formError {
   border-bottom:1px solid #B04733;
   border-right:1px solid #EB4925;
   background-color: #FA5E41;
-  /*margin-right:10px;*/
 }
 
 button[disabled="disabled"], button[disabled="disabled"]:hover {
@@ -317,8 +315,26 @@ body {
   font-size: 1.4em;
 }
 
+.userPledgename {
+  background: #037E8C;
+}
+
+.pledgeSeparater {
+  margin: 30px 0 15px 0 !important;
+  border-bottom: 1px solid #AAA !important;
+}
+
+.pledgeSeparater h1 {
+  font-size: 1.8em !important;
+}
+
+.pledgeSeparater > .date {
+  color: #666;
+  position: relative;
+  top:8px;
+}
+
 .feedPledgeDirective .pledgename {
-  /*border-bottom: 1px solid #DDD;*/
   margin-bottom: 10px;
   padding-bottom: 10px;
 }
@@ -328,9 +344,11 @@ body {
   font-weight: lighter;
 }
 
-
 .pledgePreview {
-  margin-bottom:25px;
+  margin-bottom:15px;
+  background-color:#FFF;
+  padding: 10px 0;
+  border-radius: 3px;
 }
 
 .postInfo {
@@ -339,8 +357,9 @@ body {
 
 .postInfo h2 {
   font-weight: normal;
-  font-size:1.2em;
+  font-size:1.3em;
   margin-bottom:4px;
+  color: #555;
 }
 
 .postInfo .date {
@@ -604,6 +623,10 @@ nav .fa {
   color: #EFEFEF;
 }
 
+nav .fa:hover {
+  color: #DDD;
+}
+
 /*Upload*/
 
 .upload .postTopBar {
@@ -692,6 +715,7 @@ p.formLabel {
   font-family: 'Lato', sans-serif;
   width: 40%;
   font-size: 150%;
+
 }
 
 .pledgeForm {
@@ -834,7 +858,12 @@ form .pledgename {
   }
 
   .pledgePreview {
-    margin-bottom:20px;
+    margin-bottom:10px;
+  }
+
+  .pledgeSeparater {
+    padding: 0 3px 5px 3px;
+    margin-bottom: 7px !important;
   }
 
   .commentForm, .postedComments {
