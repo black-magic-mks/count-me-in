@@ -6,7 +6,7 @@
   <div class="pledgePreview clearfix" ng-repeat="post in pledge.posts">
     <div class="clearfix">
       <div class="prevImg">
-        <img class="coverImg left" src="{{post.aws_url}}"/>
+        <img class="coverImg left" ng-src="{{post.aws_url}}"/>
       </div>
       <div class="postInfo left">
         <h2>{{post.title}}</h2>
