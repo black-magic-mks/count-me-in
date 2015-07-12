@@ -129,8 +129,7 @@ var getPledgePosts = function(req, res, next) {
   .then(function(posts) {
     return posts.sort(function(post1, post2) {
       return post2.created - post1.created;
-    })
-    return posts;
+    });
   })
   .then(function(posts) {
     res.send(posts);
