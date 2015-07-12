@@ -10,16 +10,19 @@ angular.module('app', [
     .state('feed', {
       url: '/feed',
       templateUrl: '/views/feed.html',
-      controller: 'FeedController'
+      controller: 'FeedController',
+      activetab: 'feed'
     })
     .state('feed.all', {
       url: '/all',
-      templateUrl: '/views/feed.all.html' // controller is called twice, decide which one will keep the controller
+      templateUrl: '/views/feed.all.html',
+      activetab: 'feed'
     })
     .state('feed.pledge', {
       url: '/pledge/:pledgename',
       templateUrl: '/views/feed.pledge.html',
-      controller: 'FeedPledgeController' // in feedController.js for now; make separate file when you can come up with a good name for the file or when we seperate things into factory and controller files
+      controller: 'FeedPledgeController',
+      activetab: 'feed'
     })
     .state('pledges', {
       url: '/pledges',
@@ -29,25 +32,30 @@ angular.module('app', [
     .state('user', {
       url: '/user',
       templateUrl: '/views/user.html',
-      controller: 'UserController'
+      controller: 'UserController',
+      activetab: 'user'
     })
     .state('user.profile', {
       url: '/:username/profile',
       templateUrl: '/views/user.profile.html',
-      controller: 'UserProfileController'
+      controller: 'UserProfileController',
+      activetab: 'user'
     })
     .state('user.profile.following', {
       url: '/following',
-      templateUrl: '/views/user.profile.html'
+      templateUrl: '/views/user.profile.html',
+      activetab: 'user'
     })
     .state('user.post', {
       url: '/:username/post',
-      templateUrl: '/views/post.html'
+      templateUrl: '/views/post.html',
+      activetab: 'user'
     })
     .state('user.post.add', {
       url: '/new',
       templateUrl: '/views/post.add.html',
-      controller: 'addPostController'
+      controller: 'addPostController',
+      activetab: 'user'
     })
     .state('user.post.view', {
       url: '/:post_id',
@@ -71,12 +79,14 @@ angular.module('app', [
     .state('login', {
       url: '/login',
       templateUrl: '/views/login.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      activetab: 'login'
     })
     .state('signup', {
       url: '/signup',
       templateUrl: '/views/signup.html',
-      controller: 'AuthController'
+      controller: 'AuthController',
+      activetab: 'login'
     })
 });
 

@@ -108,13 +108,26 @@ var followUser = function(req, res, next) {
     .then(function(user) {
       if (user.length === 0) throw new Error('Username not found');
       return user[0];
+    }),
+    User.where({username: req.username})
+    .then(function(user) {
+      if (user.length === 0) throw new Error('Username not found');
+      return User.getRelated(user[0],'FOLLOWS');
     })
   ])
-  .spread(function(me,other) {
+  .spread(function(me, other, userFollows) {
+    for (var i = 0; i < userFollows.length; i++) {
+      if (userFollows[i].username === other.username) {
+        return;
+      }
+    }
+    if (me.username === other.username) {
+      throw new Error('Trying to follow yourself')
+    }
     return User.relate(me,'FOLLOWS',other);
   })
-  .then(function(follow) {
-    res.send(follow);
+  .then(function() {
+    res.send(true);
   })
   .catch(next);
 };

@@ -4,7 +4,8 @@ angular.module('app')
     restrict: 'E',
     scope: {
       post: '=',
-      numPosts: '='
+      numPosts: '=',
+      loggedIn: '='
     },
     templateUrl: './templates/userPost.html',
     link: function(scope, element, attr) {

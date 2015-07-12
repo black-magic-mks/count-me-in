@@ -38,6 +38,7 @@ angular.module('app')
     })
     .then(function(res) {
       $rootScope.currentUser = user.username;
+      $rootScope.loggedIn = true;
       $state.go('feed.all');
     })
     .catch(function(err) {

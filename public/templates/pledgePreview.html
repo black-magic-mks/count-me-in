@@ -1,15 +1,16 @@
-<div class="feedPledgeDirective clearfix" ng-init="start=0; end=4;">
-  <div class="postTopBar pledgename clearfix">
+<div class="clearfix" ng-init="start=0; end=4;">
+  <div class="postTopBar pledgeSeparater pledgename clearfix">
     <h1 ui-sref="feed.pledge({pledgename: pledge.pledgename})" class="standardLink title left">#{{pledge.pledgename}}</h1>
     <p class="right date">Last Posted: {{lastUpdatedPost}}</p>
   </div>
-  <div class="pledgePreview clearfix" ng-repeat="post in pledge.posts.slice().reverse()">
+  <div class="pledgePreview clearfix" ng-repeat="post in pledge.posts">
     <div class="clearfix">
       <div class="prevImg">
         <img class="coverImg left" src="{{post.aws_url}}"/>
       </div>
       <div class="postInfo left">
         <h2>{{post.title}}</h2>
+        {{post.created}}
         <div class="pledgeText">
           {{post.text}}
         </div>
@@ -18,9 +19,9 @@
     </div>
     <div class="buttonBar clearfix block">
       <likes post-id="post.id" likes="post.likes" has-liked="post.hasLiked"></likes>
-      <button class="actionButton left" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
+      <button class="actionButton left" ng-show="!loggedIn" ui-sref="login"><i class="fa fa-comment"></i> comment</button>
+      <button class="actionButton left" ng-show="loggedIn" ng-model="collapsed" ng-click="collapsed=!collapsed"><i class="fa fa-comment"></i> comment</button>
     </div>
-
     <comment post-id="post.id" post-comments="post.comments" collapsed="collapsed"></comment>
   </div>
 </div>

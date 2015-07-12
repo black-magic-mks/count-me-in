@@ -1,5 +1,5 @@
 angular.module('app')
-.directive('likes', function($http) {
+.directive('likes', function($http, $state, $rootScope) {
   return {
     restrict: 'E',
     scope: {
@@ -21,6 +21,7 @@ angular.module('app')
           return;
         })
         .catch(function(err) {
+          $state.go('login');
           console.log('error in postLike: ', err);
         })
       }

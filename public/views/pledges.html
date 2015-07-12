@@ -1,12 +1,14 @@
-<div class="search">
-  <h1>find a pledge</h1>
-  <form>
-    <input class="pledge-search" type="text" ng-model="searchText.pledgename" placeholder="search a pledge"/>
-  </form>
-</div>
-<div class="pledge-list">
-  <div class="pledgename-item" ng-repeat="pledge in pledges | filter:searchText:strict" ui-sref="feed.pledge({pledgename: pledge.pledgename})">
-    #{{ pledge.pledgename }}
+<div class="feedPledgeDirective">
+  <div class="search postTopBar clearfix">
+    <h1 class="block">find a pledge</h1>
+  </div>
+    <form class="searchPledge">
+     <p class="formLabel">Search:</p>
+      <input class="pledge-search" type="text" ng-model="searchText.pledgename" placeholder="search a pledge"/>
+    </form>
+  <div class="pledge-list">
+    <div class="pledgename-item" ng-repeat="pledge in pledges | filter:searchText:strict" ui-sref="feed.pledge({pledgename: pledge.pledgename})">
+      #{{ pledge.pledgename }}
+    </div>
   </div>
 </div>
-

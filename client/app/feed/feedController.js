@@ -1,6 +1,6 @@
 angular.module('app')
 
-.controller('FeedController', function($scope, $rootScope, feedFactory) {
+.controller('FeedController', function($scope, $rootScope, $timeout, feedFactory) {
   $scope.feedPosts = [];
   // uses promises to put the public data onto the scope
   $scope.getPublicFeedPosts = function() {
@@ -19,7 +19,7 @@ angular.module('app')
     if ($rootScope.loggedIn) {
       feedFactory.getPrivateFeedPosts()
       .then(function(posts) {
-        // could move this logic into the backend??
+        console.log("post", posts)
         if (posts.length !== 0) {
           if (posts) {
             for (var i = 0; i < posts.length; i++) {
@@ -27,6 +27,8 @@ angular.module('app')
             }
           }
           $scope.feedPosts = posts;
+        } else {
+          $scope.getPublicFeedPosts();
         }
       });
     }
@@ -34,10 +36,14 @@ angular.module('app')
 
   // init function; feed will default to private feed if logged in and public feed if not
   $scope.init = function() {
-    if ($scope.username) {
-      $scope.getPrivateFeedPosts()
+    if ($scope.currentUser) {
+      $timeout(function() {
+        $scope.getPrivateFeedPosts();
+      })
     } else {
-      $scope.getPublicFeedPosts()
+      $timeout(function() {
+        $scope.getPublicFeedPosts();
+      })
     }
   }
 
@@ -79,6 +85,7 @@ angular.module('app')
       url: '/api/user/feed'
     })
     .then(function(posts) {
+      console.log(posts)
       return posts.data || [];
     })
     .catch(function(err) {
@@ -96,6 +103,7 @@ angular.module('app')
 
 .controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
   $scope.pledgename = $stateParams.pledgename;
+  $scope.subscribed = false;
 
   feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
   .then(function(posts) {
@@ -116,6 +124,7 @@ angular.module('app')
     subscribe.subscribeToPledge($scope.pledgename, function(data) {
       $scope.subscribedPledges.push(data);
     });
+    $scope.subscribed = true;
   };
 })
 .factory('feedPledgeFactory', function($http) {
