@@ -1,10 +1,10 @@
-<div class="commentContent" ng-init="end=4">
+<div class="commentContent" ng-init="start=0; end=4">
   <div class="commentForm">
     <form ng-submit="usercomment(postId, commentText); collapsed=!collapsed" ng-show="collapsed">
       <textarea class="block" form="commentForm" ng-model="commentText" style="border:1px solid #ccc"></textarea>
       <button class="actionButton" type="submit">Post</button>
     </form>
-    <div ng-if="postComments.length > 4" class="toggleComments">
+    <div ng-show="postComments.length > 4" class="toggleComments">
       <a ng-click="end=comments.length" class="standardLink"><i class="fa fa-plus-circle"></i> More</a>
       <a ng-click="end=4" class="standardLink"><i class="fa fa-minus-circle"></i> Less</a>
     </div>
