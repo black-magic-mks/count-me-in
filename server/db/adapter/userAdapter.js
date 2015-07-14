@@ -171,6 +171,13 @@ var getFeed = function(req, res, next) {
       return post2.created - post1.created;
     })
   })
+  .then(function(posts) {
+    return posts.reduce(function(list,post) {
+      var last = list[list.length-1];
+      if (!last || last.id !== post.id) list.push(post);
+      return list;
+    },[]);
+  })
   .then(function(posts){
     res.send(posts);
   })
