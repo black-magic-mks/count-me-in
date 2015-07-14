@@ -152,7 +152,7 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'learningtounicycle',
+      pledgename: 'unicycling',
       title: '30 minutes',
       text: 'had a streak for 10 straight minutes',
       aws_url: 'https://i.imgur.com/h3A3K70.png',
@@ -166,7 +166,7 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'learningtounicycle',
+      pledgename: 'unicycling',
       title: '20 minutes',
       text: 'had a streak for 11 straight minutes',
       aws_url: 'https://i.imgur.com/dxELaOj.png',
@@ -174,7 +174,7 @@ module.exports = {
       likes: [],
     },
     {
-      pledgename: 'learningtounicycle',
+      pledgename: 'unicycling',
       title: '13 minutes',
       text: 'had a streak for 20 straight minutes',
       aws_url: 'https://i.imgur.com/71PoHrz.png',
@@ -188,7 +188,7 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'learningtounicycle',
+      pledgename: 'unicycling',
       title: '14 minutes',
       text: 'had a streak for 4 straight minutes',
       aws_url: 'https://i.imgur.com/8OEbCcb.png',

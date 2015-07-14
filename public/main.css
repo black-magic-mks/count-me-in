@@ -221,7 +221,7 @@ body {
   display:block;
 }
 .mainContainer {
-  width:60%;
+  width:50%;
   padding:0px 10px 50px 10px;
   margin:0 auto;
 }
@@ -231,7 +231,7 @@ body {
   top:50px;
 }
 .feedOption {
-  width:60%;
+  width:50%;
   padding: 10px 0;
   position:fixed;
   top:0;
@@ -301,11 +301,11 @@ body {
 
 .userHeader > .username {
   font-size:1.5em;
-  width: 80%;
+  width: 75%;
 }
 
 .userHeader > .follow {
-  width:20%;
+  width:25%;
 }
 
 .userHeader > .follow > button {
@@ -330,7 +330,7 @@ body {
 }
 
 .pledgeSeparater h1 {
-  font-size: 1.8em !important;
+  font-size: 1.6em !important;
 }
 
 .pledgeSeparater > .date {
@@ -764,7 +764,7 @@ form .pledgename {
   }
 
   .feedOption {
-    width:100%;
+    width:80%;
   }
 
   img.coverImg {
@@ -813,7 +813,7 @@ form .pledgename {
   }
 
   .postTopBar > h2 {
-    font-size: 1.5em;
+    font-size: 1.4em;
   }
 
   .postTopBar .postDate {
