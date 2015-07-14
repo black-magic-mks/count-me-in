@@ -613,9 +613,16 @@ h2.username {
 /* Navigation bar*/
 
 nav {
+  display: -webkit-flex;
   display: flex;
-  justify-content: space-around;
-  background-color: #024959;
+  -webkit-flex-direction: row /* works with row or column */
+  flex-direction: row;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  background-color: #024959 !important;
   align-items: center;
   position: fixed;
   bottom: 0;
@@ -626,6 +633,7 @@ nav {
 nav .fa {
   color: #EFEFEF;
   margin: 1px 0;
+  flex-grow:1;
 }
 
 nav .fa:hover {
