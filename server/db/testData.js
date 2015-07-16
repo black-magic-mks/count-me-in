@@ -73,6 +73,60 @@ module.exports = {
 
   posts: [
     {
+      pledgename: 'beactive',
+      title: 'Biking in Marin',
+      text: 'The fields in Marin are beautiful. It felt so good to get out of the city and enjoy the countryside.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436834381949/biking.jpg',
+      username: 'monica',
+      likes: ['realreal', 'david'],
+      comments: [
+        {
+          text: 'throw dem hands in the air',
+          username: 'realreal'
+        },
+        {
+          text: 'how far did you ride? looks like you have really earned it. By the way are those biking shoes pretty good? Jerod told me I should get a new pair cause mine smell terrible! let me know, thanks',
+          username: 'david'
+        }
+      ]
+    },
+    {
+      pledgename: 'piano',
+      title: 'Recital Practice Day 1',
+      text: 'Practice for my recital coming up at City Hall. I really tried to focus and got away from memorizing the different notes.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833466563/david%20focused%20piano.jpg',
+      username: 'david',
+      likes: ['monica'],
+      comments: [
+        {
+          text: 'Yeah, you rock!',
+          username: 'monica'
+        }
+      ]
+    },
+    {
+      pledgename: 'beactive',
+      title: 'Flys: 2 Sets of 12 Reps',
+      text: 'Today I focused on building my chest strength and did some flys. The most difficult part was that I was maxing out the weight.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833171998/nathan-gym.jpg',
+      username: 'nathan',
+      likes: ['DaGoldberg', 'therealréal', 'shahshaank'],
+      comments: [
+        {
+          text: 'Careful not to over-extend your shoulders, could tear the rotator cuff. Thats what happened to me doing the same lift',
+          username: 'david'
+        }
+      ]
+    },
+    {
+      pledgename: 'piano',
+      title: 'Dream Spot for Piano',
+      text: 'Today I played piano in my dream spot overlooking the ocean. Not sure what was better...the view or my tunes.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436832929166/David%20piano.jpg',
+      username: 'david',
+      likes: ['DaGoldberg', 'shahshaank']
+    },
+    {
       pledgename: 'WriteFiction',
       title: 'Writing On BART',
       text: 'Wrote another chapter in my epic novel today while I was on BART. Made the trip go by so fast.',
@@ -137,24 +191,6 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'WriteFiction',
-      title: 'Chapter 4 of Fiction Novel',
-      text: 'Just wrote the 4th chapter of my book and it took so long. Feels good to be done with and I am excited to move on to chapter 5.',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436838210713/man-writing-books-600x400.jpg',
-      username: 'realreal',
-      likes: ['shaan'],
-      comments: [
-        {
-          text: 'Excited to read it! keep me posted on the release date',
-          username: 'nathan'
-        },
-        {
-          text: 'Do you have any pointers for picking a topic to write a book about? Having trouble brainstorming',
-          username: 'monica'
-        }
-      ]
-    },
-    {
       pledgename: 'piano',
       title: 'My First Piano Lesson',
       text: 'Never thought I would get so much satisfaction from taking a piano lesson. Thanks for the support everyone! Its taken my mind off of code.',
@@ -201,58 +237,22 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'piano',
-      title: 'Recital Practice Day 1',
-      text: 'Practice for my recital coming up at City Hall. I really tried to focus and got away from memorizing the different notes.',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833466563/david%20focused%20piano.jpg',
-      username: 'david',
-      likes: ['monica'],
+      pledgename: 'WriteFiction',
+      title: 'Chapter 4 of Fiction Novel',
+      text: 'Just wrote the 4th chapter of my book and it took so long. Feels good to be done with and I am excited to move on to chapter 5.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436838210713/man-writing-books-600x400.jpg',
+      username: 'realreal',
+      likes: ['shaan'],
       comments: [
         {
-          text: 'Yeah, you rock!',
+          text: 'Excited to read it! keep me posted on the release date',
+          username: 'nathan'
+        },
+        {
+          text: 'Do you have any pointers for picking a topic to write a book about? Having trouble brainstorming',
           username: 'monica'
         }
       ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'Biking in Marin',
-      text: 'The fields in Marin are beautiful. It felt so good to get out of the city and enjoy the countryside.',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436834381949/biking.jpg',
-      username: 'monica',
-      likes: ['realreal', 'david'],
-      comments: [
-        {
-          text: 'throw dem hands in the air',
-          username: 'realreal'
-        },
-        {
-          text: 'how far did you ride? looks like you have really earned it. By the way are those biking shoes pretty good? Jerod told me I should get a new pair cause mine smell terrible! let me know, thanks',
-          username: 'david'
-        }
-      ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'Flys: 2 Sets of 12 Reps',
-      text: 'Today I focused on building my chest strength and did some flys. The most difficult part was that I was maxing out the weight.',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833171998/nathan-gym.jpg',
-      username: 'nathan',
-      likes: ['DaGoldberg', 'therealréal', 'shahshaank'],
-      comments: [
-        {
-          text: 'Careful not to over-extend your shoulders, could tear the rotator cuff. Thats what happened to me doing the same lift',
-          username: 'david'
-        }
-      ]
-    },
-    {
-      pledgename: 'piano',
-      title: 'Dream Spot for Piano',
-      text: 'Today I played piano in my dream spot overlooking the ocean. Not sure what was better...the view or my tunes.',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436832929166/David%20piano.jpg',
-      username: 'david',
-      likes: ['DaGoldberg', 'shahshaank']
     }
   ]
 };
