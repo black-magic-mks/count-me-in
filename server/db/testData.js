@@ -170,6 +170,7 @@ module.exports = {
           text: 'great news, sometimes we all need a mental break from coding. especially knowing how hard you work',
           username: 'monica'
         }
+      ]
     },
     {
       pledgename: 'doPushUps',
