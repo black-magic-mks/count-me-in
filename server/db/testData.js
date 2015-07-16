@@ -169,12 +169,7 @@ module.exports = {
         {
           text: 'great news, sometimes we all need a mental break from coding. especially knowing how hard you work',
           username: 'monica'
-        },
-        {
-          text: 'by the way, I am thinking about taking a lesson as well. Any suggestions or teacher recommendations? thanks!',
-          username: 'david'
         }
-      ]
     },
     {
       pledgename: 'doPushUps',
