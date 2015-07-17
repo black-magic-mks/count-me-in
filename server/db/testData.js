@@ -25,295 +25,214 @@ module.exports = {
       password: 'Hello1',
       following: ['DaGoldberg']
     },
+    {
+      username: 'shaan',
+      password: 'Shaan1',
+      following: []
+    },
+    {
+      username: 'david',
+      password: 'David1',
+      following: []
+    },
+    {
+      username: 'nathan',
+      password: 'Nathan1',
+      following: []
+    },
+    {
+      username: 'realreal',
+      password: 'Realreal1',
+      following: []
+    },
+    {
+      username: 'monica',
+      password: 'Monica1',
+      following: ['david']
+    }
   ],
 
   pledges: [
     {
       pledgename: 'beactive',
-      subscribers: ['mangle9','DaGoldberg']
+      subscribers: ['mangle9','DaGoldberg', 'shaan', 'david', 'monica']
     },
     {
       pledgename: 'WriteFiction',
-      subscribers: []
+      subscribers: ['nathan', 'realreal', 'monica']
     },
     {
-      pledgename: 'beaDOG',
-      subscribers: ['therealréal','CTO_NLinksta']
+      pledgename: 'piano',
+      subscribers: ['realreal', 'nathan', 'shaan', 'david', 'monica']
     },
     {
       pledgename: 'doPushUps',
-      subscribers: ['mangle9']
-    },
-    {
-      pledgename: 'loseweight',
-      subscribers: []
-    },
-    {
-      pledgename: 'unicycling',
-      subscribers: ['CTO_NLinksta','mangle9']
+      subscribers: ['mangle9', 'david', 'monica', 'shaan']
     }
   ],
 
   posts: [
     {
       pledgename: 'beactive',
-      title: 'worked out',
-      text: 'Push press, 5x6-1x12, 65-75-80x3-45\nDb bench press, 5x6, 40-45-50x3\nKettle bell Arnold press, 4x8, 12kg?\n Bosu ball push-ups, 4x10',
-      aws_url: 'http://i.imgur.com/ZDA7HL8.png',
-      username: 'mangle9',
-      likes: ['DaGoldberg', 'therealréal', 'shahshaank', 'CTO_NLinksta'],
+      title: 'Biking in Marin',
+      text: 'The fields in Marin are beautiful. It felt so good to get out of the city and enjoy the countryside.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436834381949/biking.jpg',
+      username: 'monica',
+      likes: ['realreal', 'david'],
       comments: [
         {
-          text: 'Awesome job working out! Love the dedication and it looks like you are already getting bigger. Keep it up!',
-          username: 'DaGoldberg'
+          text: 'throw dem hands in the air',
+          username: 'realreal'
         },
         {
-          text: 'Make sure to keep you back straight and tighten your abs. Other than that, great form',
-          username: 'therealréal'
-        },
+          text: 'how far did you ride? looks like you have really earned it. By the way are those biking shoes pretty good? Jerod told me I should get a new pair cause mine smell terrible! let me know, thanks',
+          username: 'david'
+        }
+      ]
+    },
+    {
+      pledgename: 'piano',
+      title: 'Recital Practice Day 1',
+      text: 'Practice for my recital coming up at City Hall. I really tried to focus and got away from memorizing the different notes.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833466563/david%20focused%20piano.jpg',
+      username: 'david',
+      likes: ['monica'],
+      comments: [
         {
-          text: 'Getting buff! Bro-grammers unite!',
-          username: 'CTO_NLinksta'
+          text: 'Yeah, you rock!',
+          username: 'monica'
         }
       ]
     },
     {
       pledgename: 'beactive',
-      title: 'Ran',
-      text: 'ran 8 miles, did 200 pushups, and random abs stuff',
-      aws_url: 'https://i.imgur.com/VsypS7K.png',
-      username: 'mangle9',
-      likes: ['therealréal'],
-      comments: [
-        {
-          text: 'Keep on runnin! Bring on the marathon',
-          username: 'therealréal'
-        }
-      ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'Worked Out',
-      text: 'Deadlift, 6x6. 155-165-175-185x3\nLat pull down, 4x8, 115\nSeated row, 4x8, 85-93x3\nBoxing',
-      aws_url: 'https://i.imgur.com/L7SUjW5.png',
-      username: 'DaGoldberg',
-      likes: ['therealréal', 'CTO_NLinksta'],
-      comments: [
-        {
-          text: 'You have definitely gotten stronger (even though I can still out lift you and am a better person than you',
-          username: 'CTO_NLinksta'
-        }
-      ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'cardio',
-      text: 'Cardio circuit, x3\nBox jumps\nJump rope\nBig tire toss\nBulgarian bag swing',
-      aws_url: 'https://i.imgur.com/NLe9dXY.png',
-      username: 'DaGoldberg',
-      likes: ['shahshaank', 'CTO_NLinksta', 'mangle9'],
-      comments: [
-        {
-          text: 'Cardio is so important. I am proud of you',
-          username: 'shahshaank'
-        }
-      ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'squat day',
-      text: 'Bench press, 3x6-2x5 with spot, 85-95-105-115x2\nPush press, 6x6, 55-65-75-80-85x2\nIncline db press, 4x8, 35x2-40x2\nArnold press, 4x8, 8kg kettle bell x2 - 20lb x2',
-      aws_url: 'https://i.imgur.com/0l59mVc.jpg',
-      username: 'DaGoldberg',
-      likes: ['CTO_NLinksta', 'mangle9'],
-      comments: [
-        {
-          text: 'Impressive, I wish I had such good squat form',
-          username: 'mangle9'
-        }
-      ]
-    },
-    {
-      pledgename: 'beactive',
-      title: 'played soccer',
-      text: 'played on the harvard campus!',
-      aws_url: 'https://i.imgur.com/Acr6kBR.png',
-      username: 'mangle9',
-      likes: ['DaGoldberg', 'therealréal'],
-      comments: [
-        {
-          text: 'When are the tryouts for team USA?',
-          username: 'therealréal'
-        },
-        {
-          text: 'The next Lionel Messi...',
-          username: 'DaGoldberg'
-        }
-      ]
-    },
-    {
-      pledgename: 'unicycling',
-      title: '30 minutes',
-      text: 'had a streak for 10 straight minutes',
-      aws_url: 'https://i.imgur.com/h3A3K70.png',
-      username: 'CTO_NLinksta',
-      likes: ['therealréal'],
-      comments: [
-        {
-          text: 'Showing skills, nice. Lets go road biking too',
-          username: 'therealréal'
-        }
-      ]
-    },
-    {
-      pledgename: 'unicycling',
-      title: '20 minutes',
-      text: 'had a streak for 11 straight minutes',
-      aws_url: 'https://i.imgur.com/dxELaOj.png',
-      username: 'CTO_NLinksta',
-      likes: [],
-    },
-    {
-      pledgename: 'unicycling',
-      title: '13 minutes',
-      text: 'had a streak for 20 straight minutes',
-      aws_url: 'https://i.imgur.com/71PoHrz.png',
-      username: 'mangle9',
-      likes: ['DaGoldberg', 'therealréal'],
-      comments: [
-        {
-          text: 'Why do you have to make us all look bad?',
-          username: 'DaGoldberg'
-        }
-      ]
-    },
-    {
-      pledgename: 'unicycling',
-      title: '14 minutes',
-      text: 'had a streak for 4 straight minutes',
-      aws_url: 'https://i.imgur.com/8OEbCcb.png',
-      username: 'mangle9',
-      likes: ['therealréal'],
-    },
-    {
-      pledgename: 'doPushUps',
-      title: 'shoulder pushups',
-      text: '3 sets of 40',
-      aws_url: 'https://i.imgur.com/tVRtGDW.png',
-      username: 'mangle9',
-      likes: ['DaGoldberg', 'shahshaank'],
-    },
-    {
-      pledgename: 'doPushUps',
-      title: 'regular wide pushups',
-      text: '',
-      aws_url: 'https://i.imgur.com/RhwKpzO.png',
-      username: 'mangle9',
-      likes: ['therealréal'],
-    },
-    {
-      pledgename: 'doPushUps',
-      title: 'close grip push ups',
-      text: '',
-      aws_url: 'https://i.imgur.com/Xt7SKYh.png',
-      username: 'mangle9',
+      title: 'Flys: 2 Sets of 12 Reps',
+      text: 'Today I focused on building my chest strength and did some flys. The most difficult part was that I was maxing out the weight.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833171998/nathan-gym.jpg',
+      username: 'nathan',
       likes: ['DaGoldberg', 'therealréal', 'shahshaank'],
+      comments: [
+        {
+          text: 'Careful not to over-extend your shoulders, could tear the rotator cuff. Thats what happened to me doing the same lift',
+          username: 'david'
+        }
+      ]
+    },
+    {
+      pledgename: 'piano',
+      title: 'Dream Spot for Piano',
+      text: 'Today I played piano in my dream spot overlooking the ocean. Not sure what was better...the view or my tunes.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436832929166/David%20piano.jpg',
+      username: 'david',
+      likes: ['DaGoldberg', 'shahshaank']
+    },
+    {
+      pledgename: 'WriteFiction',
+      title: 'Writing On BART',
+      text: 'Wrote another chapter in my epic novel today while I was on BART. Made the trip go by so fast.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833303607/real%20writing.jpg',
+      username: 'realreal',
+      likes: ['david', 'monica'],
+      comments: [
+        {
+          text: 'The next JK Rowling! Good stuff',
+          username: 'nathan'
+        }
+      ]
+    },
+    {
+      pledgename: 'beactive',
+      title: 'Hiking Outside of San Luis Obispo',
+      text: 'What a conquering feeling and the best part is I get to show you all the view. Who wants to join me next time now that Im a local?',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436834540536/woman-hiking1.jpg',
+      username: 'monica',
+      likes: ['david', 'realreal'],
+      comments: [
+        {
+          text: 'sick view! where exactly is that in SLO?',
+          username: 'realreal'
+        }
+      ]
+    },
+    {
+      pledgename: 'beactive',
+      title: 'Run In Golden Gate Park',
+      text: 'Went for a 8 mile run in Golden Gate Park, when I reached the Pacific Ocean the views were amazing. Did you know it is the largest city park in the US?',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833712001/ManRunningInPark.jpg',
+      username: 'david',
+      likes: ['shaan', 'monica', 'nathan', 'realreal'],
+      comments: [
+        {
+          text: 'Any chance you are around this weekend to run in golden gate park?',
+          username: 'monica'
+        },
+        {
+          text: 'What time do you usually run at?',
+          username: 'nathan'
+        }
+      ]
+    },
+    {
+      pledgename: 'piano',
+      title: 'My First Piano Lesson',
+      text: 'Never thought I would get so much satisfaction from taking a piano lesson. Thanks for the support everyone! Its taken my mind off of code.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436839017328/shaan%20piano.jpg',
+      username: 'shaan',
+      likes: ['realreal', 'david'],
+      comments: [
+        {
+          text: 'for some reason lately I have not needed breaks from coding, but usually I do so I completely understand what you are talking about',
+          username: 'nathan'
+        },
+        {
+          text: 'great news, sometimes we all need a mental break from coding. especially knowing how hard you work',
+          username: 'monica'
+        }
+      ]
     },
     {
       pledgename: 'doPushUps',
-      title: 'regular wide pushups',
-      text: '10 sets of 80',
-      aws_url: 'https://i.imgur.com/adzYGgI.png',
-      username: 'mangle9',
-      likes: ['DaGoldberg', 'shahshaank'],
-    },
-    {
-      pledgename: 'doPushUps',
-      title: 'close grip push ups',
-      text: '2 sets of 10 wide, 3 sets of 20 close',
-      aws_url: 'https://i.imgur.com/4WHBzt7.png',
-      username: 'mangle9',
-      likes: ['therealréal'],
+      title: '3 Sets of 10 Pushups',
+      text: 'Focused on my form and kept my hands at shoulder width apart making sure to try to look straight ahead while I was going down. Did 30 (3 sets of 10 reps)',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436832786026/Shaan%20pushups.jpg',
+      username: 'shaan',
+      likes: ['realreal'],
       comments: [
         {
           text: 'Widen that grip! Otherwise you could damage your elbow joints',
-          username: 'therealréal'
+          username: 'realreal'
         }
       ]
     },
     {
-      pledgename: 'beaDOG',
-      title: 'code',
-      text: 'Coded this website',
-      aws_url: 'https://i.imgur.com/1pbtoVN.jpg',
-      username: 'therealréal',
-      likes: ['DaGoldberg', 'shahshaank'],
+      pledgename: 'piano',
+      title: 'Recital Practice Day 2',
+      text: 'The recital is coming quick and I want to make sure I am ready. This was day 2 of practice and I am feeling really good about it.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833570458/more%20practice.jpg',
+      username: 'david',
+      likes: ['shaan', 'monica'],
       comments: [
         {
-          text: 'Your code looks beautfiul. These hiring partners should just hire you now',
-          username: 'shahshaank'
+          text: 'The recital looks cool. where can I check it out? do I buy tickets in advance?',
+          username: 'realreal'
         }
       ]
     },
     {
-      pledgename: 'beaDOG',
-      title: 'read a book',
-      text: 'Read "To Bark at Mockingbird" by Barker Lee',
-      aws_url: 'https://i.imgur.com/ZbCn10B.jpg',
-      username: 'therealréal',
-      likes: ['mangle9'],
-    },
-    {
-      pledgename: 'beaDOG',
-      title: 'wash a car',
-      text: 'Washed by car',
-      aws_url: 'https://i.imgur.com/3wIZshz.jpg',
-      username: 'therealréal',
-      likes: ['DaGoldberg', 'shahshaank', 'mangle9'],
+      pledgename: 'WriteFiction',
+      title: 'Chapter 4 of Fiction Novel',
+      text: 'Just wrote the 4th chapter of my book and it took so long. Feels good to be done with and I am excited to move on to chapter 5.',
+      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436838210713/man-writing-books-600x400.jpg',
+      username: 'realreal',
+      likes: ['shaan'],
       comments: [
         {
-          text: 'Getting after it, good cleaning work',
-          username: 'DaGoldberg'
+          text: 'Excited to read it! keep me posted on the release date',
+          username: 'nathan'
         },
         {
-          text: 'I think you missed a spot...',
-          username: 'mangle9'
-        },
-        {
-          text: '@mangle9 I think you are wrong, looks good to me',
-          username: 'shahshaank'
-        }
-      ]
-    },
-    {
-      pledgename: 'beaDOG',
-      title: 'play poker',
-      text: 'Won 20 dog biscuits!',
-      aws_url: 'https://i.imgur.com/2BKi8j7.jpg',
-      username: 'CTO_NLinksta',
-      likes: ['therealréal', 'shahshaank', 'mangle9'],
-      comments: [
-        {
-          text: 'Alligator blood!',
-          username: 'therealréal'
-        },
-          {
-          text: 'Lets go to vegas!',
-          username: 'mangle9'
-        }
-      ]
-    },
-    {
-      pledgename: 'beaDOG',
-      title: 'be a lumberjack',
-      text: 'I\'m a lumberjack',
-      aws_url: 'https://i.imgur.com/11uRZ3T.jpg',
-      username: 'CTO_NLinksta',
-      likes: ['DaGoldberg'],
-      comments: [
-        {
-          text: 'You are strong, must be strong, have to be strong to be a lumberjack. Except I feel bad for the trees',
-          username: 'DaGoldberg'
+          text: 'Do you have any pointers for picking a topic to write a book about? Having trouble brainstorming',
+          username: 'monica'
         }
       ]
     }
