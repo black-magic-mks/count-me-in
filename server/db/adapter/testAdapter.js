@@ -67,7 +67,7 @@ var resetData = function(req, res, next) {
         return Q.all(pledge.subscribers.map(function(username) {
           return User.where({ username: username })
           .then(function(userNode) {
-            return Pledge.relate(pledgeNode,'SUBSCRIBES_TO',userNode);
+            return Pledge.relate(userNode,'SUBSCRIBES_TO',pledgeNode);
           });
         }));
       })
