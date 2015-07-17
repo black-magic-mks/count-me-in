@@ -155,24 +155,6 @@ module.exports = {
       ]
     },
     {
-      pledgename: 'doPushUps',
-      title: 'Hiking Outside of San Luis Obispo',
-      text: 'What a conquering feeling and the best part is I get to show you all the view. Who wants to join me next time now that Im a local?',
-      aws_url: 'https://s3.amazonaws.com/count-me-in-black-magic/undefined/1436833956902/manpushupssfadfadfadfa.jpg',
-      username: 'shaan',
-      likes: ['david', 'monica'],
-      comments: [
-        {
-          text: 'I cannot do 200. definitely be mindful of your elbow joints. mine broke',
-          username: 'nathan'
-        },
-        {
-          text: 'Great to see how much progress you have made in such a short period of time! You are definitely getting stronger and I can tell that the hard work is paying off. Keep it up!',
-          username: 'david'
-        }
-      ]
-    },
-    {
       pledgename: 'beactive',
       title: 'Run In Golden Gate Park',
       text: 'Went for a 8 mile run in Golden Gate Park, when I reached the Pacific Ocean the views were amazing. Did you know it is the largest city park in the US?',
