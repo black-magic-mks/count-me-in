@@ -66,7 +66,7 @@ var getUserPosts = function(req, res, next) {
       });
     }
     return pledgesWithPosts.sort(function(pledge1, pledge2) {
-      return pledge1.posts[0] - pledge2.posts[0];
+      return pledge1.posts[0].created - pledge2.posts[0].created;
     })
   })
   .then(function(pledgesWithPosts) {
