@@ -1,43 +1,7 @@
 angular.module('app')
 
-.controller('UserProfileController', function($scope, $stateParams, $rootScope, UserProfileFactory, follow) {
-  $scope.username = $stateParams.username || $rootScope.currentUser;
-  UserProfileFactory.getUserProfilePosts($scope.username)
-  .then(function(pledges) {
-    pledges.sort(function(pledge1, pledge2) {
-      return pledge2.posts[0].created - pledge1.posts[0].created;
-    })
-    $scope.profilePledges = pledges;
-  })
-  $scope.addFollower = function() {
-    console.log($stateParams)
-    follow.followUser($stateParams.username);
-  };
-})
-.factory('UserProfileFactory', function($http, $stateParams) {
-  var getUserProfilePosts = function(username) {
-    return $http({
-      method: 'GET',
-      url: '/api/user/posts',
-      params: {username: username}
-    })
-    .then(function(pledges) {
-      return pledges.data;
-    })
-    .catch(function(err) {
-      console.log('error in UserProfileFactory: getUserProfilePledges()');
-    })
-  }
-
-  return {
-    getUserProfilePosts: getUserProfilePosts
-  }
-})
-
-// we don't use this at all but it causes bugs if we just remove it
 .controller('UserController', function($scope, $rootScope, $stateParams, userFunc, follow, logOut) {
   $scope.signOut = function() {
-    // length error???
     logOut.clearSessionToken();
   };
 })
