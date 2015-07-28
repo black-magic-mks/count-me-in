@@ -124,13 +124,18 @@ var getPledgePosts = function(req, res, next) {
       .then(function(post) {
         return Post.addHasLiked(req.username,post);
       });
-    }));
+    })
+    .sort(function(post1, post2) {
+      return post2.created - post2.created;
+    })
+    );
   })
-  .then(function(posts) {
-    return posts.sort(function(post1, post2) {
-      return post2.created - post1.created;
-    });
-  })
+  // .then(function(posts) {
+  //   posts.spread()
+  //   return posts.sort(function(post1, post2) {
+  //     return post2.created - post1.created;
+  //   });
+  // })
   .then(function(posts) {
     res.send(posts);
   })
