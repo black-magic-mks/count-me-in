@@ -19,7 +19,6 @@ angular.module('app')
     if ($rootScope.loggedIn) {
       feedFactory.getPrivateFeedPosts()
       .then(function(posts) {
-        console.log("post", posts)
         if (posts.length !== 0) {
           if (posts) {
             for (var i = 0; i < posts.length; i++) {
@@ -50,130 +49,11 @@ angular.module('app')
   // initializes the post data
   $scope.init();
 
-  $scope.saveMission = function() {
-    $scope.modal.hide();
-  };
-
   // shows/toggles comment box
   $scope.boxVisible = false;
 
   $scope.showCommentBox = function () {
     $scope.boxVisible = true;
-    console.log('showCommentBox');
-  }
-})
-
-.factory('feedFactory', function($http) {
-  // gets the posts for the public feed
-  var getPublicFeedPosts = function() {
-    return $http({
-      method: 'GET',
-      url: '/api/public/feed',
-    })
-    .then(function(posts) {
-      return posts.data || [];
-    })
-    .catch(function(err) {
-      console.log("error in getting posts in feedController.js: getPublicFeedPosts()")
-    })
-  }
-
-  // gets the posts for the private feed
-  var getPrivateFeedPosts = function() {
-    return $http({
-      method: 'GET',
-      url: '/api/user/feed'
-    })
-    .then(function(posts) {
-      console.log(posts)
-      return posts.data || [];
-    })
-    .catch(function(err) {
-      console.log("error in getting posts in feedController.js: getPrivateFeedPosts()")
-    })
-  }
-
-  return {
-    getPublicFeedPosts: getPublicFeedPosts,
-    getPrivateFeedPosts: getPrivateFeedPosts
-  };
-})
-
-
-
-.controller('FeedPledgeController', function($scope, $stateParams, feedPledgeFactory, subscribe) {
-  $scope.pledgename = $stateParams.pledgename;
-  $scope.subscribed = false;
-
-  feedPledgeFactory.getFeedPledgePosts($scope.pledgename)
-  .then(function(posts) {
-    $scope.feedPledgePosts = posts;
-  });
-
-  $scope.hasSubscribed = function() {
-    subscribe.hasSubscribed($scope.pledgename, function(data) {
-      $scope.subscribed = data.hasSubscribed;
-    });
-  };
-
-  $scope.hasSubscribed();
-
-  $scope.subscribedPledges = [];
-
-  $scope.subscribePledge = function() {
-    subscribe.subscribeToPledge($scope.pledgename, function(data) {
-      $scope.subscribedPledges.push(data);
-    });
-    $scope.subscribed = true;
-  };
-})
-.factory('feedPledgeFactory', function($http) {
-
-  var getFeedPledgePosts = function(pledgename) {
-    return $http({
-      method: 'GET',
-      url: '/api/pledge/posts',
-      params: {pledgename: pledgename}
-    })
-    .then(function(posts) {
-      return posts.data;
-    })
-    .catch(function(err) {
-      console.log("error in getting posts in feedController.js: getFeedPledgePosts()")
-    })
-  }
-
-  return {
-    getFeedPledgePosts: getFeedPledgePosts
-  }
-})
-
-.factory('subscribe', function($http) {
-  var subscribeToPledge = function(pledgename, callback) {
-    $http.post('/api/pledge/subscribe', {pledgename: pledgename})
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error status with subscribeToPledge: ', status, data, headers, config);
-    });
-  };
-
-  var hasSubscribed = function(pledgename, callback) {
-    $http.get('/api/pledge', {
-      params: {pledgename: pledgename}
-    })
-    .success(function(data, status, headers, config) {
-      callback(data);
-    })
-    .error(function(data, status, headers, config) {
-      console.log('error status with hasSubscribed: ', status, data, headers, config);
-    });
-  };
-
-  return {
-    subscribeToPledge: subscribeToPledge,
-    hasSubscribed: hasSubscribed
   }
 })
 

@@ -79,13 +79,13 @@ angular.module('app', [
     .state('login', {
       url: '/login',
       templateUrl: '/views/login.html',
-      controller: 'AuthController',
+      controller: 'authController',
       activetab: 'login'
     })
     .state('signup', {
       url: '/signup',
       templateUrl: '/views/signup.html',
-      controller: 'AuthController',
+      controller: 'authController',
       activetab: 'login'
     })
 });
