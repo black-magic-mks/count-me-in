@@ -4,7 +4,7 @@ We believe in the importance of pursuing a passion or hobby, but also recognize 
 
 Count Me In provides a community-based accountability system for people who want to start a new hobby, learn a new skill, or improve upon an existing hobby/skill.
 
-Count Me In motivates users to learn a new hobby or skill with a personalized newsfeed of pledges. Pledges are communities of users who commit to common goals and maintain accountability by sharing their progress. Pledge members share image-based posts to show their improvement over time. With Count Me In, users can subscribe to pledges and follow their friends to keep track of their progress and stay inspired.
+Count Me In motivates users to learn a new hobby or skill with a personalized newsfeed of pledges. Pledges are communities of users who commit to common goals and maintain accountability by sharing their progress. Pledge members share image-based posts to show their improvement over time. With Count Me In, users can subscribe to pledges and follow their friends to keep track of their progress and stay inspired. The social networking aspect of Count Me In helps users hold themselves accountable. 
 
 ### Initial global setup
 ```
