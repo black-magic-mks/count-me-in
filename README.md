@@ -25,7 +25,7 @@ Start the database with:
 ```
 neo4j start
 ```
-You may need to [install Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to run neo4j. neo4j requires Java so if you have not already downloaded Java onto your local machine see the above link for instructions on downloading Java.
+You may need to [install Java](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) to run neo4j. This will depend on your local machine and whether you already have Java installed. neo4j requires Java so if you have not already downloaded Java onto your local machine see the above link for instructions on downloading Java. 
 You can interact with the database through its web interface by navigating to `localhost:7474`. If it asks for a username and password use `neo4j` for both (you may need to change your password twice to get it back to `neo4j`). When you're done, stop the database with:
 
 ```
